@@ -1,0 +1,83 @@
+.carousel {
+  display: flex;
+  width: 60%;
+  border-radius: 20px;
+  box-shadow: 0 0.25rem 0.3rem 0.05rem rgba(0, 0, 0, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.item-link:visited,
+.item-link:link,
+.item-link:active,
+.item-link:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.item-container {
+  cursor: pointer;
+}
+
+.item-container:hover {
+  opacity: 0.8;
+}
+
+.carousel__backdrop {
+  width: 100%;
+  object-fit: cover;
+}
+
+.carousel__container--bottom {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 2rem 6.4rem;
+  gap: 2.4rem;
+}
+
+.carousel__container--bottom img {
+  width: 13rem;
+  height: 19rem;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.carousel__container--right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.carousel__container--right h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+
+.carousel__container--rating {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  font-size: 1.6rem;
+  margin-bottom: 2.4rem;
+}
+
+.carousel__container--rating p {
+  color: var(--color-gray-200);
+}
+
+.carousel__genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem;
+}
+
+.carousel__genres span {
+  font-size: 1.6rem;
+  background-color: var(--color-gray-600);
+  padding: 1rem 1.4rem;
+  border-radius: 10px;
+}

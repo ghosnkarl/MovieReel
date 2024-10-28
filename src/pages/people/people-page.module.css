@@ -1,0 +1,8 @@
+.container {
+  max-width: 130rem;
+  margin: 0 auto;
+  padding: 12.8rem 3.2rem 0 3.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.4rem;
+}

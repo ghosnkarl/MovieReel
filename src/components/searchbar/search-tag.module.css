@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  background-color: var(--color-gray-500);
+  font-size: 1.4rem;
+  padding: 0.4rem 0.8rem 0.4rem 1rem;
+  border-radius: 100px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.close-icon {
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.close-icon:hover {
+  color: var(--color-gray-600);
+}

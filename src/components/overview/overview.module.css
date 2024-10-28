@@ -1,0 +1,12 @@
+.tagline {
+  font-size: 1.6rem;
+  font-style: italic;
+  color: var(--color-gray-300);
+  margin-bottom: 1.2rem;
+}
+
+.overview {
+  margin-top: 1.4rem;
+  font-size: 1.6rem;
+  line-height: 1.4;
+}

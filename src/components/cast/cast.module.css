@@ -1,0 +1,13 @@
+.cast-container {
+  display: flex;
+  gap: 3.2rem;
+  padding: 2.4rem 0 0 0;
+  scroll-behavior: smooth;
+  list-style: none;
+  overflow: hidden;
+}
+
+.list-header--actions {
+  display: flex;
+  gap: 2.4rem;
+}
