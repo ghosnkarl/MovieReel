@@ -2,7 +2,7 @@
   position: relative;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  height: 50vh;
+  height: 55vh;
   max-width: 130rem;
   margin: 0 auto;
   padding: 0 6.4rem 0 6.4rem;
