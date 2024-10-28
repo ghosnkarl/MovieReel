@@ -87,6 +87,7 @@ body {
 
 .btn {
   border: none;
+  text-decoration: none;
   background-image: linear-gradient(to right, #ea580c, #f59e0b);
   color: white;
   border-radius: 100px;

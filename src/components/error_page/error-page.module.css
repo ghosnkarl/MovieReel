@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 130rem;
+  margin: 0 auto;
+  padding: 12.8rem 3.2rem 3.2rem 3.2rem;
+  gap: 3.2rem;
+}
+
+.container h1 {
+  font-size: 5.2rem;
+  font-weight: 500;
+}
+
+.container h2 {
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: var(--color-gray-200);
+}

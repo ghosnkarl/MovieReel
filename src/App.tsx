@@ -16,11 +16,13 @@ import PeopleRootLayout from "./pages/people/PeopleRootLayout";
 import PeopleDetailsPage from "./pages/people/PeopleDetailsPage";
 import PeopleDetailsRootLayout from "./pages/people/PeopleDetailsRootLayout";
 import CreditsPage from "./pages/credits/CreditsPage";
+import ErrorPage from "./components/error_page/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
       {
