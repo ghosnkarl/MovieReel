@@ -9,8 +9,6 @@ const Overview = ({
 }) => {
   return (
     <div>
-      {/* <p className={classes.tagline}>{tagline}</p>
-      <h1>Overview</h1> */}
       <p className={classes.overview}>{overview}</p>
     </div>
   );

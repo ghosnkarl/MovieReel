@@ -1,6 +1,6 @@
 import moment from "moment";
 import classes from "./details-header.module.css";
-import Overview from "../../overview/Overview";
+
 import { GenreInterface } from "../../../models/genreModel";
 import RatingStar from "../../rating/RatingStar";
 
@@ -10,7 +10,6 @@ interface DetailsHeaderProps {
   runtime: number;
   genres: GenreInterface[];
   vote_average: number;
-  tagline: string;
   overview: string;
 }
 
@@ -20,33 +19,29 @@ const DetailsHeader = ({
   runtime,
   genres,
   vote_average,
-  tagline,
   overview,
 }: DetailsHeaderProps) => {
   return (
-    <div className={classes.container}>
-      <div className={classes["container--text"]}>
-        <p className={classes.genres}>
-          {genres.map((genre) => genre.name).join(" • ")}
+    <div className={classes.header}>
+      <p className={classes["header__genres"]}>
+        {genres.map((genre) => genre.name).join(" • ")}
+      </p>
+      <h1 className={classes["header__title"]}>{title}</h1>
+      <div className={classes["header__details"]}>
+        <RatingStar value={vote_average} size="medium" />
+        <p className={classes["header__date"]}>
+          {moment(release_date).format("MMM DD, YYYY")}
+          {runtime !== 0 && (
+            <>
+              {" • "}
+              <span>
+                {Math.floor(runtime / 60)}h {runtime % 60}m
+              </span>
+            </>
+          )}
         </p>
-        <h1 className={classes.title}>{title}</h1>
-
-        <div className={classes["header-container--rating"]}>
-          <RatingStar value={vote_average} size="medium" />
-          <p className={classes.date}>
-            {moment(release_date).format("MMM DD, YYYY")}
-            {runtime !== 0 && (
-              <>
-                {" • "}
-                <span>
-                  {Math.floor(runtime / 60)}h {runtime % 60}m
-                </span>
-              </>
-            )}
-          </p>
-        </div>
-        <Overview tagline={tagline} overview={overview} />
       </div>
+      <p className={classes["header__overview"]}>{overview}</p>
     </div>
   );
 };

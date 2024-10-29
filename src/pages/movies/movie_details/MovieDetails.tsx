@@ -107,7 +107,6 @@ const MovieDetails = () => {
         <DetailsHeader
           title={data.title}
           overview={data.overview}
-          tagline={data.tagline}
           genres={data.genres}
           vote_average={data.vote_average}
           release_date={data.release_date}
