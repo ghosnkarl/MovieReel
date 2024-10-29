@@ -24,9 +24,9 @@ const ErrorPage = () => {
   return (
     <>
       <Navigation />
-      <div className={classes.container}>
-        <h1>Oops! An error Occured!</h1>
-        <h2>{errorMessage}</h2>
+      <div className={classes.error}>
+        <h1 className={classes["error__title"]}>Oops! An error Occured!</h1>
+        <h2 className={classes["error__message"]}>{errorMessage}</h2>
         <NavLink to="/" className="btn">
           Home Page
         </NavLink>

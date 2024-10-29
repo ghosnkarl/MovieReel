@@ -1,4 +1,4 @@
-.container {
+.error {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,12 +9,12 @@
   gap: 3.2rem;
 }
 
-.container h1 {
+.error__title {
   font-size: 5.2rem;
   font-weight: 500;
 }
 
-.container h2 {
+.error__message {
   font-size: 2.4rem;
   font-weight: 400;
   color: var(--color-gray-200);
