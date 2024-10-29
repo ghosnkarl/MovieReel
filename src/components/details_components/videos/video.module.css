@@ -1,8 +1,34 @@
-.video-container {
+.videos {
   display: flex;
   gap: 2.4rem;
   padding: 2.4rem 0 1.2rem 0;
   scroll-behavior: smooth;
   overflow: hidden;
-  list-style: none;
+}
+
+.video__item {
+  display: flex;
+  width: 35rem;
+  text-decoration: none;
+  color: white;
+  aspect-ratio: 1.5;
+  position: relative;
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.video__item img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  opacity: 0.8;
+}
+
+.video__item--play {
+  position: absolute;
+  font-size: 6.4rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
