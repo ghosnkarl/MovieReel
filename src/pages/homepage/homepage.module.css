@@ -8,16 +8,15 @@
 }
 
 .header {
-  display: flex;
+  display: grid;
   gap: 3.2rem;
-  width: 100%;
+  grid-template-columns: 1fr 1.5fr;
   height: 42rem;
 }
 
 .welcome-container {
   display: flex;
   flex-direction: column;
-  width: 40%;
   border-radius: 20px;
   justify-content: center;
 }

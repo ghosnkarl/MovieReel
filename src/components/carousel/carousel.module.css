@@ -1,34 +1,31 @@
 .carousel {
   display: flex;
-  width: 60%;
   border-radius: 20px;
   box-shadow: 0 0.25rem 0.3rem 0.05rem rgba(0, 0, 0, 0.12);
   position: relative;
   overflow: hidden;
 }
 
-.item-link:visited,
-.item-link:link,
-.item-link:active,
-.item-link:hover {
+/*************************/
+/* Carousel Item  */
+/*************************/
+.carousel__item--link:visited,
+.carousel__item--link:link {
   color: white;
   text-decoration: none;
 }
 
-.item-container {
-  cursor: pointer;
-}
-
-.item-container:hover {
+.carousel__item--link:active,
+.carousel__item--link:hover {
   opacity: 0.8;
 }
 
-.carousel__backdrop {
+.carousel__item--backdrop {
   width: 100%;
   object-fit: cover;
 }
 
-.carousel__container--bottom {
+.carousel__item--details {
   position: absolute;
   bottom: 0;
   display: flex;
@@ -37,27 +34,27 @@
   gap: 2.4rem;
 }
 
-.carousel__container--bottom img {
+.carousel__item--details img {
   width: 13rem;
   height: 19rem;
   border-radius: 15px;
   object-fit: cover;
 }
 
-.carousel__container--right {
+.carousel__item--details--text {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.carousel__container--right h1 {
+.carousel__item--details--text h1 {
   font-size: 3rem;
   line-height: 1.2;
   font-weight: 500;
   margin-bottom: 1.2rem;
 }
 
-.carousel__container--rating {
+.carousel__item--rating {
   display: flex;
   align-items: center;
   gap: 2.4rem;
@@ -65,19 +62,52 @@
   margin-bottom: 2.4rem;
 }
 
-.carousel__container--rating p {
+.carousel__item--rating p {
   color: var(--color-gray-200);
 }
 
-.carousel__genres {
+.carousel__item--genres {
   display: flex;
   flex-wrap: wrap;
   gap: 1.4rem;
 }
 
-.carousel__genres span {
+.carousel__item--genres span {
   font-size: 1.6rem;
   background-color: var(--color-gray-600);
   padding: 1rem 1.4rem;
   border-radius: 10px;
+}
+
+/****************************/
+/* Carousel Arrow Buttons */
+/***************************/
+
+.carousel__arrow {
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  top: 50%;
+  transform: translateY(-50%);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  padding: 1.2rem 0.6rem;
+}
+
+.carousel__arrow--right {
+  right: 0;
+}
+
+.carousel__arrow:hover {
+  color: var(--color-primary-900);
+  border: 1px solid var(--color-primary-900);
+}
+
+.arrow {
+  height: 3.4rem;
+  width: 3.4rem;
 }

@@ -76,7 +76,12 @@ export async function fetchMovieDetails(
 export async function fetchPeopleDetails(
   id: string | undefined
 ): Promise<PersonInterface> {
-  const url = `${BASE_URL}/person/${id}?api_key=${API_KEY}&append_to_response=images,combined_credits&include_image_language=null`;
+  const params = {
+    append_to_response: "images,combined_credits",
+    include_image_language: "en,null",
+  };
+
+  const url = buildURL(`person/${id}`, params);
   const response = await fetch(url);
 
   if (!response.ok) {

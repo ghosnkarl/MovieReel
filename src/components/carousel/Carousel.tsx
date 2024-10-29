@@ -1,18 +1,35 @@
 import classes from "./carousel.module.css";
-
 import { useState } from "react";
 import { MediaListInterface } from "../../models/mediaModel";
 import CarouselItem, { CarouselItemInterface } from "./CarouselItem";
 import { GenreInterface } from "../../models/genreModel";
-import CarouselArrow from "./CarouselArrow";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-const Carousel = ({
-  content,
-  genres,
-}: {
+interface CarouselArrowProps {
+  direction: "left" | "right";
+  handleClick: () => void;
+}
+
+const CarouselArrow = ({ direction, handleClick }: CarouselArrowProps) => {
+  const isRight = direction === "right";
+  const rightArrowStyle = isRight ? classes["carousel__arrow--right"] : "";
+  return (
+    <div
+      className={`${classes["carousel__arrow"]} ${rightArrowStyle}`}
+      onClick={handleClick}
+    >
+      {isRight && <IoIosArrowForward className={classes.arrow} />}
+      {!isRight && <IoIosArrowBack className={classes.arrow} />}
+    </div>
+  );
+};
+
+interface CarouselProps {
   content: MediaListInterface[];
   genres: GenreInterface[] | undefined;
-}) => {
+}
+
+const Carousel = ({ content, genres }: CarouselProps) => {
   const [current, setCurrent] = useState<CarouselItemInterface>({
     index: 0,
     isRight: true,
