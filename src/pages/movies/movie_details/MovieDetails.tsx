@@ -10,7 +10,7 @@ import classes from "./movie-details.module.css";
 import CastList from "../../../components/details_components/cast/CastList";
 import VideoList from "../../../components/details_components/videos/VideoList";
 import ImageList from "../../../components/details_components/images/ImageList";
-import SidebarDetails from "../../../components/details_components/details_sidebar/SidebarDetails";
+import MediaDetails from "../../../components/details_components/media_details/MediaDetails";
 import Review from "../../../components/review/Review";
 import MediaList from "../../../components/horizontal_list/MediaList";
 import DetailsHeader from "../../../components/details_components/details_header/DetailsHeader";
@@ -126,7 +126,7 @@ const MovieDetails = () => {
               <VideoList videos={data.videos.results} />
             )}
 
-            <SidebarDetails
+            <MediaDetails
               status={data.status}
               homepage={data.homepage}
               imdb_id={data.imdb_id}
