@@ -3,17 +3,14 @@ import { getBackdropImage } from "../../../helpers/imageSizes";
 import classes from "./image-list.module.css";
 import { IoChevronForward } from "react-icons/io5";
 
-const ImageList = ({
-  backdropList,
-  title,
-  images,
-  image,
-}: {
+interface ImageListProps {
   backdropList: { file_path: string }[];
   title: string;
   images: { galleryImage: string; fullImage: string }[];
   image: string;
-}) => {
+}
+
+const ImageList = ({ backdropList, title, images, image }: ImageListProps) => {
   return (
     <div>
       <NavLink
@@ -25,7 +22,7 @@ const ImageList = ({
         <IoChevronForward />
       </NavLink>
 
-      <div className={classes["images-container"]}>
+      <div className={classes.images}>
         {backdropList.map((backdrop) => (
           <img
             key={backdrop.file_path}
