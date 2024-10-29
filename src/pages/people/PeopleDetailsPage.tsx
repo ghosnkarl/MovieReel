@@ -5,7 +5,7 @@ import { getPosterImage, getProfileImage } from "../../helpers/imageSizes";
 import classes from "./people-details.module.css";
 import { useState } from "react";
 import moment from "moment";
-import ImageList from "../../components/images/ImageList";
+import ImageList from "../../components/details_components/images/ImageList";
 import ListItem from "../../components/horizontal_list/ListItem";
 
 const PeopleDetailsPage = () => {

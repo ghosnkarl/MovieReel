@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import {
   CollectionInterface,
   ProductionCompanyInterface,
-} from "../../models/mediaModel";
+} from "../../../models/mediaModel";
 import classes from "./sidebar-details.module.css";
 
 interface SidebarProps {

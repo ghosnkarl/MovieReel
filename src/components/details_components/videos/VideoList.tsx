@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { VideoInterface } from "../../models/mediaModel";
+import { VideoInterface } from "../../../models/mediaModel";
 
 import classes from "./video.module.css";
 import VideoItem from "./VideoItem";
-import ListArrows from "../horizontal_list/arrows/ListArrows";
+import ListArrows from "../../horizontal_list/arrows/ListArrows";
 
 const VideoList = ({ videos }: { videos: VideoInterface[] }) => {
   const listRef = useRef<HTMLUListElement>(null);

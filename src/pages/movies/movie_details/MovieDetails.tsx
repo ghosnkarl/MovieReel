@@ -7,13 +7,13 @@ import {
   getPosterImage,
 } from "../../../helpers/imageSizes";
 import classes from "./movie-details.module.css";
-import CastList from "../../../components/cast/CastList";
-import VideoList from "../../../components/videos/VideoList";
-import ImageList from "../../../components/images/ImageList";
-import SidebarDetails from "../../../components/details_sidebar/SidebarDetails";
+import CastList from "../../../components/details_components/cast/CastList";
+import VideoList from "../../../components/details_components/videos/VideoList";
+import ImageList from "../../../components/details_components/images/ImageList";
+import SidebarDetails from "../../../components/details_components/details_sidebar/SidebarDetails";
 import Review from "../../../components/review/Review";
 import MediaList from "../../../components/horizontal_list/MediaList";
-import DetailsHeader from "../../../components/details_header/DetailsHeader";
+import DetailsHeader from "../../../components/details_components/details_header/DetailsHeader";
 
 const MovieDetails = () => {
   const params = useParams();
@@ -56,7 +56,7 @@ const MovieDetails = () => {
           </div>
           <ul className={classes["reviews-list"]}>
             {data.reviews.results.slice(0, 3).map((review) => (
-              <Review review={review} shortenText={true} />
+              <Review key={review.id} review={review} shortenText={true} />
             ))}
           </ul>
         </div>

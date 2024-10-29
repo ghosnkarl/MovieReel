@@ -190,7 +190,8 @@ body {
   align-items: center;
 }
 
-.tab-active {
+.tab-active,
+.tabs button:hover {
   color: #f97316 !important;
 }
 

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import classes from "../cast/cast-item.module.css";
+import classes from "../details_components/cast/cast-item.module.css";
 import MotionDiv from "../ui/MotionDiv";
 
 interface ListItemProps {

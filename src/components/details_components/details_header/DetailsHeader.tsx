@@ -1,8 +1,8 @@
 import moment from "moment";
 import classes from "./details-header.module.css";
-import Overview from "../overview/Overview";
-import { GenreInterface } from "../../models/genreModel";
-import RatingStar from "../rating/RatingStar";
+import Overview from "../../overview/Overview";
+import { GenreInterface } from "../../../models/genreModel";
+import RatingStar from "../../rating/RatingStar";
 
 interface DetailsHeaderProps {
   title: string;

@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { CastInterface, CrewInterface } from "../../models/mediaModel";
+import { CastInterface, CrewInterface } from "../../../models/mediaModel";
 import classes from "./cast.module.css";
-import { getProfileImage } from "../../helpers/imageSizes";
+import { getProfileImage } from "../../../helpers/imageSizes";
 import { useEffect, useRef, useState } from "react";
-import ListArrows from "../horizontal_list/arrows/ListArrows";
+import ListArrows from "../../horizontal_list/arrows/ListArrows";
 import CastItem from "./CastItem";
 
 import { IoChevronForward } from "react-icons/io5";

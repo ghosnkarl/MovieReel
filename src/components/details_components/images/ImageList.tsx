@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { getBackdropImage } from "../../helpers/imageSizes";
+import { getBackdropImage } from "../../../helpers/imageSizes";
 import classes from "./image-list.module.css";
 import { IoChevronForward } from "react-icons/io5";
 

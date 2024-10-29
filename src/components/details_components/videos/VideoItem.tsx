@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
-import { VideoInterface } from "../../models/mediaModel";
+import { VideoInterface } from "../../../models/mediaModel";
 import classes from "./video-item.module.css";
-import MotionDiv from "../ui/MotionDiv";
+import MotionDiv from "../../ui/MotionDiv";
 import { IoPlayCircleOutline } from "react-icons/io5";
 
 const VideoItem = ({ video }: { video: VideoInterface }) => {
