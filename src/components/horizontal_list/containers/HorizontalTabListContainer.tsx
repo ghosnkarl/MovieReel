@@ -35,7 +35,7 @@ export default function HorizontalTabListContainer({
     setSelectedTab(tab);
   };
 
-  const { data, isError, error, refetch } = useQuery({
+  const { data, isError, refetch } = useQuery({
     queryKey: [queryStr, selectedTab.value],
     queryFn: () => selectedTab.query,
     retry: 1,
@@ -52,10 +52,14 @@ export default function HorizontalTabListContainer({
   }
 
   if (isError) {
+    const tabsText = tabs
+      .map((tab) => tab.title)
+      .join(" and ")
+      .toLocaleLowerCase();
     content = (
       <ErrorBlock
         title={`Error Fetching ${title}`}
-        message={error.message.status_message}
+        message={`There was an error loading ${tabsText} ${title.toLocaleLowerCase()}`}
         onTryAgainClick={refetch}
       />
     );
@@ -75,7 +79,7 @@ export default function HorizontalTabListContainer({
             />
           )}
         </div>
-        <ListArrows listRef={ref} />
+        {data && <ListArrows listRef={ref} />}
       </div>
       <ul ref={listRef} className={classes.list}>
         {content}

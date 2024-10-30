@@ -240,3 +240,8 @@ body {
 .section-link:active {
   color: var(--color-primary-900);
 }
+
+.Toastify__toast--error {
+  font-size: 1.4rem;
+  line-height: 1.4;
+}

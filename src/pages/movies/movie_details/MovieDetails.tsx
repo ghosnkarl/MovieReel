@@ -11,24 +11,36 @@ import MediaList from "../../../components/horizontal_list/MediaList";
 import DetailsHeader from "../../../components/details_components/details_header/DetailsHeader";
 import DetailsReviews from "../../../components/details_components/details_reviews/DetailsReviews";
 import { getGalleryImages } from "../../../helpers/galleryImages";
+import LoadingIndicator from "../../../components/ui/LoadingIndicator";
+import ErrorBlock from "../../../components/ui/ErrorBlock";
 
 const MovieDetails = () => {
   const params = useParams();
   const movieId = params.movieId;
 
-  const { data, error, isLoading, refetch } = useQuery({
+  const { data, isError, refetch } = useQuery({
     queryKey: ["movies", movieId],
     queryFn: () => fetchMovieDetails(movieId),
-    retry: 1,
+    retry: 0,
   });
 
-  let content = <></>;
+  let content = <LoadingIndicator title="Fetching Movie Details" />;
+
+  if (isError) {
+    content = (
+      <ErrorBlock
+        title="Error Fetching Movie Details"
+        message="There was an error loading movie details."
+        onTryAgainClick={refetch}
+      />
+    );
+  }
 
   if (data) {
     const images = getGalleryImages({ images: data.images });
 
     content = (
-      <div className={classes["page-container"]}>
+      <>
         <img
           className={classes["backdrop-img"]}
           src={getBackdropImage(data.backdrop_path, "w1280")}
@@ -98,11 +110,11 @@ const MovieDetails = () => {
               )}
           </div>
         </div>
-      </div>
+      </>
     );
   }
 
-  return <>{content}</>;
+  return <div className={classes["page-container"]}>{content}</div>;
 };
 
 export default MovieDetails;

@@ -12,7 +12,7 @@ import TopTrending from "../../components/top_trending/TopTrending";
 
 export default function HomePage() {
   const discoverParams = discoverReleaseDates(true, -1, "month", 5, "days");
-  const { data, isError, error, refetch } = useQuery({
+  const { data, isError, refetch } = useQuery({
     queryKey: ["movies", discoverParams],
     queryFn: () => discover("movie", discoverParams),
     retry: 1,
@@ -30,7 +30,7 @@ export default function HomePage() {
     content = (
       <ErrorBlock
         title="Error Fetching Upcoming Movies"
-        message={error.message.status_message}
+        message="There was an error loading upcoming movies."
         onTryAgainClick={refetch}
       />
     );
