@@ -124,7 +124,7 @@ export async function fetchTrendingMovies(
 }
 
 export async function fetchTrendingTV(
-  type: string
+  type: "day" | "week"
 ): Promise<MediaListInterface[]> {
   const url = `${BASE_URL}/trending/tv/${type}?api_key=${API_KEY}`;
 
