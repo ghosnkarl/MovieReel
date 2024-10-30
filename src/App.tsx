@@ -9,7 +9,7 @@ import PeoplePage from "./pages/people/PeoplePage";
 import DiscoverPage from "./pages/discover/DiscoverPage";
 import MovieDetails from "./pages/movies/movie_details/MovieDetails";
 import MoviesRootLayout from "./pages/movies/MoviesRootLayout";
-import MoviesDetailsRootLayout from "./pages/movies/movie_details/MovieDetailsRootLayout";
+
 import ReviewsPage from "./pages/reviews/ReviewsPage";
 import ImagesPage from "./pages/images/ImagesPages";
 import PeopleRootLayout from "./pages/people/PeopleRootLayout";
@@ -17,6 +17,7 @@ import PeopleDetailsPage from "./pages/people/PeopleDetailsPage";
 import PeopleDetailsRootLayout from "./pages/people/PeopleDetailsRootLayout";
 import CreditsPage from "./pages/credits/CreditsPage";
 import ErrorPage from "./components/error_page/ErrorPage";
+import DetailsRootLayout from "./pages/details_root_layout/DetailsRootLayout";
 
 const router = createBrowserRouter([
   {
@@ -35,23 +36,29 @@ const router = createBrowserRouter([
           },
           {
             path: ":movieId",
-            element: <MoviesDetailsRootLayout />,
+            element: <MoviesRootLayout />,
             children: [
               {
                 index: true,
                 element: <MovieDetails />,
               },
               {
-                path: "cast",
-                element: <CreditsPage />,
-              },
-              {
-                path: "review",
-                element: <ReviewsPage />,
-              },
-              {
-                path: "images",
-                element: <ImagesPage />,
+                path: "",
+                element: <DetailsRootLayout />,
+                children: [
+                  {
+                    path: "cast",
+                    element: <CreditsPage />,
+                  },
+                  {
+                    path: "review",
+                    element: <ReviewsPage />,
+                  },
+                  {
+                    path: "images",
+                    element: <ImagesPage />,
+                  },
+                ],
               },
             ],
           },

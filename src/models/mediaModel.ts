@@ -65,6 +65,12 @@ export interface ImageInterface {
   file_path: string;
 }
 
+export interface MovieDetailsImagesInterface {
+  backdrops: ImageInterface[];
+  posters: ImageInterface[];
+  logos: ImageInterface[];
+}
+
 export interface MovieDetailsInterface {
   backdrop_path: string;
   belongs_to_collection: CollectionInterface | null;
@@ -86,11 +92,7 @@ export interface MovieDetailsInterface {
   production_companies: ProductionCompanyInterface[];
   credits: { cast: CastInterface[]; crew: CrewInterface[] };
   videos: { results: VideoInterface[] };
-  images: {
-    backdrops: ImageInterface[];
-    posters: ImageInterface[];
-    logos: ImageInterface[];
-  };
+  images: MovieDetailsImagesInterface;
   keywords: { keywords: { id: number; name: string }[] };
   reviews: { results: ReviewInterface[] };
   recommendations: { results: MediaListInterface[] };

@@ -25,11 +25,12 @@ const PeopleDetailsPage = () => {
   };
 
   if (!data) return;
+
   let profileList = [...data.images.profiles];
   if (profileList.length > 8) profileList = profileList.slice(0, 8);
 
   let profiles: { galleryImage: string; fullImage: string }[] = [];
-  if (data?.images && data.images.profiles && data.images.profiles.length > 0)
+  if (data.images && data.images.profiles && data.images.profiles.length > 0)
     profiles = data.images.profiles.map((profile) => {
       return {
         galleryImage: getProfileImage(profile.file_path, "w185"),

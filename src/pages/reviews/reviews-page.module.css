@@ -1,41 +1,5 @@
-.container {
-  padding: 8rem 6.4rem 6.4rem 6.4rem;
-}
-
-.header {
-  display: flex;
-  margin-bottom: 3.2rem;
-  gap: 2.4rem;
-  align-items: center;
-  cursor: pointer;
-  width: fit-content;
-
-  &:hover {
-    color: var(--color-gray-300);
-  }
-}
-
-.header img {
-  width: 10rem;
-  aspect-ratio: 0.7;
-  border-radius: 10px;
-}
-
-.movie-title {
-  font-size: 3.2rem !important;
-  margin-bottom: 2.4rem !important;
-}
-
-.header p {
-  font-size: 1.8rem;
-  font-weight: 500;
-  color: var(--color-gray-300);
-  display: flex;
-  gap: 0.6rem;
-}
-
 .reviews-list {
-  display: grid;
+  display: flex;
   flex-direction: column;
   gap: 2.4rem;
 }

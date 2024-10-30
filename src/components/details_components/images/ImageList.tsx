@@ -11,27 +11,33 @@ interface ImageListProps {
 }
 
 const ImageList = ({ backdropList, title, images, image }: ImageListProps) => {
+  if (backdropList && backdropList.length > 8)
+    backdropList = backdropList.slice(0, 8);
   return (
-    <div>
-      <NavLink
-        state={{ images, title, image }}
-        to="images"
-        className="section-link"
-      >
-        Images
-        <IoChevronForward />
-      </NavLink>
+    <>
+      {backdropList && backdropList.length > 0 && (
+        <div>
+          <NavLink
+            state={{ images, title, image }}
+            to="images"
+            className="section-link"
+          >
+            Images
+            <IoChevronForward />
+          </NavLink>
 
-      <div className={classes.images}>
-        {backdropList.map((backdrop) => (
-          <img
-            key={backdrop.file_path}
-            src={getBackdropImage(backdrop.file_path, "w780")}
-            alt={title}
-          />
-        ))}
-      </div>
-    </div>
+          <div className={classes.images}>
+            {backdropList.map((backdrop) => (
+              <img
+                key={backdrop.file_path}
+                src={getBackdropImage(backdrop.file_path, "w780")}
+                alt={title}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

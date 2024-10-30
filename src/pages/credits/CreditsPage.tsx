@@ -1,16 +1,13 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import classes from "./credits-page.module.css";
 import { useState } from "react";
-
-import { IoArrowBack } from "react-icons/io5";
 import { CastInterface, CrewInterface } from "../../models/mediaModel";
 import ListItem from "../../components/horizontal_list/ListItem";
 import { getProfileImage } from "../../helpers/imageSizes";
 
 const CreditsPage = () => {
   const location = useLocation();
-  const { title, image, credits } = location.state;
-  const navigate = useNavigate();
+  const { credits } = location.state;
   let filteredCrewList: CrewInterface[] = [];
 
   let departmentsList: string[] = [];
@@ -28,19 +25,8 @@ const CreditsPage = () => {
   };
 
   return (
-    <div className={classes.container}>
-      <div onClick={() => navigate(-1)} className={classes.header}>
-        <img src={image} alt={title} />
-        <div>
-          <h1 className={classes["movie-title"]}>{title}</h1>
-          <p>
-            <IoArrowBack />
-            Back to main
-          </p>
-        </div>
-      </div>
-
-      <h1>Cast</h1>
+    <div>
+      <h1 className="homepage-title">Cast</h1>
       <div className="flex--wrap-container">
         {credits.cast.map((cast: CastInterface) => (
           <ListItem
