@@ -1,0 +1,21 @@
+/********************** Typography **********************/
+.section__title {
+  font-size: var(--section--title-size);
+  font-weight: 500;
+}
+
+.section__link:link,
+.section__link:visited {
+  font-size: var(--section--title-size);
+  font-weight: 500;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.section__link:hover,
+.section__link:active {
+  opacity: 0.7;
+}

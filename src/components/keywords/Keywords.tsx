@@ -9,7 +9,7 @@ const Keywords = ({
     <>
       {keywords && keywords.length > 0 && (
         <Section border='top'>
-          <h1 className='homepage-title'>Keywords</h1>
+          <h1 className='section__title'>Keywords</h1>
           <div className={classes['keywords']}>
             {keywords.map((keyword) => (
               <span key={keyword.id}>{keyword.name}</span>

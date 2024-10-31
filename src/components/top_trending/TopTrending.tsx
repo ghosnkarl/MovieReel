@@ -66,7 +66,7 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
 
   return (
     <div>
-      <h1 className='homepage-title'>
+      <h1 className='section__title'>
         Top 5 {type === 'movie' ? 'Movies' : 'TV Shows'} of the Week
       </h1>
       <>{content}</>

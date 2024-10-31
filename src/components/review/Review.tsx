@@ -9,9 +9,8 @@ interface ReviewProps {
 }
 
 const Review = ({ review, viewFull }: ReviewProps) => {
-  const rating = !review.author_details.rating
-    ? 'NR'
-    : (review.author_details.rating * 10).toFixed(0);
+  const { rating } = review.author_details;
+
   return (
     <div>
       <div className={classes.container}>
@@ -20,12 +19,16 @@ const Review = ({ review, viewFull }: ReviewProps) => {
             !viewFull ? classes['header--details'] : ''
           }`}
         >
-          {viewFull && <Rating value={rating} size='small' />}
+          {rating && viewFull && (
+            <Rating value={(rating * 10).toFixed(0)} size='small' />
+          )}
           <div>
             <h2>{review.author}</h2>
             <span>{moment(review.updated_at).format('MMM DD, YYYY')}</span>
           </div>
-          {!viewFull && <Rating value={rating} size='small' />}
+          {rating && !viewFull && (
+            <Rating value={(rating * 10).toFixed(0)} size='small' />
+          )}
         </div>
         {viewFull && <p>{review.content}</p>}
       </div>

@@ -35,7 +35,7 @@ const MediaDetails = ({
 
   return (
     <Section border='top'>
-      <h1 className='homepage-title'>Details</h1>
+      <h1 className='section__title'>Details</h1>
       <div className={classes.details}>
         <MediaDetailsItem title='Status' text={status} />
         <MediaDetailsItem title='Tagline' text={tagline} />

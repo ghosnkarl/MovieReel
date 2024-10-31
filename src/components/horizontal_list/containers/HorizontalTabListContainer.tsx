@@ -70,7 +70,7 @@ export default function HorizontalTabListContainer({
     <Section border='left'>
       <div className={classes['list-header']}>
         <div className={classes['list-header--left']}>
-          <h1 className='homepage-title'>{title}</h1>
+          <h1 className='section__title'>{title}</h1>
           {data && tabs && tabs.length > 1 && (
             <ListTabs
               onSelectType={handleSelectTab}

@@ -18,7 +18,7 @@ const DetailsReviews = ({
   if (reviews && reviews.results && reviews.results.length > 3) {
     reviewContent = (
       <Section border='top'>
-        <h1 className='homepage-title'>Reviews</h1>
+        <h1 className='section__title'>Reviews</h1>
         <ul className={classes['reviews-list']}>
           {reviews.results.slice(0, 3).map((review) => (
             <Review key={review.id} review={review} viewFull={false} />

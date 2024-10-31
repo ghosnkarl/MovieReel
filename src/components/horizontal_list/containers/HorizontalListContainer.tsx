@@ -30,12 +30,12 @@ const HorizontalListContainer = ({
     <Section border='left'>
       <div className='list-header'>
         {link && (
-          <NavLink to={link} state={linkState} className='section-link'>
+          <NavLink to={link} state={linkState} className='section__link'>
             {title}
             <IoArrowForwardCircle className='list__header--icon' />
           </NavLink>
         )}
-        {!link && <h1 className='homepage-title'>{title}</h1>}
+        {!link && <h1 className='section__title'>{title}</h1>}
         <ListArrows listRef={ref} />
       </div>
 

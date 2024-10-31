@@ -21,7 +21,7 @@ const ImageList = ({ backdropList, title, images, image }: ImageListProps) => {
           <NavLink
             state={{ images, title, image }}
             to='images'
-            className='section-link'
+            className='section__link'
           >
             Images
             <IoChevronForward />

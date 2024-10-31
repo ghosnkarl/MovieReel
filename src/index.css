@@ -29,6 +29,8 @@
   --color-rating-amber--alpha: rgba(251, 190, 36, 0.3);
   --color-rating-green: #4ade80;
   --color-rating-green--alpha: rgba(74, 222, 128, 0.3);
+
+  --section--title-size: 2.4rem;
 }
 
 * {
@@ -219,28 +221,6 @@ body {
     rgba(0, 0, 0, 0.8),
     black
   );
-}
-
-.homepage-title {
-  font-size: 2.4rem;
-  font-weight: 500;
-}
-
-.section-link:link,
-.section-link:visited {
-  font-size: 2.4rem;
-  font-weight: 500;
-  text-decoration: none;
-  color: white;
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.section-link:hover,
-.section-link:active {
-  /* color: #f97316; */
-  opacity: 0.7;
 }
 
 .list__header--icon {

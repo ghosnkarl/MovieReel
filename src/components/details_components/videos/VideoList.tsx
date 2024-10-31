@@ -57,7 +57,7 @@ const VideoList = ({ videos }: { videos: VideoInterface[] }) => {
 
   return (
     <Section border='left'>
-      <h1 className='homepage-title'>Videos</h1>
+      <h1 className='section__title'>Videos</h1>
       <div>
         <div className={classes.player}>
           <ReactPlayer
