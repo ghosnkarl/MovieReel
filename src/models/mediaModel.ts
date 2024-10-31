@@ -1,10 +1,11 @@
-import { GenreInterface } from "./genreModel";
+import { GenreInterface } from './genreModel';
 
 export interface MediaListInterface {
   id: number;
   poster_path: string;
   title?: string;
   name?: string;
+  overview: string;
   vote_average: number;
   backdrop_path: string;
   release_date: string;

@@ -86,10 +86,10 @@
   border-radius: 1;
   color: white;
   text-decoration: none;
-  background-color: #f97316;
+  background-color: var(--color-primary-900);
 }
 
 .btn--more:hover,
 .btn--more:active {
-  background-color: #e06814;
+  background-color: var(--color-primary-900);
 }

@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
-import { fetchMovieDetails } from '../../../services/http';
+import { fetchGenres, fetchMovieDetails } from '../../../services/http';
 import { getBackdropImage, getPosterImage } from '../../../helpers/imageSizes';
 import classes from './movie-details.module.css';
 import CastList from '../../../components/details_components/cast/CastList';
@@ -16,6 +16,7 @@ import ErrorBlock from '../../../components/ui/ErrorBlock';
 import HorizontalListContainer from '../../../components/horizontal_list/containers/HorizontalListContainer';
 import Keywords from '../../../components/keywords/Keywords';
 import ScrollToTop from '../../../components/ui/ScrollToTop';
+import RecommendedList from '../../../components/details_components/recommended_list/RecommendedList';
 
 const MovieDetails = () => {
   const params = useParams();
@@ -25,6 +26,12 @@ const MovieDetails = () => {
     queryKey: ['movies', movieId],
     queryFn: () => fetchMovieDetails(movieId),
     retry: 0,
+  });
+
+  const genresResult = useQuery({
+    queryKey: ['genres', 'movie'],
+    queryFn: () => fetchGenres('movie'),
+    retry: 1,
   });
 
   let content = <LoadingIndicator title='Fetching Movie Details' />;
@@ -78,7 +85,7 @@ const MovieDetails = () => {
               image={getPosterImage(data.poster_path, 'w342')}
             />
 
-            {data.recommendations &&
+            {/* {data.recommendations &&
               data.recommendations.results &&
               data.recommendations.results.length > 0 && (
                 <HorizontalListContainer
@@ -91,7 +98,12 @@ const MovieDetails = () => {
                     type='movies'
                   />
                 </HorizontalListContainer>
-              )}
+              )} */}
+            <RecommendedList
+              title={data.title}
+              items={data.recommendations.results}
+              genreList={genresResult.data}
+            />
           </div>
           <div className={classes['side__container']}>
             <MediaDetails

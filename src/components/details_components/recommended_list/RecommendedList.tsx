@@ -1,0 +1,81 @@
+import { NavLink } from 'react-router-dom';
+import { getBackdropImage } from '../../../helpers/imageSizes';
+import { GenreInterface } from '../../../models/genreModel';
+import { MediaListInterface } from '../../../models/mediaModel';
+import Section from '../../section/Section';
+import classes from './recommended-list.module.css';
+
+interface RecommendedListItemProps {
+  backdrop: string;
+  title: string | undefined;
+  overview: string;
+  genres: string;
+  id: number;
+}
+
+const RecommendedListItem = ({
+  backdrop,
+  title,
+  overview,
+  genres,
+  id,
+}: RecommendedListItemProps) => {
+  return (
+    <NavLink to={`/movies/${id}`} className={classes['item__container']}>
+      <img
+        className={classes['item__backdrop']}
+        src={getBackdropImage(backdrop, 'w300')}
+        alt={title}
+      />
+      <div className={classes['item__container--text']}>
+        <h1 className={classes['item__title']}>{title}</h1>
+        <p className={classes['item__overview']}>{overview}</p>
+        <p className={classes['item__genres']}>{genres}</p>
+      </div>
+    </NavLink>
+  );
+};
+
+const RecommendedList = ({
+  items,
+  title,
+  genreList,
+}: {
+  items: MediaListInterface[];
+  title: string;
+  genreList: GenreInterface[] | undefined;
+}) => {
+  return (
+    <>
+      {items && items.length > 0 && (
+        <Section border='left'>
+          <h1 className='section__title'>If you like {title}, check out</h1>
+          <ul className={classes.container}>
+            {items.map((item) => {
+              let genres = '';
+              if (genreList)
+                genres = item.genre_ids
+                  .map(
+                    (genreID) =>
+                      genreList?.find((genre) => genre.id === genreID)?.name
+                  )
+                  .join(' • ');
+              return (
+                <RecommendedListItem
+                  backdrop={item.backdrop_path}
+                  title={item.title || item.name}
+                  overview={item.overview}
+                  genres={genres}
+                  key={item.id}
+                  id={item.id}
+                />
+              );
+            })}
+          </ul>
+        </Section>
+      )}
+    </>
+  );
+};
+
+export default RecommendedList;

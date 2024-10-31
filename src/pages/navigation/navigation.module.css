@@ -24,28 +24,29 @@
 
 .search-btn:link,
 .search-btn:visited {
-  background-image: linear-gradient(to right, #ea580c, #f59e0b);
+  background-color: var(--color-primary-900);
   transition: all 0.3s ease-in-out;
   align-items: center;
   gap: 1rem;
   color: white;
-  border-radius: 15px;
-  font-size: 1.8rem;
-  font-weight: 600;
+  border-radius: 7px;
+  font-size: 1.7rem;
+  font-weight: 500;
   text-decoration: none;
-  padding: 0.7rem 2.8rem 0.7rem 1.6rem;
+  padding: 0.8rem 2.6rem 0.8rem 1.6rem;
   display: flex;
 }
 
 .search-btn:hover,
 .search-btn:active {
-  box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 20px 0px;
+  /* box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 20px 0px; */
+  background-color: var(--color-primary-800);
 }
 
 .icon {
   color: white;
-  height: 2.8rem;
-  width: 2.8rem;
+  height: 2.2rem;
+  width: 2.2rem;
 }
 
 .nav-list {
@@ -65,5 +66,5 @@
 .nav-list a:hover,
 .nav-list a:active,
 .active {
-  color: #f97316 !important;
+  color: var(--color-primary-900) !important;
 }

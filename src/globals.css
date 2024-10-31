@@ -36,12 +36,12 @@
   font-size: 1.6rem;
   border-radius: 7px;
   background-color: transparent;
-  border: 1px solid #f97316;
+  border: 1px solid var(--color-primary-900);
 }
 
 .btn-department:hover,
 .selected {
-  background-color: #f97316;
+  background-color: var(--color-primary-900);
 }
 
 /********************** Tabs **********************/
@@ -59,12 +59,12 @@
 
 .tab-active,
 .tabs--btn:hover {
-  color: #f97316 !important;
+  color: var(--color-primary-900) !important;
 }
 
 .tab-selector {
   height: 1.5px;
-  background-color: #f97316;
+  background-color: var(--color-primary-900);
   border-radius: 8px;
 }
 

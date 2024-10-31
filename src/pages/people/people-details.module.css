@@ -70,7 +70,7 @@
   align-self: flex-end;
   background: none;
   border: none;
-  color: #f97316;
+  color: var(--color-primary-900);
   font-size: 1.6rem;
   cursor: pointer;
   margin-bottom: 6.4rem;

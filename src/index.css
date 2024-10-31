@@ -108,7 +108,7 @@ body {
 
 .list__header--icon {
   font-size: 3.5rem;
-  color: #f97316;
+  color: var(--color-primary-900);
 }
 
 .horizontal-list__container {
@@ -127,13 +127,13 @@ body {
   height: fit-content;
   padding: 0.1rem;
   display: flex;
-  border: 1px solid #f97316;
-  color: #f97316;
+  border: 1px solid var(--color-primary-900);
+  color: var(--color-primary-900);
   cursor: pointer;
   border-radius: 1000px;
 }
 
 .btn-arrow:hover {
-  background-color: #f97316;
+  background-color: var(--color-primary-900);
   color: white;
 }
