@@ -17,26 +17,25 @@ const DetailsReviews = ({
   let reviewContent = <></>;
   if (reviews && reviews.results && reviews.results.length > 3) {
     reviewContent = (
-      <Section>
-        <div className='list-header'>
-          <h1>Reviews</h1>
-          <NavLink
-            state={{
-              reviews: reviews,
-              title: title,
-              image: getPosterImage(poster_path, 'w342'),
-            }}
-            className='btn-view'
-            to='review'
-          >
-            View All
-          </NavLink>
-        </div>
+      <Section border='top'>
+        <h1 className='homepage-title'>Reviews</h1>
         <ul className={classes['reviews-list']}>
           {reviews.results.slice(0, 3).map((review) => (
-            <Review key={review.id} review={review} shortenText={true} />
+            <Review key={review.id} review={review} viewFull={false} />
           ))}
         </ul>
+
+        <NavLink
+          state={{
+            reviews: reviews,
+            title: title,
+            image: getPosterImage(poster_path, 'w342'),
+          }}
+          className={classes['btn--more']}
+          to='review'
+        >
+          More Reviews
+        </NavLink>
       </Section>
     );
   }

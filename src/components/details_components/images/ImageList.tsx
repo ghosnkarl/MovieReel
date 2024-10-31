@@ -17,7 +17,7 @@ const ImageList = ({ backdropList, title, images, image }: ImageListProps) => {
   return (
     <>
       {backdropList && backdropList.length > 0 && (
-        <Section>
+        <Section border='left'>
           <NavLink
             state={{ images, title, image }}
             to='images'

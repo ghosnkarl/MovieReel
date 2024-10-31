@@ -1,0 +1,18 @@
+.keywords {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin-top: 1.6rem;
+}
+
+.keywords span {
+  font-size: 1.4rem;
+  border: 1px solid #f97316;
+  padding: 1rem 1.4rem;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.keywords span:hover {
+  background-color: #f97316;
+}

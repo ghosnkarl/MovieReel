@@ -67,7 +67,7 @@ export default function HorizontalTabListContainer({
   }
 
   return (
-    <Section>
+    <Section border='left'>
       <div className={classes['list-header']}>
         <div className={classes['list-header--left']}>
           <h1 className='homepage-title'>{title}</h1>

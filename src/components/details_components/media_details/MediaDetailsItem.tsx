@@ -1,4 +1,4 @@
-import classes from "./media-details.module.css";
+import classes from './media-details.module.css';
 
 interface MediaDetailsItem {
   title: string;
@@ -7,7 +7,7 @@ interface MediaDetailsItem {
 
 const MediaDetailsItem = ({ title, text }: MediaDetailsItem) => {
   return (
-    <div className={classes["details__left--item"]}>
+    <div className={classes['details__left--item']}>
       <h2>{title}</h2>
       <p>{text}</p>
     </div>

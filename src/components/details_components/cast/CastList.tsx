@@ -2,11 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { CastInterface, CrewInterface } from '../../../models/mediaModel';
 import classes from './cast.module.css';
 import { getProfileImage } from '../../../helpers/imageSizes';
-import { useEffect, useRef, useState } from 'react';
-import ListArrows from '../../horizontal_list/arrows/ListArrows';
-
-import { IoArrowForwardCircle } from 'react-icons/io5';
-import Section from '../../section/Section';
+import HorizontalListContainer from '../../horizontal_list/containers/HorizontalListContainer';
 
 interface CastItemProps {
   link: string;
@@ -36,39 +32,24 @@ interface CastListProps {
 const CastList = ({ title, image, credits }: CastListProps) => {
   let castList = [...credits.cast];
   if (castList.length > 20) castList = castList.slice(0, 20);
-  const listRef = useRef<HTMLUListElement>(null);
-  const [ref, setRef] = useState<HTMLUListElement | null>(null);
-
-  useEffect(() => {
-    setRef(listRef.current);
-  }, [listRef]);
 
   return (
-    <Section>
-      <div className='list-header'>
-        <NavLink
-          to='cast'
-          state={{ title, image, credits }}
-          className='section-link'
-        >
-          Actors
-          <IoArrowForwardCircle className='list__header--icon' />
-        </NavLink>
-        <ListArrows listRef={ref} />
-      </div>
-      <ul ref={listRef} className={classes.cast}>
-        {castList.map((cast) => (
-          <li key={cast.credit_id}>
-            <CastItem
-              link={`/people/${cast.id}`}
-              image={getProfileImage(cast.profile_path, 'w185')}
-              title={cast.name}
-              text={cast.character}
-            />
-          </li>
-        ))}
-      </ul>
-    </Section>
+    <HorizontalListContainer
+      link='cast'
+      linkState={{ title, image, credits }}
+      title='Actors'
+    >
+      {castList.map((cast) => (
+        <li key={cast.credit_id}>
+          <CastItem
+            link={`/people/${cast.id}`}
+            image={getProfileImage(cast.profile_path, 'w185')}
+            title={cast.name}
+            text={cast.character}
+          />
+        </li>
+      ))}
+    </HorizontalListContainer>
   );
 };
 

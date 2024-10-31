@@ -1,7 +1,16 @@
 import classes from './section.module.css';
 
-const Section = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
-  return <div className={classes.container}>{children}</div>;
+interface SectionProps {
+  children: JSX.Element | JSX.Element[];
+  border: 'left' | 'top';
+}
+
+const Section = ({ children, border }: SectionProps) => {
+  return (
+    <div className={`${classes.container} ${classes[`border--${border}`]}`}>
+      {children}
+    </div>
+  );
 };
 
 export default Section;

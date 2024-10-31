@@ -12,10 +12,10 @@ const ListArrows = ({ listRef }: { listRef: HTMLUListElement | null }) => {
 
   return (
     <div className={classes.container}>
-      <button className={classes['btn-arrow']} onClick={handleLeft}>
+      <button className='btn-arrow' onClick={handleLeft}>
         <MdNavigateBefore />
       </button>
-      <button className={classes['btn-arrow']} onClick={handleNext}>
+      <button className='btn-arrow' onClick={handleNext}>
         <MdNavigateNext />
       </button>
     </div>

@@ -3,11 +3,12 @@
   aspect-ratio: 1;
   border-radius: 50%;
   display: grid;
+
   place-content: center;
   background: conic-gradient(
-    var(--color-gray-600),
+    var(--color-gray-500),
     var(--progress, 0),
-    var(--color-gray-600) 0
+    var(--color-gray-500) 0
   );
   stroke-linecap: round;
 }
@@ -16,7 +17,7 @@
   width: calc(var(--size) * var(--after-width));
   aspect-ratio: 1;
   content: attr(data-value);
-  background-color: var(--color-backroung--border);
+  background-color: var(--color-gray-600);
   border-radius: 50%;
   display: grid;
   font-size: calc(var(--size) * 0.35);

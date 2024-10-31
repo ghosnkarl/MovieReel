@@ -2,5 +2,14 @@
   background-color: var(--color-backroung--card);
   padding: 2.4rem;
   border-radius: 7px;
-  border-left: 1rem solid #f97316;
+  position: relative;
+  overflow: hidden;
+}
+
+.border--left {
+  border-left: 0.9rem solid #f97316;
+}
+
+.border--top {
+  border-top: 0.9rem solid #f97316;
 }

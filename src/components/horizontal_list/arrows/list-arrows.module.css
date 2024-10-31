@@ -3,21 +3,3 @@
   align-items: center;
   gap: 1.6rem;
 }
-
-.btn-arrow {
-  background: none;
-  border: none;
-  font-size: 3rem;
-  padding: 0.1rem;
-  display: flex;
-
-  border: 1px solid #f97316;
-  color: #f97316;
-  cursor: pointer;
-  border-radius: 1000px;
-}
-
-.btn-arrow:hover {
-  background-color: #f97316;
-  color: white;
-}

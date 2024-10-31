@@ -9,8 +9,9 @@
 
 .cast__item {
   display: flex;
+  flex-direction: column;
   color: white;
-  gap: 1.4rem;
+  gap: 2rem;
   width: max-content;
   align-items: center;
   transition: all 0.1s ease-in-out;
