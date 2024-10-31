@@ -1,11 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
-import classes from "./movies-page.module.css";
-import MediaList from "../../components/horizontal_list/MediaList";
-import { MediaListInterface } from "../../models/mediaModel";
-import { useState } from "react";
-import { MOVIE_TABS } from "../../helpers/data";
-import ListTabs, { TabOjectProps } from "../../components/tabs/ListTabs";
-import LoadingIndicator from "../../components/ui/LoadingIndicator";
+import { useQuery } from '@tanstack/react-query';
+import classes from './movies-page.module.css';
+import MediaList from '../../components/horizontal_list/MediaList';
+import { MediaListInterface } from '../../models/mediaModel';
+import { useState } from 'react';
+import { MOVIE_TABS } from '../../helpers/data';
+import ListTabs, { TabOjectProps } from '../../components/tabs/ListTabs';
+import LoadingIndicator from '../../components/ui/LoadingIndicator';
 
 export default function MoviesPage() {
   const tabs: TabOjectProps[] = MOVIE_TABS;
@@ -16,7 +16,7 @@ export default function MoviesPage() {
   };
 
   const { data, isError, error, refetch } = useQuery({
-    queryKey: ["movies", selectedTab.value],
+    queryKey: ['movies', selectedTab.value],
     queryFn: () => selectedTab.query,
     retry: 1,
   });
@@ -24,18 +24,18 @@ export default function MoviesPage() {
   let content = <LoadingIndicator title={`Fetching ${selectedTab.title}...`} />;
 
   if (data) {
-    content = <MediaList type="movies" data={data as MediaListInterface[]} />;
+    content = <MediaList type='movies' data={data as MediaListInterface[]} />;
   }
 
   return (
-    <div className="page-container">
+    <div className='page-container'>
       <ListTabs
         onSelectType={handleSelectTab}
         selectedType={selectedTab}
         tabs={tabs}
-        layoutId="movies_page"
+        layoutId='movies_page'
       />
-      <div className={classes["main-container"]}>{content}</div>
+      <div className={classes['main-container']}>{content}</div>
     </div>
   );
 }

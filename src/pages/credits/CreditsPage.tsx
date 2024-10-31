@@ -46,7 +46,7 @@ const CreditsPage = () => {
             <button
               onClick={() => handleSelectDepartment(department)}
               key={department}
-              className={`btn-department ${
+              className={`btn btn-department ${
                 selectedDepartment === department ? 'selected' : ''
               }`}
             >

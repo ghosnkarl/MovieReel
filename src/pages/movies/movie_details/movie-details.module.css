@@ -78,9 +78,10 @@
   position: absolute;
   text-align: center;
   font-size: 1.4rem;
+  font-weight: 600;
   left: 0;
   bottom: 0;
-  padding: 1.4rem 0;
+  padding: 1.8rem 0;
   width: 100%;
   border-radius: 1;
   color: white;

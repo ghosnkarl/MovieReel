@@ -1,7 +1,7 @@
-import { MouseEventHandler } from "react";
-import { MediaListInterface } from "../../models/mediaModel";
-import { PeopleListInterface } from "../../models/peopleModel";
-import { motion } from "framer-motion";
+import { MouseEventHandler } from 'react';
+import { MediaListInterface } from '../../models/mediaModel';
+import { PeopleListInterface } from '../../models/peopleModel';
+import { motion } from 'framer-motion';
 
 interface ListTabsProps {
   selectedType: TabOjectProps | null;
@@ -26,11 +26,14 @@ interface TabProps {
 function Tab({ isSelected, onSelect, children, layoutId }: TabProps) {
   return (
     <li>
-      <button className={isSelected ? "tab-active" : ""} onClick={onSelect}>
+      <button
+        className={`btn tabs--btn ${isSelected ? 'tab-active' : ''}`}
+        onClick={onSelect}
+      >
         {children}
       </button>
       {isSelected && (
-        <motion.div layoutId={layoutId} className="tab-selector" />
+        <motion.div layoutId={layoutId} className='tab-selector' />
       )}
     </li>
   );
@@ -43,7 +46,7 @@ export default function ListTabs({
   layoutId,
 }: ListTabsProps) {
   return (
-    <menu className="tabs">
+    <menu className='btn tabs'>
       {tabs.map((tab) => (
         <Tab
           key={tab.value}

@@ -1,21 +1,22 @@
-import classes from "./carousel.module.css";
-import { useState } from "react";
-import { MediaListInterface } from "../../models/mediaModel";
-import CarouselItem, { CarouselItemInterface } from "./CarouselItem";
-import { GenreInterface } from "../../models/genreModel";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import classes from './carousel.module.css';
+import { useState } from 'react';
+import { MediaListInterface } from '../../models/mediaModel';
+import CarouselItem, { CarouselItemInterface } from './CarouselItem';
+import { GenreInterface } from '../../models/genreModel';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 
 interface CarouselArrowProps {
-  direction: "left" | "right";
+  direction: 'left' | 'right';
   handleClick: () => void;
 }
 
 const CarouselArrow = ({ direction, handleClick }: CarouselArrowProps) => {
-  const isRight = direction === "right";
-  const rightArrowStyle = isRight ? classes["carousel__arrow--right"] : "";
+  const isRight = direction === 'right';
   return (
     <div
-      className={`${classes["carousel__arrow"]} ${rightArrowStyle}`}
+      className={`${classes['carousel__arrow']} ${
+        classes[`carousel__arrow--${direction}`]
+      }`}
       onClick={handleClick}
     >
       {isRight && <IoIosArrowForward className={classes.arrow} />}
@@ -51,10 +52,10 @@ const Carousel = ({ content, genres }: CarouselProps) => {
   };
 
   return (
-    <div className={classes.carousel}>
+    <div className={classes.container}>
       <CarouselItem genres={genres} current={current} content={content} />
-      <CarouselArrow direction="right" handleClick={nextSlide} />
-      <CarouselArrow direction="left" handleClick={prevSlide} />
+      <CarouselArrow direction='right' handleClick={nextSlide} />
+      <CarouselArrow direction='left' handleClick={prevSlide} />
     </div>
   );
 };
