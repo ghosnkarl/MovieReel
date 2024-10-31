@@ -2,11 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3.2rem;
-  margin-top: 2.4rem;
-  border-radius: 10px;
-  border: 2px solid var(--color-backroung--border);
-  padding: 2.4rem;
-  background-color: var(--color-backroung--card);
+  margin-top: 3.2rem;
 }
 
 .details h2 {

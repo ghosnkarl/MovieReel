@@ -1,11 +1,12 @@
-import { NavLink } from "react-router-dom";
-import { CastInterface, CrewInterface } from "../../../models/mediaModel";
-import classes from "./cast.module.css";
-import { getProfileImage } from "../../../helpers/imageSizes";
-import { useEffect, useRef, useState } from "react";
-import ListArrows from "../../horizontal_list/arrows/ListArrows";
+import { NavLink } from 'react-router-dom';
+import { CastInterface, CrewInterface } from '../../../models/mediaModel';
+import classes from './cast.module.css';
+import { getProfileImage } from '../../../helpers/imageSizes';
+import { useEffect, useRef, useState } from 'react';
+import ListArrows from '../../horizontal_list/arrows/ListArrows';
 
-import { IoChevronForward } from "react-icons/io5";
+import { IoArrowForwardCircle } from 'react-icons/io5';
+import Section from '../../section/Section';
 
 interface CastItemProps {
   link: string;
@@ -16,11 +17,11 @@ interface CastItemProps {
 
 const CastItem = ({ link, image, title, text }: CastItemProps) => {
   return (
-    <NavLink to={link} className={classes["cast__item"]}>
-      <img className={classes["cast__item--profile"]} alt={title} src={image} />
+    <NavLink to={link} className={classes['cast__item']}>
+      <img className={classes['cast__item--profile']} alt={title} src={image} />
       <div>
-        <h2 className={classes["cast__item--name"]}>{title}</h2>
-        <p className={classes["cast__item--character"]}>{text}</p>
+        <h2 className={classes['cast__item--name']}>{title}</h2>
+        <p className={classes['cast__item--character']}>{text}</p>
       </div>
     </NavLink>
   );
@@ -43,15 +44,15 @@ const CastList = ({ title, image, credits }: CastListProps) => {
   }, [listRef]);
 
   return (
-    <div>
-      <div className="list-header">
+    <Section>
+      <div className='list-header'>
         <NavLink
-          to="cast"
+          to='cast'
           state={{ title, image, credits }}
-          className="section-link"
+          className='section-link'
         >
           Actors
-          <IoChevronForward />
+          <IoArrowForwardCircle className='list__header--icon' />
         </NavLink>
         <ListArrows listRef={ref} />
       </div>
@@ -60,14 +61,14 @@ const CastList = ({ title, image, credits }: CastListProps) => {
           <li key={cast.credit_id}>
             <CastItem
               link={`/people/${cast.id}`}
-              image={getProfileImage(cast.profile_path, "w185")}
+              image={getProfileImage(cast.profile_path, 'w185')}
               title={cast.name}
               text={cast.character}
             />
           </li>
         ))}
       </ul>
-    </div>
+    </Section>
   );
 };
 

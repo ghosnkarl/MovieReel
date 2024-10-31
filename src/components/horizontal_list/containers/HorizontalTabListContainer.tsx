@@ -1,20 +1,21 @@
-import { useQuery } from "@tanstack/react-query";
-import MediaList from "../MediaList";
-import { useEffect, useRef, useState } from "react";
-import LoadingIndicator from "../../ui/LoadingIndicator";
-import ErrorBlock from "../../ui/ErrorBlock";
-import ListTabs, { TabOjectProps } from "../../tabs/ListTabs";
-import classes from "./horizontal-tab-list.module.css";
-import PeopleList from "../PeopleList";
-import { MediaListInterface } from "../../../models/mediaModel";
-import { PeopleListInterface } from "../../../models/peopleModel";
-import ListArrows from "../arrows/ListArrows";
+import { useQuery } from '@tanstack/react-query';
+import MediaList from '../MediaList';
+import { useEffect, useRef, useState } from 'react';
+import LoadingIndicator from '../../ui/LoadingIndicator';
+import ErrorBlock from '../../ui/ErrorBlock';
+import ListTabs, { TabOjectProps } from '../../tabs/ListTabs';
+import classes from './horizontal-tab-list.module.css';
+import PeopleList from '../PeopleList';
+import { MediaListInterface } from '../../../models/mediaModel';
+import { PeopleListInterface } from '../../../models/peopleModel';
+import ListArrows from '../arrows/ListArrows';
+import Section from '../../section/Section';
 
 export interface HorizontalContainerProps {
   queryStr: string;
   tabs: TabOjectProps[];
   title: string;
-  type: "movies" | "tv" | "people";
+  type: 'movies' | 'tv' | 'people';
 }
 
 export default function HorizontalTabListContainer({
@@ -43,18 +44,18 @@ export default function HorizontalTabListContainer({
 
   let content = <LoadingIndicator title={`Fetching ${title}...`} />;
 
-  if (data && type !== "people") {
+  if (data && type !== 'people') {
     content = <MediaList type={type} data={data as MediaListInterface[]} />;
   }
 
-  if (data && type === "people") {
+  if (data && type === 'people') {
     content = <PeopleList data={data as PeopleListInterface[]} />;
   }
 
   if (isError) {
     const tabsText = tabs
       .map((tab) => tab.title)
-      .join(" and ")
+      .join(' and ')
       .toLocaleLowerCase();
     content = (
       <ErrorBlock
@@ -66,10 +67,10 @@ export default function HorizontalTabListContainer({
   }
 
   return (
-    <div>
-      <div className={classes["list-header"]}>
-        <div className={classes["list-header--left"]}>
-          <h1 className="homepage-title">{title}</h1>
+    <Section>
+      <div className={classes['list-header']}>
+        <div className={classes['list-header--left']}>
+          <h1 className='homepage-title'>{title}</h1>
           {data && tabs && tabs.length > 1 && (
             <ListTabs
               onSelectType={handleSelectTab}
@@ -84,6 +85,6 @@ export default function HorizontalTabListContainer({
       <ul ref={listRef} className={classes.list}>
         {content}
       </ul>
-    </div>
+    </Section>
   );
 }

@@ -18,7 +18,7 @@ const MovieDetails = () => {
   const params = useParams();
   const movieId = params.movieId;
 
-  const { data, isError, refetch } = useQuery({
+  const { data, isError, error, refetch } = useQuery({
     queryKey: ["movies", movieId],
     queryFn: () => fetchMovieDetails(movieId),
     retry: 0,
@@ -30,7 +30,7 @@ const MovieDetails = () => {
     content = (
       <ErrorBlock
         title="Error Fetching Movie Details"
-        message="There was an error loading movie details."
+        message={error.message.status_message}
         onTryAgainClick={refetch}
       />
     );

@@ -1,5 +1,5 @@
-import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
-import classes from "./list-arrows.module.css";
+import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
+import classes from './list-arrows.module.css';
 
 const ListArrows = ({ listRef }: { listRef: HTMLUListElement | null }) => {
   const handleNext = () => {
@@ -12,10 +12,10 @@ const ListArrows = ({ listRef }: { listRef: HTMLUListElement | null }) => {
 
   return (
     <div className={classes.container}>
-      <button className={classes["btn-arrow"]} onClick={handleLeft}>
+      <button className={classes['btn-arrow']} onClick={handleLeft}>
         <MdNavigateBefore />
       </button>
-      <button className={classes["btn-arrow"]} onClick={handleNext}>
+      <button className={classes['btn-arrow']} onClick={handleNext}>
         <MdNavigateNext />
       </button>
     </div>

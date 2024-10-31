@@ -1,11 +1,15 @@
 .container {
-  max-width: 45rem;
-  height: fit-content;
-  background-color: rgb(226, 84, 66);
-  border-radius: 7px;
+  display: flex;
+  width: 100%;
   justify-content: center;
-  align-self: center;
   justify-self: center;
+}
+
+.error__container {
+  max-width: 50rem;
+  background-color: var(--color-backroung--card);
+  border: 1px solid var(--color-error--border);
+  border-radius: 7px;
 }
 
 .error__block {
@@ -16,7 +20,8 @@
 }
 
 .error__block--icon {
-  font-size: 2.8rem;
+  font-size: 3.5rem;
+  fill: rgb(226, 84, 66);
 }
 
 .error__block--title {
@@ -39,9 +44,9 @@
   width: 100%;
   font-size: 1.6rem;
   cursor: pointer;
-  border-top: 1.5px solid rgba(0, 0, 0, 0.08);
+  border-top: 1px solid var(--color-error--border);
 }
 
 .error__btn:hover {
-  opacity: 0.8;
+  background-color: var(--color-backroung--border);
 }

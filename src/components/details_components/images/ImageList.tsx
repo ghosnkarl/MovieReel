@@ -1,7 +1,8 @@
-import { NavLink } from "react-router-dom";
-import { getBackdropImage } from "../../../helpers/imageSizes";
-import classes from "./image-list.module.css";
-import { IoChevronForward } from "react-icons/io5";
+import { NavLink } from 'react-router-dom';
+import { getBackdropImage } from '../../../helpers/imageSizes';
+import classes from './image-list.module.css';
+import { IoChevronForward } from 'react-icons/io5';
+import Section from '../../section/Section';
 
 interface ImageListProps {
   backdropList: { file_path: string }[];
@@ -16,11 +17,11 @@ const ImageList = ({ backdropList, title, images, image }: ImageListProps) => {
   return (
     <>
       {backdropList && backdropList.length > 0 && (
-        <div>
+        <Section>
           <NavLink
             state={{ images, title, image }}
-            to="images"
-            className="section-link"
+            to='images'
+            className='section-link'
           >
             Images
             <IoChevronForward />
@@ -30,12 +31,12 @@ const ImageList = ({ backdropList, title, images, image }: ImageListProps) => {
             {backdropList.map((backdrop) => (
               <img
                 key={backdrop.file_path}
-                src={getBackdropImage(backdrop.file_path, "w780")}
+                src={getBackdropImage(backdrop.file_path, 'w780')}
                 alt={title}
               />
             ))}
           </div>
-        </div>
+        </Section>
       )}
     </>
   );

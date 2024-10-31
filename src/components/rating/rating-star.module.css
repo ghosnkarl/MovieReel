@@ -1,17 +1,18 @@
 .container {
   display: flex;
-  gap: 0.4rem;
+  gap: 0.4rem !important;
   font-weight: 500;
+  color: white !important;
 }
 
 .container--small {
-  font-size: 1.4rem;
-  align-items: center;
+  font-size: 1.4rem !important;
+  align-items: center !important;
 }
 
 .container--medium {
-  font-size: 2rem;
-  align-items: flex-start;
+  font-size: 2rem !important;
+  align-items: flex-start !important;
 }
 
 .container span {

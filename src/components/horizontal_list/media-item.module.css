@@ -3,7 +3,7 @@
   flex-direction: column;
   text-decoration: none;
   color: white;
-  background-color: var(--color-backroung--card);
+  background-color: var(--color-backroung--border);
   width: 21rem;
   overflow: hidden;
   box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
