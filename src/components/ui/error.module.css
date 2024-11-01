@@ -8,7 +8,7 @@
 .error__container {
   max-width: 50rem;
   height: fit-content;
-  background-color: var(--color-backroung--card);
+  background-color: var(--color-background--card);
   border: 1px solid var(--color-error--border);
   border-radius: 7px;
 }
@@ -49,5 +49,5 @@
 }
 
 .error__btn:hover {
-  background-color: var(--color-backroung--border);
+  background-color: var(--color-background--border);
 }

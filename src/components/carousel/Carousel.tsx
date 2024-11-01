@@ -46,7 +46,6 @@ const Carousel = ({ genres }: CarouselProps) => {
   if (isError) {
     content = (
       <ErrorBlock
-        title='Error Fetching Upcoming Movies'
         message='There was an error loading upcoming movies.'
         onTryAgainClick={refetch}
       />

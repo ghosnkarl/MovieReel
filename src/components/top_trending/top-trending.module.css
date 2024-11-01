@@ -9,7 +9,7 @@
 .container__left {
   width: 100%;
   height: 100%;
-  background-color: var(--color-backroung--card);
+  background-color: var(--color-background--card);
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -54,8 +54,8 @@
 
 .item-container {
   display: flex;
-  background-color: var(--color-backroung--card);
-  border: 2px solid var(--color-backroung--border);
+  background-color: var(--color-background--card);
+  border: 2px solid var(--color-background--border);
   padding: 1.2rem;
   border-radius: 7px;
   cursor: pointer;

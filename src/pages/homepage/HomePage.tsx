@@ -10,30 +10,31 @@ import MediaList from '../../components/horizontal_list/MediaList';
 import { MediaListInterface } from '../../models/mediaModel';
 import PeopleList from '../../components/horizontal_list/PeopleList';
 import { PeopleListInterface } from '../../models/peopleModel';
+import QueryWrapper from '../../components/QueryWrapper';
 
 export default function HomePage() {
   const upComingDates = discoverReleaseDates(true, 5, 'days', 26, 'days');
   const airingTodayDates = discoverReleaseDates(false, 0, 'days', 0, 'days');
 
-  const { data: upcomingMovies } = useQuery({
+  const upcomingMoviesQuery = useQuery({
     queryKey: ['movie', upComingDates],
     queryFn: () => discover('movie', upComingDates),
     retry: 1,
   });
 
-  const airingTodayTV = useQuery({
+  const airingTodayTVQuery = useQuery({
     queryKey: ['tv', airingTodayDates],
     queryFn: () => discover('tv', airingTodayDates),
     retry: 1,
   });
 
-  const genresResult = useQuery({
+  const genresQuery = useQuery({
     queryKey: ['genres', 'movie'],
     queryFn: () => fetchGenres('movie'),
     retry: 1,
   });
 
-  const popularPeople = useQuery({
+  const popularPeopleQuery = useQuery({
     queryKey: ['popular', 'people'],
     queryFn: () => fetchPopular(),
     retry: 1,
@@ -49,10 +50,10 @@ export default function HomePage() {
             Discover
           </NavLink>
         </div>
-        <Carousel genres={genresResult.data} />
+        <Carousel genres={genresQuery.data} />
       </div>
 
-      {upcomingMovies && (
+      <QueryWrapper message='Upcoming Movies' query={upcomingMoviesQuery}>
         <HorizontalListContainer
           link='/movies'
           linkState={null}
@@ -60,14 +61,14 @@ export default function HomePage() {
         >
           <MediaList
             type='movies'
-            data={upcomingMovies as MediaListInterface[]}
+            data={upcomingMoviesQuery.data as MediaListInterface[]}
           />
         </HorizontalListContainer>
-      )}
+      </QueryWrapper>
 
       <TopTrending type='movie' />
 
-      {airingTodayTV.data && (
+      <QueryWrapper message='Airing Today TV Shows' query={airingTodayTVQuery}>
         <HorizontalListContainer
           link='/tv'
           linkState={null}
@@ -75,22 +76,22 @@ export default function HomePage() {
         >
           <MediaList
             type='tv'
-            data={airingTodayTV.data as MediaListInterface[]}
+            data={airingTodayTVQuery.data as MediaListInterface[]}
           />
         </HorizontalListContainer>
-      )}
+      </QueryWrapper>
 
       <TopTrending type='tv' />
 
-      {popularPeople.data && (
+      <QueryWrapper query={popularPeopleQuery} message='Popular Celebrities'>
         <HorizontalListContainer
           link='/people'
           linkState={null}
           title='Most Popular Celebrities'
         >
-          <PeopleList data={popularPeople.data as PeopleListInterface[]} />
+          <PeopleList data={popularPeopleQuery.data as PeopleListInterface[]} />
         </HorizontalListContainer>
-      )}
+      </QueryWrapper>
     </div>
   );
 }

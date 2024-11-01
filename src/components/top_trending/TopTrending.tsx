@@ -1,36 +1,27 @@
 import { useQuery } from '@tanstack/react-query';
 import { getBackdropImage, getPosterImage } from '../../helpers/imageSizes';
-
 import { fetchTrendingMovies, fetchTrendingTV } from '../../services/http';
 import classes from './top-trending.module.css';
 import moment from 'moment';
 import RatingStar from '../rating/RatingStar';
-import LoadingIndicator from '../ui/LoadingIndicator';
-import ErrorBlock from '../ui/ErrorBlock';
 import LinkWrapper from '../LinkWrapper';
 import HeaderLink from '../HeaderLink';
+import QueryWrapper from '../QueryWrapper';
 
 const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
-  const { data, isError, refetch } = useQuery({
+  const trendingQuery = useQuery({
     queryKey: [type, 'trending'],
     queryFn: () =>
       type === 'movie' ? fetchTrendingMovies('week') : fetchTrendingTV('week'),
     retry: 1,
   });
 
-  const title = type === 'movie' ? 'Movies' : 'TV';
+  const { data } = trendingQuery;
 
-  let content = <LoadingIndicator title={`Fetching Trending ${title}...`} />;
+  const message = `Trending ${type === 'movie' ? 'Movies' : 'TV Shows'}`;
 
-  if (isError) {
-    content = (
-      <ErrorBlock
-        title={`Error Fetching Trending ${title}`}
-        message={`There was an error loading trending ${title.toLocaleLowerCase()}.`}
-        onTryAgainClick={refetch}
-      />
-    );
-  }
+  let content = <></>;
+
   if (data) {
     const list = data.slice(1, 5);
     content = (
@@ -69,7 +60,7 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
   }
 
   return (
-    <div>
+    <QueryWrapper message={message} query={trendingQuery}>
       <h1 className='section__title'>
         <HeaderLink
           title={`Top 5 ${
@@ -80,7 +71,7 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
         />
       </h1>
       <>{content}</>
-    </div>
+    </QueryWrapper>
   );
 };
 
