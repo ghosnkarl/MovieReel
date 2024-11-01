@@ -3,6 +3,7 @@
   border-radius: 20px;
   box-shadow: var(--card--box-shadow);
   position: relative;
+
   overflow: hidden;
 }
 

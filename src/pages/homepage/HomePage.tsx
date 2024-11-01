@@ -1,8 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { discover, fetchGenres, fetchPopular } from '../../services/http';
-import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import classes from './homepage.module.css';
-import ErrorBlock from '../../components/ui/ErrorBlock';
 import Carousel from '../../components/carousel/Carousel';
 import { NavLink } from 'react-router-dom';
 import { discoverReleaseDates } from '../../helpers/discoverParams';
@@ -14,15 +12,8 @@ import PeopleList from '../../components/horizontal_list/PeopleList';
 import { PeopleListInterface } from '../../models/peopleModel';
 
 export default function HomePage() {
-  const discoverParams = discoverReleaseDates(true, -1, 'month', 5, 'days');
   const upComingDates = discoverReleaseDates(true, 5, 'days', 26, 'days');
   const airingTodayDates = discoverReleaseDates(false, 0, 'days', 0, 'days');
-
-  const { data, isError, refetch } = useQuery({
-    queryKey: ['movies', discoverParams],
-    queryFn: () => discover('movie', discoverParams),
-    retry: 1,
-  });
 
   const { data: upcomingMovies } = useQuery({
     queryKey: ['movie', upComingDates],
@@ -48,22 +39,6 @@ export default function HomePage() {
     retry: 1,
   });
 
-  let content = <LoadingIndicator title='Fetching Upcoming Movies' />;
-
-  if (isError) {
-    content = (
-      <ErrorBlock
-        title='Error Fetching Upcoming Movies'
-        message='There was an error loading upcoming movies.'
-        onTryAgainClick={refetch}
-      />
-    );
-  }
-
-  if (data) {
-    content = <Carousel content={data} genres={genresResult.data} />;
-  }
-
   return (
     <div className={classes.container}>
       <div className={classes['header']}>
@@ -74,7 +49,7 @@ export default function HomePage() {
             Discover
           </NavLink>
         </div>
-        {content}
+        <Carousel genres={genresResult.data} />
       </div>
 
       {upcomingMovies && (

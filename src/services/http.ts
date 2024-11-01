@@ -1,13 +1,13 @@
-import { QueryClient } from "@tanstack/react-query";
+import { QueryClient } from '@tanstack/react-query';
 import {
   CastInterface,
   CrewInterface,
   MediaListInterface,
   MovieDetailsInterface,
-} from "../models/mediaModel";
-import { PeopleListInterface, PersonInterface } from "../models/peopleModel";
-import { GenreInterface } from "../models/genreModel";
-import { KeywordInterface } from "../models/keywordModel";
+} from '../models/mediaModel';
+import { PeopleListInterface, PersonInterface } from '../models/peopleModel';
+import { GenreInterface } from '../models/genreModel';
+import { KeywordInterface } from '../models/keywordModel';
 
 export const queryClient = new QueryClient();
 
@@ -22,10 +22,10 @@ const buildURL = (
   if (params) {
     queryParams = Object.keys(params)
       .map((key) => `${key}=${params[key]}`)
-      .join("&");
+      .join('&');
   }
 
-  const url = `${BASE_URL}/${path}?api_key=${API_KEY}&${queryParams || ""}`;
+  const url = `${BASE_URL}/${path}?api_key=${API_KEY}&${queryParams || ''}`;
   return url;
 };
 
@@ -33,7 +33,7 @@ async function getResponse(url: string) {
   const response = await fetch(url);
 
   if (!response.ok) {
-    const error = new Error("An error occurred while fetching the events");
+    const error = new Error('An error occurred while fetching the events');
 
     error.message = await response.json();
     throw error;
@@ -57,15 +57,15 @@ export async function fetchMovieDetails(
 ): Promise<MovieDetailsInterface> {
   const params = {
     append_to_response:
-      "credits,images,videos,keywords,reviews,recommendations,similar",
-    include_image_language: "en,null",
+      'credits,images,videos,keywords,reviews,recommendations,similar',
+    include_image_language: 'en,null',
   };
 
   const url = buildURL(`movie/${id}`, params);
   const response = await fetch(url);
 
   if (!response.ok) {
-    const error = new Error("An error occurred while fetching the events");
+    const error = new Error('An error occurred while fetching the events');
 
     error.message = await response.json();
     throw error;
@@ -77,15 +77,15 @@ export async function fetchPeopleDetails(
   id: string | undefined
 ): Promise<PersonInterface> {
   const params = {
-    append_to_response: "images,combined_credits",
-    include_image_language: "en,null",
+    append_to_response: 'images,combined_credits',
+    include_image_language: 'en,null',
   };
 
   const url = buildURL(`person/${id}`, params);
   const response = await fetch(url);
 
   if (!response.ok) {
-    const error = new Error("An error occurred while fetching the events");
+    const error = new Error('An error occurred while fetching the events');
 
     error.message = await response.json();
     throw error;
@@ -99,7 +99,7 @@ export async function fetchCastDetails(
   const url = `${BASE_URL}/movie/${id}/credits?api_key=${API_KEY}`;
   const response = await fetch(url);
   if (!response.ok) {
-    const error = new Error("An error occurred while fetching the events");
+    const error = new Error('An error occurred while fetching the events');
 
     error.message = await response.json();
     throw error;
@@ -108,7 +108,7 @@ export async function fetchCastDetails(
 }
 
 export async function discover(
-  type: "movie" | "tv",
+  type: 'movie' | 'tv',
   discoverParams: string
 ): Promise<MediaListInterface[]> {
   const url = `${BASE_URL}/discover/${type}?api_key=${API_KEY}&${discoverParams}`;
@@ -116,7 +116,7 @@ export async function discover(
 }
 
 export async function fetchTrendingMovies(
-  type: "day" | "week"
+  type: 'day' | 'week'
 ): Promise<MediaListInterface[]> {
   const url = buildURL(`trending/movie/${type}`, null);
 
@@ -124,7 +124,7 @@ export async function fetchTrendingMovies(
 }
 
 export async function fetchTrendingTV(
-  type: "day" | "week"
+  type: 'day' | 'week'
 ): Promise<MediaListInterface[]> {
   const url = `${BASE_URL}/trending/tv/${type}?api_key=${API_KEY}`;
 
@@ -147,7 +147,7 @@ export async function fetchGenres(type: string): Promise<GenreInterface[]> {
   const response = await fetch(url);
 
   if (!response.ok) {
-    const error = new Error("An error occurred while fetching the events");
+    const error = new Error('An error occurred while fetching the events');
 
     error.message = await response.json();
     throw error;
