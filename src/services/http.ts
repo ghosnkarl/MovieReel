@@ -19,6 +19,7 @@ const buildURL = (
   params: { [key: string]: string } | null
 ): string => {
   let queryParams = null;
+
   if (params) {
     queryParams = Object.keys(params)
       .map((key) => `${key}=${params[key]}`)
@@ -39,8 +40,8 @@ async function getResponse(url: string) {
     throw error;
   }
 
-  const { results } = await response.json();
-  return results;
+  const result = await response.json();
+  return result;
 }
 
 export async function search(
@@ -49,7 +50,8 @@ export async function search(
 ): Promise<KeywordInterface[]> {
   const url = `${BASE_URL}/search/${type}?api_key=${API_KEY}&query=${query}`;
 
-  return getResponse(url);
+  const { results } = await getResponse(url);
+  return results;
 }
 
 export async function fetchMovieDetails(
@@ -62,15 +64,7 @@ export async function fetchMovieDetails(
   };
 
   const url = buildURL(`movie/${id}`, params);
-  const response = await fetch(url);
-
-  if (!response.ok) {
-    const error = new Error('An error occurred while fetching the events');
-
-    error.message = await response.json();
-    throw error;
-  }
-  return await response.json();
+  return await getResponse(url);
 }
 
 export async function fetchPeopleDetails(
@@ -82,29 +76,16 @@ export async function fetchPeopleDetails(
   };
 
   const url = buildURL(`person/${id}`, params);
-  const response = await fetch(url);
 
-  if (!response.ok) {
-    const error = new Error('An error occurred while fetching the events');
-
-    error.message = await response.json();
-    throw error;
-  }
-  return await response.json();
+  return await getResponse(url);
 }
 
 export async function fetchCastDetails(
   id: string | undefined
 ): Promise<{ cast: CastInterface[]; crew: CrewInterface[] }> {
-  const url = `${BASE_URL}/movie/${id}/credits?api_key=${API_KEY}`;
-  const response = await fetch(url);
-  if (!response.ok) {
-    const error = new Error('An error occurred while fetching the events');
+  const url = buildURL(`movie/${id}/credits`, null);
 
-    error.message = await response.json();
-    throw error;
-  }
-  return await response.json();
+  return await getResponse(url);
 }
 
 export async function discover(
@@ -112,7 +93,8 @@ export async function discover(
   discoverParams: string
 ): Promise<MediaListInterface[]> {
   const url = `${BASE_URL}/discover/${type}?api_key=${API_KEY}&${discoverParams}`;
-  return getResponse(url);
+  const { results } = await getResponse(url);
+  return results;
 }
 
 export async function fetchTrendingMovies(
@@ -120,44 +102,39 @@ export async function fetchTrendingMovies(
 ): Promise<MediaListInterface[]> {
   const url = buildURL(`trending/movie/${type}`, null);
 
-  return getResponse(url);
+  const { results } = await getResponse(url);
+  return results;
 }
 
 export async function fetchTrendingTV(
   type: 'day' | 'week'
 ): Promise<MediaListInterface[]> {
-  const url = `${BASE_URL}/trending/tv/${type}?api_key=${API_KEY}`;
+  const url = buildURL(`trending/tv/${type}`, null);
 
-  return getResponse(url);
+  const { results } = await getResponse(url);
+  return results;
 }
 
 export async function fetchMovies(type: string): Promise<MediaListInterface[]> {
-  const url = `${BASE_URL}/movie/${type}?api_key=${API_KEY}`;
-
-  return getResponse(url);
+  const url = buildURL(`movie/${type}`, null);
+  const { results } = await getResponse(url);
+  return results;
 }
 
 export async function fetchTV(type: string): Promise<MediaListInterface[]> {
-  const url = `${BASE_URL}/tv/${type}?api_key=${API_KEY}`;
-  return getResponse(url);
+  const url = buildURL(`tv/${type}`, null);
+  const { results } = await getResponse(url);
+  return results;
 }
 
 export async function fetchGenres(type: string): Promise<GenreInterface[]> {
-  const url = `${BASE_URL}/genre/${type}/list?api_key=${API_KEY}`;
-  const response = await fetch(url);
-
-  if (!response.ok) {
-    const error = new Error('An error occurred while fetching the events');
-
-    error.message = await response.json();
-    throw error;
-  }
-  const { genres } = await response.json();
-
+  const url = buildURL(`genre/${type}/list`, null);
+  const { genres } = await getResponse(url);
   return genres;
 }
 
 export async function fetchPopular(): Promise<PeopleListInterface[]> {
-  const url = `${BASE_URL}/person/popular?api_key=${API_KEY}`;
-  return getResponse(url);
+  const url = buildURL('person/popular', null);
+  const { results } = await getResponse(url);
+  return results;
 }
