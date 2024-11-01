@@ -1,5 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { discover, fetchGenres, fetchPopular } from '../../services/http';
+import {
+  discover,
+  fetchGenres,
+  fetchPaginatedResults,
+} from '../../services/http';
 import classes from './homepage.module.css';
 import Carousel from '../../components/carousel/Carousel';
 import { NavLink } from 'react-router-dom';
@@ -36,7 +40,8 @@ export default function HomePage() {
 
   const popularPeopleQuery = useQuery({
     queryKey: ['popular', 'people'],
-    queryFn: () => fetchPopular(),
+    queryFn: () =>
+      fetchPaginatedResults({ path: 'person/popular', params: null }),
     retry: 1,
   });
 

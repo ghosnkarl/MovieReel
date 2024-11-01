@@ -1,13 +1,4 @@
 import { QueryClient } from '@tanstack/react-query';
-import {
-  CastInterface,
-  CrewInterface,
-  MediaListInterface,
-  MovieDetailsInterface,
-} from '../models/mediaModel';
-import { PeopleListInterface, PersonInterface } from '../models/peopleModel';
-import { GenreInterface } from '../models/genreModel';
-import { KeywordInterface } from '../models/keywordModel';
 
 export const queryClient = new QueryClient();
 
@@ -44,19 +35,14 @@ async function getResponse(url: string) {
   return result;
 }
 
-export async function search(
-  type: string,
-  query: string
-): Promise<KeywordInterface[]> {
+export async function search(type: string, query: string) {
   const url = `${BASE_URL}/search/${type}?api_key=${API_KEY}&query=${query}`;
 
   const { results } = await getResponse(url);
   return results;
 }
 
-export async function fetchMovieDetails(
-  id: string | undefined
-): Promise<MovieDetailsInterface> {
+export async function fetchMovieDetails(id: string | undefined) {
   const params = {
     append_to_response:
       'credits,images,videos,keywords,reviews,recommendations,similar',
@@ -67,9 +53,7 @@ export async function fetchMovieDetails(
   return await getResponse(url);
 }
 
-export async function fetchPeopleDetails(
-  id: string | undefined
-): Promise<PersonInterface> {
+export async function fetchPeopleDetails(id: string | undefined) {
   const params = {
     append_to_response: 'images,combined_credits',
     include_image_language: 'en,null',
@@ -80,61 +64,60 @@ export async function fetchPeopleDetails(
   return await getResponse(url);
 }
 
-export async function fetchCastDetails(
-  id: string | undefined
-): Promise<{ cast: CastInterface[]; crew: CrewInterface[] }> {
+export async function fetchCastDetails(id: string | undefined) {
   const url = buildURL(`movie/${id}/credits`, null);
 
   return await getResponse(url);
 }
 
-export async function discover(
-  type: 'movie' | 'tv',
-  discoverParams: string
-): Promise<MediaListInterface[]> {
+export async function discover(type: 'movie' | 'tv', discoverParams: string) {
   const url = `${BASE_URL}/discover/${type}?api_key=${API_KEY}&${discoverParams}`;
   const { results } = await getResponse(url);
   return results;
 }
 
-export async function fetchTrendingMovies(
-  type: 'day' | 'week'
-): Promise<MediaListInterface[]> {
+export async function fetchTrendingMovies(type: 'day' | 'week') {
   const url = buildURL(`trending/movie/${type}`, null);
 
   const { results } = await getResponse(url);
   return results;
 }
 
-export async function fetchTrendingTV(
-  type: 'day' | 'week'
-): Promise<MediaListInterface[]> {
+export async function fetchTrendingTV(type: 'day' | 'week') {
   const url = buildURL(`trending/tv/${type}`, null);
 
   const { results } = await getResponse(url);
   return results;
 }
 
-export async function fetchMovies(type: string): Promise<MediaListInterface[]> {
+export async function fetchMovies(type: string) {
   const url = buildURL(`movie/${type}`, null);
   const { results } = await getResponse(url);
   return results;
 }
 
-export async function fetchTV(type: string): Promise<MediaListInterface[]> {
+export async function fetchTV(type: string) {
   const url = buildURL(`tv/${type}`, null);
   const { results } = await getResponse(url);
   return results;
 }
 
-export async function fetchGenres(type: string): Promise<GenreInterface[]> {
+export async function fetchGenres(type: string) {
   const url = buildURL(`genre/${type}/list`, null);
   const { genres } = await getResponse(url);
   return genres;
 }
 
-export async function fetchPopular(): Promise<PeopleListInterface[]> {
-  const url = buildURL('person/popular', null);
+interface PaginatedResultsInterface {
+  path: string;
+  params: { [key: string]: string } | null;
+}
+
+export const fetchPaginatedResults = async ({
+  path,
+  params,
+}: PaginatedResultsInterface) => {
+  const url = buildURL(path, params);
   const { results } = await getResponse(url);
   return results;
-}
+};
