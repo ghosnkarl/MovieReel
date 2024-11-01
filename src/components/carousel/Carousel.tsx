@@ -1,4 +1,4 @@
-import classes from './carousel.module.css';
+import classes from '../../styles/carousel.module.css';
 import { useState } from 'react';
 import { MediaListInterface } from '../../models/mediaModel';
 import CarouselItem, { CarouselItemInterface } from './CarouselItem';

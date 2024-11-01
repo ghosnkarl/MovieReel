@@ -1,11 +1,11 @@
-import { VideoInterface } from '../../../models/mediaModel';
-import classes from './video.module.css';
-import MotionDiv from '../../ui/MotionDiv';
+import classes from '../../styles/video.module.css';
 import { IoPlayCircleOutline } from 'react-icons/io5';
 import ReactPlayer from 'react-player';
-import Section from '../../section/Section';
 import { useEffect, useRef, useState } from 'react';
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
+import { VideoInterface } from '../../models/mediaModel';
+import MotionDiv from '../ui/MotionDiv';
+import Section from '../section/Section';
 
 interface VideoItemProps {
   video: VideoInterface;

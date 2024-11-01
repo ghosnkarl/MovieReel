@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
-import { getBackdropImage } from '../../../helpers/imageSizes';
-import classes from './image-list.module.css';
+import classes from '../../styles/image-list.module.css';
 import { IoChevronForward } from 'react-icons/io5';
-import Section from '../../section/Section';
+import Section from '../section/Section';
+import { getBackdropImage } from '../../helpers/imageSizes';
 
 interface ImageListProps {
   backdropList: { file_path: string }[];

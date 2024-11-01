@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom';
+import classes from '../../styles/media-details.module.css';
 import {
   CollectionInterface,
   ProductionCompanyInterface,
-} from '../../../models/mediaModel';
-import classes from './media-details.module.css';
+} from '../../models/mediaModel';
+import Section from '../section/Section';
 import MediaDetailsItem from './MediaDetailsItem';
-import Section from '../../section/Section';
 
 interface SidebarProps {
   status: string;

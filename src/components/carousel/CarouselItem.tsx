@@ -3,7 +3,7 @@ import { MediaListInterface } from '../../models/mediaModel';
 import moment from 'moment';
 import { GenreInterface } from '../../models/genreModel';
 import { getBackdropImage, getPosterImage } from '../../helpers/imageSizes';
-import classes from './carousel.module.css';
+import classes from '../../styles/carousel.module.css';
 import { NavLink } from 'react-router-dom';
 import { Fragment } from 'react';
 import RatingStar from '../rating/RatingStar';

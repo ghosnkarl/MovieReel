@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
-import { ReviewInterface } from '../../../models/mediaModel';
-import { getPosterImage } from '../../../helpers/imageSizes';
-import Review from '../../review/Review';
-import classes from '../../../pages/movies/movie_details/movie-details.module.css';
-import Section from '../../section/Section';
+import classes from '../../pages/movies/movie_details/movie-details.module.css';
+import { ReviewInterface } from '../../models/mediaModel';
+import Section from '../section/Section';
+import Review from '../review/Review';
+import { getPosterImage } from '../../helpers/imageSizes';
 
 const DetailsReviews = ({
   reviews,

@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
-import { getBackdropImage } from '../../../helpers/imageSizes';
-import { GenreInterface } from '../../../models/genreModel';
-import { MediaListInterface } from '../../../models/mediaModel';
-import Section from '../../section/Section';
-import classes from './recommended-list.module.css';
+import classes from '../../styles/recommended-list.module.css';
+import { getBackdropImage } from '../../helpers/imageSizes';
+import { MediaListInterface } from '../../models/mediaModel';
+import { GenreInterface } from '../../models/genreModel';
+import Section from '../section/Section';
 
 interface RecommendedListItemProps {
   backdrop: string;

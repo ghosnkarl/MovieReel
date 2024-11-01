@@ -1,4 +1,4 @@
-import classes from './media-details.module.css';
+import classes from '../../styles/media-details.module.css';
 
 interface MediaDetailsItem {
   title: string;
