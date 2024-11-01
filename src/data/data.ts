@@ -1,38 +1,11 @@
 import { HorizontalContainerProps } from '../components/horizontal_list/containers/HorizontalTabListContainer';
+import { discoverReleaseDates } from '../helpers/discoverParams';
 import { discover, fetchMovies, fetchPopular } from '../services/http';
-import { discoverReleaseDates } from './discoverParams';
 
 const upComingDates = discoverReleaseDates(true, 5, 'days', 26, 'days');
 const nowPlayingDates = discoverReleaseDates(true, -1, 'month', 5, 'days');
 const airingTodayDates = discoverReleaseDates(false, 0, 'days', 0, 'days');
 const onAirDates = discoverReleaseDates(false, 0, 'days', 7, 'days');
-
-export const NAV_LINKS = [
-  {
-    link: '/',
-    title: 'Home',
-  },
-  {
-    link: '/movies',
-    title: 'Movies',
-  },
-  {
-    link: '/tv',
-    title: 'TV Shows',
-  },
-  {
-    link: '/people',
-    title: 'People',
-  },
-  {
-    link: '/discover',
-    title: 'Discover',
-  },
-  {
-    link: '/about',
-    title: 'About',
-  },
-];
 
 export const MOVIE_TABS = [
   {
@@ -117,38 +90,3 @@ export const HOMEPAGE_LISTS: HomepageListsProps = {
     type: 'people',
   },
 };
-
-export const SORT = [
-  {
-    output: 'Popularity Descending',
-    value: 'popularity.desc',
-  },
-  {
-    output: 'Popularity Ascending',
-    value: 'popularity.asc',
-  },
-  {
-    output: 'Title Descending',
-    value: 'title.desc',
-  },
-  {
-    output: 'Title Ascending',
-    value: 'title.asc',
-  },
-  {
-    output: 'Release Date Descending',
-    value: 'primary_release_date.desc',
-  },
-  {
-    output: 'Release Date Ascending',
-    value: 'primary_release_date.asc',
-  },
-  {
-    output: 'Rating Descending',
-    value: 'vote_average.desc',
-  },
-  {
-    output: 'Rating Ascending',
-    value: 'vote_average_asc',
-  },
-];

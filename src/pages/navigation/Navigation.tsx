@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import { NAV_LINKS } from '../../helpers/data';
+
 import classes from './navigation.module.css';
 import logoImg from '../../assets/tmdb.svg';
 
 import { IoMdSearch } from 'react-icons/io';
+import { NAV_LINKS } from '../../data/navLinks';
 
 export default function Navigation() {
   return (

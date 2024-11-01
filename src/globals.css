@@ -29,7 +29,6 @@
 
 /********************** Buttons **********************/
 .btn {
-  border: none;
   outline: none;
   background: none;
   cursor: pointer;
@@ -60,6 +59,7 @@
 }
 
 .tabs--btn {
+  border: none;
   padding: 0.5rem 1rem;
   font-size: 1.7rem;
 }

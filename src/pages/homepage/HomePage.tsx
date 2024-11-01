@@ -5,10 +5,11 @@ import classes from './homepage.module.css';
 import ErrorBlock from '../../components/ui/ErrorBlock';
 import Carousel from '../../components/carousel/Carousel';
 import HorizontalTabListContainer from '../../components/horizontal_list/containers/HorizontalTabListContainer';
-import { HOMEPAGE_LISTS } from '../../helpers/data';
+
 import { NavLink } from 'react-router-dom';
 import { discoverReleaseDates } from '../../helpers/discoverParams';
 import TopTrending from '../../components/top_trending/TopTrending';
+import { HOMEPAGE_LISTS } from '../../data/data';
 
 export default function HomePage() {
   const discoverParams = discoverReleaseDates(true, -1, 'month', 5, 'days');

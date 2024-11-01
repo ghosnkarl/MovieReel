@@ -1,6 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  align-items: center;
+}
+
 .main-container {
   display: flex;
   flex-wrap: wrap;
   gap: 2.4rem;
   margin-top: 2.4rem;
+}
+
+.btn--more {
+  font-size: 1.6rem;
+  padding: 1.2rem 3.6rem;
+  border-radius: 5px;
+  border: 1px solid var(--color-primary-900);
+  margin-bottom: 3.2rem;
+}
+
+.btn--more:hover {
+  background-color: var(--color-primary-900);
 }

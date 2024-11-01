@@ -3,9 +3,9 @@ import classes from './movies-page.module.css';
 import MediaList from '../../components/horizontal_list/MediaList';
 import { MediaListInterface } from '../../models/mediaModel';
 import { useState } from 'react';
-import { MOVIE_TABS } from '../../helpers/data';
 import ListTabs, { TabOjectProps } from '../../components/tabs/ListTabs';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
+import { MOVIE_TABS } from '../../data/data';
 
 export default function MoviesPage() {
   const tabs: TabOjectProps[] = MOVIE_TABS;
@@ -35,7 +35,10 @@ export default function MoviesPage() {
         tabs={tabs}
         layoutId='movies_page'
       />
-      <div className={classes['main-container']}>{content}</div>
+      <div className={classes.container}>
+        <ul className={classes['main-container']}>{content}</ul>
+        <button className={`btn ${classes['btn--more']}`}>Load More</button>
+      </div>
     </div>
   );
 }

@@ -1,16 +1,17 @@
-import { ChangeEvent, useState } from "react";
-import { SORT } from "../../helpers/data";
-import Dropdown, { ItemProps } from "../dropdown/Dropdown";
-import GenresPicker from "../genres_picker/GenresPicker";
-import { RatingSlider } from "../ui/RatingSlider";
-import Searchbar from "../searchbar/Searchbar";
-import classes from "./filter-box.module.css";
-import moment from "moment";
+import { ChangeEvent, useState } from 'react';
+
+import Dropdown, { ItemProps } from '../dropdown/Dropdown';
+import GenresPicker from '../genres_picker/GenresPicker';
+import { RatingSlider } from '../ui/RatingSlider';
+import Searchbar from '../searchbar/Searchbar';
+import classes from './filter-box.module.css';
+import moment from 'moment';
+import { SORT } from '../../data/sortOptions';
 
 const FilterBox = () => {
   const [selectedSortItem, setSelectedSortItem] = useState<ItemProps>(SORT[0]);
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   const handleStartDateChange = (e: ChangeEvent<HTMLInputElement>) => {
     setStartDate(e.target.value);
@@ -25,17 +26,17 @@ const FilterBox = () => {
 
     filterObj.sort_by = selectedSortItem.value;
 
-    if (startDate !== "")
-      filterObj["primary_release_date.gte"] =
-        moment(startDate).format("YYYY-MM-DD");
+    if (startDate !== '')
+      filterObj['primary_release_date.gte'] =
+        moment(startDate).format('YYYY-MM-DD');
 
-    if (endDate !== "")
-      filterObj["primary_release_date.lte"] =
-        moment(endDate).format("YYYY-MM-DD");
+    if (endDate !== '')
+      filterObj['primary_release_date.lte'] =
+        moment(endDate).format('YYYY-MM-DD');
   };
 
   return (
-    <div className={classes["filter-container"]}>
+    <div className={classes['filter-container']}>
       <div>
         <h1>Filter</h1>
         <Dropdown
@@ -48,14 +49,14 @@ const FilterBox = () => {
         <h1>Genres</h1>
         <GenresPicker />
       </div>
-      <div className={classes["dates-container"]}>
+      <div className={classes['dates-container']}>
         <h1>Release Dates</h1>
         <div>
           <p>From</p>
           <input
             onChange={handleStartDateChange}
             value={startDate}
-            type="date"
+            type='date'
           />
         </div>
         <div>
@@ -64,7 +65,7 @@ const FilterBox = () => {
             min={startDate}
             onChange={handleEndDateChange}
             value={endDate}
-            type="date"
+            type='date'
           />
         </div>
       </div>
@@ -76,7 +77,7 @@ const FilterBox = () => {
           marks
           min={0}
           max={10}
-          valueLabelDisplay="auto"
+          valueLabelDisplay='auto'
           disableSwap
         />
       </div>
@@ -84,7 +85,7 @@ const FilterBox = () => {
         <h1>Keywords</h1>
         <Searchbar />
       </div>
-      <button onClick={handleSearch} className="btn">
+      <button onClick={handleSearch} className='btn'>
         Search
       </button>
     </div>

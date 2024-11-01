@@ -1,8 +1,7 @@
-import DropdownButton from "./DropdownButton";
-
-import DropdownItem from "./DropdownItem";
-import classes from "./dropdown.module.css";
-import { useEffect, useRef, useState } from "react";
+import DropdownButton from './DropdownButton';
+import DropdownItem from './DropdownItem';
+import classes from './dropdown.module.css';
+import { useEffect, useRef, useState } from 'react';
 
 export interface ItemProps {
   output: string;
@@ -37,10 +36,10 @@ const Dropdown = ({
         setOpen(false);
       }
     };
-    document.addEventListener("click", handler);
+    document.addEventListener('click', handler);
 
     return () => {
-      document.removeEventListener("click", handler);
+      document.removeEventListener('click', handler);
     };
   }, []);
 
@@ -55,8 +54,8 @@ const Dropdown = ({
         {selectedSortItem.output}
       </DropdownButton>
       <div
-        className={`${classes["dropdown-content"]} ${
-          open ? classes["content-open"] : ""
+        className={`${classes['dropdown-content']} ${
+          open ? classes['content-open'] : ''
         }`}
       >
         {items.map((item) => (
