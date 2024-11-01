@@ -1,4 +1,4 @@
-import classes from "./dropdown.module.css";
+import classes from '../../styles/dropdown.module.css';
 
 interface DropdownItemProps {
   isSelected: boolean;
@@ -9,8 +9,8 @@ interface DropdownItemProps {
 const DropdownItem = ({ isSelected, children, onClick }: DropdownItemProps) => {
   return (
     <div
-      className={`${classes["dropdown-item"]} ${
-        isSelected ? classes["dropdown-item--selected"] : ""
+      className={`${classes['dropdown-item']} ${
+        isSelected ? classes['dropdown-item--selected'] : ''
       }`}
       onClick={onClick}
     >

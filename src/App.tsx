@@ -1,33 +1,34 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import RootLayout from "./RootLayout";
-import HomePage from "./pages/homepage/HomePage";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "./services/http";
-import MoviesPage from "./pages/movies/MoviesPage";
-import TVPage from "./pages/tv/TVPage";
-import PeoplePage from "./pages/people/PeoplePage";
-import DiscoverPage from "./pages/discover/DiscoverPage";
-import MovieDetails from "./pages/movies/movie_details/MovieDetails";
-import MoviesRootLayout from "./pages/movies/MoviesRootLayout";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import RootLayout from './RootLayout';
+import HomePage from './pages/homepage/HomePage';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from './services/http';
+import MoviesPage from './pages/movies/MoviesPage';
+import TVPage from './pages/tv/TVPage';
+import PeoplePage from './pages/people/PeoplePage';
+import DiscoverPage from './pages/discover/DiscoverPage';
+import MovieDetails from './pages/movies/movie_details/MovieDetails';
+import MoviesRootLayout from './pages/movies/MoviesRootLayout';
 
-import ReviewsPage from "./pages/reviews/ReviewsPage";
-import ImagesPage from "./pages/images/ImagesPages";
-import PeopleRootLayout from "./pages/people/PeopleRootLayout";
-import PeopleDetailsPage from "./pages/people/PeopleDetailsPage";
-import PeopleDetailsRootLayout from "./pages/people/PeopleDetailsRootLayout";
-import CreditsPage from "./pages/credits/CreditsPage";
-import ErrorPage from "./components/error_page/ErrorPage";
-import DetailsRootLayout from "./pages/details_root_layout/DetailsRootLayout";
+import ReviewsPage from './pages/reviews/ReviewsPage';
+import ImagesPage from './pages/images/ImagesPages';
+import PeopleRootLayout from './pages/people/PeopleRootLayout';
+import PeopleDetailsPage from './pages/people/PeopleDetailsPage';
+import PeopleDetailsRootLayout from './pages/people/PeopleDetailsRootLayout';
+import CreditsPage from './pages/credits/CreditsPage';
+
+import DetailsRootLayout from './pages/details_root_layout/DetailsRootLayout';
+import ErrorPage from './components/ErrorPage';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
       {
-        path: "movies",
+        path: 'movies',
         element: <MoviesRootLayout />,
         children: [
           {
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
             element: <MoviesPage />,
           },
           {
-            path: ":movieId",
+            path: ':movieId',
             element: <MoviesRootLayout />,
             children: [
               {
@@ -43,19 +44,19 @@ const router = createBrowserRouter([
                 element: <MovieDetails />,
               },
               {
-                path: "",
+                path: '',
                 element: <DetailsRootLayout />,
                 children: [
                   {
-                    path: "cast",
+                    path: 'cast',
                     element: <CreditsPage />,
                   },
                   {
-                    path: "review",
+                    path: 'review',
                     element: <ReviewsPage />,
                   },
                   {
-                    path: "images",
+                    path: 'images',
                     element: <ImagesPage />,
                   },
                 ],
@@ -64,9 +65,9 @@ const router = createBrowserRouter([
           },
         ],
       },
-      { path: "tv", element: <TVPage /> },
+      { path: 'tv', element: <TVPage /> },
       {
-        path: "people",
+        path: 'people',
         element: <PeopleRootLayout />,
         children: [
           {
@@ -74,19 +75,19 @@ const router = createBrowserRouter([
             element: <PeoplePage />,
           },
           {
-            path: ":personId",
+            path: ':personId',
             element: <PeopleDetailsRootLayout />,
             children: [
               { index: true, element: <PeopleDetailsPage /> },
               {
-                path: "images",
+                path: 'images',
                 element: <ImagesPage />,
               },
             ],
           },
         ],
       },
-      { path: "discover", element: <DiscoverPage /> },
+      { path: 'discover', element: <DiscoverPage /> },
     ],
   },
 ]);

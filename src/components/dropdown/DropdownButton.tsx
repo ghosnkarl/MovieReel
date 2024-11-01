@@ -1,5 +1,5 @@
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import classes from "./dropdown.module.css";
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import classes from '../../styles/dropdown.module.css';
 
 interface DropdownButtonProps {
   children: string | JSX.Element;
@@ -11,12 +11,12 @@ const DropdownButton = ({ children, open, toggle }: DropdownButtonProps) => {
   return (
     <div
       onClick={toggle}
-      className={`${classes["dropdown-btn"]} ${
-        open ? classes["button-open"] : ""
+      className={`${classes['dropdown-btn']} ${
+        open ? classes['button-open'] : ''
       }`}
     >
       {children}
-      <span className={classes["toggle-icon"]}>
+      <span className={classes['toggle-icon']}>
         {open ? <FaChevronUp /> : <FaChevronDown />}
       </span>
     </div>

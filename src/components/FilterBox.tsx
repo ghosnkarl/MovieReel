@@ -1,12 +1,11 @@
 import { ChangeEvent, useState } from 'react';
-
-import Dropdown, { ItemProps } from '../dropdown/Dropdown';
-import GenresPicker from '../genres_picker/GenresPicker';
-import { RatingSlider } from '../ui/RatingSlider';
-import Searchbar from '../searchbar/Searchbar';
-import classes from './filter-box.module.css';
+import classes from '../styles/filter-box.module.css';
 import moment from 'moment';
-import { SORT } from '../../data/sortOptions';
+import Dropdown, { ItemProps } from './dropdown/Dropdown';
+import { SORT } from '../data/sortOptions';
+import GenresPicker from './genres_picker/GenresPicker';
+import { RatingSlider } from './ui/RatingSlider';
+import Searchbar from './searchbar/Searchbar';
 
 const FilterBox = () => {
   const [selectedSortItem, setSelectedSortItem] = useState<ItemProps>(SORT[0]);
