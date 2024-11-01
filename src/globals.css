@@ -1,3 +1,10 @@
+/********************** Links **********************/
+.link__wrapper:link,
+.link__wrapper:visited {
+  text-decoration: none;
+  color: white;
+}
+
 /********************** Typography **********************/
 .section__title {
   font-size: var(--section--title-size);

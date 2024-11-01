@@ -7,6 +7,7 @@ import moment from 'moment';
 import RatingStar from '../rating/RatingStar';
 import LoadingIndicator from '../ui/LoadingIndicator';
 import ErrorBlock from '../ui/ErrorBlock';
+import LinkWrapper from '../LinkWrapper';
 
 const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
   const { data, isError, refetch } = useQuery({
@@ -33,7 +34,7 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
     const list = data.slice(1, 5);
     content = (
       <div className={classes.container}>
-        <div>
+        <LinkWrapper link={`/movies/${data[0].id}`}>
           <div className={classes['container__left']}>
             <img src={getBackdropImage(data[0].backdrop_path, 'w780')} />
             <div className={classes['container__left--text']}>
@@ -44,20 +45,22 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
               </div>
             </div>
           </div>
-        </div>
+        </LinkWrapper>
         <ul className={classes['container--right']}>
           {list.map((listItem) => (
-            <li className={classes['item-container']} key={listItem.id}>
-              <img src={getPosterImage(listItem.poster_path, 'w185')} />
+            <LinkWrapper key={listItem.id} link={`/movies/${listItem.id}`}>
+              <li className={classes['item-container']}>
+                <img src={getPosterImage(listItem.poster_path, 'w185')} />
 
-              <div className={classes['item-container--right']}>
-                <h1>{listItem.title || listItem.name}</h1>
-                <RatingStar value={listItem.vote_average} size='small' />
-                <p className={classes.date}>
-                  {moment(listItem.release_date).format('MMM DD, YYYY')}
-                </p>
-              </div>
-            </li>
+                <div className={classes['item-container--right']}>
+                  <h1>{listItem.title || listItem.name}</h1>
+                  <RatingStar value={listItem.vote_average} size='small' />
+                  <p className={classes.date}>
+                    {moment(listItem.release_date).format('MMM DD, YYYY')}
+                  </p>
+                </div>
+              </li>
+            </LinkWrapper>
           ))}
         </ul>
       </div>
