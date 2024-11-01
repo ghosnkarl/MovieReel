@@ -1,10 +1,7 @@
-import { NavLink } from 'react-router-dom';
-
 import { useEffect, useRef, useState } from 'react';
 import ListArrows from '../../horizontal_list/arrows/ListArrows';
-
-import { IoArrowForwardCircle } from 'react-icons/io5';
 import Section from '../../section/Section';
+import HeaderLink from '../../HeaderLink';
 
 interface ListProps {
   title: string;
@@ -29,12 +26,7 @@ const HorizontalListContainer = ({
   return (
     <Section border='left'>
       <div className='list-header'>
-        {link && (
-          <NavLink to={link} state={linkState} className='section__link'>
-            {title}
-            <IoArrowForwardCircle className='list__header--icon' />
-          </NavLink>
-        )}
+        {link && <HeaderLink title={title} link={link} linkState={linkState} />}
         {!link && <h1 className='section__title'>{title}</h1>}
         <ListArrows listRef={ref} />
       </div>

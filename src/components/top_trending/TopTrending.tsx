@@ -8,6 +8,7 @@ import RatingStar from '../rating/RatingStar';
 import LoadingIndicator from '../ui/LoadingIndicator';
 import ErrorBlock from '../ui/ErrorBlock';
 import LinkWrapper from '../LinkWrapper';
+import HeaderLink from '../HeaderLink';
 
 const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
   const { data, isError, refetch } = useQuery({
@@ -70,7 +71,13 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
   return (
     <div>
       <h1 className='section__title'>
-        Top 5 {type === 'movie' ? 'Movies' : 'TV Shows'} of the Week
+        <HeaderLink
+          title={`Top 5 ${
+            type === 'movie' ? 'Movies' : 'TV Shows'
+          } of the Week`}
+          link='/movies'
+          linkState={null}
+        />
       </h1>
       <>{content}</>
     </div>

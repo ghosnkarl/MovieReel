@@ -1,13 +1,13 @@
 .container {
   display: flex;
+  padding: 1rem;
   flex-direction: column;
   text-decoration: none;
+  border-radius: 7px;
   color: white;
   gap: 2.4rem;
-  align-items: center;
-
   &:hover {
-    opacity: 0.8;
+    background-color: var(--color-gray-600);
   }
 }
 

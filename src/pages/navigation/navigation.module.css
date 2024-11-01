@@ -22,27 +22,6 @@
   margin-right: 3.2rem;
 }
 
-.search-btn:link,
-.search-btn:visited {
-  background-color: var(--color-primary-900);
-  transition: all 0.3s ease-in-out;
-  align-items: center;
-  gap: 1rem;
-  color: white;
-  border-radius: 7px;
-  font-size: 1.7rem;
-  font-weight: 500;
-  text-decoration: none;
-  padding: 0.9rem 2.6rem 0.9rem 1.6rem;
-  display: flex;
-}
-
-.search-btn:hover,
-.search-btn:active {
-  /* box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 20px 0px; */
-  background-color: var(--color-primary-800);
-}
-
 .icon {
   color: white;
   height: 2.2rem;

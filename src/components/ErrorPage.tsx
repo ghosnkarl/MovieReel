@@ -27,7 +27,7 @@ const ErrorPage = () => {
       <div className={classes.error}>
         <h1 className={classes['error__title']}>Oops! An error Occured!</h1>
         <h2 className={classes['error__message']}>{errorMessage}</h2>
-        <NavLink to='/' className='btn'>
+        <NavLink to='/' className='link--gradient link--discover'>
           Home Page
         </NavLink>
       </div>

@@ -28,7 +28,7 @@ export default function Navigation() {
             </li>
           ))}
         </ul>
-        <NavLink to='/search' className={classes['search-btn']}>
+        <NavLink to='/search' className='link--gradient link--search'>
           <IoMdSearch className={classes.icon} />
           Search
         </NavLink>

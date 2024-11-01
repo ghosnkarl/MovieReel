@@ -5,6 +5,45 @@
   color: white;
 }
 
+.link--gradient:link,
+.link--gradient:visited {
+  display: flex;
+  width: fit-content;
+  background-image: linear-gradient(
+    to right,
+    #ff512f 0%,
+    #f09819 51%,
+    #ff512f 100%
+  );
+  background-size: 200% auto;
+  transition: all 0.5s ease-in-out;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 1000px;
+  color: white;
+}
+
+.link--gradient:hover,
+.link--gradient:active {
+  background-position: right center;
+}
+
+.link--search:link,
+.link--search:visited {
+  gap: 1rem;
+  font-size: 1.7rem;
+  font-weight: 600;
+  padding: 1rem 2.6rem 1rem 1.6rem;
+}
+
+.link--discover:link,
+.link--discover:visited {
+  gap: 1rem;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1.2rem 2.4rem;
+}
+
 /********************** Typography **********************/
 .section__title {
   font-size: var(--section--title-size);
