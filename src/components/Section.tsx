@@ -1,4 +1,4 @@
-import classes from './section.module.css';
+import classes from '../styles/section.module.css';
 
 interface SectionProps {
   children: JSX.Element | JSX.Element[];

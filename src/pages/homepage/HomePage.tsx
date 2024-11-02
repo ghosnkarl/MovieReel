@@ -8,7 +8,7 @@ import classes from './homepage.module.css';
 import Carousel from '../../components/carousel/Carousel';
 import { NavLink } from 'react-router-dom';
 import { discoverReleaseDates } from '../../helpers/discoverParams';
-import TopTrending from '../../components/top_trending/TopTrending';
+import TopTrending from '../../components/TopTrending';
 import MediaList from '../../components/horizontal_list/MediaList';
 import { MediaListInterface } from '../../models/mediaModel';
 import PeopleList from '../../components/horizontal_list/PeopleList';

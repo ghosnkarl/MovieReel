@@ -3,7 +3,7 @@ import classes from './movies-page.module.css';
 import MediaList from '../../components/horizontal_list/MediaList';
 import { MediaListInterface } from '../../models/mediaModel';
 import { useState } from 'react';
-import ListTabs, { TabOjectProps } from '../../components/tabs/ListTabs';
+import ListTabs, { TabOjectProps } from '../../components/ListTabs';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import { MOVIE_TABS } from '../../data/data';
 

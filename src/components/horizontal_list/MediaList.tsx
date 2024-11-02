@@ -4,7 +4,7 @@ import { MediaListInterface } from '../../models/mediaModel';
 import moment from 'moment';
 import { getPosterImage } from '../../helpers/imageSizes';
 import MotionDiv from '../ui/MotionDiv';
-import Rating from '../Rating';
+import Rating from '../rating/Rating';
 
 const MediaList = ({
   data,

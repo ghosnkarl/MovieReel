@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import ListArrows from './ListArrows';
-import Section from '../section/Section';
+import Section from '../Section';
 import HeaderLink from '../HeaderLink';
 
 interface ListProps {

@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import { VideoInterface } from '../../models/mediaModel';
 import MotionDiv from '../ui/MotionDiv';
-import Section from '../section/Section';
+import Section from '../Section';
 
 interface VideoItemProps {
   video: VideoInterface;

@@ -3,7 +3,7 @@ import classes from '../../styles/recommended-list.module.css';
 import { getBackdropImage } from '../../helpers/imageSizes';
 import { MediaListInterface } from '../../models/mediaModel';
 import { GenreInterface } from '../../models/genreModel';
-import Section from '../section/Section';
+import Section from '../Section';
 
 interface RecommendedListItemProps {
   backdrop: string;

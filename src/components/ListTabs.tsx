@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react';
-import { MediaListInterface } from '../../models/mediaModel';
-import { PeopleListInterface } from '../../models/peopleModel';
+import { MediaListInterface } from '../models/mediaModel';
+import { PeopleListInterface } from '../models/peopleModel';
 import { motion } from 'framer-motion';
 
 interface ListTabsProps {

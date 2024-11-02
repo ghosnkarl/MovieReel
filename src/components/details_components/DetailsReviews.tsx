@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import classes from '../../pages/movies/movie_details/movie-details.module.css';
 import { ReviewInterface } from '../../models/mediaModel';
-import Section from '../section/Section';
+import Section from '../Section';
 import Review from '../Review';
 import { getPosterImage } from '../../helpers/imageSizes';
 

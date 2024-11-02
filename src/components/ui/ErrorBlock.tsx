@@ -1,5 +1,5 @@
 import { FaCircleExclamation } from 'react-icons/fa6';
-import classes from './error.module.css';
+import classes from '../../styles/error.module.css';
 
 interface ErrorInterface {
   message: string;

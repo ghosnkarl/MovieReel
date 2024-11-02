@@ -4,7 +4,7 @@ import {
   CollectionInterface,
   ProductionCompanyInterface,
 } from '../../models/mediaModel';
-import Section from '../section/Section';
+import Section from '../Section';
 import MediaDetailsItem from './MediaDetailsItem';
 
 interface SidebarProps {

@@ -1,4 +1,4 @@
-import Section from './section/Section';
+import Section from './Section';
 import classes from '../styles/keywords.module.css';
 const Keywords = ({
   keywords,

@@ -1,5 +1,5 @@
 import classes from '../../styles/image-list.module.css';
-import Section from '../section/Section';
+import Section from '../Section';
 import { getBackdropImage } from '../../helpers/imageSizes';
 import HeaderLink from '../HeaderLink';
 

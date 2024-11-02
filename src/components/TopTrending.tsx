@@ -1,13 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
-import { getBackdropImage, getPosterImage } from '../../helpers/imageSizes';
-import { fetchPaginatedResults } from '../../services/http';
-import classes from './top-trending.module.css';
+import { getBackdropImage, getPosterImage } from '../helpers/imageSizes';
+import { fetchPaginatedResults } from '../services/http';
+import classes from '../styles/top-trending.module.css';
 import moment from 'moment';
-import RatingStar from '../RatingStar';
-import LinkWrapper from '../LinkWrapper';
-import HeaderLink from '../HeaderLink';
-import QueryWrapper from '../QueryWrapper';
-import { MediaListInterface } from '../../models/mediaModel';
+import RatingStar from './rating/RatingStar';
+import LinkWrapper from './LinkWrapper';
+import HeaderLink from './HeaderLink';
+import QueryWrapper from './QueryWrapper';
+import { MediaListInterface } from '../models/mediaModel';
 
 const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
   const trendingQuery = useQuery({
