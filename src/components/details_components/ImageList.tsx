@@ -2,6 +2,7 @@ import classes from '../../styles/image-list.module.css';
 import Section from '../Section';
 import { getBackdropImage } from '../../helpers/imageSizes';
 import HeaderLink from '../HeaderLink';
+import { NavLink } from 'react-router-dom';
 
 interface ImageListProps {
   backdropList: { file_path: string }[];
@@ -25,11 +26,18 @@ const ImageList = ({ backdropList, title, images, image }: ImageListProps) => {
 
           <div className={classes.images}>
             {backdropList.map((backdrop) => (
-              <img
+              <NavLink
+                className={classes['image__container']}
+                to=''
+                target='_blank'
                 key={backdrop.file_path}
-                src={getBackdropImage(backdrop.file_path, 'w780')}
-                alt={title}
-              />
+              >
+                <img
+                  className={classes.backdrop}
+                  src={getBackdropImage(backdrop.file_path, 'w780')}
+                  alt={title}
+                />
+              </NavLink>
             ))}
           </div>
         </Section>

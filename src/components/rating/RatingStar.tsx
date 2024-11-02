@@ -11,9 +11,7 @@ const RatingStar = ({
   const rating = value === 0 ? 'NR' : value.toFixed(1);
   return (
     <div className={`${classes.container} ${classes[`container--${size}`]}`}>
-      <span>
-        <IoMdStar />
-      </span>
+      <IoMdStar className={classes.star} />
       <p>{rating}</p>
     </div>
   );

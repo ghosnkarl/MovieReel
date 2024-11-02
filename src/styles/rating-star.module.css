@@ -15,6 +15,6 @@
   align-items: flex-start !important;
 }
 
-.container span {
+.star {
   color: var(--color-primary-900);
 }

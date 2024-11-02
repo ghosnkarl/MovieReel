@@ -1,6 +1,6 @@
-import { NavLink, useLocation } from "react-router-dom";
-import classes from "./images-page.module.css";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import { NavLink, useLocation } from 'react-router-dom';
+import classes from './images-page.module.css';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const ImagesPage = () => {
   const location = useLocation();
@@ -8,12 +8,13 @@ const ImagesPage = () => {
 
   return (
     <div>
-      <div className={classes["images-container"]}>
+      <div className={classes['images-container']}>
         {images.map((image: { galleryImage: string; fullImage: string }) => (
           <NavLink
+            className={classes.container}
             key={image.galleryImage}
             to={image.fullImage}
-            target="_blank"
+            target='_blank'
           >
             <LazyLoadImage src={image.galleryImage} />
           </NavLink>

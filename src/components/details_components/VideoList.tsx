@@ -1,15 +1,15 @@
 import classes from '../../styles/video.module.css';
-import { IoPlayCircleOutline } from 'react-icons/io5';
-import ReactPlayer from 'react-player';
 import { useEffect, useRef, useState } from 'react';
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import { VideoInterface } from '../../models/mediaModel';
 import MotionDiv from '../ui/MotionDiv';
 import Section from '../Section';
+import { FaYoutube } from 'react-icons/fa6';
+import { NavLink } from 'react-router-dom';
 
 interface VideoItemProps {
   video: VideoInterface;
-  onVideoClicked: (key: string) => void;
+  onVideoClicked: (video: VideoInterface) => void;
   selectedVideoKey: string;
 }
 
@@ -24,27 +24,24 @@ const VideoItem = ({
         className={`${classes['video__item']} ${
           selectedVideoKey === video.key ? classes['video__item--selected'] : ''
         }`}
-        onClick={() => onVideoClicked(video.key)}
+        onClick={() => onVideoClicked(video)}
       >
         <img
           alt={video.name}
           src={`https://i.ytimg.com/vi/${video.key}/hqdefault.jpg`}
         />
 
-        <IoPlayCircleOutline className={classes['video__item--play']} />
+        <FaYoutube className={classes['video__item--play']} />
       </div>
     </MotionDiv>
   );
 };
 
 const VideoList = ({ videos }: { videos: VideoInterface[] }) => {
-  const [selectedVideo, setSelectedVideo] = useState(videos[0].key);
+  const [selectedVideo, setSelectedVideo] = useState<VideoInterface>(videos[0]);
 
   const listRef = useRef<HTMLUListElement>(null);
   const [ref, setRef] = useState<HTMLUListElement | null>(null);
-  const divRef = useRef<HTMLDivElement>(null);
-  const showScrollArrows =
-    divRef.current && ref && divRef.current.clientWidth < ref.clientWidth;
 
   useEffect(() => {
     setRef(listRef.current);
@@ -62,36 +59,38 @@ const VideoList = ({ videos }: { videos: VideoInterface[] }) => {
     <Section border='left'>
       <h1 className='section__title'>Videos</h1>
       <div>
-        <div ref={divRef} className={classes.player}>
-          <ReactPlayer
-            width='100%'
-            height='100%'
-            url={`https://www.youtube.com/watch?v=${selectedVideo}`}
-            controls={true}
+        <NavLink
+          to={`https://www.youtube.com/watch?v=${selectedVideo.key}`}
+          className={classes.player}
+          target='_blank'
+        >
+          <img
+            alt={selectedVideo.name}
+            src={`https://i.ytimg.com/vi/${selectedVideo.key}/hqdefault.jpg`}
           />
-        </div>
+          <FaYoutube
+            className={`${classes['video__item--play']} ${classes['video__item--play--large']}`}
+          />
+        </NavLink>
         <div className={classes['videos__list--container']}>
-          {showScrollArrows && (
-            <button className='btn-arrow' onClick={handleLeft}>
-              <MdNavigateBefore />
-            </button>
-          )}
+          <button className='btn-arrow' onClick={handleLeft}>
+            <MdNavigateBefore />
+          </button>
 
           <ul ref={listRef} className='horizontal-list__container'>
             {videos.map((video) => (
               <VideoItem
-                selectedVideoKey={selectedVideo}
+                selectedVideoKey={selectedVideo.key}
                 onVideoClicked={setSelectedVideo}
                 key={video.key}
                 video={video}
               />
             ))}
           </ul>
-          {showScrollArrows && (
-            <button className='btn-arrow' onClick={handleNext}>
-              <MdNavigateNext />
-            </button>
-          )}
+
+          <button className='btn-arrow' onClick={handleNext}>
+            <MdNavigateNext />
+          </button>
         </div>
       </div>
     </Section>
