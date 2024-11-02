@@ -74,8 +74,12 @@ const MediaDetails = ({
           />
         )}
 
-        <MediaDetailsItem title='Budget' text={formattedBudget} />
-        <MediaDetailsItem title='Revenue' text={formattedRevenue} />
+        {budget > 0 && (
+          <MediaDetailsItem title='Budget' text={formattedBudget} />
+        )}
+        {revenue > 0 && (
+          <MediaDetailsItem title='Revenue' text={formattedRevenue} />
+        )}
       </div>
     </Section>
   );

@@ -42,6 +42,9 @@ const VideoList = ({ videos }: { videos: VideoInterface[] }) => {
 
   const listRef = useRef<HTMLUListElement>(null);
   const [ref, setRef] = useState<HTMLUListElement | null>(null);
+  const divRef = useRef<HTMLDivElement>(null);
+  const showScrollArrows =
+    divRef.current && ref && divRef.current.clientWidth < ref.clientWidth;
 
   useEffect(() => {
     setRef(listRef.current);
@@ -59,7 +62,7 @@ const VideoList = ({ videos }: { videos: VideoInterface[] }) => {
     <Section border='left'>
       <h1 className='section__title'>Videos</h1>
       <div>
-        <div className={classes.player}>
+        <div ref={divRef} className={classes.player}>
           <ReactPlayer
             width='100%'
             height='100%'
@@ -68,9 +71,11 @@ const VideoList = ({ videos }: { videos: VideoInterface[] }) => {
           />
         </div>
         <div className={classes['videos__list--container']}>
-          <button className='btn-arrow' onClick={handleLeft}>
-            <MdNavigateBefore />
-          </button>
+          {showScrollArrows && (
+            <button className='btn-arrow' onClick={handleLeft}>
+              <MdNavigateBefore />
+            </button>
+          )}
 
           <ul ref={listRef} className='horizontal-list__container'>
             {videos.map((video) => (
@@ -82,9 +87,11 @@ const VideoList = ({ videos }: { videos: VideoInterface[] }) => {
               />
             ))}
           </ul>
-          <button className='btn-arrow' onClick={handleNext}>
-            <MdNavigateNext />
-          </button>
+          {showScrollArrows && (
+            <button className='btn-arrow' onClick={handleNext}>
+              <MdNavigateNext />
+            </button>
+          )}
         </div>
       </div>
     </Section>

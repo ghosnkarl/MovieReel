@@ -1,27 +1,32 @@
 .container {
   display: flex;
-  padding: 1rem;
   flex-direction: column;
-  text-decoration: none;
-  border-radius: 7px;
   color: white;
-  gap: 2.4rem;
-  &:hover {
-    background-color: var(--color-gray-600);
-  }
+  gap: 2rem;
+  width: max-content;
+  transition: all 0.1s ease-in-out;
+  text-decoration: none;
+  width: 16rem;
 }
 
 .container img {
-  width: 14rem;
-  aspect-ratio: 1;
+  width: 100%;
+  aspect-ratio: 0.7;
   object-fit: cover;
-  border-radius: 50%;
-  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 7px;
+  box-shadow: var(--card--box-shadow);
 }
 
 .container h2 {
   font-size: 1.8rem;
   font-weight: 500;
-  white-space: nowrap;
-  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+}
+
+.container p {
+  font-size: 1.4rem;
+  line-height: 1.2;
+  color: var(--color-gray-300);
+  font-weight: 500;
 }

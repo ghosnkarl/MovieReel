@@ -1,15 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchPaginatedResults } from '../../services/http';
-import ListItem from '../../components/horizontal_list/ListItem';
-import { getProfileImage } from '../../helpers/imageSizes';
 import classes from './people-page.module.css';
 import { PeopleListInterface } from '../../models/peopleModel';
+import PersonListItem from '../../components/PersonListItem';
 
 export default function PeoplePage() {
   const { data, isError, error, refetch } = useQuery({
     queryKey: ['popular', 'people'],
     queryFn: () =>
-      fetchPaginatedResults({ path: 'people/popular', params: null }),
+      fetchPaginatedResults({ path: 'person/popular', params: null }),
     retry: 1,
   });
 
@@ -17,14 +16,14 @@ export default function PeoplePage() {
     <div className={classes.container}>
       {data &&
         data.map((person: PeopleListInterface) => (
-          <ListItem
+          <PersonListItem
             key={person.id}
-            image={getProfileImage(person.profile_path, 'w185')}
+            profile_path={person.profile_path}
             title={person.name}
             text={person.known_for
               .map((media) => (media.name ? media.name : media.title))
               .join(', ')}
-            link={`/people/${person.id}`}
+            id={person.id}
           />
         ))}
     </div>

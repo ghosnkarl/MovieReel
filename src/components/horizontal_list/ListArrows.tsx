@@ -1,5 +1,4 @@
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
-import classes from '../../styles/list-arrows.module.css';
 
 const ListArrows = ({ listRef }: { listRef: HTMLUListElement | null }) => {
   const handleNext = () => {
@@ -11,7 +10,7 @@ const ListArrows = ({ listRef }: { listRef: HTMLUListElement | null }) => {
   };
 
   return (
-    <div className={classes.container}>
+    <div className='list-arrows__container'>
       <button className='btn-arrow' onClick={handleLeft}>
         <MdNavigateBefore />
       </button>

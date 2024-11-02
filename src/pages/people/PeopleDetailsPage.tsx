@@ -1,11 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { fetchPeopleDetails } from '../../services/http';
-import { getPosterImage, getProfileImage } from '../../helpers/imageSizes';
+import { getProfileImage } from '../../helpers/imageSizes';
 import classes from './people-details.module.css';
 import { useState } from 'react';
 import moment from 'moment';
-import ListItem from '../../components/horizontal_list/ListItem';
 import ImageList from '../../components/details_components/ImageList';
 
 const PeopleDetailsPage = () => {
@@ -118,7 +117,7 @@ const PeopleDetailsPage = () => {
             </li>
           </menu>
 
-          {selectedCredit === 'cast' && (
+          {/* {selectedCredit === 'cast' && (
             <div className='flex--wrap-container'>
               {data.combined_credits.cast.map((castMedia) => (
                 <ListItem
@@ -151,7 +150,7 @@ const PeopleDetailsPage = () => {
                 />
               ))}
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>

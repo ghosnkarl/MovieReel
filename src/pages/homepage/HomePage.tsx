@@ -11,10 +11,10 @@ import { discoverReleaseDates } from '../../helpers/discoverParams';
 import TopTrending from '../../components/TopTrending';
 import MediaList from '../../components/horizontal_list/MediaList';
 import { MediaListInterface } from '../../models/mediaModel';
-import PeopleList from '../../components/horizontal_list/PeopleList';
 import { PeopleListInterface } from '../../models/peopleModel';
 import QueryWrapper from '../../components/QueryWrapper';
 import HorizontalListContainer from '../../components/horizontal_list/HorizontalListContainer';
+import PersonListItem from '../../components/PersonListItem';
 
 export default function HomePage() {
   const upComingDates = discoverReleaseDates(true, 5, 'days', 26, 'days');
@@ -94,7 +94,16 @@ export default function HomePage() {
           linkState={null}
           title='Most Popular Celebrities'
         >
-          <PeopleList data={popularPeopleQuery.data as PeopleListInterface[]} />
+          {popularPeopleQuery.data &&
+            popularPeopleQuery.data.map((person: PeopleListInterface) => (
+              <PersonListItem
+                key={person.id}
+                id={person.id}
+                text={null}
+                title={person.name}
+                profile_path={person.profile_path}
+              />
+            ))}
         </HorizontalListContainer>
       </QueryWrapper>
     </div>

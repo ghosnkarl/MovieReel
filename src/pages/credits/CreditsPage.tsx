@@ -2,8 +2,7 @@ import { useLocation } from 'react-router-dom';
 import classes from './credits-page.module.css';
 import { useState } from 'react';
 import { CastInterface, CrewInterface } from '../../models/mediaModel';
-import ListItem from '../../components/horizontal_list/ListItem';
-import { getProfileImage } from '../../helpers/imageSizes';
+import PersonListItem from '../../components/PersonListItem';
 
 const CreditsPage = () => {
   const location = useLocation();
@@ -29,10 +28,10 @@ const CreditsPage = () => {
       <h1 className='section__title'>Cast</h1>
       <div className='flex--wrap-container'>
         {credits.cast.map((cast: CastInterface) => (
-          <ListItem
+          <PersonListItem
             key={cast.credit_id}
-            link={`/people/${cast.id}`}
-            image={getProfileImage(cast.profile_path, 'w185')}
+            id={cast.id}
+            profile_path={cast.profile_path}
             title={cast.name}
             text={cast.character}
           />
@@ -58,10 +57,10 @@ const CreditsPage = () => {
         {filteredCrewList
           .filter((item) => item.department === selectedDepartment)
           .map((crew) => (
-            <ListItem
+            <PersonListItem
               key={crew.credit_id}
-              link={`/people/${crew.id}`}
-              image={getProfileImage(crew.profile_path, 'w185')}
+              id={crew.id}
+              profile_path={crew.profile_path}
               title={crew.name}
               text={crew.job}
             />

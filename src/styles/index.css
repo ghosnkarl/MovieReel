@@ -137,3 +137,9 @@ body {
   background-color: var(--color-primary-900);
   color: white;
 }
+
+.list-arrows__container {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
