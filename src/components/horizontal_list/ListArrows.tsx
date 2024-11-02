@@ -1,5 +1,5 @@
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
-import classes from './list-arrows.module.css';
+import classes from '../../styles/list-arrows.module.css';
 
 const ListArrows = ({ listRef }: { listRef: HTMLUListElement | null }) => {
   const handleNext = () => {

@@ -1,5 +1,5 @@
 import { createRef, useEffect } from 'react';
-import classes from './rating.module.css';
+import classes from '../styles/rating.module.css';
 
 interface RatingProps {
   value: string;

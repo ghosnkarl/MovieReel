@@ -1,18 +1,22 @@
 import { useQuery } from '@tanstack/react-query';
 import { getBackdropImage, getPosterImage } from '../../helpers/imageSizes';
-import { fetchTrendingMovies, fetchTrendingTV } from '../../services/http';
+import { fetchPaginatedResults } from '../../services/http';
 import classes from './top-trending.module.css';
 import moment from 'moment';
-import RatingStar from '../rating/RatingStar';
+import RatingStar from '../RatingStar';
 import LinkWrapper from '../LinkWrapper';
 import HeaderLink from '../HeaderLink';
 import QueryWrapper from '../QueryWrapper';
+import { MediaListInterface } from '../../models/mediaModel';
 
 const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
   const trendingQuery = useQuery({
     queryKey: [type, 'trending'],
     queryFn: () =>
-      type === 'movie' ? fetchTrendingMovies('week') : fetchTrendingTV('week'),
+      fetchPaginatedResults({
+        path: `trending/${type}/week`,
+        params: null,
+      }),
     retry: 1,
   });
 
@@ -39,7 +43,7 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
           </div>
         </LinkWrapper>
         <ul className={classes['container--right']}>
-          {list.map((listItem) => (
+          {list.map((listItem: MediaListInterface) => (
             <LinkWrapper key={listItem.id} link={`/movies/${listItem.id}`}>
               <li className={classes['item-container']}>
                 <img src={getPosterImage(listItem.poster_path, 'w185')} />

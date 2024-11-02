@@ -6,7 +6,7 @@ import { getBackdropImage, getPosterImage } from '../../helpers/imageSizes';
 import classes from '../../styles/carousel.module.css';
 import { NavLink } from 'react-router-dom';
 import { Fragment } from 'react';
-import RatingStar from '../rating/RatingStar';
+import RatingStar from '../RatingStar';
 
 export interface CarouselItemInterface {
   index: number;

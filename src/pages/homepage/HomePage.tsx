@@ -9,12 +9,12 @@ import Carousel from '../../components/carousel/Carousel';
 import { NavLink } from 'react-router-dom';
 import { discoverReleaseDates } from '../../helpers/discoverParams';
 import TopTrending from '../../components/top_trending/TopTrending';
-import HorizontalListContainer from '../../components/horizontal_list/containers/HorizontalListContainer';
 import MediaList from '../../components/horizontal_list/MediaList';
 import { MediaListInterface } from '../../models/mediaModel';
 import PeopleList from '../../components/horizontal_list/PeopleList';
 import { PeopleListInterface } from '../../models/peopleModel';
 import QueryWrapper from '../../components/QueryWrapper';
+import HorizontalListContainer from '../../components/horizontal_list/HorizontalListContainer';
 
 export default function HomePage() {
   const upComingDates = discoverReleaseDates(true, 5, 'days', 26, 'days');

@@ -1,4 +1,4 @@
-import classes from './people-item.module.css';
+import classes from '../../styles/people-item.module.css';
 import { PeopleListInterface } from '../../models/peopleModel';
 import { NavLink } from 'react-router-dom';
 

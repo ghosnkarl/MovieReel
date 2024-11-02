@@ -1,5 +1,5 @@
-import Section from '../section/Section';
-import classes from './keywords.module.css';
+import Section from './section/Section';
+import classes from '../styles/keywords.module.css';
 const Keywords = ({
   keywords,
 }: {

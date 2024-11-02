@@ -76,32 +76,6 @@ export async function discover(type: 'movie' | 'tv', discoverParams: string) {
   return results;
 }
 
-export async function fetchTrendingMovies(type: 'day' | 'week') {
-  const url = buildURL(`trending/movie/${type}`, null);
-
-  const { results } = await getResponse(url);
-  return results;
-}
-
-export async function fetchTrendingTV(type: 'day' | 'week') {
-  const url = buildURL(`trending/tv/${type}`, null);
-
-  const { results } = await getResponse(url);
-  return results;
-}
-
-export async function fetchMovies(type: string) {
-  const url = buildURL(`movie/${type}`, null);
-  const { results } = await getResponse(url);
-  return results;
-}
-
-export async function fetchTV(type: string) {
-  const url = buildURL(`tv/${type}`, null);
-  const { results } = await getResponse(url);
-  return results;
-}
-
 export async function fetchGenres(type: string) {
   const url = buildURL(`genre/${type}/list`, null);
   const { genres } = await getResponse(url);

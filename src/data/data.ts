@@ -1,5 +1,5 @@
 import { discoverReleaseDates } from '../helpers/discoverParams';
-import { discover, fetchMovies } from '../services/http';
+import { discover, fetchPaginatedResults } from '../services/http';
 
 const upComingDates = discoverReleaseDates(true, 5, 'days', 26, 'days');
 const nowPlayingDates = discoverReleaseDates(true, -1, 'month', 5, 'days');
@@ -18,11 +18,11 @@ export const MOVIE_TABS = [
   {
     title: 'Popular',
     value: 'popular',
-    query: fetchMovies('popular'),
+    query: fetchPaginatedResults({ path: 'movie/popular', params: null }),
   },
   {
     title: 'Top Rated',
     value: 'top_rated',
-    query: fetchMovies('top_rated'),
+    query: fetchPaginatedResults({ path: 'movie/top_rated', params: null }),
   },
 ];

@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { CastInterface, CrewInterface } from '../../models/mediaModel';
 import classes from '../../styles/cast.module.css';
 import { getProfileImage } from '../../helpers/imageSizes';
-import HorizontalListContainer from '../horizontal_list/containers/HorizontalListContainer';
+import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
 
 interface CastItemProps {
   link: string;

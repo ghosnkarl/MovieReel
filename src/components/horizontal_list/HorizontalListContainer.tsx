@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import ListArrows from '../../horizontal_list/arrows/ListArrows';
-import Section from '../../section/Section';
-import HeaderLink from '../../HeaderLink';
+import ListArrows from './ListArrows';
+import Section from '../section/Section';
+import HeaderLink from '../HeaderLink';
 
 interface ListProps {
   title: string;

@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import classes from './reviews-page.module.css';
 import { ReviewInterface } from '../../models/mediaModel';
-import Review from '../../components/review/Review';
+import Review from '../../components/Review';
 
 const ReviewsPage = () => {
   const location = useLocation();

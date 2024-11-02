@@ -5,7 +5,6 @@ import { getBackdropImage, getPosterImage } from '../../../helpers/imageSizes';
 import classes from './movie-details.module.css';
 import CastList from '../../../components/details_components/CastList';
 import { getGalleryImages } from '../../../helpers/galleryImages';
-import Keywords from '../../../components/keywords/Keywords';
 import ScrollToTop from '../../../components/ui/ScrollToTop';
 import DetailsHeader from '../../../components/details_components/DetailsHeader';
 import VideoList from '../../../components/details_components/VideoList';
@@ -14,6 +13,7 @@ import RecommendedList from '../../../components/details_components/RecommendedL
 import MediaDetails from '../../../components/details_components/MediaDetails';
 import DetailsReviews from '../../../components/details_components/DetailsReviews';
 import QueryWrapper from '../../../components/QueryWrapper';
+import Keywords from '../../../components/Keywords';
 
 const MovieDetails = () => {
   const params = useParams();

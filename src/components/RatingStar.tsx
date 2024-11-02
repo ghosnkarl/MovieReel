@@ -1,5 +1,5 @@
 import { IoMdStar } from 'react-icons/io';
-import classes from './rating-star.module.css';
+import classes from '../styles/rating-star.module.css';
 
 const RatingStar = ({
   value,

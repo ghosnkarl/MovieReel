@@ -1,6 +1,6 @@
 import moment from 'moment';
 import classes from '../../styles/details-header.module.css';
-import RatingStar from '../rating/RatingStar';
+import RatingStar from '../RatingStar';
 import { GenreInterface } from '../../models/genreModel';
 
 interface DetailsHeaderProps {

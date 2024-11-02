@@ -1,5 +1,4 @@
 .container {
-  /* background-color: var(--color-gray-800); */
   background-color: var(--color-background--card);
   border: 2px solid var(--color-background--border);
   padding: 2.4rem;

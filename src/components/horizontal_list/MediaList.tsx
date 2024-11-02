@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import classes from './media-item.module.css';
+import classes from '../../styles/media-item.module.css';
 import { MediaListInterface } from '../../models/mediaModel';
 import moment from 'moment';
 import { getPosterImage } from '../../helpers/imageSizes';
 import MotionDiv from '../ui/MotionDiv';
-import Rating from '../rating/Rating';
+import Rating from '../Rating';
 
 const MediaList = ({
   data,

@@ -1,20 +1,22 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchPopular } from '../../services/http';
+import { fetchPaginatedResults } from '../../services/http';
 import ListItem from '../../components/horizontal_list/ListItem';
 import { getProfileImage } from '../../helpers/imageSizes';
 import classes from './people-page.module.css';
+import { PeopleListInterface } from '../../models/peopleModel';
 
 export default function PeoplePage() {
   const { data, isError, error, refetch } = useQuery({
-    queryKey: ['popular_people'],
-    queryFn: () => fetchPopular(),
+    queryKey: ['popular', 'people'],
+    queryFn: () =>
+      fetchPaginatedResults({ path: 'people/popular', params: null }),
     retry: 1,
   });
 
   return (
     <div className={classes.container}>
       {data &&
-        data.map((person) => (
+        data.map((person: PeopleListInterface) => (
           <ListItem
             key={person.id}
             image={getProfileImage(person.profile_path, 'w185')}
