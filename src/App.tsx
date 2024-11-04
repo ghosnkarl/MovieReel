@@ -80,8 +80,14 @@ const router = createBrowserRouter([
             children: [
               { index: true, element: <PeopleDetailsPage /> },
               {
-                path: 'images',
-                element: <ImagesPage />,
+                path: '',
+                element: <DetailsRootLayout />,
+                children: [
+                  {
+                    path: 'images',
+                    element: <ImagesPage />,
+                  },
+                ],
               },
             ],
           },

@@ -6,6 +6,7 @@ import classes from './people-details.module.css';
 import { useState } from 'react';
 import moment from 'moment';
 import ImageList from '../../components/details_components/ImageList';
+import { ImageInterface } from '../../models/mediaModel';
 
 const PeopleDetailsPage = () => {
   const params = useParams();
@@ -13,7 +14,7 @@ const PeopleDetailsPage = () => {
   const [readMore, setReadMore] = useState(false);
   const [selectedCredit, setSelectedCredit] = useState<'cast' | 'crew'>('cast');
 
-  const { data, isError, error, refetch } = useQuery({
+  const { data } = useQuery({
     queryKey: ['people', personId],
     queryFn: () => fetchPeopleDetails(personId),
     retry: 1,
@@ -30,7 +31,7 @@ const PeopleDetailsPage = () => {
 
   let profiles: { galleryImage: string; fullImage: string }[] = [];
   if (data.images && data.images.profiles && data.images.profiles.length > 0)
-    profiles = data.images.profiles.map((profile) => {
+    profiles = data.images.profiles.map((profile: ImageInterface) => {
       return {
         galleryImage: getProfileImage(profile.file_path, 'w185'),
         fullImage: getProfileImage(profile.file_path, 'original'),

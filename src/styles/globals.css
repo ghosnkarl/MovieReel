@@ -76,6 +76,27 @@
   align-items: center;
 }
 
+.btn--gradient {
+  border: none;
+  background-image: linear-gradient(
+    to right,
+    #ff512f 0%,
+    #f09819 51%,
+    #ff512f 100%
+  );
+  padding: 1rem 2.2rem 1rem 1.2rem;
+  font-size: 2rem;
+  display: flex;
+  gap: 0.8rem;
+  border-radius: 1000px;
+  background-size: 200% auto;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn--gradient:hover {
+  background-position: right center;
+}
+
 .btn-department {
   padding: 0.8rem 1.6rem;
   font-size: 1.5rem;
