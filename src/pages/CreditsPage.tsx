@@ -1,10 +1,10 @@
 import { useLocation } from 'react-router-dom';
-import classes from './credits-page.module.css';
+import classes from '../styles/credits-page.module.css';
 import { useState } from 'react';
-import { CastInterface, CrewInterface } from '../../models/mediaModel';
-import PersonListItem from '../../components/PersonListItem';
-import Tabs, { TabObjectProps } from '../../components/Tabs';
-import { CREDITS_TABS } from '../../data/data';
+import { CastInterface, CrewInterface } from '../models/mediaModel';
+import PersonListItem from '../components/PersonListItem';
+import Tabs, { TabObjectProps } from '../components/Tabs';
+import { CREDITS_TABS } from '../data/data';
 
 const CreditsPage = () => {
   const location = useLocation();

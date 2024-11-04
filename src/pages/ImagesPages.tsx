@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import classes from './images-page.module.css';
+import classes from '../styles/images-page.module.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const ImagesPage = () => {

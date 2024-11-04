@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import classes from '../../pages/movies/movie_details/movie-details.module.css';
+import classes from '../../styles/movie-details.module.css';
 import { ReviewInterface } from '../../models/mediaModel';
 import Section from '../Section';
 import Review from '../Review';

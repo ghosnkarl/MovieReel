@@ -1,6 +1,6 @@
-import { Outlet } from "react-router-dom";
-import Navigation from "./pages/navigation/Navigation";
-import ScrollToTop from "./components/ui/ScrollToTop";
+import { Outlet } from 'react-router-dom';
+import Navigation from './components/Navigation';
+import ScrollToTop from './components/ui/ScrollToTop';
 
 export default function RootLayout() {
   return (

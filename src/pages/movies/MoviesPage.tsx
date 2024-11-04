@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import classes from './movies-page.module.css';
+import classes from '../../styles/movies-page.module.css';
 import MediaList from '../../components/horizontal_list/MediaList';
 import { MediaListInterface } from '../../models/mediaModel';
 import { useState } from 'react';
@@ -15,7 +15,7 @@ export default function MoviesPage() {
     setSelectedTab(tab);
   };
 
-  const { data, isError, error, refetch } = useQuery({
+  const { data } = useQuery({
     queryKey: ['movies', selectedTab.value],
     queryFn: () => selectedTab.query,
     retry: 1,

@@ -1,13 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
-import { fetchMovieDetails } from '../../../services/http';
-import { getBackdropImage } from '../../../helpers/imageSizes';
-import classes from './movie-details.module.css';
-import ScrollToTop from '../../../components/ui/ScrollToTop';
-import DetailsHeader from '../../../components/details_components/DetailsHeader';
-import QueryWrapper from '../../../components/QueryWrapper';
-import DetailsMainContainer from '../../../components/details_components/DetailsMainContainer';
-import SideDetailsContainer from '../../../components/details_components/SideDetailsContainer';
+import { fetchMovieDetails } from '../../services/http';
+import { getBackdropImage } from '../../helpers/imageSizes';
+import classes from '../../styles/movie-details.module.css';
+import ScrollToTop from '../../components/ui/ScrollToTop';
+import DetailsHeader from '../../components/details_components/DetailsHeader';
+import QueryWrapper from '../../components/QueryWrapper';
+import DetailsMainContainer from '../../components/details_components/DetailsMainContainer';
+import SideDetailsContainer from '../../components/details_components/SideDetailsContainer';
 
 const MovieDetails = () => {
   const params = useParams();

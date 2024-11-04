@@ -1,5 +1,5 @@
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import classes from './details-root-layout.module.css';
+import classes from '../styles/details-root-layout.module.css';
 import { IoArrowBack } from 'react-icons/io5';
 
 const DetailsRootLayout = () => {

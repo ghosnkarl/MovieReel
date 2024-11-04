@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import classes from '../movies/movies-page.module.css';
+import classes from '../../styles/movies-page.module.css';
 import MediaList from '../../components/horizontal_list/MediaList';
 import { MediaListInterface } from '../../models/mediaModel';
 import { useState } from 'react';

@@ -1,20 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
-import {
-  discover,
-  fetchGenres,
-  fetchPaginatedResults,
-} from '../../services/http';
-import classes from './homepage.module.css';
-import Carousel from '../../components/carousel/Carousel';
+import { discover, fetchGenres, fetchPaginatedResults } from '../services/http';
+import classes from '../styles/homepage.module.css';
+import Carousel from '../components/carousel/Carousel';
 import { NavLink } from 'react-router-dom';
-import { discoverReleaseDates } from '../../helpers/discoverParams';
-import TopTrending from '../../components/TopTrending';
-import MediaList from '../../components/horizontal_list/MediaList';
-import { MediaListInterface } from '../../models/mediaModel';
-import { PeopleListInterface } from '../../models/peopleModel';
-import QueryWrapper from '../../components/QueryWrapper';
-import HorizontalListContainer from '../../components/horizontal_list/HorizontalListContainer';
-import PersonListItem from '../../components/PersonListItem';
+import { discoverReleaseDates } from '../helpers/discoverParams';
+import TopTrending from '../components/TopTrending';
+import MediaList from '../components/horizontal_list/MediaList';
+import { MediaListInterface } from '../models/mediaModel';
+import { PeopleListInterface } from '../models/peopleModel';
+import QueryWrapper from '../components/QueryWrapper';
+import HorizontalListContainer from '../components/horizontal_list/HorizontalListContainer';
+import PersonListItem from '../components/PersonListItem';
 
 export default function HomePage() {
   const upComingDates = discoverReleaseDates(true, 5, 'days', 26, 'days');

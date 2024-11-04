@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { getGalleryImages } from '../../helpers/galleryImages';
-import classes from '../../pages/movies/movie_details/movie-details.module.css';
+import classes from '../../styles/movie-details.module.css';
 import { fetchGenres } from '../../services/http';
 import VideoList from './VideoList';
 import ImageList from './ImageList';

@@ -1,24 +1,22 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './RootLayout';
-import HomePage from './pages/homepage/HomePage';
+import HomePage from './pages/HomePage';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './services/http';
 import MoviesPage from './pages/movies/MoviesPage';
 import TVPage from './pages/tv/TVPage';
 import PeoplePage from './pages/people/PeoplePage';
-import DiscoverPage from './pages/discover/DiscoverPage';
-import MovieDetails from './pages/movies/movie_details/MovieDetails';
-import MoviesRootLayout from './pages/movies/MoviesRootLayout';
-
-import ReviewsPage from './pages/reviews/ReviewsPage';
-import ImagesPage from './pages/images/ImagesPages';
-import PeopleRootLayout from './pages/people/PeopleRootLayout';
+import DiscoverPage from './pages/DiscoverPage';
+import ReviewsPage from './pages/ReviewsPage';
+import ImagesPage from './pages/ImagesPages';
 import PeopleDetailsPage from './pages/people/PeopleDetailsPage';
-import PeopleDetailsRootLayout from './pages/people/PeopleDetailsRootLayout';
-import CreditsPage from './pages/credits/CreditsPage';
 
-import DetailsRootLayout from './pages/details_root_layout/DetailsRootLayout';
+import CreditsPage from './pages/CreditsPage';
+
+import DetailsRootLayout from './pages/DetailsRootLayout';
 import ErrorPage from './components/ErrorPage';
+import OutletRootLayout from './components/OutletRootLayout';
+import MovieDetails from './pages/movies/MovieDetails';
 
 const router = createBrowserRouter([
   {
@@ -29,7 +27,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       {
         path: 'movies',
-        element: <MoviesRootLayout />,
+        element: <OutletRootLayout />,
         children: [
           {
             index: true,
@@ -37,7 +35,7 @@ const router = createBrowserRouter([
           },
           {
             path: ':movieId',
-            element: <MoviesRootLayout />,
+            element: <OutletRootLayout />,
             children: [
               {
                 index: true,
@@ -68,7 +66,7 @@ const router = createBrowserRouter([
       { path: 'tv', element: <TVPage /> },
       {
         path: 'people',
-        element: <PeopleRootLayout />,
+        element: <OutletRootLayout />,
         children: [
           {
             index: true,
@@ -76,7 +74,7 @@ const router = createBrowserRouter([
           },
           {
             path: ':personId',
-            element: <PeopleDetailsRootLayout />,
+            element: <OutletRootLayout />,
             children: [
               { index: true, element: <PeopleDetailsPage /> },
               {

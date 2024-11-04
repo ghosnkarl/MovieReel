@@ -4,7 +4,7 @@ import {
   useNavigate,
 } from 'react-router-dom';
 import classes from '../styles/error-page.module.css';
-import Navigation from '../pages/navigation/Navigation';
+import Navigation from './Navigation';
 import { IoArrowBack } from 'react-icons/io5';
 
 const ErrorPage = () => {

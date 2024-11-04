@@ -1,5 +1,5 @@
 import { MovieDetailsInterface } from '../../models/mediaModel';
-import classes from '../../pages/movies/movie_details/movie-details.module.css';
+import classes from '../../styles/movie-details.module.css';
 import Keywords from '../Keywords';
 import DetailsReviews from './DetailsReviews';
 import MediaDetails from './MediaDetails';

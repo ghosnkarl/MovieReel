@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { fetchPeopleDetails } from '../../services/http';
 import { getProfileImage } from '../../helpers/imageSizes';
-import classes from './people-details.module.css';
+import classes from '../../styles/people-details.module.css';
 import { useState } from 'react';
 import moment from 'moment';
 import ImageList from '../../components/details_components/ImageList';
