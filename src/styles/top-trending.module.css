@@ -12,6 +12,7 @@
   background-color: var(--color-background--card);
   display: flex;
   flex-direction: column;
+  box-shadow: var(--card--box-shadow);
   cursor: pointer;
   border-radius: 10px;
   overflow: hidden;

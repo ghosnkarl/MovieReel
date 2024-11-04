@@ -4,6 +4,7 @@
   border-radius: 7px;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--card--box-shadow);
 }
 
 .border--left {

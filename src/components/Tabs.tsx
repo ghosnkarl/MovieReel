@@ -3,17 +3,17 @@ import { MediaListInterface } from '../models/mediaModel';
 import { PeopleListInterface } from '../models/peopleModel';
 import { motion } from 'framer-motion';
 
-interface ListTabsProps {
-  selectedType: TabOjectProps | null;
-  onSelectType: (type: TabOjectProps) => void;
-  tabs: TabOjectProps[];
+interface TabsProps {
+  selectedType: TabObjectProps | null;
+  onSelectType: (type: TabObjectProps) => void;
+  tabs: TabObjectProps[];
   layoutId: string;
 }
 
-export interface TabOjectProps {
+export interface TabObjectProps {
   title: string;
   value: string;
-  query: Promise<MediaListInterface[] | PeopleListInterface[]>;
+  query?: Promise<MediaListInterface[] | PeopleListInterface[]>;
 }
 
 interface TabProps {
@@ -39,12 +39,12 @@ function Tab({ isSelected, onSelect, children, layoutId }: TabProps) {
   );
 }
 
-export default function ListTabs({
+export default function Tabs({
   selectedType,
   onSelectType,
   tabs,
   layoutId,
-}: ListTabsProps) {
+}: TabsProps) {
   return (
     <menu className='btn tabs'>
       {tabs.map((tab) => (

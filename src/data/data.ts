@@ -26,3 +26,8 @@ export const MOVIE_TABS = [
     query: fetchPaginatedResults({ path: 'movie/top_rated', params: null }),
   },
 ];
+
+export const CREDITS_TABS = [
+  { title: 'Cast', value: 'cast' },
+  { title: 'Crew', value: 'crew' },
+];

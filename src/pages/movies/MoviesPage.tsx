@@ -3,15 +3,15 @@ import classes from './movies-page.module.css';
 import MediaList from '../../components/horizontal_list/MediaList';
 import { MediaListInterface } from '../../models/mediaModel';
 import { useState } from 'react';
-import ListTabs, { TabOjectProps } from '../../components/ListTabs';
+import Tabs, { TabObjectProps } from '../../components/Tabs';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import { MOVIE_TABS } from '../../data/data';
 
 export default function MoviesPage() {
-  const tabs: TabOjectProps[] = MOVIE_TABS;
+  const tabs: TabObjectProps[] = MOVIE_TABS;
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
 
-  const handleSelectTab = (tab: TabOjectProps) => {
+  const handleSelectTab = (tab: TabObjectProps) => {
     setSelectedTab(tab);
   };
 
@@ -29,7 +29,7 @@ export default function MoviesPage() {
 
   return (
     <div className='page-container'>
-      <ListTabs
+      <Tabs
         onSelectType={handleSelectTab}
         selectedType={selectedTab}
         tabs={tabs}

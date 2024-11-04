@@ -32,7 +32,10 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
       <div className={classes.container}>
         <LinkWrapper link={`/movies/${data[0].id}`}>
           <div className={classes['container__left']}>
-            <img src={getBackdropImage(data[0].backdrop_path, 'w780')} />
+            <img
+              src={getBackdropImage(data[0].backdrop_path, 'w780')}
+              alt={data[0].title || data[0].name}
+            />
             <div className={classes['container__left--text']}>
               <h1>{data[0].title || data[0].name}</h1>
               <div>

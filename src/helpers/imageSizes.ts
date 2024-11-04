@@ -4,7 +4,7 @@ export const getBackdropImage = (
 ) => {
   return path
     ? `https://image.tmdb.org/t/p/${size}/${path}`
-    : '/placeholder.png';
+    : '/backdrop_placeholder.jpg';
 };
 
 export const getLogoImage = (
@@ -31,5 +31,5 @@ export const getProfileImage = (
 ) => {
   return path
     ? `https://image.tmdb.org/t/p/${size}/${path}`
-    : '/placeholder.png';
+    : '/person_placeholder.jpg';
 };

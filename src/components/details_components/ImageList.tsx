@@ -28,7 +28,7 @@ const ImageList = ({ backdropList, title, images, image }: ImageListProps) => {
             {backdropList.map((backdrop) => (
               <NavLink
                 className={classes['image__container']}
-                to=''
+                to={getBackdropImage(backdrop.file_path, 'original')}
                 target='_blank'
                 key={backdrop.file_path}
               >

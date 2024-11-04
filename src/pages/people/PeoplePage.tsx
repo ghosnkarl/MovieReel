@@ -20,9 +20,10 @@ export default function PeoplePage() {
             key={person.id}
             profile_path={person.profile_path}
             title={person.name}
-            text={person.known_for
-              .map((media) => (media.name ? media.name : media.title))
-              .join(', ')}
+            // text={person.known_for
+            //   .map((media) => (media.name ? media.name : media.title))
+            //   .join(', ')}
+            text={null}
             id={person.id}
           />
         ))}
