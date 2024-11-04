@@ -7,12 +7,25 @@ import { useState } from 'react';
 import moment from 'moment';
 import ImageList from '../../components/details_components/ImageList';
 import { ImageInterface } from '../../models/mediaModel';
+import MediaItem from '../../components/MediaItem';
+import { CREDITS_TABS } from '../../data/data';
+import Tabs, { TabObjectProps } from '../../components/Tabs';
+import {
+  CastMediaInterface,
+  CrewMediaInterface,
+} from '../../models/peopleModel';
 
 const PeopleDetailsPage = () => {
   const params = useParams();
   const personId = params.personId;
   const [readMore, setReadMore] = useState(false);
-  const [selectedCredit, setSelectedCredit] = useState<'cast' | 'crew'>('cast');
+
+  const tabs: TabObjectProps[] = CREDITS_TABS;
+  const [selectedTab, setSelectedTab] = useState(tabs[0]);
+
+  const handleSelectTab = (tab: TabObjectProps) => {
+    setSelectedTab(tab);
+  };
 
   const { data } = useQuery({
     queryKey: ['people', personId],
@@ -37,10 +50,6 @@ const PeopleDetailsPage = () => {
         fullImage: getProfileImage(profile.file_path, 'original'),
       };
     });
-
-  const handleTabClick = (type: 'cast' | 'crew') => {
-    setSelectedCredit(type);
-  };
 
   return (
     <div className={classes.container}>
@@ -94,64 +103,48 @@ const PeopleDetailsPage = () => {
         )}
 
         <div className={classes['combined-credits']}>
-          <h2 className={classes.header}>Movies &amp; TV Shows</h2>
-          <menu className='tabs'>
-            <li>
-              <button
-                onClick={() => handleTabClick('cast')}
-                className={`btn tabs--btn ${
-                  selectedCredit === 'cast' ? 'selected' : ''
-                }`}
-              >
-                Cast
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => handleTabClick('crew')}
-                className={`btn tabs--btn ${
-                  selectedCredit === 'crew' ? 'selected' : ''
-                }`}
-              >
-                Crew
-              </button>
-            </li>
-          </menu>
+          <h2 className='section__title'>Movies &amp; TV Shows</h2>
+          <Tabs
+            onSelectType={handleSelectTab}
+            selectedType={selectedTab}
+            tabs={tabs}
+            layoutId='credits_page'
+          />
 
-          {/* {selectedCredit === 'cast' && (
+          {selectedTab.value === 'cast' && (
             <div className='flex--wrap-container'>
-              {data.combined_credits.cast.map((castMedia) => (
-                <ListItem
-                  key={castMedia.credit_id}
-                  link='/'
-                  title={
-                    castMedia.media_type === 'movie'
-                      ? castMedia.title!
-                      : castMedia.name!
-                  }
-                  image={getPosterImage(castMedia.poster_path, 'w342')}
-                  text={castMedia.character}
-                />
-              ))}
+              {data.combined_credits.cast.map(
+                (castMedia: CastMediaInterface) => (
+                  <MediaItem
+                    key={castMedia.credit_id}
+                    id={castMedia.id}
+                    title={castMedia.title || castMedia.name}
+                    type={castMedia.media_type === 'movie' ? 'movies' : 'tv'}
+                    poster_path={castMedia.poster_path}
+                    text={castMedia.character}
+                    vote_average={castMedia.vote_average}
+                  />
+                )
+              )}
             </div>
           )}
-          {selectedCredit === 'crew' && (
+          {selectedTab.value === 'crew' && (
             <div className='flex--wrap-container'>
-              {data.combined_credits.crew.map((crewMedia) => (
-                <ListItem
-                  key={crewMedia.credit_id}
-                  link='/'
-                  title={
-                    crewMedia.media_type === 'movie'
-                      ? crewMedia.title!
-                      : crewMedia.name!
-                  }
-                  image={getPosterImage(crewMedia.poster_path, 'w342')}
-                  text={crewMedia.job}
-                />
-              ))}
+              {data.combined_credits.crew.map(
+                (crewMedia: CrewMediaInterface) => (
+                  <MediaItem
+                    key={crewMedia.credit_id}
+                    id={crewMedia.id}
+                    title={crewMedia.title || crewMedia.name}
+                    type={crewMedia.media_type === 'movie' ? 'movies' : 'tv'}
+                    poster_path={crewMedia.poster_path}
+                    text={crewMedia.job}
+                    vote_average={crewMedia.vote_average}
+                  />
+                )
+              )}
             </div>
-          )} */}
+          )}
         </div>
       </div>
     </div>

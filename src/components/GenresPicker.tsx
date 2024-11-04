@@ -6,7 +6,7 @@ import { GenreInterface } from '../models/genreModel';
 
 const GenresPicker = () => {
   const [selectedGenres, setSelectedGenres] = useState<number[]>([]);
-  const { data, isError, error, refetch } = useQuery({
+  const { data } = useQuery({
     queryKey: ['genres', 'movie'],
     queryFn: () => fetchGenres('movie'),
     retry: 1,

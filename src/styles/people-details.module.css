@@ -84,5 +84,8 @@
   margin-top: 4.8rem;
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
+}
+
+.combined-credits h2 {
+  margin-bottom: 2.4rem;
 }
