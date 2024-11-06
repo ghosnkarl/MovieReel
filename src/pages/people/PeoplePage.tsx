@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchPaginatedResults } from '../../services/http';
+import { fetchResults } from '../../services/http';
 import classes from '../../styles/people-page.module.css';
 import { PeopleListInterface } from '../../models/peopleModel';
 import PersonListItem from '../../components/PersonListItem';
@@ -7,8 +7,7 @@ import PersonListItem from '../../components/PersonListItem';
 export default function PeoplePage() {
   const { data } = useQuery({
     queryKey: ['popular', 'people'],
-    queryFn: () =>
-      fetchPaginatedResults({ path: 'person/popular', params: null }),
+    queryFn: () => fetchResults({ path: 'person/popular', params: null }),
     retry: 1,
   });
 

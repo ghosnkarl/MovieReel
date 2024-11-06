@@ -7,17 +7,19 @@ const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
 
 const buildURL = (
   path: string,
-  params: { [key: string]: string } | null
+  params: { [key: string]: string } | null | string
 ): string => {
   let queryParams = null;
 
-  if (params) {
+  if (params && typeof params === 'object') {
     queryParams = Object.keys(params)
       .map((key) => `${key}=${params[key]}`)
       .join('&');
   }
+  if (params && typeof params === 'string') queryParams = params;
 
   const url = `${BASE_URL}/${path}?api_key=${API_KEY}&${queryParams || ''}`;
+  console.log(url);
   return url;
 };
 
@@ -35,62 +37,24 @@ async function getResponse(url: string) {
   return result;
 }
 
-export async function search(type: string, query: string) {
-  const url = `${BASE_URL}/search/${type}?api_key=${API_KEY}&query=${query}`;
-
-  const { results } = await getResponse(url);
-  return results;
-}
-
-export async function fetchMovieDetails(id: string | undefined) {
-  const params = {
-    append_to_response:
-      'credits,images,videos,keywords,reviews,recommendations,similar',
-    include_image_language: 'en,null',
-  };
-
-  const url = buildURL(`movie/${id}`, params);
-  return await getResponse(url);
-}
-
-export async function fetchPeopleDetails(id: string | undefined) {
-  const params = {
-    append_to_response: 'images,combined_credits',
-    include_image_language: 'en,null',
-  };
-
-  const url = buildURL(`person/${id}`, params);
-
-  return await getResponse(url);
-}
-
-export async function fetchCastDetails(id: string | undefined) {
-  const url = buildURL(`movie/${id}/credits`, null);
-
-  return await getResponse(url);
-}
-
-export async function discover(type: 'movie' | 'tv', discoverParams: string) {
-  const url = `${BASE_URL}/discover/${type}?api_key=${API_KEY}&${discoverParams}`;
-  const { results } = await getResponse(url);
-  return results;
-}
-
 export async function fetchGenres(type: string) {
   const url = buildURL(`genre/${type}/list`, null);
   const { genres } = await getResponse(url);
   return genres;
 }
 
-interface PaginatedResultsInterface {
+interface QueryInterface {
   path: string;
-  params: { [key: string]: string } | null;
+  params: { [key: string]: string } | string | null;
 }
 
-export const fetchPaginatedResults = async ({
-  path,
-  params,
-}: PaginatedResultsInterface) => {
+export const fetchSingleResult = async ({ path, params }: QueryInterface) => {
+  const url = buildURL(path, params);
+  const response = await getResponse(url);
+  return response;
+};
+
+export const fetchResults = async ({ path, params }: QueryInterface) => {
   const url = buildURL(path, params);
   const { results } = await getResponse(url);
   return results;

@@ -1,9 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import { discover, fetchGenres, fetchPaginatedResults } from '../services/http';
+import { fetchGenres, fetchResults } from '../services/http';
 import classes from '../styles/homepage.module.css';
 import Carousel from '../components/carousel/Carousel';
 import { NavLink } from 'react-router-dom';
-import { discoverReleaseDates } from '../helpers/discoverParams';
 import TopTrending from '../components/TopTrending';
 import MediaList from '../components/horizontal_list/MediaList';
 import { MediaListInterface } from '../models/mediaModel';
@@ -11,20 +10,20 @@ import { PeopleListInterface } from '../models/peopleModel';
 import QueryWrapper from '../components/QueryWrapper';
 import HorizontalListContainer from '../components/horizontal_list/HorizontalListContainer';
 import PersonListItem from '../components/PersonListItem';
+import { airingTodayDates, upComingDates } from '../helpers/discoverDates';
 
 export default function HomePage() {
-  const upComingDates = discoverReleaseDates(true, 5, 'days', 26, 'days');
-  const airingTodayDates = discoverReleaseDates(false, 0, 'days', 0, 'days');
-
   const upcomingMoviesQuery = useQuery({
     queryKey: ['movie', upComingDates],
-    queryFn: () => discover('movie', upComingDates),
+    queryFn: () =>
+      fetchResults({ path: 'discover/movie', params: upComingDates }),
     retry: 1,
   });
 
   const airingTodayTVQuery = useQuery({
     queryKey: ['tv', airingTodayDates],
-    queryFn: () => discover('tv', airingTodayDates),
+    queryFn: () =>
+      fetchResults({ path: 'discover/tv', params: airingTodayDates }),
     retry: 1,
   });
 
@@ -36,8 +35,7 @@ export default function HomePage() {
 
   const popularPeopleQuery = useQuery({
     queryKey: ['popular', 'people'],
-    queryFn: () =>
-      fetchPaginatedResults({ path: 'person/popular', params: null }),
+    queryFn: () => fetchResults({ path: 'person/popular', params: null }),
     retry: 1,
   });
 

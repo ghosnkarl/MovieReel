@@ -2,8 +2,9 @@ import { ChangeEvent, useRef, useState } from 'react';
 import classes from '../../styles/searchbar.module.css';
 import SearchTag from './SearchTag';
 import { useQuery } from '@tanstack/react-query';
-import { search } from '../../services/http';
+
 import { KeywordInterface } from '../../models/keywordModel';
+import { fetchResults } from '../../services/http';
 
 const Searchbar = () => {
   const [open, setOpen] = useState(false);
@@ -16,7 +17,8 @@ const Searchbar = () => {
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ['keywords', { search: searchTerm }],
-    queryFn: () => search('keyword', searchTerm),
+    queryFn: () =>
+      fetchResults({ path: 'search/keywords', params: searchTerm }),
     retry: 1,
   });
 

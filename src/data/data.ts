@@ -1,16 +1,16 @@
-import { discoverReleaseDates } from '../helpers/discoverParams';
-import { discover, fetchPaginatedResults } from '../services/http';
-
-const upComingDates = discoverReleaseDates(true, 5, 'days', 26, 'days');
-const nowPlayingDates = discoverReleaseDates(true, -1, 'month', 5, 'days');
-const airingTodayDates = discoverReleaseDates(false, 0, 'days', 0, 'days');
-const onAirDates = discoverReleaseDates(false, 0, 'days', 7, 'days');
+import {
+  airingTodayDates,
+  nowPlayingDates,
+  onAirDates,
+  upComingDates,
+} from '../helpers/discoverDates';
+import { fetchResults } from '../services/http';
 
 export const MOVIE_TABS = [
   {
     title: 'Trending',
     value: 'trending',
-    query: fetchPaginatedResults({
+    query: fetchResults({
       path: 'trending/movie/week',
       params: null,
     }),
@@ -18,22 +18,28 @@ export const MOVIE_TABS = [
   {
     title: 'Upcoming',
     value: upComingDates,
-    query: discover('movie', upComingDates),
+    query: fetchResults({
+      path: 'discover/movie',
+      params: upComingDates,
+    }),
   },
   {
     title: 'Now Playing',
     value: nowPlayingDates,
-    query: discover('movie', nowPlayingDates),
+    query: fetchResults({
+      path: 'discover/movie',
+      params: nowPlayingDates,
+    }),
   },
   {
     title: 'Popular',
     value: 'popular',
-    query: fetchPaginatedResults({ path: 'movie/popular', params: null }),
+    query: fetchResults({ path: 'movie/popular', params: null }),
   },
   {
     title: 'Top Rated',
     value: 'top_rated',
-    query: fetchPaginatedResults({ path: 'movie/top_rated', params: null }),
+    query: fetchResults({ path: 'movie/top_rated', params: null }),
   },
 ];
 
@@ -46,7 +52,7 @@ export const TV_TABS = [
   {
     title: 'Trending',
     value: 'trending',
-    query: fetchPaginatedResults({
+    query: fetchResults({
       path: 'trending/tv/week',
       params: null,
     }),
@@ -54,21 +60,24 @@ export const TV_TABS = [
   {
     title: 'Airing Today',
     value: airingTodayDates,
-    query: discover('tv', airingTodayDates),
+    query: fetchResults({
+      path: 'discover/tv',
+      params: airingTodayDates,
+    }),
   },
   {
     title: 'On Air',
     value: onAirDates,
-    query: discover('tv', onAirDates),
+    query: fetchResults({ path: 'discover/tv', params: onAirDates }),
   },
   {
     title: 'Popular',
     value: 'popular',
-    query: fetchPaginatedResults({ path: 'tv/popular', params: null }),
+    query: fetchResults({ path: 'tv/popular', params: null }),
   },
   {
     title: 'Top Rated',
     value: 'top_rated',
-    query: fetchPaginatedResults({ path: 'tv/top_rated', params: null }),
+    query: fetchResults({ path: 'tv/top_rated', params: null }),
   },
 ];

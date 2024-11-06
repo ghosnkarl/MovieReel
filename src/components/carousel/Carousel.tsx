@@ -5,7 +5,7 @@ import { GenreInterface } from '../../models/genreModel';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { useQuery } from '@tanstack/react-query';
 import { discoverReleaseDates } from '../../helpers/discoverParams';
-import { discover } from '../../services/http';
+import { fetchResults } from '../../services/http';
 import LoadingIndicator from '../ui/LoadingIndicator';
 import ErrorBlock from '../ui/ErrorBlock';
 
@@ -37,7 +37,8 @@ const Carousel = ({ genres }: CarouselProps) => {
   const discoverParams = discoverReleaseDates(true, -1, 'month', 5, 'days');
   const { data, isError, refetch } = useQuery({
     queryKey: ['movies', discoverParams],
-    queryFn: () => discover('movie', discoverParams),
+    queryFn: () =>
+      fetchResults({ path: 'discover/movie', params: discoverParams }),
     retry: 1,
   });
 

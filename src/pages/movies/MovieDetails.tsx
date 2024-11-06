@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
-import { fetchMovieDetails } from '../../services/http';
+import { fetchSingleResult } from '../../services/http';
 import { getBackdropImage } from '../../helpers/imageSizes';
 import classes from '../../styles/movie-details.module.css';
 import ScrollToTop from '../../components/ui/ScrollToTop';
@@ -12,10 +12,16 @@ import SideDetailsContainer from '../../components/details_components/SideDetail
 const MovieDetails = () => {
   const params = useParams();
   const movieId = params.movieId;
+  const queryParams = {
+    append_to_response:
+      'credits,images,videos,keywords,reviews,recommendations,similar',
+    include_image_language: 'en,null',
+  };
 
   const movieQuery = useQuery({
     queryKey: ['movies', movieId],
-    queryFn: () => fetchMovieDetails(movieId),
+    queryFn: () =>
+      fetchSingleResult({ path: `movie/${movieId}`, params: queryParams }),
     retry: 0,
   });
 

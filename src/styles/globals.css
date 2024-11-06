@@ -113,8 +113,6 @@
 /********************** Tabs **********************/
 .tabs {
   list-style: none;
-  display: flex;
-  align-items: center;
   gap: 1.6rem;
   margin-bottom: 1.6rem;
 }
@@ -122,7 +120,7 @@
 .tabs--btn {
   border: none;
   padding: 0.5rem 1rem;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
 }
 
 .tab-active,

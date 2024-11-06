@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
-import { fetchPeopleDetails } from '../../services/http';
+import { fetchSingleResult } from '../../services/http';
 import { getProfileImage } from '../../helpers/imageSizes';
 import classes from '../../styles/people-details.module.css';
 import { useState } from 'react';
@@ -19,6 +19,10 @@ const PeopleDetailsPage = () => {
   const params = useParams();
   const personId = params.personId;
   const [readMore, setReadMore] = useState(false);
+  const queryParams = {
+    append_to_response: 'images,combined_credits',
+    include_image_language: 'en,null',
+  };
 
   const tabs: TabObjectProps[] = CREDITS_TABS;
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
@@ -29,7 +33,8 @@ const PeopleDetailsPage = () => {
 
   const { data } = useQuery({
     queryKey: ['people', personId],
-    queryFn: () => fetchPeopleDetails(personId),
+    queryFn: () =>
+      fetchSingleResult({ path: `person/${personId}`, params: queryParams }),
     retry: 1,
   });
 
@@ -81,7 +86,7 @@ const PeopleDetailsPage = () => {
       </div>
       <div className={classes['main-content']}>
         <h1 className={classes.name}>{data?.name}</h1>
-        <h2 className={classes.header}>Biography</h2>
+        <h1 className='section__title'>Biography</h1>
         <p
           className={`${classes.biography} ${
             readMore ? '' : classes['read-more']
@@ -90,7 +95,7 @@ const PeopleDetailsPage = () => {
           {data?.biography}
         </p>
         <button className={classes['btn-more']} onClick={toggleReadMore}>
-          <strong>Read More</strong>
+          <strong>Read {readMore ? 'Less' : 'More'}</strong>
         </button>
 
         {profileList && profileList.length > 0 && (

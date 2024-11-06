@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { getBackdropImage, getPosterImage } from '../helpers/imageSizes';
-import { fetchPaginatedResults } from '../services/http';
+import { fetchResults } from '../services/http';
 import classes from '../styles/top-trending.module.css';
 import moment from 'moment';
 import RatingStar from './rating/RatingStar';
@@ -13,7 +13,7 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
   const trendingQuery = useQuery({
     queryKey: [type, 'trending'],
     queryFn: () =>
-      fetchPaginatedResults({
+      fetchResults({
         path: `trending/${type}/week`,
         params: null,
       }),
