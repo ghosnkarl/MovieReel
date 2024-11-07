@@ -34,12 +34,6 @@ const DetailsHeader = ({
   }`;
   return (
     <div className={classes.header}>
-      <img
-        className={classes['backdrop-img']}
-        src={getBackdropImage(backdrop_path, 'w1280')}
-        alt={title}
-      />
-
       <div className={classes['header__text--container']}>
         <h1 className={classes['header__title']}>{title}</h1>
         <div className={classes['header__genres']}>
@@ -49,6 +43,11 @@ const DetailsHeader = ({
 
         <p className={classes['header__overview']}>{overview}</p>
       </div>
+      <img
+        className={classes['backdrop-img']}
+        src={getBackdropImage(backdrop_path, 'w1280')}
+        alt={title}
+      />
     </div>
   );
 };

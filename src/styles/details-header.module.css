@@ -1,18 +1,17 @@
 .header {
   position: relative;
   display: flex;
-  flex-direction: column;
-  height: 65vh;
-  align-items: center;
+  height: 55vh;
+  justify-content: center;
 }
 
 .backdrop-img {
   position: absolute;
   object-fit: cover;
-  width: 100%;
+  width: 50%;
   right: 0;
+  border-bottom-left-radius: 300px;
   height: 100%;
-  opacity: 0.1;
 }
 
 .header__text--container {
@@ -42,5 +41,5 @@
 .header__overview {
   margin-top: 1.4rem;
   font-size: 1.6rem;
-  line-height: 1.4;
+  line-height: 1.6;
 }

@@ -8,7 +8,7 @@
   justify-content: space-between;
   padding: 1.2rem;
   font-size: 1.4rem;
-  background-color: var(--color-gray-700);
+
   border-radius: 5px;
   cursor: pointer;
 }
@@ -30,7 +30,7 @@
   flex-direction: column;
   align-items: center;
   margin-top: 0.6rem;
-  background-color: var(--color-gray-700);
+
   border-radius: 5px;
   max-height: 40vh;
   overflow-y: scroll;
