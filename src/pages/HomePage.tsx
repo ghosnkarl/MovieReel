@@ -5,12 +5,12 @@ import Carousel from '../components/carousel/Carousel';
 import { NavLink } from 'react-router-dom';
 import TopTrending from '../components/TopTrending';
 import MediaList from '../components/horizontal_list/MediaList';
-import { IMedia } from '../models/mediaModel';
+import { IMovie } from '../models/mediaModel';
 import { IPeople } from '../models/peopleModel';
-import QueryWrapper from '../components/QueryWrapper';
-import HorizontalListContainer from '../components/horizontal_list/HorizontalListContainer';
 import PersonListItem from '../components/PersonListItem';
 import { airingTodayDates, upComingDates } from '../helpers/discoverDates';
+import HorizontalWrapper from '../components/HorizontalWrapper';
+import { ITV } from '../models/tvModel';
 
 export default function HomePage() {
   const upcomingMoviesQuery = useQuery({
@@ -52,51 +52,42 @@ export default function HomePage() {
         <Carousel genres={genresQuery.data} />
       </div>
 
-      <QueryWrapper message='Upcoming Movies' query={upcomingMoviesQuery}>
-        <HorizontalListContainer
-          link='/movies'
-          linkState={null}
-          title='Upcoming Movies'
-        >
-          <MediaList
-            type='movies'
-            data={upcomingMoviesQuery.data as IMedia[]}
-          />
-        </HorizontalListContainer>
-      </QueryWrapper>
+      <HorizontalWrapper
+        query={upcomingMoviesQuery}
+        title='Upcoming Movies'
+        link='/movies'
+      >
+        <MediaList type='movies' data={upcomingMoviesQuery.data as IMovie[]} />
+      </HorizontalWrapper>
 
       <TopTrending type='movie' />
 
-      <QueryWrapper message='Airing Today TV Shows' query={airingTodayTVQuery}>
-        <HorizontalListContainer
-          link='/tv'
-          linkState={null}
-          title='Airing Today TV Shows'
-        >
-          <MediaList type='tv' data={airingTodayTVQuery.data as IMedia[]} />
-        </HorizontalListContainer>
-      </QueryWrapper>
+      <HorizontalWrapper
+        query={airingTodayTVQuery}
+        title='Airing Today TV Shows'
+        link='/tv'
+      >
+        <MediaList type='tv' data={airingTodayTVQuery.data as ITV[]} />
+      </HorizontalWrapper>
 
       <TopTrending type='tv' />
 
-      <QueryWrapper query={popularPeopleQuery} message='Popular Celebrities'>
-        <HorizontalListContainer
-          link='/people'
-          linkState={null}
-          title='Most Popular Celebrities'
-        >
-          {popularPeopleQuery.data &&
-            popularPeopleQuery.data.map((person: IPeople) => (
-              <PersonListItem
-                key={person.id}
-                id={person.id}
-                text={null}
-                title={person.name}
-                profile_path={person.profile_path}
-              />
-            ))}
-        </HorizontalListContainer>
-      </QueryWrapper>
+      <HorizontalWrapper
+        query={popularPeopleQuery}
+        title='Most Popular Celebrities'
+        link='/people'
+      >
+        {popularPeopleQuery.data &&
+          popularPeopleQuery.data.map((person: IPeople) => (
+            <PersonListItem
+              key={person.id}
+              id={person.id}
+              text={null}
+              title={person.name}
+              profile_path={person.profile_path}
+            />
+          ))}
+      </HorizontalWrapper>
     </div>
   );
 }

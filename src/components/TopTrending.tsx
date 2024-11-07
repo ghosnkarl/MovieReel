@@ -7,7 +7,7 @@ import RatingStar from './rating/RatingStar';
 import LinkWrapper from './LinkWrapper';
 import HeaderLink from './HeaderLink';
 import QueryWrapper from './QueryWrapper';
-import { IMedia } from '../models/mediaModel';
+import { IMovie, ITVShow } from '../models/mediaModel';
 
 const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
   const trendingQuery = useQuery({
@@ -46,21 +46,24 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
           </div>
         </LinkWrapper>
         <ul className={classes['container--right']}>
-          {list.map((listItem: IMedia) => (
-            <LinkWrapper key={listItem.id} link={`/movies/${listItem.id}`}>
-              <li className={classes['item-container']}>
-                <img src={getPosterImage(listItem.poster_path, 'w185')} />
+          {list.map((listItem: IMovie | ITVShow) => {
+            const title = 'title' in listItem ? listItem.title : listItem.name;
+            return (
+              <LinkWrapper key={listItem.id} link={`/movies/${listItem.id}`}>
+                <li className={classes['item-container']}>
+                  <img src={getPosterImage(listItem.poster_path, 'w185')} />
 
-                <div className={classes['item-container--right']}>
-                  <h1>{listItem.title || listItem.name}</h1>
-                  <RatingStar value={listItem.vote_average} size='small' />
-                  <p className={classes.date}>
-                    {moment(listItem.release_date).format('MMM DD, YYYY')}
-                  </p>
-                </div>
-              </li>
-            </LinkWrapper>
-          ))}
+                  <div className={classes['item-container--right']}>
+                    <h1>{title}</h1>
+                    <RatingStar value={listItem.vote_average} size='small' />
+                    <p className={classes.date}>
+                      {moment(listItem.release_date).format('MMM DD, YYYY')}
+                    </p>
+                  </div>
+                </li>
+              </LinkWrapper>
+            );
+          })}
         </ul>
       </div>
     );

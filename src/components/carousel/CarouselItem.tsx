@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { IMedia } from '../../models/mediaModel';
+import { IMovie } from '../../models/mediaModel';
 import moment from 'moment';
 import { IGenre } from '../../models/genreModel';
 import { getBackdropImage, getPosterImage } from '../../helpers/imageSizes';
@@ -19,7 +19,7 @@ const CarouselItem = ({
   genres,
 }: {
   current: CarouselItemInterface;
-  content: IMedia[];
+  content: IMovie[];
   genres: IGenre[] | undefined;
 }) => (
   <>

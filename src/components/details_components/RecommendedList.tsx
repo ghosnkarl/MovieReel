@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import classes from '../../styles/recommended-list.module.css';
 import { getBackdropImage } from '../../helpers/imageSizes';
-import { IMedia } from '../../models/mediaModel';
+import { IMovie } from '../../models/mediaModel';
 import { IGenre } from '../../models/genreModel';
 import Section from '../Section';
 
@@ -41,7 +41,7 @@ const RecommendedList = ({
   title,
   genreList,
 }: {
-  items: IMedia[];
+  items: IMovie[];
   title: string;
   genreList: IGenre[] | undefined;
 }) => {
@@ -63,7 +63,7 @@ const RecommendedList = ({
               return (
                 <RecommendedListItem
                   backdrop={item.backdrop_path}
-                  title={item.title || item.name}
+                  title={item.title}
                   overview={item.overview}
                   genres={genres}
                   key={item.id}

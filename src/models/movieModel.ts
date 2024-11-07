@@ -1,7 +1,7 @@
 import { ICollection } from './collectionModel';
 import { IGenre } from './genreModel';
 import { IImage } from './imageModel';
-import { ICast, ICrew, IMedia } from './mediaModel';
+import { ICast, ICrew, IMovie } from './mediaModel';
 import { IProductionCompany } from './productionCompanyModel';
 import { IReview } from './reviewModel';
 import { IVideo } from './videoModel';
@@ -36,6 +36,5 @@ export interface IMovieDetails {
   images: IMovieDetailsImages;
   keywords: { keywords: { id: number; name: string }[] };
   reviews: { results: IReview[] };
-  recommendations: { results: IMedia[] };
-  similar: { results: IMedia[] };
+  recommendations: { results: IMovie[] };
 }

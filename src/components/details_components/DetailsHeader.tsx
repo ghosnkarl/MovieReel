@@ -39,7 +39,6 @@ const DetailsHeader = ({
         src={getBackdropImage(backdrop_path, 'w1280')}
         alt={title}
       />
-      <div className={classes['header-overlay']} />
 
       <div className={classes['header__text--container']}>
         <h1 className={classes['header__title']}>{title}</h1>

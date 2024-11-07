@@ -12,7 +12,7 @@ const MovieDetails = () => {
   const movieId = params.movieId;
   const queryParams = {
     append_to_response:
-      'credits,images,videos,keywords,reviews,recommendations,similar',
+      'credits,images,videos,keywords,reviews,recommendations',
     include_image_language: 'en,null',
   };
 

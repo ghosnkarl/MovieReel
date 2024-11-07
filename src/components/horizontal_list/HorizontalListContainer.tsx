@@ -5,7 +5,7 @@ import HeaderLink from '../HeaderLink';
 
 interface ListProps {
   title: string;
-  children: JSX.Element | JSX.Element[];
+  children: React.ReactNode;
   linkState: unknown;
   link: string | null;
 }

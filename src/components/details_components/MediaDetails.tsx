@@ -17,6 +17,10 @@ interface SidebarProps {
   collection: ICollection | null;
 }
 
+// Helper functions for formatting
+const formatCurrency = (amount: number) =>
+  amount > 0 ? `$ ${amount.toLocaleString('en-US')}` : '-';
+
 const MediaDetails = ({
   status,
   homepage,
@@ -27,11 +31,6 @@ const MediaDetails = ({
   tagline,
   collection,
 }: SidebarProps) => {
-  const formattedRevenue =
-    revenue === 0 ? '-' : `$ ${revenue.toLocaleString('en-US')}`;
-  const formattedBudget =
-    budget === 0 ? '-' : `$ ${budget.toLocaleString('en-US')}`;
-
   return (
     <Section border='top'>
       <h1 className='section__title'>Details</h1>
@@ -74,10 +73,10 @@ const MediaDetails = ({
         )}
 
         {budget > 0 && (
-          <MediaDetailsItem title='Budget' text={formattedBudget} />
+          <MediaDetailsItem title='Budget' text={formatCurrency(budget)} />
         )}
         {revenue > 0 && (
-          <MediaDetailsItem title='Revenue' text={formattedRevenue} />
+          <MediaDetailsItem title='Revenue' text={formatCurrency(revenue)} />
         )}
       </div>
     </Section>

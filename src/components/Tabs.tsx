@@ -1,5 +1,5 @@
 import { MouseEventHandler } from 'react';
-import { IMedia } from '../models/mediaModel';
+import { IMovie, ITVShow } from '../models/mediaModel';
 import { IPeople } from '../models/peopleModel';
 import { motion } from 'framer-motion';
 
@@ -13,7 +13,7 @@ interface TabsProps {
 export interface TabObjectProps {
   title: string;
   value: string;
-  query?: Promise<IMedia[] | IPeople[]>;
+  query?: Promise<IMovie[] | ITVShow[] | IPeople[]>;
 }
 
 interface TabProps {

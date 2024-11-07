@@ -1,13 +1,19 @@
 export interface IMedia {
   id: number;
   poster_path: string;
-  title?: string;
-  name?: string;
   overview: string;
   vote_average: number;
   backdrop_path: string;
   release_date: string;
   genre_ids: number[];
+}
+
+export interface IMovie extends IMedia {
+  title: string;
+}
+
+export interface ITVShow extends IMedia {
+  name: string;
 }
 
 export interface ICast {

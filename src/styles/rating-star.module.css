@@ -1,6 +1,5 @@
 .container {
   width: fit-content;
-
   font-weight: 500;
   color: white !important;
   background-color: var(--color-primary-900);
