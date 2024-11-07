@@ -27,20 +27,23 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
   let content = <></>;
 
   if (data) {
-    const list = data.slice(1, 5);
+    const list = data.slice(1, 5) as IMovie[] | ITVShow[];
+    const firstItem = data[0] as IMovie | ITVShow;
+    const firstItemTitle =
+      'title' in firstItem ? firstItem.title : firstItem.name;
     content = (
       <div className={classes.container}>
-        <LinkWrapper link={`/movies/${data[0].id}`}>
+        <LinkWrapper link={`/movies/${firstItem.id}`}>
           <div className={classes['container__left']}>
             <img
-              src={getBackdropImage(data[0].backdrop_path, 'w780')}
-              alt={data[0].title || data[0].name}
+              src={getBackdropImage(firstItem.backdrop_path, 'w780')}
+              alt={firstItemTitle}
             />
             <div className={classes['container__left--text']}>
-              <h1>{data[0].title || data[0].name}</h1>
+              <h1>{firstItemTitle}</h1>
               <div>
-                <RatingStar value={data[0].vote_average} size='medium' />
-                <p> {moment(data[0].release_date).format('MMM DD, YYYY')}</p>
+                <RatingStar value={firstItem.vote_average} size='medium' />
+                <p> {moment(firstItem.release_date).format('MMM DD, YYYY')}</p>
               </div>
             </div>
           </div>

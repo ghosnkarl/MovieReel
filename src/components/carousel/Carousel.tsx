@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import { discoverReleaseDates } from '../../helpers/discoverParams';
 import { fetchResults } from '../../services/http';
 import QueryWrapper from '../QueryWrapper';
+import { IMovie } from '../../models/mediaModel';
 
 interface CarouselArrowProps {
   direction: 'left' | 'right';
@@ -70,7 +71,7 @@ const Carousel = ({ genres }: CarouselProps) => {
         <CarouselItem
           genres={genres}
           current={current}
-          content={upcomingMoviesQuery.data}
+          content={upcomingMoviesQuery.data as IMovie[]}
         />
         <CarouselArrow direction='right' handleClick={nextSlide} />
         <CarouselArrow direction='left' handleClick={prevSlide} />

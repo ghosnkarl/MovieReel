@@ -1,4 +1,4 @@
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, useCallback } from 'react';
 import { IMovie, ITVShow } from '../models/mediaModel';
 import { IPeople } from '../models/peopleModel';
 import { motion } from 'framer-motion';
@@ -45,13 +45,20 @@ export default function Tabs({
   tabs,
   layoutId,
 }: TabsProps) {
+  // Use useCallback to memoize the onSelectType handler to prevent unnecessary re-renders
+  const handleSelectTab = useCallback(
+    (tab: TabObjectProps) => {
+      onSelectType(tab);
+    },
+    [onSelectType]
+  );
   return (
     <menu className='btn tabs'>
       {tabs.map((tab) => (
         <Tab
           key={tab.value}
           isSelected={selectedType?.value === tab.value}
-          onSelect={() => onSelectType(tab)}
+          onSelect={() => handleSelectTab(tab)}
           layoutId={layoutId}
         >
           {tab.title}

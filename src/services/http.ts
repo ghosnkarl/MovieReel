@@ -1,61 +1,79 @@
 import { QueryClient } from '@tanstack/react-query';
+import { IGenre } from '../models/genreModel';
 
 export const queryClient = new QueryClient();
 
 const API_KEY = import.meta.env.VITE_APP_API_KEY;
 const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
 
+// Helper function to handle building the URL with optional query parameters
 const buildURL = (
   path: string,
-  params: { [key: string]: string } | null | string
+  params: { [key: string]: string } | string | null
 ): string => {
-  let queryParams = null;
+  const queryParams = params
+    ? typeof params === 'object'
+      ? new URLSearchParams(params as { [key: string]: string }).toString()
+      : params
+    : '';
 
-  if (params && typeof params === 'object') {
-    queryParams = Object.keys(params)
-      .map((key) => `${key}=${params[key]}`)
-      .join('&');
-  }
-  if (params && typeof params === 'string') queryParams = params;
-
-  const url = `${BASE_URL}/${path}?api_key=${API_KEY}&${queryParams || ''}`;
-
-  return url;
+  // Only append `&` if queryParams exists (avoiding unnecessary `&` in URL)
+  return `${BASE_URL}/${path}?api_key=${API_KEY}${
+    queryParams ? '&' + queryParams : ''
+  }`;
 };
 
-async function getResponse(url: string) {
+// Simplified function to throw errors with detailed messages
+const handleFetchError = (response: Response): never => {
+  const error = new Error('An error occurred while fetching the data');
+  response.json().then((json) => {
+    // Now includes the actual error message in the thrown error
+    error.message = JSON.stringify(json);
+  });
+  throw error; // Re-throw the error to be handled by the calling function
+};
+
+// Generic fetch function for reusable API calls
+const fetchData = async <T>(url: string): Promise<T> => {
   const response = await fetch(url);
 
   if (!response.ok) {
-    const error = new Error('An error occurred while fetching the events');
-
-    error.message = await response.json();
-    throw error;
+    await handleFetchError(response);
   }
 
-  const result = await response.json();
-  return result;
-}
+  return await response.json();
+};
 
-export async function fetchGenres(type: string) {
+// Function to fetch genres
+export const fetchGenres = async (type: string): Promise<IGenre[]> => {
   const url = buildURL(`genre/${type}/list`, null);
-  const { genres } = await getResponse(url);
+  const { genres } = await fetchData<{
+    genres: IGenre[];
+  }>(url);
   return genres;
-}
+};
 
+// Type for the query parameters
 interface QueryInterface {
   path: string;
   params: { [key: string]: string } | string | null;
 }
 
-export const fetchSingleResult = async ({ path, params }: QueryInterface) => {
+// Function to fetch a single result (reusable for multiple endpoints)
+export const fetchSingleResult = async <T>({
+  path,
+  params,
+}: QueryInterface): Promise<T> => {
   const url = buildURL(path, params);
-  const response = await getResponse(url);
-  return response;
+  return await fetchData<T>(url);
 };
 
-export const fetchResults = async ({ path, params }: QueryInterface) => {
+// Function to fetch multiple results (reusable for multiple endpoints)
+export const fetchResults = async <T>({
+  path,
+  params,
+}: QueryInterface): Promise<T[]> => {
   const url = buildURL(path, params);
-  const { results } = await getResponse(url);
-  return results;
+  const data = await fetchData<{ results: T[] }>(url);
+  return data.results;
 };
