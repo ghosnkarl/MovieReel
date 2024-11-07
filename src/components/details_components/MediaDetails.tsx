@@ -3,18 +3,18 @@ import classes from '../../styles/media-details.module.css';
 
 import Section from '../Section';
 import MediaDetailsItem from './MediaDetailsItem';
-import { ProductionCompanyInterface } from '../../models/productionCompanyModel';
-import { CollectionInterface } from '../../models/collectionModel';
+import { IProductionCompany } from '../../models/productionCompanyModel';
+import { ICollection } from '../../models/collectionModel';
 
 interface SidebarProps {
   status: string;
   homepage: string;
   imdb_id: string;
-  production_companies: ProductionCompanyInterface[];
+  production_companies: IProductionCompany[];
   budget: number;
   revenue: number;
   tagline: string;
-  collection: CollectionInterface | null;
+  collection: ICollection | null;
 }
 
 const MediaDetails = ({

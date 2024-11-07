@@ -1,4 +1,4 @@
-export interface TVInterface {
+export interface ITV {
   id: number;
   poster_path: string;
   title: string;

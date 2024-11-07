@@ -7,7 +7,7 @@ import RatingStar from './rating/RatingStar';
 import LinkWrapper from './LinkWrapper';
 import HeaderLink from './HeaderLink';
 import QueryWrapper from './QueryWrapper';
-import { MediaListInterface } from '../models/mediaModel';
+import { IMedia } from '../models/mediaModel';
 
 const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
   const trendingQuery = useQuery({
@@ -46,7 +46,7 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
           </div>
         </LinkWrapper>
         <ul className={classes['container--right']}>
-          {list.map((listItem: MediaListInterface) => (
+          {list.map((listItem: IMedia) => (
             <LinkWrapper key={listItem.id} link={`/movies/${listItem.id}`}>
               <li className={classes['item-container']}>
                 <img src={getPosterImage(listItem.poster_path, 'w185')} />

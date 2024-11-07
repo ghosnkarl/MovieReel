@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import classes from '../../styles/movies-page.module.css';
 import MediaList from '../../components/horizontal_list/MediaList';
-import { MediaListInterface } from '../../models/mediaModel';
+import { IMedia } from '../../models/mediaModel';
 import { useState } from 'react';
 import Tabs, { TabObjectProps } from '../../components/Tabs';
 
@@ -25,12 +25,7 @@ export default function MoviesPage() {
   let content = <></>;
 
   if (selectedQuery.data) {
-    content = (
-      <MediaList
-        type='movies'
-        data={selectedQuery.data as MediaListInterface[]}
-      />
-    );
+    content = <MediaList type='movies' data={selectedQuery.data as IMedia[]} />;
   }
 
   return (

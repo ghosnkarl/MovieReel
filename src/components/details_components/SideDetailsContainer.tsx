@@ -1,10 +1,10 @@
-import { MovieDetailsInterface } from '../../models/movieModel';
+import { IMovieDetails } from '../../models/movieModel';
 import classes from '../../styles/movie-details.module.css';
 import Keywords from '../Keywords';
 import DetailsReviews from './DetailsReviews';
 import MediaDetails from './MediaDetails';
 
-const SideDetailsContainer = ({ movie }: { movie: MovieDetailsInterface }) => {
+const SideDetailsContainer = ({ movie }: { movie: IMovieDetails }) => {
   return (
     <div className={classes['side__container']}>
       <MediaDetails

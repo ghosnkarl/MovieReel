@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import classes from '../../styles/movies-page.module.css';
 import MediaList from '../../components/horizontal_list/MediaList';
-import { MediaListInterface } from '../../models/mediaModel';
+import { IMedia } from '../../models/mediaModel';
 import { useState } from 'react';
 import Tabs, { TabObjectProps } from '../../components/Tabs';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
@@ -24,7 +24,7 @@ export default function TVPage() {
   let content = <LoadingIndicator title={`Fetching ${selectedTab.title}...`} />;
 
   if (data) {
-    content = <MediaList type='tv' data={data as MediaListInterface[]} />;
+    content = <MediaList type='tv' data={data as IMedia[]} />;
   }
 
   return (

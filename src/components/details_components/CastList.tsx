@@ -1,11 +1,11 @@
-import { CastInterface, CrewInterface } from '../../models/mediaModel';
+import { ICast, ICrew } from '../../models/mediaModel';
 import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
 import PersonListItem from '../PersonListItem';
 
 interface CastListProps {
   title: string;
   image: string;
-  credits: { cast: CastInterface[]; crew: CrewInterface[] };
+  credits: { cast: ICast[]; crew: ICrew[] };
 }
 
 const CastList = ({ title, image, credits }: CastListProps) => {

@@ -5,8 +5,8 @@ import Carousel from '../components/carousel/Carousel';
 import { NavLink } from 'react-router-dom';
 import TopTrending from '../components/TopTrending';
 import MediaList from '../components/horizontal_list/MediaList';
-import { MediaListInterface } from '../models/mediaModel';
-import { PeopleListInterface } from '../models/peopleModel';
+import { IMedia } from '../models/mediaModel';
+import { IPeople } from '../models/peopleModel';
 import QueryWrapper from '../components/QueryWrapper';
 import HorizontalListContainer from '../components/horizontal_list/HorizontalListContainer';
 import PersonListItem from '../components/PersonListItem';
@@ -60,7 +60,7 @@ export default function HomePage() {
         >
           <MediaList
             type='movies'
-            data={upcomingMoviesQuery.data as MediaListInterface[]}
+            data={upcomingMoviesQuery.data as IMedia[]}
           />
         </HorizontalListContainer>
       </QueryWrapper>
@@ -73,10 +73,7 @@ export default function HomePage() {
           linkState={null}
           title='Airing Today TV Shows'
         >
-          <MediaList
-            type='tv'
-            data={airingTodayTVQuery.data as MediaListInterface[]}
-          />
+          <MediaList type='tv' data={airingTodayTVQuery.data as IMedia[]} />
         </HorizontalListContainer>
       </QueryWrapper>
 
@@ -89,7 +86,7 @@ export default function HomePage() {
           title='Most Popular Celebrities'
         >
           {popularPeopleQuery.data &&
-            popularPeopleQuery.data.map((person: PeopleListInterface) => (
+            popularPeopleQuery.data.map((person: IPeople) => (
               <PersonListItem
                 key={person.id}
                 id={person.id}

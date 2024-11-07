@@ -1,12 +1,12 @@
 import moment from 'moment';
-import { MediaListInterface } from '../../models/mediaModel';
+import { IMedia } from '../../models/mediaModel';
 import MediaItem from '../MediaItem';
 
 const MediaList = ({
   data,
   type,
 }: {
-  data: MediaListInterface[];
+  data: IMedia[];
   type: 'movies' | 'tv';
 }) => {
   return (

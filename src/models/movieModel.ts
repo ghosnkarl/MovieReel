@@ -1,22 +1,22 @@
-import { CollectionInterface } from './collectionModel';
-import { GenreInterface } from './genreModel';
-import { ImageInterface } from './imageModel';
-import { CastInterface, CrewInterface, MediaListInterface } from './mediaModel';
-import { ProductionCompanyInterface } from './productionCompanyModel';
-import { ReviewInterface } from './reviewModel';
-import { VideoInterface } from './videoModel';
+import { ICollection } from './collectionModel';
+import { IGenre } from './genreModel';
+import { IImage } from './imageModel';
+import { ICast, ICrew, IMedia } from './mediaModel';
+import { IProductionCompany } from './productionCompanyModel';
+import { IReview } from './reviewModel';
+import { IVideo } from './videoModel';
 
-export interface MovieDetailsImagesInterface {
-  backdrops: ImageInterface[];
-  posters: ImageInterface[];
-  logos: ImageInterface[];
+export interface IMovieDetailsImages {
+  backdrops: IImage[];
+  posters: IImage[];
+  logos: IImage[];
 }
 
-export interface MovieDetailsInterface {
+export interface IMovieDetails {
   backdrop_path: string;
-  belongs_to_collection: CollectionInterface | null;
+  belongs_to_collection: ICollection | null;
   budget: number;
-  genres: GenreInterface[];
+  genres: IGenre[];
   homepage: string;
   id: number;
   imdb_id: string;
@@ -30,12 +30,12 @@ export interface MovieDetailsInterface {
   title: string;
   vote_average: number;
   vote_count: number;
-  production_companies: ProductionCompanyInterface[];
-  credits: { cast: CastInterface[]; crew: CrewInterface[] };
-  videos: { results: VideoInterface[] };
-  images: MovieDetailsImagesInterface;
+  production_companies: IProductionCompany[];
+  credits: { cast: ICast[]; crew: ICrew[] };
+  videos: { results: IVideo[] };
+  images: IMovieDetailsImages;
   keywords: { keywords: { id: number; name: string }[] };
-  reviews: { results: ReviewInterface[] };
-  recommendations: { results: MediaListInterface[] };
-  similar: { results: MediaListInterface[] };
+  reviews: { results: IReview[] };
+  recommendations: { results: IMedia[] };
+  similar: { results: IMedia[] };
 }

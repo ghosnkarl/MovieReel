@@ -1,4 +1,4 @@
-export interface ReviewInterface {
+export interface IReview {
   author: string;
   content: string;
   create_at: string;

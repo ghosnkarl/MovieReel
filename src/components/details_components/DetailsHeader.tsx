@@ -1,6 +1,6 @@
 import moment from 'moment';
 import classes from '../../styles/details-header.module.css';
-import { GenreInterface } from '../../models/genreModel';
+import { IGenre } from '../../models/genreModel';
 import RatingStar from '../rating/RatingStar';
 import { getBackdropImage } from '../../helpers/imageSizes';
 
@@ -8,7 +8,7 @@ interface DetailsHeaderProps {
   title: string;
   release_date: string;
   runtime: number | null;
-  genres: GenreInterface[];
+  genres: IGenre[];
   vote_average: number;
   overview: string;
   backdrop_path: string | null;

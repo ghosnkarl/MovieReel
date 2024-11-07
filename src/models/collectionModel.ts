@@ -1,4 +1,4 @@
-export interface CollectionInterface {
+export interface ICollection {
   id: number;
   name: string;
   poster_path: string;

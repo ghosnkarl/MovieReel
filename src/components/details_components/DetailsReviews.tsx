@@ -4,14 +4,14 @@ import classes from '../../styles/movie-details.module.css';
 import Section from '../Section';
 import Review from '../Review';
 import { getPosterImage } from '../../helpers/imageSizes';
-import { ReviewInterface } from '../../models/reviewModel';
+import { IReview } from '../../models/reviewModel';
 
 const DetailsReviews = ({
   reviews,
   title,
   poster_path,
 }: {
-  reviews: { results: ReviewInterface[] };
+  reviews: { results: IReview[] };
   title: string;
   poster_path: string;
 }) => {

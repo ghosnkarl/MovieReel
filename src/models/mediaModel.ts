@@ -1,4 +1,4 @@
-export interface MediaListInterface {
+export interface IMedia {
   id: number;
   poster_path: string;
   title?: string;
@@ -10,7 +10,7 @@ export interface MediaListInterface {
   genre_ids: number[];
 }
 
-export interface CastInterface {
+export interface ICast {
   id: number;
   known_for_department: string;
   name: string;
@@ -20,7 +20,7 @@ export interface CastInterface {
   credit_id: string;
 }
 
-export interface CrewInterface {
+export interface ICrew {
   id: number;
   known_for_department: string;
   name: string;

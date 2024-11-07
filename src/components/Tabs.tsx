@@ -1,6 +1,6 @@
 import { MouseEventHandler } from 'react';
-import { MediaListInterface } from '../models/mediaModel';
-import { PeopleListInterface } from '../models/peopleModel';
+import { IMedia } from '../models/mediaModel';
+import { IPeople } from '../models/peopleModel';
 import { motion } from 'framer-motion';
 
 interface TabsProps {
@@ -13,7 +13,7 @@ interface TabsProps {
 export interface TabObjectProps {
   title: string;
   value: string;
-  query?: Promise<MediaListInterface[] | PeopleListInterface[]>;
+  query?: Promise<IMedia[] | IPeople[]>;
 }
 
 interface TabProps {

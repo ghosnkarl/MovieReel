@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchResults } from '../../services/http';
 import classes from '../../styles/people-page.module.css';
-import { PeopleListInterface } from '../../models/peopleModel';
+import { IPeople } from '../../models/peopleModel';
 import PersonListItem from '../../components/PersonListItem';
 
 export default function PeoplePage() {
@@ -14,7 +14,7 @@ export default function PeoplePage() {
   return (
     <div className={classes.container}>
       {data &&
-        data.map((person: PeopleListInterface) => (
+        data.map((person: IPeople) => (
           <PersonListItem
             key={person.id}
             profile_path={person.profile_path}

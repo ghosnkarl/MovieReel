@@ -1,13 +1,13 @@
-import { ImageInterface } from './mediaModel';
+import { IImage } from './imageModel';
 
-export interface PeopleListInterface {
+export interface IPeople {
   id: number;
   profile_path: string;
   name: string;
   known_for: { title?: string; name?: string }[];
 }
 
-export interface CastMediaInterface {
+export interface ICastMedia {
   id: number;
   media_type: 'movie' | 'tv';
   title?: string;
@@ -20,7 +20,7 @@ export interface CastMediaInterface {
   vote_average: number;
 }
 
-export interface CrewMediaInterface {
+export interface ICrewMedia {
   id: number;
   media_type: 'movie' | 'tv';
   title?: string;
@@ -34,7 +34,7 @@ export interface CrewMediaInterface {
   vote_average: number;
 }
 
-export interface PersonInterface {
+export interface IPerson {
   id: number;
   biography: string | null;
   birthday: string | null;
@@ -44,7 +44,7 @@ export interface PersonInterface {
   place_of_birth: string | null;
   profile_path: string | null;
   images: {
-    profiles: ImageInterface[];
+    profiles: IImage[];
   };
-  combined_credits: { cast: CastMediaInterface[]; crew: CrewMediaInterface[] };
+  combined_credits: { cast: ICastMedia[]; crew: ICrewMedia[] };
 }

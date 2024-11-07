@@ -5,11 +5,11 @@ import MotionDiv from '../ui/MotionDiv';
 import Section from '../Section';
 import { FaYoutube } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
-import { VideoInterface } from '../../models/videoModel';
+import { IVideo } from '../../models/videoModel';
 
 interface VideoItemProps {
-  video: VideoInterface;
-  onVideoClicked: (video: VideoInterface) => void;
+  video: IVideo;
+  onVideoClicked: (video: IVideo) => void;
   selectedVideoKey: string;
 }
 
@@ -37,8 +37,8 @@ const VideoItem = ({
   );
 };
 
-const VideoList = ({ videos }: { videos: VideoInterface[] }) => {
-  const [selectedVideo, setSelectedVideo] = useState<VideoInterface>(videos[0]);
+const VideoList = ({ videos }: { videos: IVideo[] }) => {
+  const [selectedVideo, setSelectedVideo] = useState<IVideo>(videos[0]);
 
   const listRef = useRef<HTMLUListElement>(null);
   const [ref, setRef] = useState<HTMLUListElement | null>(null);

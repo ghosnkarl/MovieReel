@@ -3,7 +3,7 @@ import classes from '../../styles/searchbar.module.css';
 import SearchTag from './SearchTag';
 import { useQuery } from '@tanstack/react-query';
 
-import { KeywordInterface } from '../../models/keywordModel';
+import { IKeyword } from '../../models/keywordModel';
 import { fetchResults } from '../../services/http';
 
 const Searchbar = () => {
@@ -33,7 +33,7 @@ const Searchbar = () => {
     }, 500);
   };
 
-  const handleSearchClick = (item: KeywordInterface) => {
+  const handleSearchClick = (item: IKeyword) => {
     if (!searchList.find((keyword) => keyword.id === item.id))
       setSearchList([...searchList, item]);
 
@@ -74,7 +74,7 @@ const Searchbar = () => {
           }`}
         >
           {data &&
-            data.map((item: KeywordInterface) => (
+            data.map((item: IKeyword) => (
               <p
                 onClick={() => handleSearchClick(item)}
                 className={classes['search-item']}

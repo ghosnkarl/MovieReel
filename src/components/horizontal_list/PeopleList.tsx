@@ -1,7 +1,7 @@
-import { PeopleListInterface } from '../../models/peopleModel';
+import { IPeople } from '../../models/peopleModel';
 import PersonListItem from '../PersonListItem';
 
-const PeopleList = ({ data }: { data: PeopleListInterface[] }) => {
+const PeopleList = ({ data }: { data: IPeople[] }) => {
   return (
     <>
       {data.map((item) => {

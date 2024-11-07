@@ -1,7 +1,7 @@
 import classes from '../../styles/carousel.module.css';
 import { useState } from 'react';
 import CarouselItem, { CarouselItemInterface } from './CarouselItem';
-import { GenreInterface } from '../../models/genreModel';
+import { IGenre } from '../../models/genreModel';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { useQuery } from '@tanstack/react-query';
 import { discoverReleaseDates } from '../../helpers/discoverParams';
@@ -29,7 +29,7 @@ const CarouselArrow = ({ direction, handleClick }: CarouselArrowProps) => {
 };
 
 interface CarouselProps {
-  genres: GenreInterface[] | undefined;
+  genres: IGenre[] | undefined;
 }
 
 const Carousel = ({ genres }: CarouselProps) => {

@@ -9,11 +9,8 @@ import ImageList from '../../components/details_components/ImageList';
 import MediaItem from '../../components/MediaItem';
 import { CREDITS_TABS } from '../../data/data';
 import Tabs, { TabObjectProps } from '../../components/Tabs';
-import {
-  CastMediaInterface,
-  CrewMediaInterface,
-} from '../../models/peopleModel';
-import { ImageInterface } from '../../models/imageModel';
+import { ICastMedia, ICrewMedia } from '../../models/peopleModel';
+import { IImage } from '../../models/imageModel';
 
 const PeopleDetailsPage = () => {
   const params = useParams();
@@ -49,7 +46,7 @@ const PeopleDetailsPage = () => {
 
   let profiles: { galleryImage: string; fullImage: string }[] = [];
   if (data.images && data.images.profiles && data.images.profiles.length > 0)
-    profiles = data.images.profiles.map((profile: ImageInterface) => {
+    profiles = data.images.profiles.map((profile: IImage) => {
       return {
         galleryImage: getProfileImage(profile.file_path, 'w185'),
         fullImage: getProfileImage(profile.file_path, 'original'),
@@ -118,36 +115,32 @@ const PeopleDetailsPage = () => {
 
           {selectedTab.value === 'cast' && (
             <div className='flex--wrap-container'>
-              {data.combined_credits.cast.map(
-                (castMedia: CastMediaInterface) => (
-                  <MediaItem
-                    key={castMedia.credit_id}
-                    id={castMedia.id}
-                    title={castMedia.title || castMedia.name}
-                    type={castMedia.media_type === 'movie' ? 'movies' : 'tv'}
-                    poster_path={castMedia.poster_path}
-                    text={castMedia.character}
-                    vote_average={castMedia.vote_average}
-                  />
-                )
-              )}
+              {data.combined_credits.cast.map((castMedia: ICastMedia) => (
+                <MediaItem
+                  key={castMedia.credit_id}
+                  id={castMedia.id}
+                  title={castMedia.title || castMedia.name}
+                  type={castMedia.media_type === 'movie' ? 'movies' : 'tv'}
+                  poster_path={castMedia.poster_path}
+                  text={castMedia.character}
+                  vote_average={castMedia.vote_average}
+                />
+              ))}
             </div>
           )}
           {selectedTab.value === 'crew' && (
             <div className='flex--wrap-container'>
-              {data.combined_credits.crew.map(
-                (crewMedia: CrewMediaInterface) => (
-                  <MediaItem
-                    key={crewMedia.credit_id}
-                    id={crewMedia.id}
-                    title={crewMedia.title || crewMedia.name}
-                    type={crewMedia.media_type === 'movie' ? 'movies' : 'tv'}
-                    poster_path={crewMedia.poster_path}
-                    text={crewMedia.job}
-                    vote_average={crewMedia.vote_average}
-                  />
-                )
-              )}
+              {data.combined_credits.crew.map((crewMedia: ICrewMedia) => (
+                <MediaItem
+                  key={crewMedia.credit_id}
+                  id={crewMedia.id}
+                  title={crewMedia.title || crewMedia.name}
+                  type={crewMedia.media_type === 'movie' ? 'movies' : 'tv'}
+                  poster_path={crewMedia.poster_path}
+                  text={crewMedia.job}
+                  vote_average={crewMedia.vote_average}
+                />
+              ))}
             </div>
           )}
         </div>

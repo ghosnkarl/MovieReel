@@ -7,9 +7,9 @@ import ImageList from './ImageList';
 import RecommendedList from './RecommendedList';
 import { getPosterImage } from '../../helpers/imageSizes';
 import CastList from './CastList';
-import { MovieDetailsInterface } from '../../models/movieModel';
+import { IMovieDetails } from '../../models/movieModel';
 
-const DetailsMainContainer = ({ movie }: { movie: MovieDetailsInterface }) => {
+const DetailsMainContainer = ({ movie }: { movie: IMovieDetails }) => {
   const genresResult = useQuery({
     queryKey: ['genres', 'movie'],
     queryFn: () => fetchGenres('movie'),

@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import classes from '../styles/credits-page.module.css';
 import { useState } from 'react';
-import { CastInterface, CrewInterface } from '../models/mediaModel';
+import { ICast, ICrew } from '../models/mediaModel';
 import PersonListItem from '../components/PersonListItem';
 import Tabs, { TabObjectProps } from '../components/Tabs';
 import { CREDITS_TABS } from '../data/data';
@@ -9,7 +9,7 @@ import { CREDITS_TABS } from '../data/data';
 const CreditsPage = () => {
   const location = useLocation();
   const { credits } = location.state;
-  let filteredCrewList: CrewInterface[] = [];
+  let filteredCrewList: ICrew[] = [];
   const tabs: TabObjectProps[] = CREDITS_TABS;
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
 
@@ -19,7 +19,7 @@ const CreditsPage = () => {
 
   let departmentsList: string[] = [];
 
-  departmentsList = credits.crew.map((crew: CrewInterface) => crew.department);
+  departmentsList = credits.crew.map((crew: ICrew) => crew.department);
   departmentsList = [...new Set(departmentsList)];
   filteredCrewList = [...credits.crew];
 
@@ -41,7 +41,7 @@ const CreditsPage = () => {
       />
       {selectedTab.value === 'cast' && (
         <div className='flex--wrap-container'>
-          {credits.cast.map((cast: CastInterface) => (
+          {credits.cast.map((cast: ICast) => (
             <PersonListItem
               key={cast.credit_id}
               id={cast.id}

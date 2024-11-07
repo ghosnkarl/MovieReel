@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import classes from '../../styles/recommended-list.module.css';
 import { getBackdropImage } from '../../helpers/imageSizes';
-import { MediaListInterface } from '../../models/mediaModel';
-import { GenreInterface } from '../../models/genreModel';
+import { IMedia } from '../../models/mediaModel';
+import { IGenre } from '../../models/genreModel';
 import Section from '../Section';
 
 interface RecommendedListItemProps {
@@ -41,9 +41,9 @@ const RecommendedList = ({
   title,
   genreList,
 }: {
-  items: MediaListInterface[];
+  items: IMedia[];
   title: string;
-  genreList: GenreInterface[] | undefined;
+  genreList: IGenre[] | undefined;
 }) => {
   return (
     <>

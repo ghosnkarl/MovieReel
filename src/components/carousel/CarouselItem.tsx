@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import { MediaListInterface } from '../../models/mediaModel';
+import { IMedia } from '../../models/mediaModel';
 import moment from 'moment';
-import { GenreInterface } from '../../models/genreModel';
+import { IGenre } from '../../models/genreModel';
 import { getBackdropImage, getPosterImage } from '../../helpers/imageSizes';
 import classes from '../../styles/carousel.module.css';
 import { NavLink } from 'react-router-dom';
@@ -19,8 +19,8 @@ const CarouselItem = ({
   genres,
 }: {
   current: CarouselItemInterface;
-  content: MediaListInterface[];
-  genres: GenreInterface[] | undefined;
+  content: IMedia[];
+  genres: IGenre[] | undefined;
 }) => (
   <>
     {content.map((slide, index) => (
