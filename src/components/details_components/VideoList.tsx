@@ -1,11 +1,11 @@
 import classes from '../../styles/video.module.css';
 import { useEffect, useRef, useState } from 'react';
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
-import { VideoInterface } from '../../models/mediaModel';
 import MotionDiv from '../ui/MotionDiv';
 import Section from '../Section';
 import { FaYoutube } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
+import { VideoInterface } from '../../models/videoModel';
 
 interface VideoItemProps {
   video: VideoInterface;

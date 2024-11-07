@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 const MotionDiv = ({ children }: { children: JSX.Element }) => {
   return (
     <motion.div
       whileHover={{
-        y: "-5%",
+        y: '-5%',
         transition: { duration: 0.2 },
       }}
     >

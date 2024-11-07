@@ -1,7 +1,8 @@
 import moment from 'moment';
-import { ReviewInterface } from '../models/mediaModel';
+
 import classes from '../styles/review.module.css';
 import Rating from './rating/Rating';
+import { ReviewInterface } from '../models/reviewModel';
 
 interface ReviewProps {
   review: ReviewInterface;

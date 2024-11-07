@@ -15,7 +15,7 @@ const Searchbar = () => {
     []
   );
 
-  const { data, isLoading, isError, error } = useQuery({
+  const { data } = useQuery({
     queryKey: ['keywords', { search: searchTerm }],
     queryFn: () =>
       fetchResults({ path: 'search/keywords', params: searchTerm }),

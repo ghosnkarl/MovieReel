@@ -1,6 +1,5 @@
 import { CastInterface, CrewInterface } from '../../models/mediaModel';
 import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
-
 import PersonListItem from '../PersonListItem';
 
 interface CastListProps {

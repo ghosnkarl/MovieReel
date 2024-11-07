@@ -1,4 +1,4 @@
-import { MovieDetailsInterface } from '../../models/mediaModel';
+import { MovieDetailsInterface } from '../../models/movieModel';
 import classes from '../../styles/movie-details.module.css';
 import Keywords from '../Keywords';
 import DetailsReviews from './DetailsReviews';

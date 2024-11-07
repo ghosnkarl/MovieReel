@@ -17,6 +17,7 @@ import DetailsRootLayout from './pages/DetailsRootLayout';
 import ErrorPage from './components/ErrorPage';
 import OutletRootLayout from './components/OutletRootLayout';
 import MovieDetails from './pages/movies/MovieDetails';
+import TVDetailsPage from './pages/tv/TVDetailsPage';
 
 const router = createBrowserRouter([
   {
@@ -63,7 +64,26 @@ const router = createBrowserRouter([
           },
         ],
       },
-      { path: 'tv', element: <TVPage /> },
+      {
+        path: 'tv',
+        element: <OutletRootLayout />,
+        children: [
+          {
+            index: true,
+            element: <TVPage />,
+          },
+          {
+            path: ':tvId',
+            element: <OutletRootLayout />,
+            children: [
+              {
+                index: true,
+                element: <TVDetailsPage />,
+              },
+            ],
+          },
+        ],
+      },
       {
         path: 'people',
         element: <OutletRootLayout />,

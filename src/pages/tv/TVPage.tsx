@@ -24,7 +24,7 @@ export default function TVPage() {
   let content = <LoadingIndicator title={`Fetching ${selectedTab.title}...`} />;
 
   if (data) {
-    content = <MediaList type='movies' data={data as MediaListInterface[]} />;
+    content = <MediaList type='tv' data={data as MediaListInterface[]} />;
   }
 
   return (

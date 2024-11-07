@@ -6,8 +6,8 @@ import VideoList from './VideoList';
 import ImageList from './ImageList';
 import RecommendedList from './RecommendedList';
 import { getPosterImage } from '../../helpers/imageSizes';
-import { MovieDetailsInterface } from '../../models/mediaModel';
 import CastList from './CastList';
+import { MovieDetailsInterface } from '../../models/movieModel';
 
 const DetailsMainContainer = ({ movie }: { movie: MovieDetailsInterface }) => {
   const genresResult = useQuery({

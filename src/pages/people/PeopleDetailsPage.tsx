@@ -6,7 +6,6 @@ import classes from '../../styles/people-details.module.css';
 import { useState } from 'react';
 import moment from 'moment';
 import ImageList from '../../components/details_components/ImageList';
-import { ImageInterface } from '../../models/mediaModel';
 import MediaItem from '../../components/MediaItem';
 import { CREDITS_TABS } from '../../data/data';
 import Tabs, { TabObjectProps } from '../../components/Tabs';
@@ -14,6 +13,7 @@ import {
   CastMediaInterface,
   CrewMediaInterface,
 } from '../../models/peopleModel';
+import { ImageInterface } from '../../models/imageModel';
 
 const PeopleDetailsPage = () => {
   const params = useParams();
