@@ -5,12 +5,12 @@ import ScrollToTop from './components/ui/ScrollToTop';
 export default function RootLayout() {
   return (
     <>
-      <ScrollToTop>
-        <Navigation />
-        <main>
+      <Navigation />
+      <main>
+        <ScrollToTop>
           <Outlet />
-        </main>
-      </ScrollToTop>
+        </ScrollToTop>
+      </main>
     </>
   );
 }

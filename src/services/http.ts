@@ -19,7 +19,7 @@ const buildURL = (
   if (params && typeof params === 'string') queryParams = params;
 
   const url = `${BASE_URL}/${path}?api_key=${API_KEY}&${queryParams || ''}`;
-  console.log(url);
+
   return url;
 };
 

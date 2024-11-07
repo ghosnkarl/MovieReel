@@ -6,8 +6,7 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { useQuery } from '@tanstack/react-query';
 import { discoverReleaseDates } from '../../helpers/discoverParams';
 import { fetchResults } from '../../services/http';
-import LoadingIndicator from '../ui/LoadingIndicator';
-import ErrorBlock from '../ui/ErrorBlock';
+import QueryWrapper from '../QueryWrapper';
 
 interface CarouselArrowProps {
   direction: 'left' | 'right';
@@ -35,31 +34,22 @@ interface CarouselProps {
 
 const Carousel = ({ genres }: CarouselProps) => {
   const discoverParams = discoverReleaseDates(true, -1, 'month', 5, 'days');
-  const { data, isError, refetch } = useQuery({
+  const upcomingMoviesQuery = useQuery({
     queryKey: ['movies', discoverParams],
     queryFn: () =>
       fetchResults({ path: 'discover/movie', params: discoverParams }),
     retry: 1,
   });
 
-  let content = <LoadingIndicator title='Fetching Upcoming Movies' />;
-
-  if (isError) {
-    content = (
-      <ErrorBlock
-        message='There was an error loading upcoming movies.'
-        onTryAgainClick={refetch}
-      />
-    );
-  }
-
   const [current, setCurrent] = useState<CarouselItemInterface>({
     index: 0,
     isRight: true,
   });
 
-  if (data) {
-    const length = data.length;
+  let content = <></>;
+
+  if (upcomingMoviesQuery.data) {
+    const length = upcomingMoviesQuery.data.length;
 
     const nextSlide = () => {
       setCurrent({
@@ -77,14 +67,22 @@ const Carousel = ({ genres }: CarouselProps) => {
 
     content = (
       <>
-        <CarouselItem genres={genres} current={current} content={data} />
+        <CarouselItem
+          genres={genres}
+          current={current}
+          content={upcomingMoviesQuery.data}
+        />
         <CarouselArrow direction='right' handleClick={nextSlide} />
         <CarouselArrow direction='left' handleClick={prevSlide} />
       </>
     );
   }
 
-  return <div className={classes.container}>{content}</div>;
+  return (
+    <QueryWrapper query={upcomingMoviesQuery} message='Upcoming Movies'>
+      <div className={classes.container}>{content}</div>
+    </QueryWrapper>
+  );
 };
 
 export default Carousel;

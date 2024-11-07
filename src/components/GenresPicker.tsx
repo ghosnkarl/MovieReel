@@ -3,10 +3,11 @@ import classes from '../styles/genres-picker.module.css';
 import { useState } from 'react';
 import { fetchGenres } from '../services/http';
 import { GenreInterface } from '../models/genreModel';
+import QueryWrapper from './QueryWrapper';
 
 const GenresPicker = () => {
   const [selectedGenres, setSelectedGenres] = useState<number[]>([]);
-  const { data } = useQuery({
+  const genresQuery = useQuery({
     queryKey: ['genres', 'movie'],
     queryFn: () => fetchGenres('movie'),
     retry: 1,
@@ -22,10 +23,10 @@ const GenresPicker = () => {
   };
 
   return (
-    <>
-      {data && (
+    <QueryWrapper query={genresQuery} message='Genres'>
+      {genresQuery.data && (
         <div className={classes['genres-container']}>
-          {data.map((genre: GenreInterface) => (
+          {genresQuery.data.map((genre: GenreInterface) => (
             <span
               className={`${
                 selectedGenres.find((id) => id == genre.id)
@@ -40,7 +41,7 @@ const GenresPicker = () => {
           ))}
         </div>
       )}
-    </>
+    </QueryWrapper>
   );
 };
 export default GenresPicker;

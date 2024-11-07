@@ -2,7 +2,6 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { fetchSingleResult } from '../../services/http';
 import classes from '../../styles/movie-details.module.css';
-import ScrollToTop from '../../components/ui/ScrollToTop';
 import DetailsHeader from '../../components/details_components/DetailsHeader';
 import QueryWrapper from '../../components/QueryWrapper';
 import DetailsMainContainer from '../../components/details_components/DetailsMainContainer';
@@ -48,13 +47,11 @@ const MovieDetails = () => {
   }
 
   return (
-    <ScrollToTop>
-      <div className={classes['page-container']}>
-        <QueryWrapper query={movieQuery} message='Movie Details'>
-          {content}
-        </QueryWrapper>
-      </div>
-    </ScrollToTop>
+    <div className={classes['page-container']}>
+      <QueryWrapper query={movieQuery} message='Movie Details'>
+        {content}
+      </QueryWrapper>
+    </div>
   );
 };
 
