@@ -1,0 +1,17 @@
+.container {
+  width: fit-content;
+
+  font-weight: 500;
+  color: white !important;
+  background-color: var(--color-primary-900);
+  padding: 0.8rem;
+  border-radius: 7px;
+}
+
+.container--small {
+  font-size: 1.4rem !important;
+}
+
+.container--medium {
+  font-size: 1.8rem !important;
+}

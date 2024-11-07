@@ -1,0 +1,155 @@
+/********************** Links **********************/
+.link__wrapper:link,
+.link__wrapper:visited {
+  text-decoration: none;
+  color: white;
+}
+
+.link--gradient:link,
+.link--gradient:visited {
+  display: flex;
+  width: fit-content;
+  background-image: linear-gradient(
+    to right,
+    #ff512f 0%,
+    #f09819 51%,
+    #ff512f 100%
+  );
+  background-size: 200% auto;
+  transition: all 0.5s ease-in-out;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 1000px;
+  color: white;
+}
+
+.link--gradient:hover,
+.link--gradient:active {
+  background-position: right center;
+}
+
+.link--search:link,
+.link--search:visited {
+  gap: 1rem;
+  font-size: 1.7rem;
+  font-weight: 600;
+  padding: 1rem 2.6rem 1rem 1.6rem;
+}
+
+.link--discover:link,
+.link--discover:visited {
+  gap: 1rem;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 1.4rem 2.8rem;
+}
+
+/********************** Typography **********************/
+.section__title {
+  font-size: var(--section--title-size);
+  font-weight: 500;
+}
+
+.section__link:link,
+.section__link:visited {
+  font-size: var(--section--title-size);
+  font-weight: 500;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.section__link:hover,
+.section__link:active {
+  opacity: 0.7;
+}
+
+/********************** Buttons **********************/
+.btn {
+  outline: none;
+  background: none;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.btn--gradient {
+  border: none;
+  background-image: linear-gradient(
+    to right,
+    #ff512f 0%,
+    #f09819 51%,
+    #ff512f 100%
+  );
+  padding: 1rem 2.2rem 1rem 1.2rem;
+  font-size: 2rem;
+  display: flex;
+  gap: 0.8rem;
+  border-radius: 1000px;
+  background-size: 200% auto;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn--gradient:hover {
+  background-position: right center;
+}
+
+.btn-department {
+  padding: 0.8rem 1.6rem;
+  font-size: 1.5rem;
+  border-radius: 7px;
+  background-color: transparent;
+  border: 1px solid var(--color-primary-900);
+}
+
+.btn-department:hover,
+.selected {
+  background-color: var(--color-primary-900);
+}
+
+/********************** Tabs **********************/
+.tabs {
+  list-style: none;
+  gap: 1.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.tabs--btn {
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.7rem;
+}
+
+.tab-active,
+.tabs--btn:hover {
+  color: var(--color-primary-900) !important;
+}
+
+.tab-selector {
+  height: 1.5px;
+  background-color: var(--color-primary-900);
+  border-radius: 8px;
+}
+
+/********************** Overlays **********************/
+.gradient-overlay {
+  top: 0;
+  right: auto;
+  left: 0;
+  width: 100%;
+  bottom: auto;
+  height: 100%;
+  position: absolute;
+
+  background-image: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.8),
+    black
+  );
+}

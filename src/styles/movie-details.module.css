@@ -1,0 +1,86 @@
+.page-container {
+  margin: 0 auto;
+  padding-top: 7rem;
+  position: relative;
+}
+
+.flex {
+  display: flex;
+  gap: 2.4rem;
+  align-items: center;
+}
+
+.flex div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.flex h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.flex p {
+  font-size: 1.8rem;
+}
+
+.rating {
+  display: flex;
+  font-size: 1.8rem !important;
+  align-items: center;
+  gap: 0.2rem;
+  color: var(--color-primary-900) !important;
+}
+
+.details-container {
+  display: flex;
+  max-width: 130rem;
+  margin: 0 auto;
+  padding: 9.6rem 3.2rem 6.4rem 3.2rem;
+  gap: 3.2rem;
+}
+
+.main-container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 4.8rem;
+}
+
+.side__container {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  margin-top: 2.4rem;
+  margin-bottom: 4.8rem;
+}
+
+.btn--more:link,
+.btn--more:visited {
+  position: absolute;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  left: 0;
+  bottom: 0;
+  padding: 1.8rem 0;
+  width: 100%;
+  border-radius: 1;
+  color: white;
+  text-decoration: none;
+  background-color: var(--color-primary-900);
+}
+
+.btn--more:hover,
+.btn--more:active {
+  background-color: #ea580c;
+}

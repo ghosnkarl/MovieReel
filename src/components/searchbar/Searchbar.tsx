@@ -1,22 +1,24 @@
-import { ChangeEvent, useRef, useState } from "react";
-import classes from "./searchbar.module.css";
-import SearchTag from "./SearchTag";
-import { useQuery } from "@tanstack/react-query";
-import { search } from "../../services/http";
-import { KeywordInterface } from "../../models/keywordModel";
+import { ChangeEvent, useRef, useState } from 'react';
+import classes from '../../styles/searchbar.module.css';
+import SearchTag from './SearchTag';
+import { useQuery } from '@tanstack/react-query';
+
+import { KeywordInterface } from '../../models/keywordModel';
+import { fetchResults } from '../../services/http';
 
 const Searchbar = () => {
   const [open, setOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   const lastChange = useRef<ReturnType<typeof setInterval> | null>(null);
   const [searchList, setSearchList] = useState<{ id: number; name: string }[]>(
     []
   );
 
-  const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["keywords", { search: searchTerm }],
-    queryFn: () => search("keyword", searchTerm),
+  const { data } = useQuery({
+    queryKey: ['keywords', { search: searchTerm }],
+    queryFn: () =>
+      fetchResults({ path: 'search/keywords', params: searchTerm }),
     retry: 1,
   });
 
@@ -26,7 +28,7 @@ const Searchbar = () => {
     }
     lastChange.current = setTimeout(() => {
       lastChange.current = null;
-      setOpen(e.target.value !== "");
+      setOpen(e.target.value !== '');
       setSearchTerm(e.target.value);
     }, 500);
   };
@@ -37,7 +39,7 @@ const Searchbar = () => {
 
     setOpen(false);
     if (inputRef.current) {
-      inputRef.current.value = "";
+      inputRef.current.value = '';
       inputRef.current.focus();
     }
   };
@@ -48,9 +50,9 @@ const Searchbar = () => {
   };
 
   return (
-    <div className={classes["search-container"]}>
+    <div className={classes['search-container']}>
       <div className={classes.container}>
-        <div className={classes["tags-container"]}>
+        <div className={classes['tags-container']}>
           {searchList &&
             searchList.map((keyword) => (
               <SearchTag
@@ -62,20 +64,20 @@ const Searchbar = () => {
         </div>
         <input
           ref={inputRef}
-          type="text"
-          placeholder="Search Keywords"
+          type='text'
+          placeholder='Search Keywords'
           onChange={handleChange}
         />
         <div
-          className={`${classes["dropdown-content"]} ${
-            open ? classes["content-open"] : ""
+          className={`${classes['dropdown-content']} ${
+            open ? classes['content-open'] : ''
           }`}
         >
           {data &&
             data.map((item: KeywordInterface) => (
               <p
                 onClick={() => handleSearchClick(item)}
-                className={classes["search-item"]}
+                className={classes['search-item']}
                 key={item.id}
               >
                 {item.name}

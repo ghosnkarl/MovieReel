@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.error__container {
+  max-width: 50rem;
+  height: fit-content;
+  background-color: var(--color-background--card);
+  border: 1px solid var(--color-error--border);
+  border-radius: 7px;
+}
+
+.error__block {
+  display: flex;
+  padding: 2.4rem 2.4rem 0 2.4rem;
+  color: white;
+  gap: 2rem;
+}
+
+.error__block--icon {
+  font-size: 3.5rem;
+  fill: rgb(226, 84, 66);
+}
+
+.error__block--title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.error__block--message {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.error__btn {
+  border: none;
+  background: none;
+  color: white;
+  padding: 1.4rem;
+  width: 100%;
+  font-size: 1.6rem;
+  cursor: pointer;
+  border-top: 1px solid var(--color-error--border);
+}
+
+.error__btn:hover {
+  background-color: var(--color-background--border);
+}

@@ -1,83 +1,117 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import RootLayout from "./RootLayout";
-import HomePage from "./pages/homepage/HomePage";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "./services/http";
-import MoviesPage from "./pages/movies/MoviesPage";
-import TVPage from "./pages/tv/TVPage";
-import PeoplePage from "./pages/people/PeoplePage";
-import DiscoverPage from "./pages/discover/DiscoverPage";
-import MovieDetails from "./pages/movies/movie_details/MovieDetails";
-import MoviesRootLayout from "./pages/movies/MoviesRootLayout";
-import MoviesDetailsRootLayout from "./pages/movies/movie_details/MovieDetailsRootLayout";
-import ReviewsPage from "./pages/reviews/ReviewsPage";
-import ImagesPage from "./pages/images/ImagesPages";
-import PeopleRootLayout from "./pages/people/PeopleRootLayout";
-import PeopleDetailsPage from "./pages/people/PeopleDetailsPage";
-import PeopleDetailsRootLayout from "./pages/people/PeopleDetailsRootLayout";
-import CreditsPage from "./pages/credits/CreditsPage";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import RootLayout from './RootLayout';
+import HomePage from './pages/HomePage';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from './services/http';
+import MoviesPage from './pages/movies/MoviesPage';
+import TVPage from './pages/tv/TVPage';
+import PeoplePage from './pages/people/PeoplePage';
+import DiscoverPage from './pages/DiscoverPage';
+import ReviewsPage from './pages/ReviewsPage';
+import ImagesPage from './pages/ImagesPages';
+import PeopleDetailsPage from './pages/people/PeopleDetailsPage';
+
+import CreditsPage from './pages/CreditsPage';
+
+import DetailsRootLayout from './pages/DetailsRootLayout';
+import ErrorPage from './components/ErrorPage';
+import OutletRootLayout from './components/OutletRootLayout';
+import MovieDetails from './pages/movies/MovieDetails';
+import TVDetailsPage from './pages/tv/TVDetailsPage';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
       {
-        path: "movies",
-        element: <MoviesRootLayout />,
+        path: 'movies',
+        element: <OutletRootLayout />,
         children: [
           {
             index: true,
             element: <MoviesPage />,
           },
           {
-            path: ":movieId",
-            element: <MoviesDetailsRootLayout />,
+            path: ':movieId',
+            element: <OutletRootLayout />,
             children: [
               {
                 index: true,
                 element: <MovieDetails />,
               },
               {
-                path: "cast",
-                element: <CreditsPage />,
-              },
-              {
-                path: "review",
-                element: <ReviewsPage />,
-              },
-              {
-                path: "images",
-                element: <ImagesPage />,
+                path: '',
+                element: <DetailsRootLayout />,
+                children: [
+                  {
+                    path: 'cast',
+                    element: <CreditsPage />,
+                  },
+                  {
+                    path: 'review',
+                    element: <ReviewsPage />,
+                  },
+                  {
+                    path: 'images',
+                    element: <ImagesPage />,
+                  },
+                ],
               },
             ],
           },
         ],
       },
-      { path: "tv", element: <TVPage /> },
       {
-        path: "people",
-        element: <PeopleRootLayout />,
+        path: 'tv',
+        element: <OutletRootLayout />,
+        children: [
+          {
+            index: true,
+            element: <TVPage />,
+          },
+          {
+            path: ':tvId',
+            element: <OutletRootLayout />,
+            children: [
+              {
+                index: true,
+                element: <TVDetailsPage />,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        path: 'people',
+        element: <OutletRootLayout />,
         children: [
           {
             index: true,
             element: <PeoplePage />,
           },
           {
-            path: ":personId",
-            element: <PeopleDetailsRootLayout />,
+            path: ':personId',
+            element: <OutletRootLayout />,
             children: [
               { index: true, element: <PeopleDetailsPage /> },
               {
-                path: "images",
-                element: <ImagesPage />,
+                path: '',
+                element: <DetailsRootLayout />,
+                children: [
+                  {
+                    path: 'images',
+                    element: <ImagesPage />,
+                  },
+                ],
               },
             ],
           },
         ],
       },
-      { path: "discover", element: <DiscoverPage /> },
+      { path: 'discover', element: <DiscoverPage /> },
     ],
   },
 ]);

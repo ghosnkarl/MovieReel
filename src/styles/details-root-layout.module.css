@@ -1,0 +1,36 @@
+.container {
+  padding: 9.6rem 6.4rem 6.4rem 6.4rem;
+}
+
+.container__header {
+  display: flex;
+  margin-bottom: 3.2rem;
+  gap: 2.4rem;
+  align-items: center;
+  cursor: pointer;
+  width: fit-content;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.container__header--poster {
+  width: 12rem;
+  aspect-ratio: 0.7;
+  border-radius: 10px;
+}
+
+.container__header--title {
+  font-size: 3.2rem !important;
+  font-weight: 600;
+  margin-bottom: 2.4rem !important;
+}
+
+.container__header--back {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--color-gray-300);
+  display: flex;
+  gap: 0.6rem;
+}

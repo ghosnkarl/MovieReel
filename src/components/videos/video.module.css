@@ -1,8 +1,0 @@
-.video-container {
-  display: flex;
-  gap: 2.4rem;
-  padding: 2.4rem 0 1.2rem 0;
-  scroll-behavior: smooth;
-  overflow: hidden;
-  list-style: none;
-}

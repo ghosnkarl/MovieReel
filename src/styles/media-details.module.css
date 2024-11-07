@@ -1,0 +1,47 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  margin-top: 2.4rem;
+}
+
+.details h2 {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.details p {
+  font-size: 1.4rem;
+  color: var(--color-gray-200);
+  line-height: 1.1;
+}
+
+.details a:link,
+.details a:visited {
+  font-size: 1.4rem;
+  display: inline-block;
+  line-height: 1.3;
+  color: var(--color-primary-900);
+  text-decoration: none;
+}
+
+.details a:hover,
+.details a:active {
+  color: var(--color-primary-600);
+}
+
+.details__left--item {
+  display: flex;
+  gap: 0.4rem;
+  flex-direction: column;
+}
+
+.details__left--item p {
+  line-height: 1.4;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}

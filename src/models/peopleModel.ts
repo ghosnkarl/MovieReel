@@ -1,4 +1,4 @@
-import { ImageInterface } from "./mediaModel";
+import { ImageInterface } from './mediaModel';
 
 export interface PeopleListInterface {
   id: number;
@@ -9,7 +9,7 @@ export interface PeopleListInterface {
 
 export interface CastMediaInterface {
   id: number;
-  media_type: "movie" | "tv";
+  media_type: 'movie' | 'tv';
   title?: string;
   name?: string;
   character: string;
@@ -17,11 +17,12 @@ export interface CastMediaInterface {
   first_air_date?: string;
   poster_path: string;
   credit_id: string;
+  vote_average: number;
 }
 
 export interface CrewMediaInterface {
   id: number;
-  media_type: "movie" | "tv";
+  media_type: 'movie' | 'tv';
   title?: string;
   name?: string;
   department: string;
@@ -30,6 +31,7 @@ export interface CrewMediaInterface {
   first_air_date?: string;
   poster_path: string;
   credit_id: string;
+  vote_average: number;
 }
 
 export interface PersonInterface {

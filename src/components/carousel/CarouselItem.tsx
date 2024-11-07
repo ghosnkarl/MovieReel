@@ -1,12 +1,12 @@
-import { motion } from "framer-motion";
-import { MediaListInterface } from "../../models/mediaModel";
-import moment from "moment";
-import { GenreInterface } from "../../models/genreModel";
-import { getBackdropImage, getPosterImage } from "../../helpers/imageSizes";
-import classes from "./carousel.module.css";
-import { NavLink } from "react-router-dom";
-import { Fragment } from "react";
-import RatingStar from "../rating/RatingStar";
+import { motion } from 'framer-motion';
+import { MediaListInterface } from '../../models/mediaModel';
+import moment from 'moment';
+import { GenreInterface } from '../../models/genreModel';
+import { getBackdropImage, getPosterImage } from '../../helpers/imageSizes';
+import classes from '../../styles/carousel.module.css';
+import { NavLink } from 'react-router-dom';
+import { Fragment } from 'react';
+import RatingStar from '../rating/RatingStar';
 
 export interface CarouselItemInterface {
   index: number;
@@ -27,37 +27,36 @@ const CarouselItem = ({
       <Fragment key={index}>
         {index === current.index && (
           <motion.div
-            className={classes["item-container"]}
             animate={current.isRight ? { x: [-1000, 0] } : { x: [1000, 0] }}
             transition={{
-              type: "spring",
+              type: 'spring',
               stiffness: 300,
               damping: 30,
               duration: 0.1,
             }}
           >
             <NavLink
-              className={classes["item-link"]}
+              className={classes['carousel__item--link']}
               to={`/movies/${slide.id}`}
             >
-              <div className="gradient-overlay" />
+              <div className='gradient-overlay' />
               <img
-                className={classes["carousel__backdrop"]}
-                src={getBackdropImage(slide.backdrop_path, "w780")}
+                className={classes['carousel__item--backdrop']}
+                src={getBackdropImage(slide.backdrop_path, 'w780')}
                 alt={slide.title}
               />
-              <div className={classes["carousel__container--bottom"]}>
+              <div className={classes['carousel__item--details']}>
                 <img
-                  src={getPosterImage(slide.poster_path, "w185")}
+                  src={getPosterImage(slide.poster_path, 'w185')}
                   alt={slide.title}
                 />
-                <div className={classes["carousel__container--right"]}>
+                <div className={classes['carousel__item--details--text']}>
                   <h1>{slide.title}</h1>
-                  <div className={classes["carousel__container--rating"]}>
-                    <RatingStar value={slide.vote_average} size="medium" />
-                    <p>{moment(slide.release_date).format("MMM DD, YYYY")}</p>
+                  <div className={classes['carousel__item--rating']}>
+                    <RatingStar value={slide.vote_average} size='medium' />
+                    <p>{moment(slide.release_date).format('MMM DD, YYYY')}</p>
                   </div>
-                  <div className={classes["carousel__genres"]}>
+                  <div className={classes['carousel__item--genres']}>
                     {genres && (
                       <>
                         {slide.genre_ids.map((id) => (

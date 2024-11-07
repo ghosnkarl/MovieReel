@@ -1,23 +1,18 @@
-import classes from "./people-item.module.css";
-import { PeopleListInterface } from "../../models/peopleModel";
-import { NavLink } from "react-router-dom";
+import { PeopleListInterface } from '../../models/peopleModel';
+import PersonListItem from '../PersonListItem';
 
 const PeopleList = ({ data }: { data: PeopleListInterface[] }) => {
   return (
     <>
       {data.map((item) => {
         return (
-          <NavLink
+          <PersonListItem
             key={item.id}
-            to={`/people/${item.id}`}
-            className={classes.container}
-          >
-            <img
-              src={`http://image.tmdb.org/t/p/w185/${item.profile_path}`}
-              alt="travel image"
-            />
-            <h2>{item.name}</h2>
-          </NavLink>
+            id={item.id}
+            text={null}
+            title={item.name}
+            profile_path={item.profile_path}
+          />
         );
       })}
     </>

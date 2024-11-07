@@ -1,20 +1,17 @@
-import { IoMdStar } from "react-icons/io";
-import classes from "./rating-star.module.css";
+import classes from '../../styles/rating-star.module.css';
 
 const RatingStar = ({
   value,
   size,
 }: {
   value: number;
-  size: "small" | "medium";
+  size: 'small' | 'medium';
 }) => {
+  const rating = value === 0 ? 'NR' : value.toFixed(1);
   return (
-    <div className={`${classes.container} ${classes[`container--${size}`]}`}>
-      <span>
-        <IoMdStar />
-      </span>
-      <p>{value.toFixed(1)}</p>
-    </div>
+    <p className={`${classes.container} ${classes[`container--${size}`]}`}>
+      {rating}
+    </p>
   );
 };
 
