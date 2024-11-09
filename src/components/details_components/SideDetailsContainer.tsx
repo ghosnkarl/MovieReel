@@ -6,7 +6,7 @@ import MediaDetails from './MediaDetails';
 
 const SideDetailsContainer = ({ movie }: { movie: IMovieDetails }) => {
   return (
-    <div className={classes['side__container']}>
+    <aside className={classes['side__container']}>
       <MediaDetails
         status={movie.status}
         homepage={movie.homepage}
@@ -24,7 +24,7 @@ const SideDetailsContainer = ({ movie }: { movie: IMovieDetails }) => {
         title={movie.title}
         poster_path={movie.poster_path}
       />
-    </div>
+    </aside>
   );
 };
 

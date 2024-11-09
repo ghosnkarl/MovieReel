@@ -41,10 +41,11 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
             />
             <div className={classes['container__left--text']}>
               <h1>{firstItemTitle}</h1>
-              <div>
-                <RatingStar value={firstItem.vote_average} size='medium' />
-                <p> {moment(firstItem.release_date).format('MMM DD, YYYY')}</p>
-              </div>
+              <RatingStar value={firstItem.vote_average} size='small' />
+              <p className={classes['top__date']}>
+                {' '}
+                {moment(firstItem.release_date).format('MMM DD, YYYY')}
+              </p>
             </div>
           </div>
         </LinkWrapper>

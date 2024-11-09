@@ -1,7 +1,7 @@
 .container {
   width: fit-content;
   gap: 1.2rem !important;
-  align-items: center;
+  align-items: center !important;
   font-weight: 500;
   color: white !important;
   display: flex;
