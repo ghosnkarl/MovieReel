@@ -4,6 +4,7 @@ import { getBackdropImage } from '../../helpers/imageSizes';
 import { IMovie } from '../../models/mediaModel';
 import { IGenre } from '../../models/genreModel';
 import Section from '../Section';
+import { ITV } from '../../models/tvModel';
 
 interface RecommendedListItemProps {
   backdrop: string;
@@ -41,7 +42,7 @@ const RecommendedList = ({
   title,
   genreList,
 }: {
-  items: IMovie[];
+  items: IMovie[] | ITV[];
   title: string;
   genreList: IGenre[] | undefined;
 }) => {
@@ -53,6 +54,7 @@ const RecommendedList = ({
           <ul className={classes.container}>
             {items.map((item) => {
               let genres = '';
+              const title = 'title' in item ? item.title : item.name;
               if (genreList)
                 genres = item.genre_ids
                   .map(
@@ -63,7 +65,7 @@ const RecommendedList = ({
               return (
                 <RecommendedListItem
                   backdrop={item.backdrop_path}
-                  title={item.title}
+                  title={title}
                   overview={item.overview}
                   genres={genres}
                   key={item.id}

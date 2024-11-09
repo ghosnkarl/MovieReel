@@ -5,23 +5,27 @@ import classes from '../../styles/movie-details.module.css';
 import DetailsHeader from '../../components/details_components/DetailsHeader';
 import QueryWrapper from '../../components/QueryWrapper';
 
+import { ITVDetails } from '../../models/tvModel';
+import DetailsMainContainer from '../../components/details_components/DetailsMainContainer';
+import SideDetailsContainer from '../../components/details_components/SideDetailsContainer';
+
 const TVDetailsPage = () => {
   const params = useParams();
   const tvShowId = params.tvId;
   const queryParams = {
     append_to_response:
-      'credits,images,videos,keywords,reviews,recommendations,similar',
+      'credits,images,videos,keywords,reviews,recommendations',
     include_image_language: 'en,null',
   };
 
-  const movieQuery = useQuery({
+  const tvQuery = useQuery({
     queryKey: ['movies', tvShowId],
     queryFn: () =>
       fetchSingleResult({ path: `tv/${tvShowId}`, params: queryParams }),
     retry: 0,
   });
 
-  const tvShow = movieQuery.data;
+  const tvShow = tvQuery.data as ITVDetails;
 
   let content = <></>;
   if (tvShow) {
@@ -36,17 +40,17 @@ const TVDetailsPage = () => {
           runtime={tvShow.runtime}
           backdrop_path={tvShow.backdrop_path}
         />
-        {/* <div className={classes['details-container']}>
-          <DetailsMainContainer movie={movie} />
-          <SideDetailsContainer movie={movie} />
-        </div> */}
+        <div className={classes['details-container']}>
+          <DetailsMainContainer media={tvShow} />
+          <SideDetailsContainer media={tvShow} />
+        </div>
       </>
     );
   }
 
   return (
     <div className={classes['page-container']}>
-      <QueryWrapper query={movieQuery} message='TV Details'>
+      <QueryWrapper query={tvQuery} message='TV Details'>
         {content}
       </QueryWrapper>
     </div>

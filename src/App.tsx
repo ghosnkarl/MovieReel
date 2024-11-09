@@ -80,6 +80,24 @@ const router = createBrowserRouter([
                 index: true,
                 element: <TVDetailsPage />,
               },
+              {
+                path: '',
+                element: <DetailsRootLayout />,
+                children: [
+                  {
+                    path: 'cast',
+                    element: <CreditsPage />,
+                  },
+                  {
+                    path: 'review',
+                    element: <ReviewsPage />,
+                  },
+                  {
+                    path: 'images',
+                    element: <ImagesPage />,
+                  },
+                ],
+              },
             ],
           },
         ],

@@ -7,7 +7,7 @@
 .header {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2.4rem;
+  gap: 3.2rem;
   height: 55vh;
   align-items: center;
   background-color: var(--color-background--card);

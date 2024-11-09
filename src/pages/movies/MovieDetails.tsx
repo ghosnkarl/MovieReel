@@ -41,8 +41,8 @@ const MovieDetails = () => {
           backdrop_path={movie.backdrop_path}
         />
         <div className={classes['details-container']}>
-          <DetailsMainContainer movie={movie} />
-          <SideDetailsContainer movie={movie} />
+          <DetailsMainContainer media={movie} />
+          <SideDetailsContainer media={movie} />
         </div>
       </>
     );

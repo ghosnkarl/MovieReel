@@ -8,39 +8,45 @@ import RecommendedList from './RecommendedList';
 import { getPosterImage } from '../../helpers/imageSizes';
 import CastList from './CastList';
 import { IMovieDetails } from '../../models/movieModel';
+import { ITVDetails } from '../../models/tvModel';
 
-const DetailsMainContainer = ({ movie }: { movie: IMovieDetails }) => {
+const DetailsMainContainer = ({
+  media,
+}: {
+  media: IMovieDetails | ITVDetails;
+}) => {
   const genresResult = useQuery({
     queryKey: ['genres', 'movie'],
     queryFn: () => fetchGenres('movie'),
     retry: 1,
   });
 
-  const images = getGalleryImages({ images: movie.images });
+  const images = getGalleryImages({ images: media.images });
+  const title = 'title' in media ? media.title : media.name;
   return (
     <div className={classes['main-container']}>
-      {movie.credits && (
+      {media.credits && (
         <CastList
-          title={movie.title}
-          image={getPosterImage(movie.poster_path, 'w342')}
-          credits={movie.credits}
+          title={title}
+          image={getPosterImage(media.poster_path, 'w342')}
+          credits={media.credits}
         />
       )}
 
-      {movie.videos.results && movie.videos.results.length > 0 && (
-        <VideoList videos={movie.videos.results} />
+      {media.videos.results && media.videos.results.length > 0 && (
+        <VideoList videos={media.videos.results} />
       )}
 
       <ImageList
         images={images}
-        backdropList={movie.images.backdrops}
-        title={movie.title}
-        image={getPosterImage(movie.poster_path, 'w342')}
+        backdropList={media.images.backdrops}
+        title={title}
+        image={getPosterImage(media.poster_path, 'w342')}
       />
 
       <RecommendedList
-        title={movie.title}
-        items={movie.recommendations.results}
+        title={title}
+        items={media.recommendations.results}
         genreList={genresResult.data}
       />
     </div>
