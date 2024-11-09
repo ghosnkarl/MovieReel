@@ -6,12 +6,14 @@ import RatingStar from '../rating/RatingStar';
 
 interface DetailsHeaderProps {
   title: string;
-  release_date: string;
+  release_date: string | null;
   runtime: number | null;
   genres: IGenre[];
   vote_average: number;
   overview: string;
   backdrop_path: string | null;
+  first_air_date: string | null;
+  last_air_date: string | null;
 }
 
 const DetailsHeader = ({
@@ -22,6 +24,8 @@ const DetailsHeader = ({
   vote_average,
   overview,
   backdrop_path,
+  first_air_date,
+  last_air_date,
 }: DetailsHeaderProps) => {
   const formattedReleaseDate = moment(release_date).format('MMM DD, YYYY');
   const formattedGenres = genres.map((genre) => genre.name).join(', ');
@@ -42,12 +46,20 @@ const DetailsHeader = ({
 
           <div className={classes['details__container']}>
             <div>
-              <h4>Release Date</h4>
+              {release_date && <h4>Release Date</h4>}
+              {first_air_date && <h4>First Air Date</h4>}
+              {last_air_date && <h4>Last Air Date</h4>}
               {formattedRuntime && <h4>Runtime</h4>}
               <h4>Genres</h4>
             </div>
             <div>
-              <p>{formattedReleaseDate}</p>
+              {release_date && <p>{formattedReleaseDate}</p>}
+              {first_air_date && (
+                <h4>{moment(first_air_date).format('MMM DD, YYYY')}</h4>
+              )}
+              {last_air_date && (
+                <h4>{moment(last_air_date).format('MMM DD, YYYY')}</h4>
+              )}
               {formattedRuntime && <p>{formattedRuntime}</p>}
               <p>{formattedGenres}</p>
             </div>

@@ -13,7 +13,8 @@ export interface ITV {
   overview: string;
   vote_average: number;
   backdrop_path: string;
-  release_date: string;
+  last_air_date: string;
+  first_air_date: string;
   genre_ids: number[];
 }
 
@@ -27,10 +28,11 @@ export interface ITVDetails extends ITV {
   status: string;
   tagline: string;
   production_companies: IProductionCompany[];
-  credits: { cast: ICast[]; crew: ICrew[] };
+  aggregate_credits: { cast: ICast[]; crew: ICrew[] };
   videos: { results: IVideo[] };
   images: IMovieDetailsImages;
   keywords: { results: IKeyword[] };
   reviews: { results: IReview[] };
   recommendations: { results: ITV[] };
+  created_by: { id: number; name: string }[];
 }

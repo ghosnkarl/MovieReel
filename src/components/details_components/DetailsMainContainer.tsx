@@ -23,13 +23,14 @@ const DetailsMainContainer = ({
 
   const images = getGalleryImages({ images: media.images });
   const title = 'title' in media ? media.title : media.name;
+  const credits = 'title' in media ? media.credits : media.aggregate_credits;
   return (
     <div className={classes['main-container']}>
-      {media.credits && (
+      {credits && (
         <CastList
           title={title}
           image={getPosterImage(media.poster_path, 'w342')}
-          credits={media.credits}
+          credits={credits}
         />
       )}
 

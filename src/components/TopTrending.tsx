@@ -31,6 +31,8 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
     const firstItem = data[0] as IMovie | ITVShow;
     const firstItemTitle =
       'title' in firstItem ? firstItem.title : firstItem.name;
+    const date =
+      'title' in firstItem ? firstItem.release_date : firstItem.first_air_date;
     content = (
       <div className={classes.container}>
         <LinkWrapper link={`/${type}/${firstItem.id}`}>
@@ -44,7 +46,7 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
               <RatingStar value={firstItem.vote_average} size='small' />
               <p className={classes['top__date']}>
                 {' '}
-                {moment(firstItem.release_date).format('MMM DD, YYYY')}
+                {moment(date).format('MMM DD, YYYY')}
               </p>
             </div>
           </div>
@@ -52,6 +54,10 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
         <ul className={classes['container--right']}>
           {list.map((listItem: IMovie | ITVShow) => {
             const title = 'title' in listItem ? listItem.title : listItem.name;
+            const date =
+              'title' in listItem
+                ? listItem.release_date
+                : listItem.first_air_date;
             return (
               <LinkWrapper key={listItem.id} link={`/movies/${listItem.id}`}>
                 <li className={classes['item-container']}>
@@ -61,7 +67,7 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
                     <h1>{title}</h1>
                     <RatingStar value={listItem.vote_average} size='small' />
                     <p className={classes.date}>
-                      {moment(listItem.release_date).format('MMM DD, YYYY')}
+                      {moment(date).format('MMM DD, YYYY')}
                     </p>
                   </div>
                 </li>

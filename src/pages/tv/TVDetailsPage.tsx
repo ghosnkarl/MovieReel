@@ -14,7 +14,7 @@ const TVDetailsPage = () => {
   const tvShowId = params.tvId;
   const queryParams = {
     append_to_response:
-      'credits,images,videos,keywords,reviews,recommendations',
+      'aggregate_credits,images,videos,keywords,reviews,recommendations',
     include_image_language: 'en,null',
   };
 
@@ -36,9 +36,11 @@ const TVDetailsPage = () => {
           overview={tvShow.overview}
           genres={tvShow.genres}
           vote_average={tvShow.vote_average}
-          release_date={tvShow.release_date}
+          release_date={null}
           runtime={tvShow.runtime}
           backdrop_path={tvShow.backdrop_path}
+          first_air_date={tvShow.first_air_date}
+          last_air_date={tvShow.last_air_date}
         />
         <div className={classes['details-container']}>
           <DetailsMainContainer media={tvShow} />

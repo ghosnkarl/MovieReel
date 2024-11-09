@@ -4,16 +4,17 @@ export interface IBaseMedia {
   overview: string;
   vote_average: number;
   backdrop_path: string;
-  release_date: string;
   genre_ids: number[];
 }
 
 export interface IMovie extends IBaseMedia {
   title: string;
+  release_date: string;
 }
 
 export interface ITVShow extends IBaseMedia {
   name: string;
+  first_air_date: string;
 }
 
 interface ICastCrew {

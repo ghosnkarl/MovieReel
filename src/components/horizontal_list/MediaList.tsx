@@ -13,6 +13,7 @@ const MediaList = ({
     <>
       {data.map((item) => {
         const title = 'title' in item ? item.title : item.name;
+        const date = 'title' in item ? item.release_date : item.first_air_date;
         return (
           <MediaItem
             key={item.id}
@@ -20,7 +21,7 @@ const MediaList = ({
             title={title}
             type={type}
             poster_path={item.poster_path}
-            text={moment(item.release_date).format('MMM DD, YYYY')}
+            text={moment(date).format('MMM DD, YYYY')}
             vote_average={item.vote_average}
           />
         );
