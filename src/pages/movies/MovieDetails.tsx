@@ -7,6 +7,8 @@ import QueryWrapper from '../../components/QueryWrapper';
 import DetailsMainContainer from '../../components/details_components/DetailsMainContainer';
 import SideDetailsContainer from '../../components/details_components/SideDetailsContainer';
 
+import { IMovieDetails } from '../../models/movieModel';
+
 const MovieDetails = () => {
   const params = useParams();
   const movieId = params.movieId;
@@ -23,7 +25,7 @@ const MovieDetails = () => {
     retry: 0,
   });
 
-  const movie = movieQuery.data;
+  const movie = movieQuery.data as IMovieDetails;
 
   let content = <></>;
   if (movie) {

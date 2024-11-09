@@ -1,8 +1,8 @@
 import moment from 'moment';
 import classes from '../../styles/details-header.module.css';
 import { IGenre } from '../../models/genreModel';
-import RatingStar from '../rating/RatingStar';
 import { getBackdropImage } from '../../helpers/imageSizes';
+import RatingStar from '../rating/RatingStar';
 
 interface DetailsHeaderProps {
   title: string;
@@ -29,25 +29,39 @@ const DetailsHeader = ({
     runtime && runtime !== 0
       ? `${Math.floor(runtime / 60)}h ${runtime % 60}m`
       : null;
-  const movieDetailsText = `${formattedReleaseDate} • ${formattedGenres} ${
-    formattedRuntime ? `• ${formattedRuntime}` : ''
-  }`;
-  return (
-    <div className={classes.header}>
-      <div className={classes['header__text--container']}>
-        <h1 className={classes['header__title']}>{title}</h1>
-        <div className={classes['header__genres']}>
-          <RatingStar value={vote_average} size='medium' />
-          <p>{movieDetailsText}</p>
-        </div>
 
-        <p className={classes['header__overview']}>{overview}</p>
+  return (
+    <div className={classes.container}>
+      <div className={classes.header}>
+        <div>
+          <h1 className={classes['header__title']}>{title}</h1>
+
+          <RatingStar value={vote_average} size='medium' />
+
+          <p className={classes['header__overview']}>{overview}</p>
+
+          <div className={classes['details__container']}>
+            <div>
+              <h4>Release Date</h4>
+              {formattedRuntime && <h4>Runtime</h4>}
+              <h4>Genres</h4>
+            </div>
+            <div>
+              <p>{formattedReleaseDate}</p>
+              {formattedRuntime && <p>{formattedRuntime}</p>}
+              <p>{formattedGenres}</p>
+            </div>
+          </div>
+        </div>
+        <div className={classes['image__container']}>
+          <div className={classes['gradient-overlay']} />
+          <img
+            className={classes['backdrop-img']}
+            src={getBackdropImage(backdrop_path, 'w1280')}
+            alt={title}
+          />
+        </div>
       </div>
-      <img
-        className={classes['backdrop-img']}
-        src={getBackdropImage(backdrop_path, 'w1280')}
-        alt={title}
-      />
     </div>
   );
 };

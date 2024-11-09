@@ -33,7 +33,7 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
       'title' in firstItem ? firstItem.title : firstItem.name;
     content = (
       <div className={classes.container}>
-        <LinkWrapper link={`/movies/${firstItem.id}`}>
+        <LinkWrapper link={`/${type}/${firstItem.id}`}>
           <div className={classes['container__left']}>
             <img
               src={getBackdropImage(firstItem.backdrop_path, 'w780')}
