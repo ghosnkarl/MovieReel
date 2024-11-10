@@ -27,7 +27,9 @@ const SeasonsPage = () => {
             />
             <div className={classes['season__text']}>
               <div>
-                <h1 className={classes['season__title']}>{season.name}</h1>
+                <h1 className={classes['season__title']}>
+                  {season.season_number} - {season.name}
+                </h1>
                 <p className={classes['season__episodes']}>
                   ({season.episode_count} Episodes)
                 </p>

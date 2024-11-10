@@ -3,22 +3,24 @@
   flex-direction: column;
   max-height: 60rem;
   overflow-y: scroll;
-  gap: 1.6rem;
+
   margin-top: 2.4rem;
 }
 
 .item__container:link,
 .item__container:visited {
   text-decoration: none;
+  padding: 1.6rem;
   color: white;
   cursor: pointer;
   display: flex;
   gap: 2.4rem;
+  border-radius: 7px;
 }
 
 .item__container:hover,
 .item__container:active {
-  opacity: 0.7;
+  background-color: var(--color-gray-600);
 }
 
 .item__backdrop {

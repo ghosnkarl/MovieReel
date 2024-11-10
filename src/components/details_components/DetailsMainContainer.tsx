@@ -52,7 +52,7 @@ const DetailsMainContainer = ({
             <MediaItem
               id={season.id}
               key={season.id}
-              title={season.name}
+              title={`${season.season_number} - ${season.name}`}
               poster_path={getPosterImage(season.poster_path, 'w342')}
               text={`${season.episode_count} episodes`}
               type='season'
