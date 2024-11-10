@@ -41,7 +41,11 @@ const DetailsMainContainer = ({
       {seasons && seasons.length > 0 && (
         <HorizontalListContainer
           title='Seasons'
-          linkState={null}
+          linkState={{
+            title,
+            image: getPosterImage(media.poster_path, 'w342'),
+            seasons,
+          }}
           link='seasons'
         >
           {seasons.map((season) => (

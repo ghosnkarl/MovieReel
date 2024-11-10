@@ -18,6 +18,8 @@ import ErrorPage from './components/ErrorPage';
 import OutletRootLayout from './components/OutletRootLayout';
 import MovieDetails from './pages/movies/MovieDetails';
 import TVDetailsPage from './pages/tv/TVDetailsPage';
+import SeasonsPage from './pages/tv/SeasonsPage';
+import SeasonDetailsPage from './pages/tv/SeasonDetailsPage';
 
 const router = createBrowserRouter([
   {
@@ -95,6 +97,26 @@ const router = createBrowserRouter([
                   {
                     path: 'images',
                     element: <ImagesPage />,
+                  },
+                  {
+                    path: 'seasons',
+                    element: <OutletRootLayout />,
+                    children: [
+                      {
+                        index: true,
+                        element: <SeasonsPage />,
+                      },
+                      {
+                        path: ':seasonNumber',
+                        element: <OutletRootLayout />,
+                        children: [
+                          {
+                            index: true,
+                            element: <SeasonDetailsPage />,
+                          },
+                        ],
+                      },
+                    ],
                   },
                 ],
               },

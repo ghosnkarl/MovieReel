@@ -1,14 +1,17 @@
 .container {
-  padding: 9.6rem 6.4rem 6.4rem 6.4rem;
+  max-width: var(--page-width--max);
+  margin: var(--page-width--margin);
+  padding: 9.6rem 3.2rem 6.4rem 3.2rem;
 }
 
 .container__header {
+  width: fit-content;
   display: flex;
   margin-bottom: 3.2rem;
   gap: 2.4rem;
   align-items: center;
   cursor: pointer;
-  width: fit-content;
+  border-radius: 7px;
 
   &:hover {
     opacity: 0.7;

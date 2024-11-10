@@ -1,0 +1,69 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 2.4rem;
+}
+
+.season__link:link,
+.season__link:visited {
+  text-decoration: none;
+  color: white;
+}
+
+.container li {
+  display: flex;
+  gap: 3.2rem;
+  align-items: center;
+  background-color: var(--color-background--card);
+  box-shadow: var(--card--box-shadow);
+  padding: 2.4rem;
+  border-radius: 7px;
+}
+
+.container li:hover {
+  background-color: var(--color-background--border);
+}
+
+.season__img {
+  width: 17rem;
+  height: fit-content;
+  aspect-ratio: 0.7;
+  object-fit: cover;
+  border-radius: 7px;
+}
+
+.season__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.season__text div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.season__title {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.season__episodes {
+  font-size: 1.6rem;
+  color: var(--color-gray-200);
+}
+
+.season__overview {
+  font-size: 1.6rem;
+  line-height: 1.4;
+}
+
+.season__date {
+  margin-top: 1.2rem;
+  margin-bottom: 1.8rem;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--color-gray-200);
+}
