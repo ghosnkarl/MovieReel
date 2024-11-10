@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.6rem;
+  list-style: none;
+}
+
+.container li {
+  font-size: 1.4rem;
+  border: 1px solid var(--color-primary-900);
+  padding: 0.8rem 1rem;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.container li:hover {
+  background-color: var(--color-primary-900);
+}

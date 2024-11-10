@@ -1,16 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import classes from '../../styles/media-details.module.css';
-
 import Section from '../Section';
 import MediaDetailsItem from './MediaDetailsItem';
-import { IProductionCompany } from '../../models/productionCompanyModel';
 import { ICollection } from '../../models/collectionModel';
 
 interface SidebarProps {
   status: string;
   homepage: string;
   imdb_id: string;
-  production_companies: IProductionCompany[];
+
   budget: number;
   revenue: number;
   tagline: string;
@@ -27,7 +25,7 @@ const MediaDetails = ({
   status,
   homepage,
   imdb_id,
-  production_companies,
+
   budget,
   revenue,
   tagline,
@@ -73,15 +71,6 @@ const MediaDetails = ({
 
         {number_of_episodes && number_of_episodes > 0 && (
           <MediaDetailsItem title='Episodes' text={number_of_episodes} />
-        )}
-
-        {production_companies && production_companies.length > 0 && (
-          <MediaDetailsItem
-            title='Production Companies'
-            text={production_companies
-              .map((company) => company.name)
-              .join(', ')}
-          />
         )}
 
         {budget > 0 && (
