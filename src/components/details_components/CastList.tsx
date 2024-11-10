@@ -19,7 +19,7 @@ const CastList = ({ title, image, credits }: CastListProps) => {
       title='Actors'
     >
       {castList.map((cast) => (
-        <li key={cast.credit_id}>
+        <li key={cast.cast_id}>
           <PersonListItem
             id={cast.id}
             profile_path={cast.profile_path}

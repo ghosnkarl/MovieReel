@@ -36,8 +36,8 @@
 
 .details-container {
   display: flex;
-  max-width: 130rem;
-  margin: 0 auto;
+  max-width: var(--page-width--max);
+  margin: var(--page-width--margin);
   padding: 6.2rem 3.2rem 6.4rem 3.2rem;
   gap: 3.2rem;
 }

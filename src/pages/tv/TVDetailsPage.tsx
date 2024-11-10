@@ -41,6 +41,7 @@ const TVDetailsPage = () => {
           backdrop_path={tvShow.backdrop_path}
           first_air_date={tvShow.first_air_date}
           last_air_date={tvShow.last_air_date}
+          created_by={tvShow.created_by}
         />
         <div className={classes['details-container']}>
           <DetailsMainContainer media={tvShow} />

@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 130rem;
+  max-width: var(--page-width--max);
   margin: 0 auto;
   padding: 12.8rem 3.2rem 3.2rem 3.2rem;
   gap: 3.2rem;

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&family=Permanent+Marker&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 :root {
   --color-background: var(--color-background--root);
@@ -27,6 +27,9 @@
   --section--title-size: 2.4rem;
 
   --card--box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
+
+  --page-width--max: 135rem;
+  --page-width--margin: 0 auto;
 }
 
 * {
@@ -43,7 +46,7 @@ html {
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Manrope', sans-serif;
 
   background-color: var(--color-background);
   color: white;
@@ -67,7 +70,7 @@ body {
 }
 
 .page-container {
-  max-width: 130rem;
+  max-width: var(--page-width--max);
   margin: 0 auto;
   padding: 12.8rem 3.2rem 0 3.2rem;
 }

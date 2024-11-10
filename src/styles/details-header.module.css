@@ -1,6 +1,6 @@
 .container {
-  max-width: 130rem;
-  margin: 0 auto;
+  max-width: var(--page-width--max);
+  margin: var(--page-width--margin);
   padding: 3.2rem 3.2rem 0 3.2rem;
 }
 
@@ -54,17 +54,6 @@
   font-weight: 600;
 }
 
-.header__genres {
-  font-size: 2rem;
-  width: fit-content;
-  gap: 1.2rem;
-  margin-bottom: 2rem;
-  align-items: center;
-  font-weight: 500;
-  color: white;
-  display: flex;
-}
-
 .header__overview {
   margin-top: 2rem;
   margin-bottom: 2.4rem;
@@ -79,7 +68,6 @@
   grid-template-columns: 3fr 1fr;
   gap: 4.2rem;
   font-size: 1.6rem;
-
   margin-bottom: 1.2rem;
   font-weight: 500;
 }
@@ -87,9 +75,19 @@
 .details__container div {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.8rem;
 }
 
 .details__container h4 {
   font-weight: 500;
+}
+
+.values__container {
+  color: var(--color-primary-900);
+}
+
+.genres {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: var(--color-gray-100);
 }

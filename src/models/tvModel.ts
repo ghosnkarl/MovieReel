@@ -18,6 +18,11 @@ export interface ITV {
   genre_ids: number[];
 }
 
+export interface ICreatedBy {
+  id: number;
+  name: string;
+}
+
 export interface ITVDetails extends ITV {
   budget: number;
   genres: IGenre[];
@@ -34,5 +39,18 @@ export interface ITVDetails extends ITV {
   keywords: { results: IKeyword[] };
   reviews: { results: IReview[] };
   recommendations: { results: ITV[] };
-  created_by: { id: number; name: string }[];
+  created_by: ICreatedBy[];
+  last_episode_to_air: IEpisode;
+}
+
+export interface IEpisode {
+  id: number;
+  name: string;
+  overview: string;
+  vote_average: number;
+  air_date: string;
+  episode_number: string;
+  runtime: number;
+  season_number: number;
+  still_path: string | null;
 }

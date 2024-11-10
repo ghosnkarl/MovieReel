@@ -12,6 +12,7 @@ interface RecommendedListItemProps {
   overview: string;
   genres: string;
   id: number;
+  type: 'movies' | 'tv';
 }
 
 const RecommendedListItem = ({
@@ -20,9 +21,10 @@ const RecommendedListItem = ({
   overview,
   genres,
   id,
+  type,
 }: RecommendedListItemProps) => {
   return (
-    <NavLink to={`/movies/${id}`} className={classes['item__container']}>
+    <NavLink to={`/${type}/${id}`} className={classes['item__container']}>
       <img
         className={classes['item__backdrop']}
         src={getBackdropImage(backdrop, 'w300')}
@@ -70,6 +72,7 @@ const RecommendedList = ({
                   genres={genres}
                   key={item.id}
                   id={item.id}
+                  type={'title' in item ? 'movies' : 'tv'}
                 />
               );
             })}

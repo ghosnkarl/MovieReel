@@ -3,6 +3,7 @@ import classes from '../../styles/details-header.module.css';
 import { IGenre } from '../../models/genreModel';
 import { getBackdropImage } from '../../helpers/imageSizes';
 import RatingStar from '../rating/RatingStar';
+import { ICreatedBy } from '../../models/tvModel';
 
 interface DetailsHeaderProps {
   title: string;
@@ -14,6 +15,7 @@ interface DetailsHeaderProps {
   backdrop_path: string | null;
   first_air_date: string | null;
   last_air_date: string | null;
+  created_by: ICreatedBy[] | null;
 }
 
 const DetailsHeader = ({
@@ -26,18 +28,22 @@ const DetailsHeader = ({
   backdrop_path,
   first_air_date,
   last_air_date,
+  created_by,
 }: DetailsHeaderProps) => {
   const formattedReleaseDate = moment(release_date).format('MMM DD, YYYY');
-  const formattedGenres = genres.map((genre) => genre.name).join(', ');
+  const formattedGenres = genres.map((genre) => genre.name).join(' • ');
   const formattedRuntime =
     runtime && runtime !== 0
       ? `${Math.floor(runtime / 60)}h ${runtime % 60}m`
       : null;
-
+  const formattedCreatedBy = created_by
+    ?.map((creators) => creators.name)
+    .join(', ');
   return (
     <div className={classes.container}>
       <div className={classes.header}>
         <div>
+          <p className={classes.genres}>{formattedGenres}</p>
           <h1 className={classes['header__title']}>{title}</h1>
 
           <RatingStar value={vote_average} size='medium' />
@@ -50,18 +56,18 @@ const DetailsHeader = ({
               {first_air_date && <h4>First Air Date</h4>}
               {last_air_date && <h4>Last Air Date</h4>}
               {formattedRuntime && <h4>Runtime</h4>}
-              <h4>Genres</h4>
+              {created_by && <h4>Create By</h4>}
             </div>
-            <div>
+            <div className={classes['values__container']}>
               {release_date && <p>{formattedReleaseDate}</p>}
               {first_air_date && (
-                <h4>{moment(first_air_date).format('MMM DD, YYYY')}</h4>
+                <p>{moment(first_air_date).format('MMM DD, YYYY')}</p>
               )}
               {last_air_date && (
-                <h4>{moment(last_air_date).format('MMM DD, YYYY')}</h4>
+                <p>{moment(last_air_date).format('MMM DD, YYYY')}</p>
               )}
               {formattedRuntime && <p>{formattedRuntime}</p>}
-              <p>{formattedGenres}</p>
+              {created_by && <p>{formattedCreatedBy}</p>}
             </div>
           </div>
         </div>

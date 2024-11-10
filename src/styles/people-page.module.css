@@ -1,5 +1,5 @@
 .container {
-  max-width: 130rem;
+  max-width: var(--page-width--max);
   margin: 0 auto;
   padding: 12.8rem 3.2rem 0 3.2rem;
   display: flex;
