@@ -2,7 +2,7 @@ import classes from '../../styles/media-details.module.css';
 
 interface MediaDetailsItem {
   title: string;
-  text: string;
+  text: string | number;
 }
 
 const MediaDetailsItem = ({ title, text }: MediaDetailsItem) => {

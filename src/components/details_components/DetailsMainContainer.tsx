@@ -9,8 +9,6 @@ import { getPosterImage } from '../../helpers/imageSizes';
 import CastList from './CastList';
 import { IMovieDetails } from '../../models/movieModel';
 import { ITVDetails } from '../../models/tvModel';
-import Section from '../Section';
-import EpisodeItem from '../EpisodeItem';
 
 const DetailsMainContainer = ({
   media,
@@ -26,7 +24,7 @@ const DetailsMainContainer = ({
   const images = getGalleryImages({ images: media.images });
   const title = 'title' in media ? media.title : media.name;
   const credits = 'title' in media ? media.credits : media.aggregate_credits;
-  const lastEpisode = 'title' in media ? null : media.last_episode_to_air;
+
   return (
     <div className={classes['main-container']}>
       {credits && (
@@ -47,12 +45,7 @@ const DetailsMainContainer = ({
         title={title}
         image={getPosterImage(media.poster_path, 'w342')}
       />
-      {lastEpisode && (
-        <Section border='left'>
-          <h1 className='section__title'>Last Episode to Air</h1>
-          <EpisodeItem episode={lastEpisode} />
-        </Section>
-      )}
+
       <RecommendedList
         title={title}
         items={media.recommendations.results}

@@ -15,6 +15,8 @@ interface SidebarProps {
   revenue: number;
   tagline: string;
   collection: ICollection | null;
+  number_of_seasons: number | null;
+  number_of_episodes: number | null;
 }
 
 // Helper functions for formatting
@@ -30,6 +32,8 @@ const MediaDetails = ({
   revenue,
   tagline,
   collection,
+  number_of_seasons,
+  number_of_episodes,
 }: SidebarProps) => {
   return (
     <Section border='top'>
@@ -61,6 +65,14 @@ const MediaDetails = ({
               </NavLink>
             </div>
           </div>
+        )}
+
+        {number_of_seasons && number_of_seasons > 0 && (
+          <MediaDetailsItem title='Seasons' text={number_of_seasons} />
+        )}
+
+        {number_of_episodes && number_of_episodes > 0 && (
+          <MediaDetailsItem title='Episodes' text={number_of_episodes} />
         )}
 
         {production_companies && production_companies.length > 0 && (

@@ -56,7 +56,7 @@ const DetailsHeader = ({
               {first_air_date && <h4>First Air Date</h4>}
               {last_air_date && <h4>Last Air Date</h4>}
               {formattedRuntime && <h4>Runtime</h4>}
-              {created_by && <h4>Create By</h4>}
+              {created_by && created_by.length > 0 && <h4>Create By</h4>}
             </div>
             <div className={classes['values__container']}>
               {release_date && <p>{formattedReleaseDate}</p>}
@@ -67,7 +67,9 @@ const DetailsHeader = ({
                 <p>{moment(last_air_date).format('MMM DD, YYYY')}</p>
               )}
               {formattedRuntime && <p>{formattedRuntime}</p>}
-              {created_by && <p>{formattedCreatedBy}</p>}
+              {created_by && created_by.length > 0 && (
+                <p>{formattedCreatedBy}</p>
+              )}
             </div>
           </div>
         </div>
