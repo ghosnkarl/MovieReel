@@ -9,6 +9,8 @@ import { getPosterImage } from '../../helpers/imageSizes';
 import CastList from './CastList';
 import { IMovieDetails } from '../../models/movieModel';
 import { ITVDetails } from '../../models/tvModel';
+import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
+import MediaItem from '../MediaItem';
 
 const DetailsMainContainer = ({
   media,
@@ -24,6 +26,7 @@ const DetailsMainContainer = ({
   const images = getGalleryImages({ images: media.images });
   const title = 'title' in media ? media.title : media.name;
   const credits = 'title' in media ? media.credits : media.aggregate_credits;
+  const seasons = 'title' in media ? null : media.seasons;
 
   return (
     <div className={classes['main-container']}>
@@ -33,6 +36,26 @@ const DetailsMainContainer = ({
           image={getPosterImage(media.poster_path, 'w342')}
           credits={credits}
         />
+      )}
+
+      {seasons && seasons.length > 0 && (
+        <HorizontalListContainer
+          title='Seasons'
+          linkState={null}
+          link='seasons'
+        >
+          {seasons.map((season) => (
+            <MediaItem
+              id={season.id}
+              key={season.id}
+              title={season.name}
+              poster_path={getPosterImage(season.poster_path, 'w342')}
+              text={`${season.episode_count} episodes`}
+              type='season'
+              vote_average={season.vote_average}
+            />
+          ))}
+        </HorizontalListContainer>
       )}
 
       {media.videos.results && media.videos.results.length > 0 && (

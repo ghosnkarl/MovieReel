@@ -10,7 +10,7 @@ interface MediaItemProps {
   poster_path: string;
   title: string | undefined;
   vote_average: number;
-  type: 'movies' | 'tv';
+  type: 'movies' | 'tv' | 'season';
 }
 
 const MediaItem = ({

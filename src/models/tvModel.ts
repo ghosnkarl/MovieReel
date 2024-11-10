@@ -42,6 +42,7 @@ export interface ITVDetails extends ITV {
   created_by: ICreatedBy[];
   number_of_episodes: number;
   number_of_seasons: number;
+  seasons: ISeason[];
 }
 
 export interface ISeason {
