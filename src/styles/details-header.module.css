@@ -8,7 +8,7 @@
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 3.2rem;
-  height: 70vh;
+  height: 60vh;
   align-items: center;
   background-color: var(--color-background--card);
   border-radius: 10px;

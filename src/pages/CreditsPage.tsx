@@ -5,6 +5,7 @@ import { ICast, ICrew } from '../models/mediaModel';
 import PersonListItem from '../components/PersonListItem';
 import Tabs, { TabObjectProps } from '../components/Tabs';
 import { CREDITS_TABS } from '../data/data';
+import CreditItem from '../components/CreditItem';
 
 const CreditsPage = () => {
   const location = useLocation();
@@ -40,9 +41,9 @@ const CreditsPage = () => {
         layoutId='credits_page'
       />
       {selectedTab.value === 'cast' && (
-        <div className='flex--wrap-container'>
+        <div className={classes['list__container']}>
           {credits.cast.map((cast: ICast) => (
-            <PersonListItem
+            <CreditItem
               key={cast.credit_id}
               id={cast.id}
               profile_path={cast.profile_path}
@@ -69,11 +70,11 @@ const CreditsPage = () => {
                 </button>
               ))}
           </div>
-          <div className='flex--wrap-container'>
+          <div className={classes['list__container']}>
             {filteredCrewList
               .filter((item) => item.department === selectedDepartment)
               .map((crew) => (
-                <PersonListItem
+                <CreditItem
                   key={crew.credit_id}
                   id={crew.id}
                   profile_path={crew.profile_path}

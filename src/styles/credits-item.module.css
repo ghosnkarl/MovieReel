@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  color: white;
+  gap: 2.4rem;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  align-items: center;
+  background-color: var(--color-background--card);
+  border-radius: 7px;
+  overflow: hidden;
+
+  &:hover {
+    background-color: var(--color-background--border);
+  }
+}
+
+.container img {
+  width: 11rem;
+  aspect-ratio: 1;
+  object-fit: cover;
+  box-shadow: var(--card--box-shadow);
+}
+
+.container h2 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+}
+
+.container p {
+  font-size: 1.4rem;
+  line-height: 1.2;
+  color: var(--color-gray-300);
+  font-weight: 500;
+}

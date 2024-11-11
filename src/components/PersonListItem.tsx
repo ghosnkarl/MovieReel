@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
-import MotionDiv from './ui/MotionDiv';
 import classes from '../styles/people-item.module.css';
 import { getProfileImage } from '../helpers/imageSizes';
+import MotionDiv from './ui/MotionDiv';
 
 interface PersonListItemProps {
   id: number;
