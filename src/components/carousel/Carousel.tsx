@@ -2,12 +2,12 @@ import classes from '../../styles/carousel.module.css';
 import { useState } from 'react';
 import CarouselItem, { CarouselItemInterface } from './CarouselItem';
 import { IGenre } from '../../models/genreModel';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { useQuery } from '@tanstack/react-query';
 import { discoverReleaseDates } from '../../helpers/discoverParams';
 import { fetchResults } from '../../services/http';
 import QueryWrapper from '../QueryWrapper';
 import { IMovie } from '../../models/mediaModel';
+import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 
 interface CarouselArrowProps {
   direction: 'left' | 'right';
@@ -17,15 +17,15 @@ interface CarouselArrowProps {
 const CarouselArrow = ({ direction, handleClick }: CarouselArrowProps) => {
   const isRight = direction === 'right';
   return (
-    <div
+    <button
       className={`${classes['carousel__arrow']} ${
         classes[`carousel__arrow--${direction}`]
       }`}
       onClick={handleClick}
     >
-      {isRight && <IoIosArrowForward className={classes.arrow} />}
-      {!isRight && <IoIosArrowBack className={classes.arrow} />}
-    </div>
+      {isRight && <MdNavigateNext className={classes.arrow} />}
+      {!isRight && <MdNavigateBefore className={classes.arrow} />}
+    </button>
   );
 };
 

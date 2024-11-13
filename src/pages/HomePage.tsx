@@ -77,16 +77,18 @@ export default function HomePage() {
         title='Most Popular Celebrities'
         link='/people'
       >
-        {popularPeopleQuery.data &&
-          popularPeopleQuery.data.map((person: IPeople) => (
-            <PersonListItem
-              key={person.id}
-              id={person.id}
-              text={null}
-              title={person.name}
-              profile_path={person.profile_path}
-            />
-          ))}
+        <>
+          {popularPeopleQuery.data &&
+            popularPeopleQuery.data.map((person: IPeople) => (
+              <PersonListItem
+                key={person.id}
+                id={person.id}
+                text={null}
+                title={person.name}
+                profile_path={person.profile_path}
+              />
+            ))}
+        </>
       </HorizontalWrapper>
     </div>
   );

@@ -16,6 +16,7 @@ const SideDetailsContainer = ({
     'title' in media ? media.keywords.keywords : media.keywords.results;
   const number_of_seasons = 'title' in media ? null : media.number_of_seasons;
   const number_of_episodes = 'title' in media ? null : media.number_of_episodes;
+  const collection = 'title' in media ? media.belongs_to_collection : null;
 
   return (
     <aside className={classes['side__container']}>
@@ -26,7 +27,7 @@ const SideDetailsContainer = ({
         revenue={media.revenue}
         budget={media.budget}
         tagline={media.tagline}
-        collection={null}
+        collection={collection}
         number_of_episodes={number_of_episodes}
         number_of_seasons={number_of_seasons}
       />

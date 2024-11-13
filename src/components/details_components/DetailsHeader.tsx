@@ -48,7 +48,7 @@ const DetailsHeader = ({
 
           <RatingStar value={vote_average} size='medium' />
 
-          <p className={classes['header__overview']}>{overview}</p>
+          {/* <p className={classes['header__overview']}>{overview}</p> */}
 
           <div className={classes['details__container']}>
             <div>

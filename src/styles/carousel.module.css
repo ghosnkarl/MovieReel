@@ -4,6 +4,7 @@
   box-shadow: var(--card--box-shadow);
   position: relative;
   overflow: hidden;
+  height: 100%;
 }
 
 /********************** Carousel Item **********************/
@@ -28,83 +29,48 @@
   position: absolute;
   bottom: 0;
   display: flex;
-  align-items: center;
-  padding: 2rem 6.4rem;
-  gap: 2.4rem;
-}
-
-.carousel__item--details img {
-  width: 13rem;
-  height: 19rem;
-  border-radius: 15px;
-  object-fit: cover;
-}
-
-.carousel__item--details--text {
-  display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding: 2rem 6.4rem;
 }
 
-.carousel__item--details--text h1 {
+.carousel__item--title {
   font-size: 3rem;
   line-height: 1.2;
   font-weight: 500;
-  margin-bottom: 1.2rem;
-}
-
-.carousel__item--rating {
-  display: flex;
-  align-items: center;
-  gap: 2.4rem;
-  font-size: 1.6rem;
-  margin-bottom: 2.4rem;
-}
-
-.carousel__item--rating p {
-  color: var(--color-gray-200);
+  margin-bottom: 0.8rem;
 }
 
 .carousel__item--genres {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.4rem;
-}
-
-.carousel__item--genres span {
   font-size: 1.6rem;
-  background-color: var(--color-gray-600);
-  padding: 1rem 1.4rem;
-  border-radius: 10px;
+  color: var(--color-gray-200);
+  margin-bottom: 1.4rem;
 }
 
 /********************** Carousel Arrow Buttons **********************/
 .carousel__arrow {
-  border: 1px solid rgba(255, 255, 255, 0.9);
   background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-  color: white;
+  border: 1px solid var(--color-primary-900);
+  color: var(--color-primary-900);
+  border-radius: 1000px;
+  padding: 0.5rem;
   display: flex;
   top: 50%;
   transform: translateY(-50%);
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
   position: absolute;
-  padding: 1.2rem 0.6rem;
 }
 
 .carousel__arrow--left {
-  left: 0;
+  left: 1.2rem;
 }
 
 .carousel__arrow--right {
-  right: 0;
+  right: 1.2rem;
 }
 
 .carousel__arrow:hover {
-  color: var(--color-primary-900);
-  border: 1px solid var(--color-primary-900);
+  background-color: var(--color-primary-900);
+  color: white;
 }
 
 .arrow {
