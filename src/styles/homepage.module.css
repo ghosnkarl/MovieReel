@@ -22,10 +22,10 @@
 }
 
 .welcome-container p {
-  font-size: 2rem;
+  font-size: 2.4rem;
   line-height: 1.2;
   color: var(--color-gray-200);
-  margin-bottom: 2rem;
+  margin-bottom: 1.2rem;
 }
 
 .welcome-container h1 {

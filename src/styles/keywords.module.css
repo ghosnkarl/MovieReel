@@ -11,8 +11,8 @@
   border-radius: 7px;
   cursor: pointer;
   background-color: var(--color-gray-600);
-}
 
-.keywords span:hover {
-  background-color: var(--color-gray-500);
+  &:hover {
+    background-color: var(--color-gray-500);
+  }
 }
