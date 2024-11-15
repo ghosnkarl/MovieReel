@@ -61,6 +61,7 @@ body {
 ::-webkit-scrollbar {
   height: 1rem;
   width: 1.2rem;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {

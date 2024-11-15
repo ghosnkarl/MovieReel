@@ -14,10 +14,10 @@
   text-decoration: none;
 }
 
-.carousel__item--link:active,
+/* .carousel__item--link:active,
 .carousel__item--link:hover {
   opacity: 0.7;
-}
+} */
 
 .carousel__item--backdrop {
   width: 100%;
@@ -49,10 +49,10 @@
 /********************** Carousel Arrow Buttons **********************/
 .carousel__arrow {
   background-color: rgba(0, 0, 0, 0.2);
-  border: 1px solid var(--color-primary-900);
-  color: var(--color-primary-900);
+  border: 1px solid white;
+  color: white;
   border-radius: 1000px;
-  padding: 0.5rem;
+  padding: 0.4rem;
   display: flex;
   top: 50%;
   transform: translateY(-50%);
@@ -70,6 +70,7 @@
 
 .carousel__arrow:hover {
   background-color: var(--color-primary-900);
+  border: 1px solid var(--color-primary-900);
   color: white;
 }
 

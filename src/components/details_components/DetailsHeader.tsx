@@ -1,7 +1,7 @@
 import moment from 'moment';
 import classes from '../../styles/details-header.module.css';
 import { IGenre } from '../../models/genreModel';
-import { getBackdropImage } from '../../helpers/imageSizes';
+import { getBackdropImage, getPosterImage } from '../../helpers/imageSizes';
 import RatingStar from '../rating/RatingStar';
 import { ICreatedBy } from '../../models/tvModel';
 
@@ -13,6 +13,7 @@ interface DetailsHeaderProps {
   vote_average: number;
   overview: string;
   backdrop_path: string | null;
+  poster_path: string | null;
   first_air_date: string | null;
   last_air_date: string | null;
   created_by: ICreatedBy[] | null;
@@ -29,9 +30,10 @@ const DetailsHeader = ({
   first_air_date,
   last_air_date,
   created_by,
+  poster_path,
 }: DetailsHeaderProps) => {
-  const formattedReleaseDate = moment(release_date).format('MMM DD, YYYY');
   const formattedGenres = genres.map((genre) => genre.name).join(' • ');
+  const formattedReleaseDate = moment(release_date).format('MMM DD, YYYY');
   const formattedRuntime =
     runtime && runtime !== 0
       ? `${Math.floor(runtime / 60)}h ${runtime % 60}m`
@@ -41,16 +43,34 @@ const DetailsHeader = ({
     .join(', ');
   return (
     <div className={classes.container}>
-      <div className={classes.header}>
-        <div>
+      <div className={classes['image__container']}>
+        <img
+          className={classes['backdrop-img']}
+          src={getBackdropImage(backdrop_path, 'w1280')}
+          alt={title}
+        />
+      </div>
+      <div className={classes['header__container']}>
+        <img
+          className={classes['header__poster']}
+          src={getPosterImage(poster_path, 'w500')}
+          alt={title}
+        />
+        <div className={classes['text__container']}>
           <p className={classes.genres}>{formattedGenres}</p>
           <h1 className={classes['header__title']}>{title}</h1>
 
-          <RatingStar value={vote_average} size='medium' />
-
-          <p className={classes['header__overview']}>{overview}</p>
-
           <div className={classes['details__container']}>
+            <RatingStar value={vote_average} size='medium' />
+
+            <p className={classes['header__icon--text']}>
+              {formattedReleaseDate} • {formattedRuntime}
+            </p>
+          </div>
+          <p className={classes['header__overview']}>{overview}</p>
+        </div>
+
+        {/* <div className={classes['details__container']}>
             <div>
               {release_date && <h4>Release Date</h4>}
               {first_air_date && <h4>First Air Date</h4>}
@@ -71,16 +91,7 @@ const DetailsHeader = ({
                 <p>{formattedCreatedBy}</p>
               )}
             </div>
-          </div>
-        </div>
-        <div className={classes['image__container']}>
-          <div className={classes['gradient-overlay']} />
-          <img
-            className={classes['backdrop-img']}
-            src={getBackdropImage(backdrop_path, 'w1280')}
-            alt={title}
-          />
-        </div>
+          </div> */}
       </div>
     </div>
   );

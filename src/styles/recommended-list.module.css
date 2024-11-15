@@ -3,30 +3,32 @@
   flex-direction: column;
   max-height: 60rem;
   overflow-y: scroll;
-
   margin-top: 2.4rem;
+  gap: 2.4rem;
 }
 
 .item__container:link,
 .item__container:visited {
+  display: block;
   text-decoration: none;
-  padding: 1.6rem;
+  padding-right: 1.8rem;
   color: white;
   cursor: pointer;
   display: flex;
   gap: 2.4rem;
-  border-radius: 7px;
+  transition: all 0.2s ease-in-out;
 }
 
 .item__container:hover,
 .item__container:active {
-  background-color: var(--color-gray-600);
+  color: var(--color-primary-900);
+  transform: translateX(10px);
 }
 
 .item__backdrop {
   width: 20rem;
   aspect-ratio: 1.7;
-  border-radius: 8px;
+  border-radius: 7px;
 }
 
 .item__container--text {
