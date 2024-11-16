@@ -11,18 +11,27 @@
   color: white;
 }
 
-.container li {
+.item__container {
   display: flex;
   gap: 3.2rem;
   align-items: center;
+  transition: all 0.2s ease-in-out;
+  padding-top: 2.4rem;
+}
+
+.item__container--list {
   background-color: var(--color-background--card);
   box-shadow: var(--card--box-shadow);
   padding: 2.4rem;
   border-radius: 7px;
 }
 
-.container li:hover {
-  background-color: var(--color-background--border);
+.item__container:hover .season__title {
+  color: var(--color-primary-900);
+}
+
+.item__container:hover {
+  transform: translateX(10px);
 }
 
 .season__img {

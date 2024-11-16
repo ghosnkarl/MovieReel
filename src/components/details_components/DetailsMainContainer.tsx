@@ -9,8 +9,10 @@ import { getPosterImage } from '../../helpers/imageSizes';
 import CastList from './CastList';
 import { IMovieDetails } from '../../models/movieModel';
 import { ITVDetails } from '../../models/tvModel';
-import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
-import MediaItem from '../MediaItem';
+import Section from '../Section';
+import SeasonItem from '../SeasonItem';
+
+import HeaderLink from '../HeaderLink';
 
 const DetailsMainContainer = ({
   media,
@@ -24,9 +26,15 @@ const DetailsMainContainer = ({
   });
 
   const images = getGalleryImages({ images: media.images });
-  const title = 'title' in media ? media.title : media.name;
-  const credits = 'title' in media ? media.credits : media.aggregate_credits;
-  const seasons = 'title' in media ? null : media.seasons;
+  const isMovie = 'title' in media;
+  const title = isMovie ? media.title : media.name;
+  const credits = isMovie ? media.credits : media.aggregate_credits;
+  const seasons = isMovie ? null : media.seasons;
+
+  let lastSeason = null;
+
+  if (!isMovie && media.seasons && media.seasons.length > 0)
+    lastSeason = media.seasons[media.seasons.length - 1];
 
   return (
     <div className={classes['main-container']}>
@@ -38,28 +46,20 @@ const DetailsMainContainer = ({
         />
       )}
 
-      {seasons && seasons.length > 0 && (
-        <HorizontalListContainer
-          title='Seasons'
-          linkState={{
-            title,
-            image: getPosterImage(media.poster_path, 'w342'),
-            seasons,
-          }}
-          link='seasons'
-        >
-          {seasons.map((season) => (
-            <MediaItem
-              id={season.id}
-              key={season.id}
-              title={`${season.season_number} - ${season.name}`}
-              poster_path={getPosterImage(season.poster_path, 'w342')}
-              text={`${season.episode_count} episodes`}
-              type='season'
-              vote_average={season.vote_average}
-            />
-          ))}
-        </HorizontalListContainer>
+      {lastSeason && (
+        <Section border='left'>
+          <HeaderLink
+            title='Seasons'
+            linkState={{
+              title,
+              image: getPosterImage(media.poster_path, 'w342'),
+              seasons,
+            }}
+            link='seasons'
+          />
+
+          <SeasonItem season={lastSeason} isListItem={false} />
+        </Section>
       )}
 
       {media.videos.results && media.videos.results.length > 0 && (

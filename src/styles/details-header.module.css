@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   position: relative;
-  height: 70vh;
+  height: 60vh;
   background-color: var(--color-background--root);
 }
 
