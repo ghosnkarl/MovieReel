@@ -6,68 +6,7 @@
   background-color: var(--color-background--root);
 }
 
-.header__container {
-  display: flex;
-  gap: 2.4rem;
-  position: absolute;
-  bottom: 0;
-  max-width: var(--page-width--max);
-  margin: var(--page-width--margin);
-  padding: 3.2rem 3.2rem 0 3.2rem;
-}
-
-.header__poster {
-  width: 20rem;
-  aspect-ratio: 0.7;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: var(--card--box-shadow);
-}
-
-.text__container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.image__container {
-  background-color: #141414;
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.header__icon__text--container {
-  display: flex;
-  align-items: center;
-  gap: 1.6rem;
-}
-
-.header__icon--text {
-  font-size: 1.8rem;
-  font-weight: 600;
-}
-
-.icon {
-  width: 4.8rem;
-  height: 2.6rem;
-  padding: 0.3rem;
-  border-radius: 1000px;
-}
-
-.icon--blue {
-  background-color: #169cf9;
-}
-
-.icon--orange {
-  background-color: var(--color-primary-900);
-}
-
-.tmdb__logo {
-  width: 4.8rem;
-}
-
-.backdrop-img {
+.backdrop__img {
   object-fit: cover;
   width: 100%;
   height: 90%;
@@ -83,30 +22,28 @@
   );
 }
 
-.header__title {
-  font-size: 4.4rem;
-  margin-bottom: 1.2rem;
-  line-height: 1.1;
-  font-weight: 600;
-}
-
-.header__overview {
-  margin-bottom: 2.4rem;
-  font-size: 1.6rem;
-  line-height: 1.4;
-  align-items: center;
-  text-align: justify;
-}
-
-.details__container {
+.bottom__container {
   display: flex;
-  gap: 4.2rem;
-  margin-bottom: 2.4rem;
-  align-items: center;
+  gap: 2.4rem;
+  position: absolute;
+  bottom: 0;
+  max-width: var(--page-width--max);
+  margin: var(--page-width--margin);
+  padding: 3.2rem 3.2rem 0 3.2rem;
 }
 
-.values__container {
-  color: var(--color-primary-900);
+.poster__img {
+  width: 20rem;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: var(--card--box-shadow);
+}
+
+.text__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .genres {
@@ -115,9 +52,29 @@
   margin-bottom: 0.4rem;
 }
 
-.header__date__runtime {
-  font-size: 1.6rem;
-  color: var(--color-gray-200);
-  font-weight: 500;
+.title {
+  font-size: 4.4rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+.rating__container {
+  display: flex;
+  gap: 4.2rem;
   margin-bottom: 2.4rem;
+  align-items: center;
+}
+
+.date-runtime {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.overview {
+  margin-bottom: 2.4rem;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  align-items: center;
+  text-align: justify;
 }

@@ -36,33 +36,31 @@ const DetailsHeader = ({
 
   return (
     <div className={classes.container}>
-      <div className={classes['image__container']}>
+      <img
+        className={classes['backdrop__img']}
+        src={getBackdropImage(backdrop_path, 'w1280')}
+        alt={title}
+      />
+
+      <div className={classes['bottom__container']}>
         <img
-          className={classes['backdrop-img']}
-          src={getBackdropImage(backdrop_path, 'w1280')}
-          alt={title}
-        />
-      </div>
-      <div className={classes['header__container']}>
-        <img
-          className={classes['header__poster']}
-          src={getPosterImage(poster_path, 'w500')}
+          className={classes['poster__img']}
+          src={getPosterImage(poster_path, 'w342')}
           alt={title}
         />
         <div className={classes['text__container']}>
           <p className={classes.genres}>{formattedGenres}</p>
-          <h1 className={classes['header__title']}>{title}</h1>
+          <h1 className={classes.title}>{title}</h1>
 
-          <div className={classes['details__container']}>
+          <div className={classes['rating__container']}>
             <RatingStar value={vote_average} size='medium' />
-
-            <p className={classes['header__icon--text']}>
+            <p className={classes['date-runtime']}>
               {formattedReleaseDate && formattedReleaseDate}
               {formattedReleaseDate && formattedRuntime && ' • '}
               {formattedRuntime && formattedRuntime}
             </p>
           </div>
-          <p className={classes['header__overview']}>{overview}</p>
+          <p className={classes.overview}>{overview}</p>
         </div>
       </div>
     </div>
