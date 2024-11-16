@@ -39,9 +39,6 @@ const TVDetailsPage = () => {
           release_date={null}
           runtime={tvShow.runtime}
           backdrop_path={tvShow.backdrop_path}
-          first_air_date={tvShow.first_air_date}
-          last_air_date={tvShow.last_air_date}
-          created_by={tvShow.created_by}
           poster_path={tvShow.poster_path}
         />
         <div className={classes['details-container']}>

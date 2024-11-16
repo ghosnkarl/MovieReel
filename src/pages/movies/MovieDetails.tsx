@@ -40,9 +40,6 @@ const MovieDetails = () => {
           release_date={movie.release_date}
           runtime={movie.runtime}
           backdrop_path={movie.backdrop_path}
-          first_air_date={null}
-          last_air_date={null}
-          created_by={null}
         />
         <div className={classes['details-container']}>
           <DetailsMainContainer media={movie} />

@@ -40,7 +40,6 @@ const CarouselItem = ({
               className={classes['carousel__item--link']}
               to={`/movies/${slide.id}`}
             >
-              <div className='gradient-overlay' />
               <img
                 className={classes['carousel__item--backdrop']}
                 src={getBackdropImage(slide.backdrop_path, 'w780')}

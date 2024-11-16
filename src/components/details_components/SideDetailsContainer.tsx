@@ -11,12 +11,7 @@ const SideDetailsContainer = ({
 }: {
   media: IMovieDetails | ITVDetails;
 }) => {
-  const title = 'title' in media ? media.title : media.name;
-  const keywords =
-    'title' in media ? media.keywords.keywords : media.keywords.results;
-  const number_of_seasons = 'title' in media ? null : media.number_of_seasons;
-  const number_of_episodes = 'title' in media ? null : media.number_of_episodes;
-  const collection = 'title' in media ? media.belongs_to_collection : null;
+  const isMovie = 'title' in media;
 
   return (
     <aside className={classes['side__container']}>
@@ -27,17 +22,22 @@ const SideDetailsContainer = ({
         revenue={media.revenue}
         budget={media.budget}
         tagline={media.tagline}
-        collection={collection}
-        number_of_episodes={number_of_episodes}
-        number_of_seasons={number_of_seasons}
+        collection={isMovie ? media.belongs_to_collection : null}
+        number_of_episodes={isMovie ? null : media.number_of_episodes}
+        number_of_seasons={isMovie ? null : media.number_of_seasons}
+        first_air_date={isMovie ? null : media.first_air_date}
+        last_air_date={isMovie ? null : media.last_air_date}
+        created_by={isMovie ? null : media.created_by}
       />
 
       <ProductionCompanies production_companies={media.production_companies} />
-      <Keywords keywords={keywords} />
+      <Keywords
+        keywords={isMovie ? media.keywords.keywords : media.keywords.results}
+      />
 
       <DetailsReviews
         reviews={media.reviews}
-        title={title}
+        title={isMovie ? media.title : media.name}
         poster_path={media.poster_path}
       />
     </aside>

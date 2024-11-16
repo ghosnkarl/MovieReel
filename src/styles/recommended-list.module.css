@@ -3,6 +3,7 @@
   flex-direction: column;
   max-height: 60rem;
   overflow-y: scroll;
+  overflow-x: hidden;
   margin-top: 2.4rem;
   gap: 2.4rem;
 }
