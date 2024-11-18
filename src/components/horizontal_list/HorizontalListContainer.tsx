@@ -25,7 +25,7 @@ const HorizontalListContainer = ({
   return (
     <Section border='left'>
       <div className='list-header'>
-        <h1 className='section__title'>{title}</h1>
+        <h1 className='section__title section__title--list'>{title}</h1>
         <ListArrows linkState={linkState} link={link} listRef={ref} />
       </div>
 

@@ -123,7 +123,6 @@ const PeopleDetailsPage = () => {
                   type={castMedia.media_type === 'movie' ? 'movies' : 'tv'}
                   poster_path={castMedia.poster_path}
                   text={castMedia.character}
-                  vote_average={castMedia.vote_average}
                 />
               ))}
             </div>
@@ -138,7 +137,6 @@ const PeopleDetailsPage = () => {
                   type={crewMedia.media_type === 'movie' ? 'movies' : 'tv'}
                   poster_path={crewMedia.poster_path}
                   text={crewMedia.job}
-                  vote_average={crewMedia.vote_average}
                 />
               ))}
             </div>

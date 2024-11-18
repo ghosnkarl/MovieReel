@@ -24,12 +24,15 @@
   --color-rating-green: #4ade80;
   --color-rating-green--alpha: rgba(74, 222, 128, 0.3);
 
-  --section--title-size: 2.4rem;
+  --section--title-size: 2.2rem;
 
   --card--box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
+  --hover-border: 0 0 0 2px white;
 
-  --page-width--max: 135rem;
+  --page-width--max: 140rem;
   --page-width--margin: 0 auto;
+
+  --horizontal-list--padding: 0.2rem;
 }
 
 * {
@@ -102,7 +105,8 @@ body {
 .horizontal-list__container {
   display: flex;
   gap: 3.2rem;
-  padding: 2.4rem 0 1.2rem 0;
+  padding: 2.4rem var(--horizontal-list--padding) 1.2rem
+    var(--horizontal-list--padding);
   scroll-behavior: smooth;
   list-style: none;
   overflow: hidden;
@@ -196,7 +200,11 @@ body {
 /********************** Typography **********************/
 .section__title {
   font-size: var(--section--title-size);
-  font-weight: 500;
+  font-weight: 700;
+}
+
+.section__title--list {
+  margin-left: var(--horizontal-list--padding);
 }
 
 .section__link:link,
@@ -286,6 +294,6 @@ body {
 .list-arrows__container {
   display: flex;
   align-items: center;
-  height: 3.4rem;
+  height: 3rem;
   gap: 1.6rem;
 }

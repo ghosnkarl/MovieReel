@@ -10,8 +10,8 @@
   overflow: hidden;
 }
 
-.container:hover .title {
-  color: var(--color-primary-900);
+.container:hover {
+  box-shadow: 0 0 0 2px white;
 }
 
 .container:hover .profile__img {
