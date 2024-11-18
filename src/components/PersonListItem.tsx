@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import classes from '../styles/people-item.module.css';
 import { getProfileImage } from '../helpers/imageSizes';
-import MotionDiv from './ui/MotionDiv';
 
 interface PersonListItemProps {
   id: number;
@@ -17,15 +16,21 @@ const PersonListItem = ({
   text,
 }: PersonListItemProps) => {
   return (
-    <MotionDiv>
-      <NavLink key={id} to={`/people/${id}`} className={classes.container}>
-        <img src={getProfileImage(profile_path, 'w185')} alt={title} />
+    <NavLink
+      key={id}
+      to={`/people/${id}`}
+      className={classes['container__link']}
+    >
+      <div className={classes.container}>
+        <div className={classes['img-container']}>
+          <img src={getProfileImage(profile_path, 'w185')} alt={title} />
+        </div>
         <div>
           <h2>{title}</h2>
           {text && <p>{text}</p>}
         </div>
-      </NavLink>
-    </MotionDiv>
+      </div>
+    </NavLink>
   );
 };
 

@@ -1,13 +1,10 @@
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
-import { NavLink } from 'react-router-dom';
 
 interface IListArrows {
   listRef: HTMLUListElement | null;
-  link: string | null;
-  linkState: unknown;
 }
 
-const ListArrows = ({ listRef, link, linkState }: IListArrows) => {
+const ListArrows = ({ listRef }: IListArrows) => {
   const handleNext = () => {
     if (listRef) listRef.scrollLeft += listRef.clientWidth;
   };
@@ -18,11 +15,6 @@ const ListArrows = ({ listRef, link, linkState }: IListArrows) => {
 
   return (
     <div className='list-arrows__container'>
-      {link && (
-        <NavLink state={linkState} className='view--all' to={link}>
-          View All
-        </NavLink>
-      )}
       <button className='btn-arrow' onClick={handleLeft}>
         <MdNavigateBefore />
       </button>

@@ -18,7 +18,7 @@
   overflow: hidden;
 
   &:hover {
-    opacity: 0.8;
+    box-shadow: var(--hover-border);
   }
 }
 
@@ -57,14 +57,16 @@
 .item-container {
   display: flex;
   background-color: var(--color-background--card);
-  border: 2px solid var(--color-background--border);
+  box-shadow: var(--card--box-shadow);
+  /* border: 2px solid var(--color-background--border); */
   padding: 1.2rem;
   border-radius: 7px;
   cursor: pointer;
   gap: 2.4rem;
 
   &:hover {
-    background-color: var(--color-gray-600);
+    /* background-color: var(--color-gray-600); */
+    box-shadow: var(--hover-border);
   }
 }
 
