@@ -14,6 +14,7 @@ const SeasonItem = ({ season, isListItem }: ISeasonItem) => {
   const link = !isListItem
     ? `seasons/${season.season_number}`
     : `${season.season_number}`;
+
   return (
     <NavLink
       className={classes['season__link']}
@@ -21,6 +22,7 @@ const SeasonItem = ({ season, isListItem }: ISeasonItem) => {
       state={{
         title: season.name,
         image: getPosterImage(season.poster_path, 'w342'),
+        episodes: season.episodes,
       }}
     >
       <div

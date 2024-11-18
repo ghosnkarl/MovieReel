@@ -22,7 +22,7 @@ const MediaItem = ({
   type,
 }: MediaItemProps) => {
   return (
-    <MotionDiv key={id}>
+    <MotionDiv>
       <NavLink to={`/${type}/${id}`} className={classes['container']}>
         <div className={classes['img-container']}>
           <img src={getPosterImage(poster_path, 'w342')} alt={title} />

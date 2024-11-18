@@ -43,7 +43,7 @@ const MovieDetails = () => {
         />
         <div className={classes['details-container']}>
           <DetailsMainContainer media={movie} />
-          <SideDetailsContainer media={movie} />
+          {/* <SideDetailsContainer media={movie} /> */}
         </div>
       </>
     );

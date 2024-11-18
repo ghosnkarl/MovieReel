@@ -11,6 +11,10 @@
   cursor: pointer;
 }
 
+.video__item:hover {
+  box-shadow: 0 0 0 2px white;
+}
+
 .video__item img {
   object-fit: cover;
   width: 100%;

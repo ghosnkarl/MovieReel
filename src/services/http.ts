@@ -74,6 +74,8 @@ export const fetchResults = async <T>({
   params,
 }: QueryInterface): Promise<T[]> => {
   const url = buildURL(path, params);
+
   const data = await fetchData<{ results: T[] }>(url);
+
   return data.results;
 };

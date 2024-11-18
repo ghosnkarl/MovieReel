@@ -6,6 +6,7 @@ import SeasonItem from '../../components/SeasonItem';
 const SeasonsPage = () => {
   const location = useLocation();
   const seasons = location.state.seasons as ISeason[];
+
   return (
     <ul className={classes.container}>
       {seasons.map((season) => (

@@ -111,19 +111,20 @@ body {
 .btn-arrow {
   background: none;
   border: none;
-  font-size: 2.6rem;
-  height: fit-content;
-  padding: 0.1rem;
+  aspect-ratio: 1;
+  height: 100%;
+  font-size: 2.8rem;
   display: flex;
-  border: 1px solid var(--color-primary-900);
-  color: var(--color-primary-900);
-  cursor: pointer;
-  border-radius: 1000px;
-}
-
-.btn-arrow:hover {
-  background-color: var(--color-primary-900);
+  align-items: center;
+  justify-content: center;
   color: white;
+  background-color: var(--color-gray-600);
+  cursor: pointer;
+  border-radius: 7px;
+
+  &:hover {
+    background-color: var(--color-gray-500);
+  }
 }
 
 /********************** Links **********************/
@@ -147,7 +148,7 @@ body {
   transition: all 0.5s ease-in-out;
   align-items: center;
   text-decoration: none;
-  border-radius: 1000px;
+  border-radius: 10px;
   color: white;
 }
 
@@ -170,6 +171,26 @@ body {
   font-size: 2rem;
   font-weight: 600;
   padding: 1.4rem 2.8rem;
+}
+
+.view--all:link,
+.view--all:visited {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 5/2;
+  font-size: 1.6rem;
+  font-weight: 500;
+  height: 100%;
+  color: white;
+  background-color: var(--color-gray-600);
+  cursor: pointer;
+  border-radius: 7px;
+
+  &:hover {
+    background-color: var(--color-gray-500);
+  }
 }
 
 /********************** Typography **********************/
@@ -265,5 +286,6 @@ body {
 .list-arrows__container {
   display: flex;
   align-items: center;
+  height: 3.4rem;
   gap: 1.6rem;
 }

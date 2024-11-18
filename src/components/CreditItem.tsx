@@ -12,9 +12,15 @@ interface CreditItemProps {
 const CreditItem = ({ id, profile_path, title, text }: CreditItemProps) => {
   return (
     <NavLink key={id} to={`/people/${id}`} className={classes.container}>
-      <img src={getProfileImage(profile_path, 'w185')} alt={title} />
+      <div className={classes['img__container']}>
+        <img
+          className={classes['profile__img']}
+          src={getProfileImage(profile_path, 'w185')}
+          alt={title}
+        />
+      </div>
       <div>
-        <h2>{title}</h2>
+        <h2 className={classes.title}>{title}</h2>
         {text && <p>{text}</p>}
       </div>
     </NavLink>

@@ -1,4 +1,5 @@
-.container {
+.container:link,
+.container:visited {
   display: flex;
   flex-direction: column;
   text-decoration: none;

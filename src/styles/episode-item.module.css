@@ -2,18 +2,32 @@
   display: flex;
   margin-top: 2.4rem;
   gap: 2.4rem;
+  background-color: var(--color-background--card);
+  box-shadow: var(--card--box-shadow);
+  align-items: center;
+  padding-right: 2.4rem;
+  transition: all 0.2s ease-in-out;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.container:hover .title {
+  color: var(--color-primary-900);
+}
+
+.container:hover {
+  transform: translateX(10px);
 }
 
 .image {
-  width: 25rem;
-  border-radius: 8px;
-  aspect-ratio: 1.5;
+  width: 28rem;
+  aspect-ratio: 1.4;
   object-fit: cover;
 }
 
 .title {
   margin-top: 0.4rem;
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 600;
   margin-bottom: 0.6rem;
 }
@@ -21,12 +35,13 @@
 .date {
   font-size: 1.4rem;
   margin-top: 0.8rem;
+  font-style: italic;
   color: var(--color-gray-200);
 }
 
 .overview {
-  margin-top: 1.4rem;
-  font-size: 1.6rem;
+  margin-top: 2.4rem;
+  font-size: 1.4rem;
   color: var(--color-gray-100);
-  line-height: 1.2;
+  line-height: 1.4;
 }

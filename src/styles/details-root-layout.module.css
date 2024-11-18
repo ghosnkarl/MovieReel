@@ -12,10 +12,10 @@
   align-items: center;
   cursor: pointer;
   border-radius: 7px;
+}
 
-  &:hover {
-    opacity: 0.7;
-  }
+.container__header:hover .container__header--title {
+  color: var(--color-primary-900);
 }
 
 .container__header--poster {
@@ -28,6 +28,7 @@
   font-size: 3.2rem !important;
   font-weight: 600;
   margin-bottom: 2.4rem !important;
+  transition: all 0.2s ease-in-out;
 }
 
 .container__header--back {

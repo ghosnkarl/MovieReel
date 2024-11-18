@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import ListArrows from './ListArrows';
 import Section from '../Section';
-import HeaderLink from '../HeaderLink';
 
 interface ListProps {
   title: string;
@@ -26,9 +25,8 @@ const HorizontalListContainer = ({
   return (
     <Section border='left'>
       <div className='list-header'>
-        {link && <HeaderLink title={title} link={link} linkState={linkState} />}
-        {!link && <h1 className='section__title'>{title}</h1>}
-        <ListArrows listRef={ref} />
+        <h1 className='section__title'>{title}</h1>
+        <ListArrows linkState={linkState} link={link} listRef={ref} />
       </div>
 
       <ul ref={listRef} className='horizontal-list__container'>

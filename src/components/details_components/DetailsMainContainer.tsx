@@ -30,6 +30,7 @@ const DetailsMainContainer = ({
   const title = isMovie ? media.title : media.name;
   const credits = isMovie ? media.credits : media.aggregate_credits;
   const seasons = isMovie ? null : media.seasons;
+  const number_of_seasons = isMovie ? null : media.number_of_seasons;
 
   let lastSeason = null;
 
@@ -54,6 +55,7 @@ const DetailsMainContainer = ({
               title,
               image: getPosterImage(media.poster_path, 'w342'),
               seasons,
+              number_of_seasons,
             }}
             link='seasons'
           />
