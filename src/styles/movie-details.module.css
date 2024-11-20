@@ -50,9 +50,8 @@
 }
 
 .side__container {
-  width: 30%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 3.2rem;
 }
 

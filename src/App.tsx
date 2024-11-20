@@ -10,9 +10,7 @@ import DiscoverPage from './pages/DiscoverPage';
 import ReviewsPage from './pages/ReviewsPage';
 import ImagesPage from './pages/ImagesPages';
 import PeopleDetailsPage from './pages/people/PeopleDetailsPage';
-
 import CreditsPage from './pages/CreditsPage';
-
 import DetailsRootLayout from './pages/DetailsRootLayout';
 import ErrorPage from './components/ErrorPage';
 import OutletRootLayout from './components/OutletRootLayout';

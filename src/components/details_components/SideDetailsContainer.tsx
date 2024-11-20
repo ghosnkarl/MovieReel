@@ -14,7 +14,7 @@ const SideDetailsContainer = ({
   const isMovie = 'title' in media;
 
   return (
-    <aside className={classes['side__container']}>
+    <div className={classes['side__container']}>
       <MediaDetails
         status={media.status}
         homepage={media.homepage}
@@ -30,17 +30,21 @@ const SideDetailsContainer = ({
         created_by={isMovie ? null : media.created_by}
       />
 
-      <ProductionCompanies production_companies={media.production_companies} />
-      <Keywords
-        keywords={isMovie ? media.keywords.keywords : media.keywords.results}
-      />
+      <div>
+        <ProductionCompanies
+          production_companies={media.production_companies}
+        />
+        <Keywords
+          keywords={isMovie ? media.keywords.keywords : media.keywords.results}
+        />
+      </div>
 
-      <DetailsReviews
+      {/* <DetailsReviews
         reviews={media.reviews}
         title={isMovie ? media.title : media.name}
         poster_path={media.poster_path}
-      />
-    </aside>
+      /> */}
+    </div>
   );
 };
 
