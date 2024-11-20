@@ -9,10 +9,8 @@ import { getPosterImage } from '../../helpers/imageSizes';
 import CastList from './CastList';
 import { IMovieDetails } from '../../models/movieModel';
 import { ITVDetails } from '../../models/tvModel';
-import Section from '../Section';
-import SeasonItem from '../SeasonItem';
-
-import HeaderLink from '../HeaderLink';
+import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
+import MediaItem from '../MediaItem';
 
 const DetailsMainContainer = ({
   media,
@@ -32,11 +30,6 @@ const DetailsMainContainer = ({
   const seasons = isMovie ? null : media.seasons;
   const number_of_seasons = isMovie ? null : media.number_of_seasons;
 
-  let lastSeason = null;
-
-  if (!isMovie && media.seasons && media.seasons.length > 0)
-    lastSeason = media.seasons[media.seasons.length - 1];
-
   return (
     <div className={classes['main-container']}>
       {credits && (
@@ -47,21 +40,28 @@ const DetailsMainContainer = ({
         />
       )}
 
-      {lastSeason && (
-        <Section border='left'>
-          <HeaderLink
-            title='Seasons'
-            linkState={{
-              title,
-              image: getPosterImage(media.poster_path, 'w342'),
-              seasons,
-              number_of_seasons,
-            }}
-            link='seasons'
-          />
-
-          <SeasonItem season={lastSeason} isListItem={false} />
-        </Section>
+      {seasons && (
+        <HorizontalListContainer
+          title='Seasons'
+          link='seasons'
+          linkState={{
+            title,
+            number_of_seasons,
+            seasons,
+            image: getPosterImage(media.poster_path, 'w342'),
+          }}
+        >
+          {seasons.map((season) => (
+            <MediaItem
+              key={season.id}
+              id={season.id}
+              poster_path={season.poster_path}
+              title={season.name}
+              text={`${season.episode_count} Episodes`}
+              type='season'
+            />
+          ))}
+        </HorizontalListContainer>
       )}
 
       {media.videos.results && media.videos.results.length > 0 && (

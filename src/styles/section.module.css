@@ -1,16 +1,16 @@
 .container {
-  background-color: var(--color-background--card);
+  /* background-color: var(--color-background--card);
   padding: 2.4rem;
-  border-radius: 7px;
+  border-radius: 7px; */
   position: relative;
-  overflow: hidden;
-  box-shadow: var(--card--box-shadow);
+  /* overflow: hidden;
+  box-shadow: var(--card--box-shadow); */
 }
 
 .border--left {
-  border-left: 0.9rem solid var(--color-primary-900);
+  /* border-left: 0.9rem solid var(--color-primary-900); */
 }
 
 .border--top {
-  border-top: 0.9rem solid var(--color-primary-900);
+  /* border-top: 0.9rem solid var(--color-primary-900); */
 }

@@ -32,29 +32,36 @@ const ListArrows = ({ listRef }: IListArrows) => {
   const disableNext =
     listRef && listRef.scrollWidth - scrollPosition < listRef.clientWidth;
 
+  let showButtons = null;
+  if (listRef) showButtons = listRef.scrollWidth > listRef.clientWidth;
+
   return (
     <div className='list-arrows__container'>
-      <motion.button
-        whileHover={{
-          scale: scrollPosition <= 0 ? 1 : 1.2,
-        }}
-        className={`btn-arrow ${
-          scrollPosition <= 0 ? 'btn-arrow--disabled' : ''
-        }`}
-        onClick={handleLeft}
-      >
-        <MdNavigateBefore />
-      </motion.button>
+      {showButtons && (
+        <motion.button
+          whileHover={{
+            scale: scrollPosition <= 0 ? 1 : 1.2,
+          }}
+          className={`btn-arrow ${
+            scrollPosition <= 0 ? 'btn-arrow--disabled' : ''
+          }`}
+          onClick={handleLeft}
+        >
+          <MdNavigateBefore />
+        </motion.button>
+      )}
 
-      <motion.button
-        whileHover={{
-          scale: disableNext ? 1 : 1.2,
-        }}
-        className={`btn-arrow ${disableNext ? 'btn-arrow--disabled' : ''}`}
-        onClick={handleNext}
-      >
-        <MdNavigateNext />
-      </motion.button>
+      {showButtons && (
+        <motion.button
+          whileHover={{
+            scale: disableNext ? 1 : 1.2,
+          }}
+          className={`btn-arrow ${disableNext ? 'btn-arrow--disabled' : ''}`}
+          onClick={handleNext}
+        >
+          <MdNavigateNext />
+        </motion.button>
+      )}
     </div>
   );
 };

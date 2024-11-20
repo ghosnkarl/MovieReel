@@ -1,6 +1,6 @@
 .images {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   margin-top: 2.4rem;
   gap: 1.2rem;
   overflow: hidden;
@@ -17,8 +17,9 @@
 
 .image__container:nth-child(1),
 .image__container:nth-child(3),
-.image__container:nth-child(6),
-.image__container:nth-child(8) {
+.image__container:nth-child(4),
+.image__container:nth-child(7),
+.image__container:nth-child(9) {
   grid-column: span 2;
 }
 
@@ -28,6 +29,6 @@
   object-fit: cover;
   transition: all 0.2s ease-in-out;
   &:hover {
-    transform: scale(1.3);
+    transform: scale(1.2);
   }
 }

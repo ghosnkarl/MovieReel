@@ -16,19 +16,17 @@ const PersonListItem = ({
   text,
 }: PersonListItemProps) => {
   return (
-    <NavLink
-      key={id}
-      to={`/people/${id}`}
-      className={classes['container__link']}
-    >
-      <div className={classes.container}>
-        <div className={classes['img-container']}>
-          <img src={getProfileImage(profile_path, 'w185')} alt={title} />
-        </div>
-        <div>
-          <h2>{title}</h2>
-          {text && <p>{text}</p>}
-        </div>
+    <NavLink key={id} to={`/people/${id}`} className={classes.container}>
+      <div className={classes['img-container']}>
+        <img
+          className={classes.img}
+          src={getProfileImage(profile_path, 'w185')}
+          alt={title}
+        />
+      </div>
+      <div>
+        <h2>{title}</h2>
+        {text && <p>{text}</p>}
       </div>
     </NavLink>
   );

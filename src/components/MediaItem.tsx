@@ -5,9 +5,9 @@ import { getPosterImage } from '../helpers/imageSizes';
 interface MediaItemProps {
   text: string;
   id: number;
-  poster_path: string;
+  poster_path: string | null;
   title: string | undefined;
-  type: 'movies' | 'tv';
+  type: 'movies' | 'tv' | 'season';
 }
 
 const MediaItem = ({ text, id, poster_path, title, type }: MediaItemProps) => {

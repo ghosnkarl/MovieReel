@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  justify-content: center;
+
   position: relative;
   height: 60vh;
   background-color: var(--color-background--root);
@@ -27,6 +27,7 @@
   gap: 2.4rem;
   position: absolute;
   bottom: 0;
+  left: 0;
   max-width: var(--page-width--max);
   margin: var(--page-width--margin);
   padding: 3.2rem 3.2rem 0 3.2rem;

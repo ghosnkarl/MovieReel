@@ -4,7 +4,6 @@ import { fetchSingleResult } from '../../services/http';
 import classes from '../../styles/movie-details.module.css';
 import DetailsHeader from '../../components/details_components/DetailsHeader';
 import QueryWrapper from '../../components/QueryWrapper';
-
 import { ITVDetails } from '../../models/tvModel';
 import DetailsMainContainer from '../../components/details_components/DetailsMainContainer';
 import SideDetailsContainer from '../../components/details_components/SideDetailsContainer';
@@ -43,7 +42,7 @@ const TVDetailsPage = () => {
         />
         <div className={classes['details-container']}>
           <DetailsMainContainer media={tvShow} />
-          <SideDetailsContainer media={tvShow} />
+          {/* <SideDetailsContainer media={tvShow} /> */}
         </div>
       </>
     );
