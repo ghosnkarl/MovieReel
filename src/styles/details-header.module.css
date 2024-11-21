@@ -1,6 +1,5 @@
 .container {
   display: flex;
-
   position: relative;
   height: 60vh;
   background-color: var(--color-background--root);

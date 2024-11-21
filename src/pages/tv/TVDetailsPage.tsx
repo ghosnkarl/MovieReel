@@ -42,7 +42,7 @@ const TVDetailsPage = () => {
         />
         <div className={classes['details-container']}>
           <DetailsMainContainer media={tvShow} />
-          {/* <SideDetailsContainer media={tvShow} /> */}
+          <SideDetailsContainer media={tvShow} />
         </div>
       </>
     );

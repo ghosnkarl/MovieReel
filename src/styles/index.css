@@ -29,7 +29,7 @@
   --card--box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
   --hover-border: 0 0 0 2px white;
 
-  --page-width--max: 130rem;
+  --page-width--max: 140rem;
   --page-width--margin: 0 auto;
 
   --horizontal-list--padding: 0.2rem;
@@ -107,8 +107,8 @@ body {
 
 .horizontal-list__container {
   display: flex;
-  gap: 3.2rem;
-  padding: 2.4rem var(--horizontal-list--padding) 1.2rem
+  gap: 1.6rem;
+  padding: 1.6rem var(--horizontal-list--padding) 1.2rem
     var(--horizontal-list--padding);
   scroll-behavior: smooth;
   list-style: none;
@@ -179,26 +179,6 @@ body {
   font-size: 2rem;
   font-weight: 600;
   padding: 1.4rem 2.8rem;
-}
-
-.view--all:link,
-.view--all:visited {
-  display: flex;
-  text-decoration: none;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 5/2;
-  font-size: 1.6rem;
-  font-weight: 500;
-  height: 100%;
-  color: white;
-  background-color: var(--color-gray-600);
-  cursor: pointer;
-  border-radius: 7px;
-
-  &:hover {
-    background-color: var(--color-gray-500);
-  }
 }
 
 /********************** Typography **********************/

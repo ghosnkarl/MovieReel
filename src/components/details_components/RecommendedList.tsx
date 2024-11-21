@@ -17,7 +17,6 @@ const RecommendedList = ({
     <>
       {items && items.length > 0 && (
         <Section border='left'>
-          <h1 className='section__title'></h1>
           <HorizontalListContainer
             title={`If you like ${title}, check out`}
             link={null}

@@ -64,8 +64,6 @@ const DetailsMainContainer = ({
         <VideoList videos={media.videos.results} />
       )}
 
-      <SideDetailsContainer media={media} />
-
       <DetailsReviews
         reviews={media.reviews}
         title={isMovie ? media.title : media.name}

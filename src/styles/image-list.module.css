@@ -1,7 +1,7 @@
 .images {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  margin-top: 2.4rem;
+  margin-top: 1.6rem;
   gap: 1.2rem;
   overflow: hidden;
   z-index: 1;
