@@ -10,6 +10,7 @@ import { ITVDetails } from '../../models/tvModel';
 import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
 import MediaItem from '../MediaItem';
 import SideDetailsContainer from './SideDetailsContainer';
+import DetailsReviews from './DetailsReviews';
 
 const DetailsMainContainer = ({
   media,
@@ -64,6 +65,12 @@ const DetailsMainContainer = ({
       )}
 
       <SideDetailsContainer media={media} />
+
+      <DetailsReviews
+        reviews={media.reviews}
+        title={isMovie ? media.title : media.name}
+        poster_path={media.poster_path}
+      />
 
       <ImageList
         images={images}

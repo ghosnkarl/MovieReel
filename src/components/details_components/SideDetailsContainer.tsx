@@ -38,12 +38,6 @@ const SideDetailsContainer = ({
           keywords={isMovie ? media.keywords.keywords : media.keywords.results}
         />
       </div>
-
-      {/* <DetailsReviews
-        reviews={media.reviews}
-        title={isMovie ? media.title : media.name}
-        poster_path={media.poster_path}
-      /> */}
     </div>
   );
 };

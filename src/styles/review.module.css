@@ -3,18 +3,23 @@
   border: 1px solid var(--color-error--border);
   padding: 2.4rem;
   border-radius: 10px;
+  width: 30rem;
   height: 100%;
+  cursor: pointer;
+}
+
+.container--full {
+  width: 100%;
+}
+
+.container:hover {
+  box-shadow: var(--hover-border);
 }
 
 .header {
   display: flex;
   gap: 2.4rem;
   align-items: center;
-}
-
-.header--details {
-  gap: 0;
-  justify-content: space-between;
 }
 
 .container h2 {
@@ -38,8 +43,8 @@
 }
 
 .max--lines {
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
   -webkit-box-orient: vertical;
 }
 

@@ -14,24 +14,21 @@ const Review = ({ review, viewFull }: ReviewProps) => {
 
   return (
     <div>
-      <div className={classes.container}>
-        <div
-          className={`${classes.header} ${
-            !viewFull ? classes['header--details'] : ''
-          }`}
-        >
-          {rating && viewFull && (
-            <Rating value={(rating * 10).toFixed(0)} size='small' />
-          )}
+      <div
+        className={`${classes.container} ${
+          viewFull ? classes['container--full'] : ''
+        }`}
+      >
+        <div className={classes.header}>
+          {rating && <Rating value={(rating * 10).toFixed(0)} size='small' />}
           <div>
             <h2>{review.author}</h2>
             <span>{moment(review.updated_at).format('MMM DD, YYYY')}</span>
           </div>
-          {rating && !viewFull && (
-            <Rating value={(rating * 10).toFixed(0)} size='small' />
-          )}
         </div>
-        {viewFull && <p>{review.content}</p>}
+        <p className={!viewFull ? classes['max--lines'] : ''}>
+          {review.content}
+        </p>
       </div>
     </div>
   );

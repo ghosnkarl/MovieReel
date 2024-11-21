@@ -45,64 +45,69 @@ const MediaDetails = ({
   return (
     <Section border='top'>
       <h1 className='section__title'>Details</h1>
+
       <div className={classes.details}>
-        {formattedCreatedBy && (
-          <MediaDetailsItem title='Created By' text={formattedCreatedBy} />
-        )}
-        {first_air_date && (
-          <MediaDetailsItem
-            title='First Air Date'
-            text={moment(first_air_date).format('MMM DD, YYYY')}
-          />
-        )}
-        {last_air_date && (
-          <MediaDetailsItem
-            title='Last Air Date'
-            text={moment(last_air_date).format('MMM DD, YYYY')}
-          />
-        )}
-        <MediaDetailsItem title='Status' text={status} />
-        <MediaDetailsItem title='Tagline' text={tagline} />
+        <div className={classes['details__column']}>
+          {formattedCreatedBy && (
+            <MediaDetailsItem title='Created By' text={formattedCreatedBy} />
+          )}
 
-        {collection && (
-          <div className={classes['details__left--item']}>
-            <h2>Collection</h2>
-            <NavLink to={`/`}>{collection.name}</NavLink>
-          </div>
-        )}
+          {last_air_date && (
+            <MediaDetailsItem
+              title='Last Air Date'
+              text={moment(last_air_date).format('MMM DD, YYYY')}
+            />
+          )}
+          <MediaDetailsItem title='Status' text={status} />
+          <MediaDetailsItem title='Tagline' text={tagline} />
 
-        {homepage && (
-          <div className={classes['details__left--item']}>
-            <h2>Links</h2>
-            <div className={classes.links}>
-              <NavLink target='_blank' to={homepage}>
-                Homepage
-              </NavLink>
-              {' • '}
-              <NavLink
-                target='_blank'
-                to={`https://www.imdb.com/title/${imdb_id}`}
-              >
-                IMDB
-              </NavLink>
+          {collection && (
+            <div className={classes['details__left--item']}>
+              <h2>Collection</h2>
+              <NavLink to={`/`}>{collection.name}</NavLink>
             </div>
-          </div>
-        )}
+          )}
+        </div>
+        <div className={classes['details__column']}>
+          {first_air_date && (
+            <MediaDetailsItem
+              title='First Air Date'
+              text={moment(first_air_date).format('MMM DD, YYYY')}
+            />
+          )}
+          {homepage && (
+            <div className={classes['details__left--item']}>
+              <h2>Links</h2>
+              <div className={classes.links}>
+                <NavLink target='_blank' to={homepage}>
+                  Homepage
+                </NavLink>
+                {' • '}
+                <NavLink
+                  target='_blank'
+                  to={`https://www.imdb.com/title/${imdb_id}`}
+                >
+                  IMDB
+                </NavLink>
+              </div>
+            </div>
+          )}
 
-        {number_of_seasons && number_of_seasons > 0 && (
-          <MediaDetailsItem title='Seasons' text={number_of_seasons} />
-        )}
+          {number_of_seasons && number_of_seasons > 0 && (
+            <MediaDetailsItem title='Seasons' text={number_of_seasons} />
+          )}
 
-        {number_of_episodes && number_of_episodes > 0 && (
-          <MediaDetailsItem title='Episodes' text={number_of_episodes} />
-        )}
+          {number_of_episodes && number_of_episodes > 0 && (
+            <MediaDetailsItem title='Episodes' text={number_of_episodes} />
+          )}
 
-        {budget > 0 && (
-          <MediaDetailsItem title='Budget' text={formatCurrency(budget)} />
-        )}
-        {revenue > 0 && (
-          <MediaDetailsItem title='Revenue' text={formatCurrency(revenue)} />
-        )}
+          {budget > 0 && (
+            <MediaDetailsItem title='Budget' text={formatCurrency(budget)} />
+          )}
+          {revenue > 0 && (
+            <MediaDetailsItem title='Revenue' text={formatCurrency(revenue)} />
+          )}
+        </div>
       </div>
     </Section>
   );
