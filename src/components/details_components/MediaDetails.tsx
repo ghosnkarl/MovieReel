@@ -6,6 +6,8 @@ import { ICollection } from '../../models/collectionModel';
 import { ICreatedBy } from '../../models/tvModel';
 import moment from 'moment';
 
+import { IProductionCompany } from '../../models/productionCompanyModel';
+
 interface SidebarProps {
   status: string;
   homepage: string;
@@ -19,6 +21,7 @@ interface SidebarProps {
   first_air_date: string | null;
   last_air_date: string | null;
   created_by: ICreatedBy[] | null;
+  production_companies: IProductionCompany[] | null;
 }
 
 // Helper functions for formatting
@@ -38,13 +41,14 @@ const MediaDetails = ({
   first_air_date,
   last_air_date,
   created_by,
+  production_companies,
 }: SidebarProps) => {
   const formattedCreatedBy = created_by
     ?.map((creators) => creators.name)
     .join(', ');
   return (
     <Section border='top'>
-      <h1>Details</h1>
+      <h1 className='section__title'>Details</h1>
       <div className={classes.details}>
         {formattedCreatedBy && (
           <MediaDetailsItem title='Created By' text={formattedCreatedBy} />
@@ -66,6 +70,22 @@ const MediaDetails = ({
           </div>
         )}
 
+        {production_companies && (
+          <div className={classes['details__left--item']}>
+            <h2>Production Companies</h2>
+            <ul className={classes['production__list']}>
+              {production_companies.map((company, index) => (
+                <li>
+                  <NavLink key={company.id} to={`/`}>
+                    {company.name}
+                  </NavLink>
+                  {index < production_companies.length - 1 && ' • '}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         {first_air_date && (
           <MediaDetailsItem
             title='First Air Date'
@@ -74,19 +94,22 @@ const MediaDetails = ({
         )}
         {homepage && (
           <div className={classes['details__left--item']}>
-            <h2>Links</h2>
-            <div className={classes.links}>
-              <NavLink target='_blank' to={homepage}>
-                Homepage
-              </NavLink>
-              {' • '}
-              <NavLink
-                target='_blank'
-                to={`https://www.imdb.com/title/${imdb_id}`}
-              >
-                IMDB
-              </NavLink>
-            </div>
+            <h2>Homepage</h2>
+            <NavLink target='_blank' to={homepage}>
+              {homepage}
+            </NavLink>
+          </div>
+        )}
+
+        {imdb_id && (
+          <div className={classes['details__left--item']}>
+            <h2>IMDB</h2>
+            <NavLink
+              target='_blank'
+              to={`https://www.imdb.com/title/${imdb_id}`}
+            >
+              {`https://www.imdb.com/title/${imdb_id}`}
+            </NavLink>
           </div>
         )}
 

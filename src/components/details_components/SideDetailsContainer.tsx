@@ -2,7 +2,7 @@ import { IMovieDetails } from '../../models/movieModel';
 import { ITVDetails } from '../../models/tvModel';
 import classes from '../../styles/movie-details.module.css';
 import Keywords from '../Keywords';
-import ProductionCompanies from '../ProductionCompanies';
+
 import MediaDetails from './MediaDetails';
 
 const SideDetailsContainer = ({
@@ -14,8 +14,6 @@ const SideDetailsContainer = ({
 
   return (
     <div className={classes['side__container']}>
-      <ProductionCompanies production_companies={media.production_companies} />
-
       <MediaDetails
         status={media.status}
         homepage={media.homepage}
@@ -29,7 +27,9 @@ const SideDetailsContainer = ({
         first_air_date={isMovie ? null : media.first_air_date}
         last_air_date={isMovie ? null : media.last_air_date}
         created_by={isMovie ? null : media.created_by}
+        production_companies={isMovie ? media.production_companies : null}
       />
+
       <Keywords
         keywords={isMovie ? media.keywords.keywords : media.keywords.results}
       />

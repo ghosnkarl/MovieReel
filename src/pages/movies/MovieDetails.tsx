@@ -5,9 +5,9 @@ import classes from '../../styles/movie-details.module.css';
 import DetailsHeader from '../../components/details_components/DetailsHeader';
 import QueryWrapper from '../../components/QueryWrapper';
 import DetailsMainContainer from '../../components/details_components/DetailsMainContainer';
-import SideDetailsContainer from '../../components/details_components/SideDetailsContainer';
 
 import { IMovieDetails } from '../../models/movieModel';
+import { getBackdropImage } from '../../helpers/imageSizes';
 
 const MovieDetails = () => {
   const params = useParams();
@@ -31,6 +31,11 @@ const MovieDetails = () => {
   if (movie) {
     content = (
       <>
+        <img
+          className={classes['backdrop__img']}
+          src={getBackdropImage(movie.backdrop_path, 'w1280')}
+          alt={movie.title}
+        />
         <DetailsHeader
           title={movie.title}
           overview={movie.overview}
@@ -39,12 +44,9 @@ const MovieDetails = () => {
           vote_average={movie.vote_average}
           release_date={movie.release_date}
           runtime={movie.runtime}
-          backdrop_path={movie.backdrop_path}
         />
-        <div className={classes['details-container']}>
-          <DetailsMainContainer media={movie} />
-          <SideDetailsContainer media={movie} />
-        </div>
+
+        <DetailsMainContainer media={movie} />
       </>
     );
   }

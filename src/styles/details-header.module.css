@@ -1,24 +1,8 @@
 .container {
-  display: flex;
   position: relative;
-  height: 60vh;
-  background-color: var(--color-background--root);
-}
-
-.backdrop__img {
-  object-fit: cover;
-  width: 100%;
-  height: 90%;
-  mask-image: linear-gradient(
-    to bottom,
-    rgba(20, 20, 20, 1) 0%,
-    rgba(0, 0, 0, 0) 80%
-  );
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    rgba(20, 20, 20, 1) 0%,
-    rgba(0, 0, 0, 0) 80%
-  );
+  max-width: var(--page-width--max);
+  margin: var(--page-width--margin);
+  padding: 0 var(--page-padding--horizontal);
 }
 
 .bottom__container {
@@ -26,10 +10,8 @@
   gap: 2.4rem;
   position: absolute;
   bottom: 0;
-  left: 0;
-  max-width: var(--page-width--max);
-  margin: var(--page-width--margin);
-  padding: 3.2rem 3.2rem 0 3.2rem;
+  left: 6.4rem;
+  right: 6.4rem;
 }
 
 .poster__img {

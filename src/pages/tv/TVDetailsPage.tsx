@@ -6,7 +6,7 @@ import DetailsHeader from '../../components/details_components/DetailsHeader';
 import QueryWrapper from '../../components/QueryWrapper';
 import { ITVDetails } from '../../models/tvModel';
 import DetailsMainContainer from '../../components/details_components/DetailsMainContainer';
-import SideDetailsContainer from '../../components/details_components/SideDetailsContainer';
+import { getBackdropImage } from '../../helpers/imageSizes';
 
 const TVDetailsPage = () => {
   const params = useParams();
@@ -30,6 +30,11 @@ const TVDetailsPage = () => {
   if (tvShow) {
     content = (
       <>
+        <img
+          className={classes['backdrop__img']}
+          src={getBackdropImage(tvShow.backdrop_path, 'w1280')}
+          alt={tvShow.name}
+        />
         <DetailsHeader
           title={tvShow.name}
           overview={tvShow.overview}
@@ -37,13 +42,10 @@ const TVDetailsPage = () => {
           vote_average={tvShow.vote_average}
           release_date={null}
           runtime={tvShow.runtime}
-          backdrop_path={tvShow.backdrop_path}
           poster_path={tvShow.poster_path}
         />
-        <div className={classes['details-container']}>
-          <DetailsMainContainer media={tvShow} />
-          <SideDetailsContainer media={tvShow} />
-        </div>
+
+        <DetailsMainContainer media={tvShow} />
       </>
     );
   }

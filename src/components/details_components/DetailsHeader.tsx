@@ -1,7 +1,7 @@
 import moment from 'moment';
 import classes from '../../styles/details-header.module.css';
 import { IGenre } from '../../models/genreModel';
-import { getBackdropImage, getPosterImage } from '../../helpers/imageSizes';
+import { getPosterImage } from '../../helpers/imageSizes';
 import RatingStar from '../rating/RatingStar';
 
 interface DetailsHeaderProps {
@@ -11,7 +11,6 @@ interface DetailsHeaderProps {
   genres: IGenre[];
   vote_average: number;
   overview: string;
-  backdrop_path: string | null;
   poster_path: string | null;
 }
 
@@ -22,7 +21,6 @@ const DetailsHeader = ({
   genres,
   vote_average,
   overview,
-  backdrop_path,
   poster_path,
 }: DetailsHeaderProps) => {
   const formattedGenres = genres.map((genre) => genre.name).join(' • ');
@@ -36,12 +34,6 @@ const DetailsHeader = ({
 
   return (
     <div className={classes.container}>
-      <img
-        className={classes['backdrop__img']}
-        src={getBackdropImage(backdrop_path, 'w1280')}
-        alt={title}
-      />
-
       <div className={classes['bottom__container']}>
         <img
           className={classes['poster__img']}
