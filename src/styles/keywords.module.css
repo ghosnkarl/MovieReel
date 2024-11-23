@@ -7,12 +7,12 @@
 
 .keywords span {
   font-size: 1.4rem;
-  border: 1px solid var(--color-primary-900);
   padding: 0.8rem 1rem;
   border-radius: 7px;
   cursor: pointer;
-}
+  background-color: var(--color-gray-600);
 
-.keywords span:hover {
-  background-color: var(--color-primary-900);
+  &:hover {
+    background-color: var(--color-gray-500);
+  }
 }

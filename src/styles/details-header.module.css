@@ -1,93 +1,62 @@
 .container {
+  position: relative;
   max-width: var(--page-width--max);
   margin: var(--page-width--margin);
-  padding: 3.2rem 3.2rem 0 3.2rem;
+  padding: 0 var(--page-padding--horizontal);
 }
 
-.header {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3.2rem;
-  height: 55vh;
-  align-items: center;
-  background-color: var(--color-background--card);
+.bottom__container {
+  display: flex;
+  gap: 2.4rem;
+  position: absolute;
+  bottom: 0;
+  left: 6.4rem;
+  right: 6.4rem;
+}
+
+.poster__img {
+  width: 20rem;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
   border-radius: 10px;
-  overflow: hidden;
-  padding-left: 3.2rem;
   box-shadow: var(--card--box-shadow);
 }
 
-.image__container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.gradient-overlay {
-  top: 0;
-  right: auto;
-  right: 0;
-  width: 100%;
-  bottom: auto;
-  height: 100%;
-  position: absolute;
-
-  background-image: linear-gradient(
-    to right,
-    rgb(25, 25, 25),
-    rgba(25, 25, 25, 0),
-    rgba(25, 25, 25, 0),
-    rgba(25, 25, 25, 0),
-    rgb(25, 25, 25)
-  );
-}
-
-.backdrop-img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
-.header__title {
-  font-size: 5.2rem;
-  margin-bottom: 1.4rem;
-  font-weight: 600;
-}
-
-.header__overview {
-  margin-top: 2rem;
-  margin-bottom: 2.4rem;
-  font-size: 1.6rem;
-  line-height: 1.6;
-  align-items: center;
-  text-align: justify;
-}
-
-.details__container {
-  display: flex;
-  grid-template-columns: 3fr 1fr;
-  gap: 4.2rem;
-  font-size: 1.6rem;
-  margin-bottom: 1.2rem;
-  font-weight: 500;
-}
-
-.details__container div {
+.text__container {
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
-}
-
-.details__container h4 {
-  font-weight: 500;
-}
-
-.values__container {
-  color: var(--color-primary-900);
+  justify-content: flex-end;
 }
 
 .genres {
   font-size: 1.8rem;
-  margin-bottom: 0.8rem;
-  color: var(--color-gray-100);
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.title {
+  font-size: 4.4rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+.rating__container {
+  display: flex;
+  gap: 4.2rem;
+  margin-bottom: 2.4rem;
+  align-items: center;
+}
+
+.date-runtime {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.overview {
+  margin-bottom: 2.4rem;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  align-items: center;
+  text-align: justify;
 }

@@ -1,4 +1,4 @@
-import { IoArrowForwardCircle } from 'react-icons/io5';
+import { MdNavigateNext } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
 
 interface HeaderLinkProps {
@@ -11,7 +11,7 @@ const HeaderLink = ({ title, link, linkState }: HeaderLinkProps) => {
   return (
     <NavLink to={link} state={linkState} className='section__link'>
       {title}
-      <IoArrowForwardCircle className='list__header--icon' />
+      <MdNavigateNext className='list__header--icon' />
     </NavLink>
   );
 };

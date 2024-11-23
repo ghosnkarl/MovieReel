@@ -12,8 +12,8 @@ interface ImageListProps {
 }
 
 const ImageList = ({ backdropList, title, images, image }: ImageListProps) => {
-  if (backdropList && backdropList.length > 8)
-    backdropList = backdropList.slice(0, 8);
+  if (backdropList && backdropList.length > 7)
+    backdropList = backdropList.slice(0, 7);
   return (
     <>
       {backdropList && backdropList.length > 0 && (

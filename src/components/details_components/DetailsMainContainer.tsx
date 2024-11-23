@@ -1,7 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
 import { getGalleryImages } from '../../helpers/galleryImages';
 import classes from '../../styles/movie-details.module.css';
-import { fetchGenres } from '../../services/http';
 import VideoList from './VideoList';
 import ImageList from './ImageList';
 import RecommendedList from './RecommendedList';
@@ -9,24 +7,22 @@ import { getPosterImage } from '../../helpers/imageSizes';
 import CastList from './CastList';
 import { IMovieDetails } from '../../models/movieModel';
 import { ITVDetails } from '../../models/tvModel';
-import Section from '../Section';
-import EpisodeItem from '../EpisodeItem';
+import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
+import MediaItem from '../MediaItem';
+import SideDetailsContainer from './SideDetailsContainer';
+import DetailsReviews from './DetailsReviews';
 
 const DetailsMainContainer = ({
   media,
 }: {
   media: IMovieDetails | ITVDetails;
 }) => {
-  const genresResult = useQuery({
-    queryKey: ['genres', 'movie'],
-    queryFn: () => fetchGenres('movie'),
-    retry: 1,
-  });
-
   const images = getGalleryImages({ images: media.images });
-  const title = 'title' in media ? media.title : media.name;
-  const credits = 'title' in media ? media.credits : media.aggregate_credits;
-  const lastEpisode = 'title' in media ? null : media.last_episode_to_air;
+  const isMovie = 'title' in media;
+  const title = isMovie ? media.title : media.name;
+  const credits = isMovie ? media.credits : media.aggregate_credits;
+  const seasons = isMovie ? null : media.seasons;
+
   return (
     <div className={classes['main-container']}>
       {credits && (
@@ -37,9 +33,34 @@ const DetailsMainContainer = ({
         />
       )}
 
+      {seasons && (
+        <HorizontalListContainer title='Seasons' link={null} linkState={null}>
+          {seasons
+            .sort((a, b) => b.season_number - a.season_number)
+            .map((season) => (
+              <MediaItem
+                key={season.id}
+                id={season.season_number}
+                poster_path={season.poster_path}
+                title={season.name}
+                text={`${season.episode_count} Episodes`}
+                type='season'
+              />
+            ))}
+        </HorizontalListContainer>
+      )}
+
       {media.videos.results && media.videos.results.length > 0 && (
         <VideoList videos={media.videos.results} />
       )}
+
+      <SideDetailsContainer media={media} />
+
+      <DetailsReviews
+        reviews={media.reviews}
+        title={isMovie ? media.title : media.name}
+        poster_path={media.poster_path}
+      />
 
       <ImageList
         images={images}
@@ -47,17 +68,8 @@ const DetailsMainContainer = ({
         title={title}
         image={getPosterImage(media.poster_path, 'w342')}
       />
-      {lastEpisode && (
-        <Section border='left'>
-          <h1 className='section__title'>Last Episode to Air</h1>
-          <EpisodeItem episode={lastEpisode} />
-        </Section>
-      )}
-      <RecommendedList
-        title={title}
-        items={media.recommendations.results}
-        genreList={genresResult.data}
-      />
+
+      <RecommendedList title={title} items={media.recommendations.results} />
     </div>
   );
 };

@@ -22,7 +22,6 @@ const MediaList = ({
             type={type}
             poster_path={item.poster_path}
             text={moment(date).format('MMM DD, YYYY')}
-            vote_average={item.vote_average}
           />
         );
       })}

@@ -10,7 +10,7 @@ const RatingStar = ({
   size: 'small' | 'medium';
 }) => {
   const formattedRating = +(value / 2).toFixed(1);
-  const starSize = size === 'small' ? '2.2rem' : '2.8rem';
+  const starSize = size === 'small' ? '2.2rem' : '2.4rem';
   return (
     <div className={`${classes.container} ${classes[`container--${size}`]}`}>
       <Rating

@@ -1,7 +1,7 @@
 .images {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  margin-top: 2.4rem;
+  grid-template-columns: repeat(7, 1fr);
+  margin-top: 1.6rem;
   gap: 1.2rem;
   overflow: hidden;
   z-index: 1;
@@ -10,16 +10,22 @@
 .image__container {
   cursor: pointer;
   width: 100%;
-  height: 20rem;
+
   border-radius: 10px;
   overflow: hidden;
 }
 
 .image__container:nth-child(1),
-.image__container:nth-child(3),
+.image__container:nth-child(2) {
+  grid-column: span 3;
+  aspect-ratio: 2;
+}
+
+.image__container:nth-child(4),
 .image__container:nth-child(6),
-.image__container:nth-child(8) {
+.image__container:nth-child(7) {
   grid-column: span 2;
+  aspect-ratio: 1.5;
 }
 
 .backdrop {
@@ -28,6 +34,6 @@
   object-fit: cover;
   transition: all 0.2s ease-in-out;
   &:hover {
-    transform: scale(1.3);
+    transform: scale(1.2);
   }
 }

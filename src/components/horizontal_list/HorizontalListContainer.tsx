@@ -26,8 +26,10 @@ const HorizontalListContainer = ({
   return (
     <Section border='left'>
       <div className='list-header'>
-        {link && <HeaderLink title={title} link={link} linkState={linkState} />}
-        {!link && <h1 className='section__title'>{title}</h1>}
+        {!link && (
+          <h1 className='section__title section__title--list'>{title}</h1>
+        )}
+        {link && <HeaderLink link={link} linkState={linkState} title={title} />}
         <ListArrows listRef={ref} />
       </div>
 

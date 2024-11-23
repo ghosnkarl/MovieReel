@@ -10,14 +10,14 @@ import DiscoverPage from './pages/DiscoverPage';
 import ReviewsPage from './pages/ReviewsPage';
 import ImagesPage from './pages/ImagesPages';
 import PeopleDetailsPage from './pages/people/PeopleDetailsPage';
-
 import CreditsPage from './pages/CreditsPage';
-
 import DetailsRootLayout from './pages/DetailsRootLayout';
 import ErrorPage from './components/ErrorPage';
 import OutletRootLayout from './components/OutletRootLayout';
 import MovieDetails from './pages/movies/MovieDetails';
 import TVDetailsPage from './pages/tv/TVDetailsPage';
+
+import SeasonDetailsPage from './pages/tv/SeasonDetailsPage';
 
 const router = createBrowserRouter([
   {
@@ -95,6 +95,10 @@ const router = createBrowserRouter([
                   {
                     path: 'images',
                     element: <ImagesPage />,
+                  },
+                  {
+                    path: 'seasons/:seasonNumber',
+                    element: <SeasonDetailsPage />,
                   },
                 ],
               },

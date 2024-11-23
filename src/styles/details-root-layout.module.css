@@ -1,18 +1,16 @@
 .container {
-  padding: 9.6rem 6.4rem 6.4rem 6.4rem;
+  max-width: var(--page-width--max);
+  margin: var(--page-width--margin);
+  padding: 9.6rem var(--page-padding--horizontal) var(--page-padding--bottom)
+    var(--page-padding--horizontal);
 }
 
 .container__header {
+  width: fit-content;
   display: flex;
   margin-bottom: 3.2rem;
   gap: 2.4rem;
   align-items: center;
-  cursor: pointer;
-  width: fit-content;
-
-  &:hover {
-    opacity: 0.7;
-  }
 }
 
 .container__header--poster {
@@ -25,6 +23,7 @@
   font-size: 3.2rem !important;
   font-weight: 600;
   margin-bottom: 2.4rem !important;
+  transition: all 0.2s ease-in-out;
 }
 
 .container__header--back {

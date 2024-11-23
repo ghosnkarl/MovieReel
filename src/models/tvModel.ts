@@ -40,7 +40,21 @@ export interface ITVDetails extends ITV {
   reviews: { results: IReview[] };
   recommendations: { results: ITV[] };
   created_by: ICreatedBy[];
-  last_episode_to_air: IEpisode;
+  number_of_episodes: number;
+  number_of_seasons: number;
+  seasons: ISeason[];
+}
+
+export interface ISeason {
+  air_date: string;
+  episode_count: number;
+  id: number;
+  name: string;
+  overview: string;
+  poster_path: string | null;
+  season_number: number;
+  vote_average: number;
+  episodes: IEpisode[];
 }
 
 export interface IEpisode {
@@ -49,7 +63,7 @@ export interface IEpisode {
   overview: string;
   vote_average: number;
   air_date: string;
-  episode_number: string;
+  episode_number: number;
   runtime: number;
   season_number: number;
   still_path: string | null;

@@ -1,35 +1,30 @@
 import { NavLink } from 'react-router-dom';
-import classes from '../styles/people-item.module.css';
+import classes from '../styles/credits-item.module.css';
 import { getProfileImage } from '../helpers/imageSizes';
 
-interface PersonListItemProps {
-  id: number;
+interface CreditItemProps {
+  id: number | string;
   profile_path: string;
   title: string;
   text: string | null;
 }
 
-const PersonListItem = ({
-  id,
-  profile_path,
-  title,
-  text,
-}: PersonListItemProps) => {
+const CreditItem = ({ id, profile_path, title, text }: CreditItemProps) => {
   return (
     <NavLink key={id} to={`/people/${id}`} className={classes.container}>
-      <div className={classes['img-container']}>
+      <div className={classes['img__container']}>
         <img
-          className={classes.img}
+          className={classes['profile__img']}
           src={getProfileImage(profile_path, 'w185')}
           alt={title}
         />
       </div>
       <div>
-        <h2>{title}</h2>
+        <h2 className={classes.title}>{title}</h2>
         {text && <p>{text}</p>}
       </div>
     </NavLink>
   );
 };
 
-export default PersonListItem;
+export default CreditItem;

@@ -1,0 +1,49 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  color: white;
+  gap: 2.4rem;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  align-items: center;
+  background-color: var(--color-background--card);
+  border-radius: 7px;
+  overflow: hidden;
+  padding-right: 1.2rem;
+}
+
+.container:hover {
+  box-shadow: 0 0 0 2px white;
+}
+
+.container:hover .profile__img {
+  transform: scale(1.2);
+}
+
+.img__container {
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.profile__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.2s ease-in-out;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.container p {
+  font-size: 1.4rem;
+  line-height: 1.2;
+  /* color: var(--color-gray-300); */
+  font-weight: 500;
+  line-height: 1.3;
+}
