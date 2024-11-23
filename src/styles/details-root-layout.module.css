@@ -1,7 +1,8 @@
 .container {
   max-width: var(--page-width--max);
   margin: var(--page-width--margin);
-  padding: 9.6rem 3.2rem 6.4rem 3.2rem;
+  padding: 9.6rem var(--page-padding--horizontal) var(--page-padding--bottom)
+    var(--page-padding--horizontal);
 }
 
 .container__header {

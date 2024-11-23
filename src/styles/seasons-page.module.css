@@ -26,8 +26,9 @@
   border-radius: 7px;
 }
 
-.item__container:hover .season__title {
-  color: var(--color-primary-900);
+.item__container:hover,
+.item__container:active {
+  box-shadow: var(--hover-border);
 }
 
 .item__container:hover {

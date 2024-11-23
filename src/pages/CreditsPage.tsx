@@ -2,7 +2,6 @@ import { useLocation } from 'react-router-dom';
 import classes from '../styles/credits-page.module.css';
 import { useState } from 'react';
 import { ICast, ICrew } from '../models/mediaModel';
-import PersonListItem from '../components/PersonListItem';
 import Tabs, { TabObjectProps } from '../components/Tabs';
 import { CREDITS_TABS } from '../data/data';
 import CreditItem from '../components/CreditItem';
@@ -44,11 +43,14 @@ const CreditsPage = () => {
         <div className={classes['list__container']}>
           {credits.cast.map((cast: ICast) => (
             <CreditItem
-              key={cast.credit_id}
+              key={cast.cast_id || cast.roles[0].credit_id}
               id={cast.id}
               profile_path={cast.profile_path}
               title={cast.name}
-              text={cast.character}
+              text={
+                cast.character ||
+                cast.roles.map((role) => role.character).join(', ')
+              }
             />
           ))}
         </div>
@@ -75,11 +77,18 @@ const CreditsPage = () => {
               .filter((item) => item.department === selectedDepartment)
               .map((crew) => (
                 <CreditItem
-                  key={crew.credit_id}
+                  key={crew.credit_id || crew.jobs[0].credit_id}
                   id={crew.id}
                   profile_path={crew.profile_path}
                   title={crew.name}
-                  text={crew.job}
+                  text={
+                    crew.job ||
+                    `${crew.jobs
+                      .map(
+                        (job) => `${job.job} (${job.episode_count} episodes)`
+                      )
+                      .join(', ')}`
+                  }
                 />
               ))}
           </div>

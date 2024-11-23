@@ -28,6 +28,7 @@ export interface ICrewMedia {
   department: string;
   job: string;
   release_date?: string;
+
   first_air_date?: string;
   poster_path: string;
   credit_id: string;

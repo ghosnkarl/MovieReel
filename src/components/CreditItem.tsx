@@ -3,7 +3,7 @@ import classes from '../styles/credits-item.module.css';
 import { getProfileImage } from '../helpers/imageSizes';
 
 interface CreditItemProps {
-  id: number;
+  id: number | string;
   profile_path: string;
   title: string;
   text: string | null;

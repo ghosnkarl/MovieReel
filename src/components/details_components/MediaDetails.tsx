@@ -75,7 +75,7 @@ const MediaDetails = ({
             <h2>Production Companies</h2>
             <ul className={classes['production__list']}>
               {production_companies.map((company, index) => (
-                <li>
+                <li key={company.id}>
                   <NavLink key={company.id} to={`/`}>
                     {company.name}
                   </NavLink>
