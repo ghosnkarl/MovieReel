@@ -11,12 +11,6 @@
   margin-bottom: 3.2rem;
   gap: 2.4rem;
   align-items: center;
-  cursor: pointer;
-  border-radius: 7px;
-}
-
-.container__header:hover .container__header--title {
-  color: var(--color-primary-900);
 }
 
 .container__header--poster {

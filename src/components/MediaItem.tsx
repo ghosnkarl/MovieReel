@@ -11,8 +11,13 @@ interface MediaItemProps {
 }
 
 const MediaItem = ({ text, id, poster_path, title, type }: MediaItemProps) => {
+  const link = type === 'season' ? `seasons/${id}` : `/${type}/${id}`;
   return (
-    <NavLink to={`/${type}/${id}`} className={classes['container__link']}>
+    <NavLink
+      to={link}
+      className={classes['container__link']}
+      state={{ title, image: getPosterImage(poster_path, 'w342') }}
+    >
       <div className={classes['container']}>
         <div className={classes['img-container']}>
           <img src={getPosterImage(poster_path, 'w342')} alt={title} />

@@ -22,7 +22,6 @@ const DetailsMainContainer = ({
   const title = isMovie ? media.title : media.name;
   const credits = isMovie ? media.credits : media.aggregate_credits;
   const seasons = isMovie ? null : media.seasons;
-  const number_of_seasons = isMovie ? null : media.number_of_seasons;
 
   return (
     <div className={classes['main-container']}>
@@ -35,22 +34,13 @@ const DetailsMainContainer = ({
       )}
 
       {seasons && (
-        <HorizontalListContainer
-          title='Seasons'
-          link='seasons'
-          linkState={{
-            title,
-            number_of_seasons,
-            seasons,
-            image: getPosterImage(media.poster_path, 'w342'),
-          }}
-        >
+        <HorizontalListContainer title='Seasons' link={null} linkState={null}>
           {seasons
             .sort((a, b) => b.season_number - a.season_number)
             .map((season) => (
               <MediaItem
                 key={season.id}
-                id={season.id}
+                id={season.season_number}
                 poster_path={season.poster_path}
                 title={season.name}
                 text={`${season.episode_count} Episodes`}

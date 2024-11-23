@@ -11,14 +11,6 @@
   overflow: hidden;
 }
 
-.container:hover .title {
-  color: var(--color-primary-900);
-}
-
-.container:hover {
-  transform: translateX(10px);
-}
-
 .image {
   width: 28rem;
   aspect-ratio: 1.4;
@@ -41,7 +33,7 @@
 
 .overview {
   margin-top: 2.4rem;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: var(--color-gray-100);
   line-height: 1.4;
 }
