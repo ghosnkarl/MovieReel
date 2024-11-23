@@ -3,7 +3,6 @@ import classes from '../../styles/movies-page.module.css';
 import MediaList from '../../components/horizontal_list/MediaList';
 import { useState } from 'react';
 import Tabs, { TabObjectProps } from '../../components/Tabs';
-
 import { MOVIE_TABS } from '../../data/data';
 import QueryWrapper from '../../components/QueryWrapper';
 import { IMovie } from '../../models/mediaModel';

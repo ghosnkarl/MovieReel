@@ -1,17 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { fetchSingleResult } from '../../services/http';
-import classes from '../../styles/movie-details.module.css';
+import classes from '../../styles/details-page.module.css';
 import DetailsHeader from '../../components/details_components/DetailsHeader';
 import QueryWrapper from '../../components/QueryWrapper';
 import DetailsMainContainer from '../../components/details_components/DetailsMainContainer';
-
 import { IMovieDetails } from '../../models/movieModel';
 import { getBackdropImage } from '../../helpers/imageSizes';
+import { ITVDetails } from '../../models/tvModel';
 
-const MovieDetails = () => {
+const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
   const params = useParams();
-  const movieId = params.movieId;
+  const mediaId = isMovie ? params.movieId : params.tvId;
   const queryParams = {
     append_to_response:
       'credits,images,videos,keywords,reviews,recommendations',
@@ -19,34 +19,39 @@ const MovieDetails = () => {
   };
 
   const movieQuery = useQuery({
-    queryKey: ['movies', movieId],
+    queryKey: [isMovie ? 'movie' : 'tv', mediaId],
     queryFn: () =>
-      fetchSingleResult({ path: `movie/${movieId}`, params: queryParams }),
+      fetchSingleResult({
+        path: `${isMovie ? 'movie' : 'tv'}/${mediaId}`,
+        params: queryParams,
+      }),
     retry: 0,
   });
 
-  const movie = movieQuery.data as IMovieDetails;
+  const media = isMovie
+    ? (movieQuery.data as IMovieDetails)
+    : (movieQuery.data as ITVDetails);
 
   let content = <></>;
-  if (movie) {
+  if (media) {
     content = (
       <>
         <img
           className={classes['backdrop__img']}
-          src={getBackdropImage(movie.backdrop_path, 'w1280')}
-          alt={movie.title}
+          src={getBackdropImage(media.backdrop_path, 'w1280')}
+          alt={'title' in media ? media.title : media.name}
         />
         <DetailsHeader
-          title={movie.title}
-          overview={movie.overview}
-          genres={movie.genres}
-          poster_path={movie.poster_path}
-          vote_average={movie.vote_average}
-          release_date={movie.release_date}
-          runtime={movie.runtime}
+          title={'title' in media ? media.title : media.name}
+          overview={media.overview}
+          genres={media.genres}
+          poster_path={media.poster_path}
+          vote_average={media.vote_average}
+          release_date={'title' in media ? media.release_date : null}
+          runtime={'title' in media ? media.runtime : null}
         />
 
-        <DetailsMainContainer media={movie} />
+        <DetailsMainContainer media={media} />
       </>
     );
   }
@@ -60,4 +65,4 @@ const MovieDetails = () => {
   );
 };
 
-export default MovieDetails;
+export default DetailsPage;

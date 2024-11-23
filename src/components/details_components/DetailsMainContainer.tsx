@@ -1,5 +1,5 @@
 import { getGalleryImages } from '../../helpers/galleryImages';
-import classes from '../../styles/movie-details.module.css';
+import classes from '../../styles/details-page.module.css';
 import VideoList from './VideoList';
 import ImageList from './ImageList';
 import RecommendedList from './RecommendedList';
@@ -9,8 +9,9 @@ import { IMovieDetails } from '../../models/movieModel';
 import { ITVDetails } from '../../models/tvModel';
 import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
 import MediaItem from '../MediaItem';
-import SideDetailsContainer from './SideDetailsContainer';
 import DetailsReviews from './DetailsReviews';
+import MediaDetails from './MediaDetails';
+import Keywords from '../Keywords';
 
 const DetailsMainContainer = ({
   media,
@@ -54,8 +55,27 @@ const DetailsMainContainer = ({
         <VideoList videos={media.videos.results} />
       )}
 
-      <SideDetailsContainer media={media} />
+      <div className={classes['side__container']}>
+        <MediaDetails
+          status={media.status}
+          homepage={media.homepage}
+          imdb_id={media.imdb_id}
+          revenue={media.revenue}
+          budget={media.budget}
+          tagline={media.tagline}
+          collection={isMovie ? media.belongs_to_collection : null}
+          number_of_episodes={isMovie ? null : media.number_of_episodes}
+          number_of_seasons={isMovie ? null : media.number_of_seasons}
+          first_air_date={isMovie ? null : media.first_air_date}
+          last_air_date={isMovie ? null : media.last_air_date}
+          created_by={isMovie ? null : media.created_by}
+          production_companies={isMovie ? media.production_companies : null}
+        />
 
+        <Keywords
+          keywords={isMovie ? media.keywords.keywords : media.keywords.results}
+        />
+      </div>
       <DetailsReviews
         reviews={media.reviews}
         title={isMovie ? media.title : media.name}

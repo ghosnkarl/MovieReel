@@ -14,10 +14,8 @@ import CreditsPage from './pages/CreditsPage';
 import DetailsRootLayout from './pages/DetailsRootLayout';
 import ErrorPage from './components/ErrorPage';
 import OutletRootLayout from './components/OutletRootLayout';
-import MovieDetails from './pages/movies/MovieDetails';
-import TVDetailsPage from './pages/tv/TVDetailsPage';
-
 import SeasonDetailsPage from './pages/tv/SeasonDetailsPage';
+import DetailsPage from './components/details_components/DetailsPage';
 
 const router = createBrowserRouter([
   {
@@ -40,7 +38,7 @@ const router = createBrowserRouter([
             children: [
               {
                 index: true,
-                element: <MovieDetails />,
+                element: <DetailsPage isMovie={true} />,
               },
               {
                 path: '',
@@ -78,7 +76,7 @@ const router = createBrowserRouter([
             children: [
               {
                 index: true,
-                element: <TVDetailsPage />,
+                element: <DetailsPage isMovie={false} />,
               },
               {
                 path: '',
