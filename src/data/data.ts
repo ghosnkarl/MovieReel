@@ -1,16 +1,18 @@
+import { TabObjectProps } from '../components/Tabs';
 import {
   airingTodayDates,
   nowPlayingDates,
   onAirDates,
   upComingDates,
 } from '../helpers/discoverDates';
+import { IMovie, ITVShow } from '../models/mediaModel';
 import { fetchResults } from '../services/http';
 
-export const MOVIE_TABS = [
+export const MOVIE_TABS: TabObjectProps[] = [
   {
     title: 'Trending',
     value: 'trending',
-    query: fetchResults({
+    query: fetchResults<IMovie>({
       path: 'trending/movie/week',
       params: null,
     }),
@@ -18,7 +20,7 @@ export const MOVIE_TABS = [
   {
     title: 'Upcoming',
     value: upComingDates,
-    query: fetchResults({
+    query: fetchResults<IMovie>({
       path: 'discover/movie',
       params: upComingDates,
     }),
@@ -26,7 +28,7 @@ export const MOVIE_TABS = [
   {
     title: 'Now Playing',
     value: nowPlayingDates,
-    query: fetchResults({
+    query: fetchResults<IMovie>({
       path: 'discover/movie',
       params: nowPlayingDates,
     }),
@@ -34,12 +36,12 @@ export const MOVIE_TABS = [
   {
     title: 'Popular',
     value: 'popular',
-    query: fetchResults({ path: 'movie/popular', params: null }),
+    query: fetchResults<IMovie>({ path: 'movie/popular', params: null }),
   },
   {
     title: 'Top Rated',
     value: 'top_rated',
-    query: fetchResults({ path: 'movie/top_rated', params: null }),
+    query: fetchResults<IMovie>({ path: 'movie/top_rated', params: null }),
   },
 ];
 
@@ -52,7 +54,7 @@ export const TV_TABS = [
   {
     title: 'Trending',
     value: 'trending',
-    query: fetchResults({
+    query: fetchResults<ITVShow>({
       path: 'trending/tv/week',
       params: null,
     }),
@@ -60,7 +62,7 @@ export const TV_TABS = [
   {
     title: 'Airing Today',
     value: airingTodayDates,
-    query: fetchResults({
+    query: fetchResults<ITVShow>({
       path: 'discover/tv',
       params: airingTodayDates,
     }),
@@ -68,16 +70,16 @@ export const TV_TABS = [
   {
     title: 'On Air',
     value: onAirDates,
-    query: fetchResults({ path: 'discover/tv', params: onAirDates }),
+    query: fetchResults<ITVShow>({ path: 'discover/tv', params: onAirDates }),
   },
   {
     title: 'Popular',
     value: 'popular',
-    query: fetchResults({ path: 'tv/popular', params: null }),
+    query: fetchResults<ITVShow>({ path: 'tv/popular', params: null }),
   },
   {
     title: 'Top Rated',
     value: 'top_rated',
-    query: fetchResults({ path: 'tv/top_rated', params: null }),
+    query: fetchResults<ITVShow>({ path: 'tv/top_rated', params: null }),
   },
 ];

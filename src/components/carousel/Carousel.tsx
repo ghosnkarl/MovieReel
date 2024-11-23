@@ -64,7 +64,7 @@ const Carousel = ({ genres }: CarouselProps) => {
   const upcomingMoviesQuery = useQuery({
     queryKey: ['movies', discoverParams],
     queryFn: () =>
-      fetchResults({
+      fetchResults<IMovie>({
         path: 'discover/movie',
         params: discoverParams,
       }),
@@ -94,7 +94,7 @@ const Carousel = ({ genres }: CarouselProps) => {
         <CarouselSlide
           genres={genres}
           current={currentIndex}
-          content={movies as IMovie[]}
+          content={movies}
         />
         <CarouselControls onNext={nextSlide} onPrev={prevSlide} />
       </div>

@@ -38,7 +38,7 @@ const fetchData = async <T>(url: string): Promise<T> => {
   const response = await fetch(url);
 
   if (!response.ok) {
-    await handleFetchError(response);
+    handleFetchError(response);
   }
 
   return await response.json();

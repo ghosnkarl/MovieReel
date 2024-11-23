@@ -13,7 +13,7 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
   const trendingQuery = useQuery({
     queryKey: [type, 'trending'],
     queryFn: () =>
-      fetchResults({
+      fetchResults<IMovie | ITVShow>({
         path: `trending/${type}/week`,
         params: null,
       }),
@@ -27,8 +27,8 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
   let content = <></>;
 
   if (data) {
-    const list = data.slice(1, 5) as IMovie[] | ITVShow[];
-    const firstItem = data[0] as IMovie | ITVShow;
+    const list = data.slice(1, 5);
+    const firstItem = data[0];
     const firstItemTitle =
       'title' in firstItem ? firstItem.title : firstItem.name;
     const date =
@@ -52,7 +52,7 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
           </div>
         </LinkWrapper>
         <ul className={classes['container--right']}>
-          {list.map((listItem: IMovie | ITVShow) => {
+          {list.map((listItem) => {
             const title = 'title' in listItem ? listItem.title : listItem.name;
             const date =
               'title' in listItem

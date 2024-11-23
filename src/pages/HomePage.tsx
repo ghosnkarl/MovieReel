@@ -5,25 +5,24 @@ import Carousel from '../components/carousel/Carousel';
 import { NavLink } from 'react-router-dom';
 import TopTrending from '../components/TopTrending';
 import MediaList from '../components/horizontal_list/MediaList';
-import { IMovie } from '../models/mediaModel';
+import { IMovie, ITVShow } from '../models/mediaModel';
 import { IPeople } from '../models/peopleModel';
 import PersonListItem from '../components/PersonListItem';
 import { airingTodayDates, upComingDates } from '../helpers/discoverDates';
 import HorizontalWrapper from '../components/HorizontalWrapper';
-import { ITV } from '../models/tvModel';
 
 export default function HomePage() {
   const upcomingMoviesQuery = useQuery({
     queryKey: ['movie', upComingDates],
     queryFn: () =>
-      fetchResults({ path: 'discover/movie', params: upComingDates }),
+      fetchResults<IMovie>({ path: 'discover/movie', params: upComingDates }),
     retry: 1,
   });
 
   const airingTodayTVQuery = useQuery({
     queryKey: ['tv', airingTodayDates],
     queryFn: () =>
-      fetchResults({ path: 'discover/tv', params: airingTodayDates }),
+      fetchResults<ITVShow>({ path: 'discover/tv', params: airingTodayDates }),
     retry: 1,
   });
 
@@ -35,7 +34,8 @@ export default function HomePage() {
 
   const popularPeopleQuery = useQuery({
     queryKey: ['popular', 'people'],
-    queryFn: () => fetchResults({ path: 'person/popular', params: null }),
+    queryFn: () =>
+      fetchResults<IPeople>({ path: 'person/popular', params: null }),
     retry: 1,
   });
 
@@ -57,7 +57,7 @@ export default function HomePage() {
         title='Upcoming Movies'
         link='/movies'
       >
-        <MediaList type='movies' data={upcomingMoviesQuery.data as IMovie[]} />
+        <MediaList type='movies' data={upcomingMoviesQuery.data} />
       </HorizontalWrapper>
 
       <TopTrending type='movie' />
@@ -67,7 +67,7 @@ export default function HomePage() {
         title='Airing Today TV Shows'
         link='/tv'
       >
-        <MediaList type='tv' data={airingTodayTVQuery.data as ITV[]} />
+        <MediaList type='tv' data={airingTodayTVQuery.data} />
       </HorizontalWrapper>
 
       <TopTrending type='tv' />
@@ -79,7 +79,7 @@ export default function HomePage() {
       >
         <>
           {popularPeopleQuery.data &&
-            popularPeopleQuery.data.map((person: IPeople) => (
+            popularPeopleQuery.data.map((person) => (
               <PersonListItem
                 key={person.id}
                 id={person.id}

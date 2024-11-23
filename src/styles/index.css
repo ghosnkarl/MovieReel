@@ -81,7 +81,8 @@ body {
 .page-container {
   max-width: var(--page-width--max);
   margin: 0 auto;
-  padding: 12.8rem 3.2rem 0 3.2rem;
+  padding: 12.8rem var(--page-padding--horizontal) 0
+    var(--page-padding--horizontal);
 }
 
 .flex--wrap-container {

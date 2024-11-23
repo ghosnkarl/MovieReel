@@ -12,9 +12,9 @@ import { ITVDetails } from '../../models/tvModel';
 const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
   const params = useParams();
   const mediaId = isMovie ? params.movieId : params.tvId;
+  const credits = isMovie ? 'credits' : 'aggregate_credits';
   const queryParams = {
-    append_to_response:
-      'credits,images,videos,keywords,reviews,recommendations',
+    append_to_response: `${credits},images,videos,keywords,reviews,recommendations`,
     include_image_language: 'en,null',
   };
 

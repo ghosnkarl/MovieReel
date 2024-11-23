@@ -7,21 +7,19 @@ import PersonListItem from '../../components/PersonListItem';
 export default function PeoplePage() {
   const { data } = useQuery({
     queryKey: ['popular', 'people'],
-    queryFn: () => fetchResults({ path: 'person/popular', params: null }),
+    queryFn: () =>
+      fetchResults<IPeople>({ path: 'person/popular', params: null }),
     retry: 1,
   });
 
   return (
     <div className={classes.container}>
       {data &&
-        data.map((person: IPeople) => (
+        data.map((person) => (
           <PersonListItem
             key={person.id}
             profile_path={person.profile_path}
             title={person.name}
-            // text={person.known_for
-            //   .map((media) => (media.name ? media.name : media.title))
-            //   .join(', ')}
             text={null}
             id={person.id}
           />

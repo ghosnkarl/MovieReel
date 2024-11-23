@@ -13,7 +13,7 @@ const DetailsReviews = ({
   poster_path: string;
 }) => {
   let reviewContent = <></>;
-  if (reviews && reviews.results) {
+  if (reviews && reviews.results && reviews.results.length > 0) {
     reviewContent = (
       <HorizontalListContainer
         title='Reviews'

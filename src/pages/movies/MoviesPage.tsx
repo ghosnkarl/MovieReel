@@ -8,7 +8,7 @@ import QueryWrapper from '../../components/QueryWrapper';
 import { IMovie } from '../../models/mediaModel';
 
 export default function MoviesPage() {
-  const tabs: TabObjectProps[] = MOVIE_TABS;
+  const tabs = MOVIE_TABS;
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
 
   const handleSelectTab = (tab: TabObjectProps) => {
