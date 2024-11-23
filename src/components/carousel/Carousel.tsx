@@ -1,6 +1,6 @@
-import classes from '../../styles/carousel.module.css';
+import classes from './carousel.module.css';
 import { useState } from 'react';
-import CarouselItem, { CarouselItemInterface } from './CarouselItem';
+import CarouselItem from './CarouselItem';
 import { IGenre } from '../../models/genreModel';
 import { useQuery } from '@tanstack/react-query';
 import { discoverReleaseDates } from '../../helpers/discoverParams';
@@ -18,16 +18,42 @@ const CarouselArrow = ({ direction, handleClick }: CarouselArrowProps) => {
   const isRight = direction === 'right';
   return (
     <button
-      className={`${classes['carousel__arrow']} ${
-        classes[`carousel__arrow--${direction}`]
-      }`}
+      className={`${classes.arrow} ${classes[`${direction}`]}`}
       onClick={handleClick}
     >
-      {isRight && <MdNavigateNext className={classes.arrow} />}
-      {!isRight && <MdNavigateBefore className={classes.arrow} />}
+      {isRight ? <MdNavigateNext /> : <MdNavigateBefore />}
     </button>
   );
 };
+
+const CarouselControls = ({
+  onNext,
+  onPrev,
+}: {
+  onNext: () => void;
+  onPrev: () => void;
+}) => (
+  <>
+    <CarouselArrow direction='left' handleClick={onPrev} />
+    <CarouselArrow direction='right' handleClick={onNext} />
+  </>
+);
+
+const CarouselSlide = ({
+  genres,
+  current,
+  content,
+}: {
+  genres: IGenre[] | undefined;
+  current: number;
+  content: IMovie[];
+}) => (
+  <CarouselItem
+    genres={genres}
+    current={{ index: current, isRight: true }}
+    content={content}
+  />
+);
 
 interface CarouselProps {
   genres: IGenre[] | undefined;
@@ -38,50 +64,40 @@ const Carousel = ({ genres }: CarouselProps) => {
   const upcomingMoviesQuery = useQuery({
     queryKey: ['movies', discoverParams],
     queryFn: () =>
-      fetchResults({ path: 'discover/movie', params: discoverParams }),
+      fetchResults({
+        path: 'discover/movie',
+        params: discoverParams,
+      }),
     retry: 1,
   });
 
-  const [current, setCurrent] = useState<CarouselItemInterface>({
-    index: 0,
-    isRight: true,
-  });
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  let content = <></>;
-
-  if (upcomingMoviesQuery.data) {
-    const length = upcomingMoviesQuery.data.length;
-
-    const nextSlide = () => {
-      setCurrent({
-        index: current.index === length - 1 ? 0 : current.index + 1,
-        isRight: true,
-      });
-    };
-
-    const prevSlide = () => {
-      setCurrent({
-        index: current.index === 0 ? length - 1 : current.index - 1,
-        isRight: false,
-      });
-    };
-
-    content = (
-      <>
-        <CarouselItem
-          genres={genres}
-          current={current}
-          content={upcomingMoviesQuery.data as IMovie[]}
-        />
-        <CarouselArrow direction='right' handleClick={nextSlide} />
-        <CarouselArrow direction='left' handleClick={prevSlide} />
-      </>
-    );
+  if (!upcomingMoviesQuery.data || upcomingMoviesQuery.data.length === 0) {
+    return <div>No upcoming movies available.</div>;
   }
+
+  const movies = upcomingMoviesQuery.data;
+  const length = movies.length;
+
+  const nextSlide = () =>
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % length);
+
+  const prevSlide = () =>
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? length - 1 : prevIndex - 1
+    );
 
   return (
     <QueryWrapper query={upcomingMoviesQuery} message='Upcoming Movies'>
-      <div className={classes.container}>{content}</div>
+      <div className={classes.container}>
+        <CarouselSlide
+          genres={genres}
+          current={currentIndex}
+          content={movies as IMovie[]}
+        />
+        <CarouselControls onNext={nextSlide} onPrev={prevSlide} />
+      </div>
     </QueryWrapper>
   );
 };

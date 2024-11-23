@@ -26,7 +26,8 @@ const CastList = ({ title, image, credits }: CastListProps) => {
             title={cast.name}
             text={
               cast.character ||
-              cast.roles.map((role) => role.character).join(', ')
+              (cast.roles &&
+                cast.roles.map((role) => role.character).join(', '))
             }
           />
         </li>

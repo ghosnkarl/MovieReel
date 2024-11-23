@@ -49,7 +49,8 @@ const CreditsPage = () => {
               title={cast.name}
               text={
                 cast.character ||
-                cast.roles.map((role) => role.character).join(', ')
+                (cast.roles &&
+                  cast.roles.map((role) => role.character).join(', '))
               }
             />
           ))}
@@ -83,11 +84,12 @@ const CreditsPage = () => {
                   title={crew.name}
                   text={
                     crew.job ||
-                    `${crew.jobs
-                      .map(
-                        (job) => `${job.job} (${job.episode_count} episodes)`
-                      )
-                      .join(', ')}`
+                    (crew.jobs &&
+                      `${crew.jobs
+                        .map(
+                          (job) => `${job.job} (${job.episode_count} episodes)`
+                        )
+                        .join(', ')}`)
                   }
                 />
               ))}
