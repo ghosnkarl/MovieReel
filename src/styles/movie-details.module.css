@@ -53,7 +53,7 @@
 .main-container {
   max-width: var(--page-width--max);
   margin: var(--page-width--margin);
-  padding: 3.2rem var(--page-padding--horizontal);
+  padding: 4.8rem var(--page-padding--horizontal);
   display: flex;
   flex-direction: column;
   gap: 4.8rem;
