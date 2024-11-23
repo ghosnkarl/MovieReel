@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { fetchSingleResult } from '../../services/http';
 import classes from '../../styles/details-page.module.css';
-import DetailsHeader from '../../components/details_components/DetailsHeader';
+import DetailsPageHeader from '../details_page_header/DetailsPageHeader';
 import QueryWrapper from '../../components/QueryWrapper';
 import DetailsMainContainer from '../../components/details_components/DetailsMainContainer';
 import { IMovieDetails } from '../../models/movieModel';
@@ -41,7 +41,7 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
           src={getBackdropImage(media.backdrop_path, 'w1280')}
           alt={'title' in media ? media.title : media.name}
         />
-        <DetailsHeader
+        <DetailsPageHeader
           title={'title' in media ? media.title : media.name}
           overview={media.overview}
           genres={media.genres}

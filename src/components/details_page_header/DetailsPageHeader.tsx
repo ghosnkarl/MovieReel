@@ -1,5 +1,5 @@
 import moment from 'moment';
-import classes from '../../styles/details-header.module.css';
+import classes from './details-page-header.module.css';
 import { IGenre } from '../../models/genreModel';
 import { getPosterImage } from '../../helpers/imageSizes';
 import RatingStar from '../rating/RatingStar';
@@ -14,7 +14,7 @@ interface DetailsHeaderProps {
   poster_path: string | null;
 }
 
-const DetailsHeader = ({
+const DetailsPageHeader = ({
   title,
   release_date,
   runtime,
@@ -36,7 +36,7 @@ const DetailsHeader = ({
     <div className={classes.container}>
       <div className={classes['bottom__container']}>
         <img
-          className={classes['poster__img']}
+          className={classes.poster}
           src={getPosterImage(poster_path, 'w342')}
           alt={title}
         />
@@ -47,9 +47,8 @@ const DetailsHeader = ({
           <div className={classes['rating__container']}>
             <RatingStar value={vote_average} size='medium' />
             <p className={classes['date-runtime']}>
-              {formattedReleaseDate && formattedReleaseDate}
-              {formattedReleaseDate && formattedRuntime && ' • '}
-              {formattedRuntime && formattedRuntime}
+              {formattedReleaseDate}
+              {formattedRuntime && ` • ${formattedRuntime}`}
             </p>
           </div>
           <p className={classes.overview}>{overview}</p>
@@ -59,4 +58,4 @@ const DetailsHeader = ({
   );
 };
 
-export default DetailsHeader;
+export default DetailsPageHeader;

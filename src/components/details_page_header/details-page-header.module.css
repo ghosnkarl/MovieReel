@@ -14,7 +14,7 @@
   right: 6.4rem;
 }
 
-.poster__img {
+.poster {
   width: 20rem;
   aspect-ratio: 2 / 3;
   object-fit: cover;
