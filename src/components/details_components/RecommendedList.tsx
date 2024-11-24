@@ -1,7 +1,6 @@
 import { getPosterImage } from '../../helpers/imageSizes';
-import { IMovie } from '../../models/mediaModel';
+import { IMovie, ITVShow } from '../../models/mediaModel';
 import Section from '../Section';
-import { ITV } from '../../models/seasonModel';
 import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
 import MediaItem from '../MediaItem';
 import moment from 'moment';
@@ -10,7 +9,7 @@ const RecommendedList = ({
   items,
   title,
 }: {
-  items: IMovie[] | ITV[];
+  items: IMovie[] | ITVShow[];
   title: string;
 }) => {
   return (

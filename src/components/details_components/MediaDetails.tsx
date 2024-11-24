@@ -8,9 +8,9 @@ import { IIdName } from '../../models/commonModel';
 interface SidebarProps {
   status: string;
   homepage: string;
-  imdb_id: string;
-  budget: number;
-  revenue: number;
+  imdb_id: string | null;
+  budget: number | null;
+  revenue: number | null;
   tagline: string;
   number_of_seasons: number | null;
   number_of_episodes: number | null;
@@ -109,10 +109,10 @@ const MediaDetails = ({
           <MediaDetailsItem title='Episodes' text={number_of_episodes} />
         )}
 
-        {budget > 0 && (
+        {budget && budget > 0 && (
           <MediaDetailsItem title='Budget' text={formatCurrency(budget)} />
         )}
-        {revenue > 0 && (
+        {revenue && revenue > 0 && (
           <MediaDetailsItem title='Revenue' text={formatCurrency(revenue)} />
         )}
       </div>

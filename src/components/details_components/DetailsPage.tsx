@@ -5,9 +5,8 @@ import classes from '../../styles/details-page.module.css';
 import DetailsPageHeader from '../details_page_header/DetailsPageHeader';
 import QueryWrapper from '../../components/QueryWrapper';
 import DetailsMainContainer from '../../components/details_components/DetailsMainContainer';
-import { IMovieDetails } from '../../models/detailsModel';
+import { IMovieDetails, ITVDetails } from '../../models/detailsModel';
 import { getBackdropImage } from '../../helpers/imageSizes';
-import { ITVDetails } from '../../models/seasonModel';
 
 const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
   const params = useParams();

@@ -5,8 +5,7 @@ import ImageList from './ImageList';
 import RecommendedList from './RecommendedList';
 import { getPosterImage } from '../../helpers/imageSizes';
 import CastList from './CastList';
-import { IMovieDetails } from '../../models/detailsModel';
-import { ITVDetails } from '../../models/seasonModel';
+import { IMovieDetails, ITVDetails } from '../../models/detailsModel';
 import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
 import MediaItem from '../MediaItem';
 import DetailsReviews from './DetailsReviews';
@@ -76,9 +75,9 @@ const DetailsMainContainer = ({
         <MediaDetails
           status={media.status}
           homepage={media.homepage}
-          imdb_id={media.imdb_id}
-          revenue={media.revenue}
-          budget={media.budget}
+          imdb_id={isMovie ? media.imdb_id : null}
+          revenue={isMovie ? media.revenue : null}
+          budget={isMovie ? media.budget : null}
           tagline={media.tagline}
           number_of_episodes={isMovie ? null : media.number_of_episodes}
           number_of_seasons={isMovie ? null : media.number_of_seasons}
