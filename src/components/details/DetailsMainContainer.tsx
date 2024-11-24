@@ -1,20 +1,19 @@
 import { getGalleryImages } from '../../helpers/galleryImages';
 import classes from '../../styles/details-page.module.css';
-import VideoList from './VideoList';
-import ImageList from './ImageList';
-import RecommendedList from './RecommendedList';
+import VideoList from '../lists/VideoList';
+import ImageList from '../lists/ImageList';
+import RecommendedList from '../lists/RecommendedList';
 import { getPosterImage } from '../../helpers/imageSizes';
-import CastList from './CastList';
+import CastList from '../lists/CastList';
 import { IMovieDetails, ITVDetails } from '../../models/detailsModel';
 import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
-import MediaItem from '../MediaItem';
 import DetailsReviews from './DetailsReviews';
 import MediaDetails from './MediaDetails';
 import Keywords from '../Keywords';
 import { useQuery } from '@tanstack/react-query';
 import { fetchSingleResult } from '../../services/http';
 import { ICollectionDetails } from '../../models/commonModel';
-import MediaList from '../horizontal_list/MediaList';
+import MediaList from '../lists/MediaList';
 
 const DetailsMainContainer = ({
   media,
@@ -52,18 +51,10 @@ const DetailsMainContainer = ({
 
       {seasons && (
         <HorizontalListContainer title='Seasons' link={null} linkState={null}>
-          {seasons
-            .sort((a, b) => b.season_number - a.season_number)
-            .map((season) => (
-              <MediaItem
-                key={season.id}
-                id={season.season_number}
-                poster_path={season.poster_path}
-                title={season.name}
-                text={`${season.episode_count} Episodes`}
-                type='season'
-              />
-            ))}
+          <MediaList
+            data={seasons.sort((a, b) => b.season_number - a.season_number)}
+            type='season'
+          />
         </HorizontalListContainer>
       )}
 
@@ -114,7 +105,11 @@ const DetailsMainContainer = ({
         image={getPosterImage(media.poster_path, 'w342')}
       />
 
-      <RecommendedList title={title} items={media.recommendations.results} />
+      <RecommendedList
+        title={title}
+        items={media.recommendations.results}
+        type={isMovie ? 'movies' : 'tv'}
+      />
     </div>
   );
 };

@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import classes from '../styles/movies-page.module.css';
-import MediaList from '../components/horizontal_list/MediaList';
 import { useState } from 'react';
 import Tabs, { TabObjectProps } from '../components/Tabs';
 import { MOVIE_TABS } from '../data/data';
 import QueryWrapper from '../components/QueryWrapper';
 import { IMovie } from '../models/mediaModel';
+import MediaList from '../components/lists/MediaList';
 
 export default function MoviesPage() {
   const tabs = MOVIE_TABS;

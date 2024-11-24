@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchResults } from '../../services/http';
 import classes from '../../styles/people-page.module.css';
 import { IPeople } from '../../models/peopleModel';
-import PersonListItem from '../../components/PersonListItem';
+import PersonItem from '../../components/PersonItem';
 
 export default function PeoplePage() {
   const { data } = useQuery({
@@ -16,7 +16,7 @@ export default function PeoplePage() {
     <div className={classes.container}>
       {data &&
         data.map((person) => (
-          <PersonListItem
+          <PersonItem
             key={person.id}
             profile_path={person.profile_path}
             title={person.name}

@@ -12,9 +12,10 @@ const DetailsReviews = ({
   title: string;
   poster_path: string;
 }) => {
-  let reviewContent = <></>;
-  if (reviews && reviews.results && reviews.results.length > 0) {
-    reviewContent = (
+  if (!reviews || !reviews.results || reviews.results.length === 0) return null;
+
+  return (
+    <>
       <HorizontalListContainer
         title='Reviews'
         link='review'
@@ -28,9 +29,8 @@ const DetailsReviews = ({
           <Review key={review.id} review={review} viewFull={false} />
         ))}
       </HorizontalListContainer>
-    );
-  }
-  return <>{reviewContent}</>;
+    </>
+  );
 };
 
 export default DetailsReviews;

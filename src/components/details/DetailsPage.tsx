@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 import { fetchSingleResult } from '../../services/http';
 import classes from '../../styles/details-page.module.css';
 import DetailsPageHeader from '../details_page_header/DetailsPageHeader';
-import QueryWrapper from '../../components/QueryWrapper';
-import DetailsMainContainer from '../../components/details_components/DetailsMainContainer';
+import QueryWrapper from '../QueryWrapper';
+import DetailsMainContainer from './DetailsMainContainer';
 import { IMovieDetails, ITVDetails } from '../../models/detailsModel';
 import { getBackdropImage } from '../../helpers/imageSizes';
 
@@ -31,32 +31,30 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
     ? (query.data as IMovieDetails)
     : (query.data as ITVDetails);
 
+  if (!media) return null;
+
   return (
     <div className={classes['page-container']}>
       <QueryWrapper
         query={query}
         message={`${isMovie ? 'Movie' : 'TV'} Details`}
       >
-        {media && (
-          <>
-            <img
-              className={classes['backdrop__img']}
-              src={getBackdropImage(media.backdrop_path, 'w1280')}
-              alt={'title' in media ? media.title : media.name}
-            />
-            <DetailsPageHeader
-              title={'title' in media ? media.title : media.name}
-              overview={media.overview}
-              genres={media.genres}
-              poster_path={media.poster_path}
-              vote_average={media.vote_average}
-              release_date={'title' in media ? media.release_date : null}
-              runtime={'title' in media ? media.runtime : null}
-            />
+        <img
+          className={classes['backdrop__img']}
+          src={getBackdropImage(media.backdrop_path, 'w1280')}
+          alt={'title' in media ? media.title : media.name}
+        />
+        <DetailsPageHeader
+          title={'title' in media ? media.title : media.name}
+          overview={media.overview}
+          genres={media.genres}
+          poster_path={media.poster_path}
+          vote_average={media.vote_average}
+          release_date={'title' in media ? media.release_date : null}
+          runtime={'title' in media ? media.runtime : null}
+        />
 
-            <DetailsMainContainer media={media} />
-          </>
-        )}
+        <DetailsMainContainer media={media} />
       </QueryWrapper>
     </div>
   );

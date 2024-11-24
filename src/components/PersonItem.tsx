@@ -2,19 +2,14 @@ import { NavLink } from 'react-router-dom';
 import classes from '../styles/people-item.module.css';
 import { getProfileImage } from '../helpers/imageSizes';
 
-interface PersonListItemProps {
+interface IPersonItem {
   id: number;
   profile_path: string;
   title: string;
   text: string | null;
 }
 
-const PersonListItem = ({
-  id,
-  profile_path,
-  title,
-  text,
-}: PersonListItemProps) => {
+const PersonItem = ({ id, profile_path, title, text }: IPersonItem) => {
   return (
     <NavLink key={id} to={`/people/${id}`} className={classes.container}>
       <div className={classes['img-container']}>
@@ -32,4 +27,4 @@ const PersonListItem = ({
   );
 };
 
-export default PersonListItem;
+export default PersonItem;

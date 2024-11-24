@@ -15,7 +15,7 @@ import DetailsRootLayout from './pages/DetailsRootLayout';
 import ErrorPage from './components/ErrorPage';
 import OutletRootLayout from './components/OutletRootLayout';
 import SeasonDetailsPage from './pages/tv/SeasonDetailsPage';
-import DetailsPage from './components/details_components/DetailsPage';
+import DetailsPage from './components/details/DetailsPage';
 
 const router = createBrowserRouter([
   {

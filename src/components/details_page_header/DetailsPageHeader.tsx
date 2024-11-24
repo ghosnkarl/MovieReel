@@ -4,7 +4,7 @@ import { getPosterImage } from '../../helpers/imageSizes';
 import RatingStar from '../rating/RatingStar';
 import { IIdName } from '../../models/commonModel';
 
-interface DetailsHeaderProps {
+interface IDetailsHeader {
   title: string;
   release_date: string | null;
   runtime: number | null;
@@ -22,7 +22,7 @@ const DetailsPageHeader = ({
   vote_average,
   overview,
   poster_path,
-}: DetailsHeaderProps) => {
+}: IDetailsHeader) => {
   const formattedGenres = genres.map((genre) => genre.name).join(' • ');
   const formattedReleaseDate = release_date
     ? moment(release_date).format('MMM DD, YYYY')

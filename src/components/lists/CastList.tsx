@@ -1,14 +1,14 @@
 import { ICast, ICrew } from '../../models/castCrewModel';
 import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
-import PersonListItem from '../PersonListItem';
+import PersonItem from '../PersonItem';
 
-interface CastListProps {
+interface ICastList {
   title: string;
   image: string;
   credits: { cast: ICast[]; crew: ICrew[] };
 }
 
-const CastList = ({ title, image, credits }: CastListProps) => {
+const CastList = ({ title, image, credits }: ICastList) => {
   let castList = [...credits.cast];
   if (castList.length > 20) castList = castList.slice(0, 20);
 
@@ -20,7 +20,7 @@ const CastList = ({ title, image, credits }: CastListProps) => {
     >
       {castList.map((cast) => (
         <li key={cast.cast_id || cast.roles[0].credit_id}>
-          <PersonListItem
+          <PersonItem
             id={cast.id}
             profile_path={cast.profile_path}
             title={cast.name}

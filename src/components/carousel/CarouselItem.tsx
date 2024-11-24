@@ -14,26 +14,19 @@ const itemTransition = {
   duration: 0.1,
 };
 
-interface CarouselItemInterface {
-  index: number;
-  isRight: boolean;
-}
-
 const getGenres = (genreIds: number[], genres: IIdName[]) =>
   genreIds
     .map((id) => genres.find((genre) => genre.id === id)?.name)
     .filter(Boolean) // Remove undefined values
     .join(', ');
 
-const CarouselItem = ({
-  current,
-  content,
-  genres,
-}: {
-  current: CarouselItemInterface;
+interface ICarousel {
+  current: { index: number; isRight: boolean };
   content: IMovie[];
   genres: IIdName[] | undefined;
-}) => (
+}
+
+const CarouselItem = ({ current, content, genres }: ICarousel) => (
   <>
     {content.map((slide, index) => (
       <Fragment key={index}>

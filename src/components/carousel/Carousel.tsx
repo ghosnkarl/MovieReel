@@ -9,12 +9,12 @@ import { IMovie } from '../../models/mediaModel';
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import { IIdName } from '../../models/commonModel';
 
-interface CarouselArrowProps {
+interface ICarouselArrow {
   direction: 'left' | 'right';
   handleClick: () => void;
 }
 
-const CarouselArrow = ({ direction, handleClick }: CarouselArrowProps) => {
+const CarouselArrow = ({ direction, handleClick }: ICarouselArrow) => {
   const isRight = direction === 'right';
   return (
     <button
@@ -39,15 +39,13 @@ const CarouselControls = ({
   </>
 );
 
-const CarouselSlide = ({
-  genres,
-  current,
-  content,
-}: {
+interface ICarouselSlide {
   genres: IIdName[] | undefined;
   current: number;
   content: IMovie[];
-}) => (
+}
+
+const CarouselSlide = ({ genres, current, content }: ICarouselSlide) => (
   <CarouselItem
     genres={genres}
     current={{ index: current, isRight: true }}
@@ -55,11 +53,11 @@ const CarouselSlide = ({
   />
 );
 
-interface CarouselProps {
+interface ICarousel {
   genres: IIdName[] | undefined;
 }
 
-const Carousel = ({ genres }: CarouselProps) => {
+const Carousel = ({ genres }: ICarousel) => {
   const discoverParams = discoverReleaseDates(true, -1, 'month', 5, 'days');
   const upcomingMoviesQuery = useQuery({
     queryKey: ['movies', discoverParams],

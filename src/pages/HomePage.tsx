@@ -4,12 +4,12 @@ import classes from '../styles/homepage.module.css';
 import Carousel from '../components/carousel/Carousel';
 import { NavLink } from 'react-router-dom';
 import TopTrending from '../components/TopTrending';
-import MediaList from '../components/horizontal_list/MediaList';
 import { IMovie, ITVShow } from '../models/mediaModel';
 import { IPeople } from '../models/peopleModel';
-import PersonListItem from '../components/PersonListItem';
 import { airingTodayDates, upComingDates } from '../helpers/discoverDates';
 import HorizontalWrapper from '../components/HorizontalWrapper';
+import MediaList from '../components/lists/MediaList';
+import PersonItem from '../components/PersonItem';
 
 export default function HomePage() {
   const upcomingMoviesQuery = useQuery({
@@ -80,7 +80,7 @@ export default function HomePage() {
         <>
           {popularPeopleQuery.data &&
             popularPeopleQuery.data.map((person) => (
-              <PersonListItem
+              <PersonItem
                 key={person.id}
                 id={person.id}
                 text={null}

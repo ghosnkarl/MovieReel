@@ -5,8 +5,7 @@ import { getProfileImage } from '../../helpers/imageSizes';
 import classes from '../../styles/people-details.module.css';
 import { useState } from 'react';
 import moment from 'moment';
-import ImageList from '../../components/details_components/ImageList';
-import MediaItem from '../../components/MediaItem';
+import ImageList from '../../components/lists/ImageList';
 import { CREDITS_TABS } from '../../data/data';
 import Tabs, { TabObjectProps } from '../../components/Tabs';
 import { ICastMedia, ICrewMedia, IPerson } from '../../models/peopleModel';
@@ -116,7 +115,7 @@ const PeopleDetailsPage = () => {
             layoutId='credits_page'
           />
 
-          {selectedTab.value === 'cast' && (
+          {/* {selectedTab.value === 'cast' && (
             <div className='flex--wrap-container'>
               {data.combined_credits.cast.map((castMedia: ICastMedia) => (
                 <MediaItem
@@ -143,7 +142,7 @@ const PeopleDetailsPage = () => {
                 />
               ))}
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>
