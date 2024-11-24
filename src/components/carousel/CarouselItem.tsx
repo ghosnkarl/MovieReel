@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { IMovie } from '../../models/mediaModel';
-import { IGenre } from '../../models/genreModel';
 import { getBackdropImage } from '../../helpers/imageSizes';
 import classes from './carousel.module.css';
 import { NavLink } from 'react-router-dom';
 import { Fragment } from 'react';
 import RatingStar from '../rating/RatingStar';
+import { IIdName } from '../../models/commonModel';
 
 const itemTransition = {
   type: 'spring',
@@ -19,7 +19,7 @@ interface CarouselItemInterface {
   isRight: boolean;
 }
 
-const getGenres = (genreIds: number[], genres: IGenre[]) =>
+const getGenres = (genreIds: number[], genres: IIdName[]) =>
   genreIds
     .map((id) => genres.find((genre) => genre.id === id)?.name)
     .filter(Boolean) // Remove undefined values
@@ -32,7 +32,7 @@ const CarouselItem = ({
 }: {
   current: CarouselItemInterface;
   content: IMovie[];
-  genres: IGenre[] | undefined;
+  genres: IIdName[] | undefined;
 }) => (
   <>
     {content.map((slide, index) => (

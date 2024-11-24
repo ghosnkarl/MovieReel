@@ -1,4 +1,4 @@
-import { ICast, ICrew } from '../../models/mediaModel';
+import { ICast, ICrew } from '../../models/castCrewModel';
 import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
 import PersonListItem from '../PersonListItem';
 

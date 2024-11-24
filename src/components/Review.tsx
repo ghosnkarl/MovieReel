@@ -1,8 +1,7 @@
 import moment from 'moment';
-
 import classes from '../styles/review.module.css';
 import Rating from './rating/Rating';
-import { IReview } from '../models/reviewModel';
+import { IReview } from '../models/commonModel';
 
 interface ReviewProps {
   review: IReview;

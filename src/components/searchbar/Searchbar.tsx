@@ -2,9 +2,8 @@ import { ChangeEvent, useRef, useState } from 'react';
 import classes from '../../styles/searchbar.module.css';
 import SearchTag from './SearchTag';
 import { useQuery } from '@tanstack/react-query';
-
-import { IKeyword } from '../../models/keywordModel';
 import { fetchResults } from '../../services/http';
+import { IIdName } from '../../models/commonModel';
 
 const Searchbar = () => {
   const [open, setOpen] = useState(false);
@@ -33,7 +32,7 @@ const Searchbar = () => {
     }, 500);
   };
 
-  const handleSearchClick = (item: IKeyword) => {
+  const handleSearchClick = (item: IIdName) => {
     if (!searchList.find((keyword) => keyword.id === item.id))
       setSearchList([...searchList, item]);
 
@@ -74,7 +73,7 @@ const Searchbar = () => {
           }`}
         >
           {data &&
-            data.map((item: IKeyword) => (
+            (data as IIdName[]).map((item) => (
               <p
                 onClick={() => handleSearchClick(item)}
                 className={classes['search-item']}

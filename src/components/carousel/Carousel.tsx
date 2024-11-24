@@ -1,13 +1,13 @@
 import classes from './carousel.module.css';
 import { useState } from 'react';
 import CarouselItem from './CarouselItem';
-import { IGenre } from '../../models/genreModel';
 import { useQuery } from '@tanstack/react-query';
 import { discoverReleaseDates } from '../../helpers/discoverParams';
 import { fetchResults } from '../../services/http';
 import QueryWrapper from '../QueryWrapper';
 import { IMovie } from '../../models/mediaModel';
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
+import { IIdName } from '../../models/commonModel';
 
 interface CarouselArrowProps {
   direction: 'left' | 'right';
@@ -44,7 +44,7 @@ const CarouselSlide = ({
   current,
   content,
 }: {
-  genres: IGenre[] | undefined;
+  genres: IIdName[] | undefined;
   current: number;
   content: IMovie[];
 }) => (
@@ -56,7 +56,7 @@ const CarouselSlide = ({
 );
 
 interface CarouselProps {
-  genres: IGenre[] | undefined;
+  genres: IIdName[] | undefined;
 }
 
 const Carousel = ({ genres }: CarouselProps) => {

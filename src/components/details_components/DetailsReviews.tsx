@@ -1,6 +1,6 @@
 import Review from '../Review';
 import { getPosterImage } from '../../helpers/imageSizes';
-import { IReview } from '../../models/reviewModel';
+import { IReview } from '../../models/commonModel';
 import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
 
 const DetailsReviews = ({

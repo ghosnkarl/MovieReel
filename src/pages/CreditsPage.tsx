@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import classes from '../styles/credits-page.module.css';
 import { useState } from 'react';
-import { ICast, ICrew } from '../models/mediaModel';
+import { ICast, ICrew } from '../models/castCrewModel';
 import Tabs, { TabObjectProps } from '../components/Tabs';
 import { CREDITS_TABS } from '../data/data';
 import CreditItem from '../components/CreditItem';

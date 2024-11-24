@@ -1,4 +1,4 @@
-import { ISeason } from '../models/tvModel';
+import { ISeason } from '../models/seasonModel';
 import { getPosterImage } from '../helpers/imageSizes';
 import RatingStar from '../components/rating/RatingStar';
 import moment from 'moment';

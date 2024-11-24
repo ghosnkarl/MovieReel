@@ -5,8 +5,8 @@ import ImageList from './ImageList';
 import RecommendedList from './RecommendedList';
 import { getPosterImage } from '../../helpers/imageSizes';
 import CastList from './CastList';
-import { IMovieDetails } from '../../models/movieModel';
-import { ITVDetails } from '../../models/tvModel';
+import { IMovieDetails } from '../../models/detailsModel';
+import { ITVDetails } from '../../models/seasonModel';
 import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
 import MediaItem from '../MediaItem';
 import DetailsReviews from './DetailsReviews';
@@ -14,7 +14,7 @@ import MediaDetails from './MediaDetails';
 import Keywords from '../Keywords';
 import { useQuery } from '@tanstack/react-query';
 import { fetchSingleResult } from '../../services/http';
-import { ICollectionDetails } from '../../models/collectionModel';
+import { ICollectionDetails } from '../../models/commonModel';
 import MediaList from '../horizontal_list/MediaList';
 
 const DetailsMainContainer = ({
@@ -80,13 +80,12 @@ const DetailsMainContainer = ({
           revenue={media.revenue}
           budget={media.budget}
           tagline={media.tagline}
-          collection={isMovie ? media.belongs_to_collection : null}
           number_of_episodes={isMovie ? null : media.number_of_episodes}
           number_of_seasons={isMovie ? null : media.number_of_seasons}
           first_air_date={isMovie ? null : media.first_air_date}
           last_air_date={isMovie ? null : media.last_air_date}
           created_by={isMovie ? null : media.created_by}
-          production_companies={isMovie ? media.production_companies : null}
+          production_companies={media.production_companies}
         />
 
         <Keywords

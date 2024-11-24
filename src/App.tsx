@@ -3,7 +3,7 @@ import RootLayout from './RootLayout';
 import HomePage from './pages/HomePage';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './services/http';
-import MoviesPage from './pages/movies/MoviesPage';
+import MoviesPage from './pages/MoviesPage';
 import TVPage from './pages/tv/TVPage';
 import PeoplePage from './pages/people/PeoplePage';
 import DiscoverPage from './pages/DiscoverPage';

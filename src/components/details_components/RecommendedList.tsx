@@ -1,7 +1,7 @@
 import { getPosterImage } from '../../helpers/imageSizes';
 import { IMovie } from '../../models/mediaModel';
 import Section from '../Section';
-import { ITV } from '../../models/tvModel';
+import { ITV } from '../../models/seasonModel';
 import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
 import MediaItem from '../MediaItem';
 import moment from 'moment';

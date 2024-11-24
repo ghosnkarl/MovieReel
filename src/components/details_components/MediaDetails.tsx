@@ -2,11 +2,8 @@ import { NavLink } from 'react-router-dom';
 import classes from '../../styles/media-details.module.css';
 import Section from '../Section';
 import MediaDetailsItem from './MediaDetailsItem';
-import { ICollection } from '../../models/collectionModel';
-import { ICreatedBy } from '../../models/tvModel';
 import moment from 'moment';
-
-import { IProductionCompany } from '../../models/productionCompanyModel';
+import { IIdName } from '../../models/commonModel';
 
 interface SidebarProps {
   status: string;
@@ -15,13 +12,12 @@ interface SidebarProps {
   budget: number;
   revenue: number;
   tagline: string;
-  collection: ICollection | null;
   number_of_seasons: number | null;
   number_of_episodes: number | null;
   first_air_date: string | null;
   last_air_date: string | null;
-  created_by: ICreatedBy[] | null;
-  production_companies: IProductionCompany[] | null;
+  created_by: IIdName[] | null;
+  production_companies: IIdName[] | null;
 }
 
 // Helper functions for formatting
@@ -35,7 +31,6 @@ const MediaDetails = ({
   budget,
   revenue,
   tagline,
-  collection,
   number_of_seasons,
   number_of_episodes,
   first_air_date,
@@ -62,13 +57,6 @@ const MediaDetails = ({
         )}
         <MediaDetailsItem title='Status' text={status} />
         <MediaDetailsItem title='Tagline' text={tagline} />
-
-        {collection && (
-          <div className={classes['details__left--item']}>
-            <h2>Collection</h2>
-            <NavLink to={`/`}>{collection.name}</NavLink>
-          </div>
-        )}
 
         {production_companies && (
           <div className={classes['details__left--item']}>

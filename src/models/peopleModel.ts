@@ -1,18 +1,14 @@
-import { IImage } from './imageModel';
+import { IIdName, IImage, MediaType } from './commonModel';
 
-export interface IPeople {
-  id: number;
+export interface IPeople extends IIdName {
   profile_path: string;
-  name: string;
-  known_for: { title?: string; name?: string }[];
 }
 
-export interface ICastMedia {
+interface IBaseCastCrewMedia {
   id: number;
-  media_type: 'movie' | 'tv';
+  media_type: MediaType;
   title?: string;
   name?: string;
-  character: string;
   release_date?: string;
   first_air_date?: string;
   poster_path: string;
@@ -20,19 +16,13 @@ export interface ICastMedia {
   vote_average: number;
 }
 
-export interface ICrewMedia {
-  id: number;
-  media_type: 'movie' | 'tv';
-  title?: string;
-  name?: string;
+export interface ICastMedia extends IBaseCastCrewMedia {
+  character: string;
+}
+
+export interface ICrewMedia extends IBaseCastCrewMedia {
   department: string;
   job: string;
-  release_date?: string;
-
-  first_air_date?: string;
-  poster_path: string;
-  credit_id: string;
-  vote_average: number;
 }
 
 export interface IPerson {

@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { getBackdropImage } from '../helpers/imageSizes';
-import { IEpisode } from '../models/tvModel';
+import { IEpisode } from '../models/seasonModel';
 import classes from '../styles/episode-item.module.css';
 import RatingStar from './rating/RatingStar';
 

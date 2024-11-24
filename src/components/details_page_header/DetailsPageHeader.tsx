@@ -1,14 +1,14 @@
 import moment from 'moment';
 import classes from './details-page-header.module.css';
-import { IGenre } from '../../models/genreModel';
 import { getPosterImage } from '../../helpers/imageSizes';
 import RatingStar from '../rating/RatingStar';
+import { IIdName } from '../../models/commonModel';
 
 interface DetailsHeaderProps {
   title: string;
   release_date: string | null;
   runtime: number | null;
-  genres: IGenre[];
+  genres: IIdName[];
   vote_average: number;
   overview: string;
   poster_path: string | null;

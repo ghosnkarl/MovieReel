@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { ISeason } from '../../models/tvModel';
+import { ISeason } from '../../models/seasonModel';
 import { useQuery } from '@tanstack/react-query';
 import { fetchSingleResult } from '../../services/http';
 import EpisodeItem from '../../components/EpisodeItem';

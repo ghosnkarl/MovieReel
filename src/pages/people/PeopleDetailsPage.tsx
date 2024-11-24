@@ -9,8 +9,8 @@ import ImageList from '../../components/details_components/ImageList';
 import MediaItem from '../../components/MediaItem';
 import { CREDITS_TABS } from '../../data/data';
 import Tabs, { TabObjectProps } from '../../components/Tabs';
-import { ICastMedia, ICrewMedia } from '../../models/peopleModel';
-import { IImage } from '../../models/imageModel';
+import { ICastMedia, ICrewMedia, IPerson } from '../../models/peopleModel';
+import { IImage } from '../../models/commonModel';
 
 const PeopleDetailsPage = () => {
   const params = useParams();
@@ -31,7 +31,10 @@ const PeopleDetailsPage = () => {
   const { data } = useQuery({
     queryKey: ['people', personId],
     queryFn: () =>
-      fetchSingleResult({ path: `person/${personId}`, params: queryParams }),
+      fetchSingleResult<IPerson>({
+        path: `person/${personId}`,
+        params: queryParams,
+      }),
     retry: 1,
   });
 

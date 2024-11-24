@@ -8,6 +8,7 @@ import LinkWrapper from './LinkWrapper';
 import HeaderLink from './HeaderLink';
 import QueryWrapper from './QueryWrapper';
 import { IMovie, ITVShow } from '../models/mediaModel';
+import { MediaType } from '../models/commonModel';
 
 const TopTredingItem = ({ item }: { item: IMovie | ITVShow }) => {
   const title = 'title' in item ? item.title : item.name;
@@ -30,7 +31,7 @@ const TopTredingItem = ({ item }: { item: IMovie | ITVShow }) => {
   );
 };
 
-const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
+const TopTrending = ({ type }: { type: MediaType }) => {
   const trendingQuery = useQuery({
     queryKey: [type, 'trending'],
     queryFn: () =>
