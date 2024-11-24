@@ -24,23 +24,25 @@ const GenresPicker = () => {
 
   return (
     <QueryWrapper query={genresQuery} message='Genres'>
-      {genresQuery.data && (
-        <div className={classes['genres-container']}>
-          {genresQuery.data.map((genre: IGenre) => (
-            <span
-              className={`${
-                selectedGenres.find((id) => id == genre.id)
-                  ? classes.active
-                  : ''
-              }`}
-              onClick={() => handleGenreClicked(genre)}
-              key={genre.name}
-            >
-              {genre.name}
-            </span>
-          ))}
-        </div>
-      )}
+      <>
+        {genresQuery.data && (
+          <div className={classes['genres-container']}>
+            {genresQuery.data.map((genre: IGenre) => (
+              <span
+                className={`${
+                  selectedGenres.find((id) => id == genre.id)
+                    ? classes.active
+                    : ''
+                }`}
+                onClick={() => handleGenreClicked(genre)}
+                key={genre.name}
+              >
+                {genre.name}
+              </span>
+            ))}
+          </div>
+        )}
+      </>
     </QueryWrapper>
   );
 };

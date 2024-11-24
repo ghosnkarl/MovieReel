@@ -12,6 +12,10 @@ import MediaItem from '../MediaItem';
 import DetailsReviews from './DetailsReviews';
 import MediaDetails from './MediaDetails';
 import Keywords from '../Keywords';
+import { useQuery } from '@tanstack/react-query';
+import { fetchSingleResult } from '../../services/http';
+import { ICollectionDetails } from '../../models/collectionModel';
+import MediaList from '../horizontal_list/MediaList';
 
 const DetailsMainContainer = ({
   media,
@@ -23,6 +27,19 @@ const DetailsMainContainer = ({
   const title = isMovie ? media.title : media.name;
   const credits = isMovie ? media.credits : media.aggregate_credits;
   const seasons = isMovie ? null : media.seasons;
+
+  const collectionId = isMovie ? media?.belongs_to_collection?.id : null;
+  const collectionQuery = useQuery<ICollectionDetails>({
+    queryKey: ['collection', collectionId],
+    queryFn: () =>
+      fetchSingleResult<ICollectionDetails>({
+        path: `collection/${collectionId}`,
+        params: null,
+      }),
+    retry: 1,
+    enabled: collectionId !== null,
+  });
+  const collectionList = collectionQuery.data;
 
   return (
     <div className={classes['main-container']}>
@@ -81,6 +98,16 @@ const DetailsMainContainer = ({
         title={isMovie ? media.title : media.name}
         poster_path={media.poster_path}
       />
+
+      {collectionList && (
+        <HorizontalListContainer
+          title={collectionList.name}
+          link={null}
+          linkState={null}
+        >
+          <MediaList data={collectionList.parts} type='movies' />
+        </HorizontalListContainer>
+      )}
 
       <ImageList
         images={images}

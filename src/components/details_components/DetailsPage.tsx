@@ -18,7 +18,7 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
     include_image_language: 'en,null',
   };
 
-  const movieQuery = useQuery({
+  const query = useQuery({
     queryKey: [isMovie ? 'movie' : 'tv', mediaId],
     queryFn: () =>
       fetchSingleResult({
@@ -29,37 +29,35 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
   });
 
   const media = isMovie
-    ? (movieQuery.data as IMovieDetails)
-    : (movieQuery.data as ITVDetails);
-
-  let content = <></>;
-  if (media) {
-    content = (
-      <>
-        <img
-          className={classes['backdrop__img']}
-          src={getBackdropImage(media.backdrop_path, 'w1280')}
-          alt={'title' in media ? media.title : media.name}
-        />
-        <DetailsPageHeader
-          title={'title' in media ? media.title : media.name}
-          overview={media.overview}
-          genres={media.genres}
-          poster_path={media.poster_path}
-          vote_average={media.vote_average}
-          release_date={'title' in media ? media.release_date : null}
-          runtime={'title' in media ? media.runtime : null}
-        />
-
-        <DetailsMainContainer media={media} />
-      </>
-    );
-  }
+    ? (query.data as IMovieDetails)
+    : (query.data as ITVDetails);
 
   return (
     <div className={classes['page-container']}>
-      <QueryWrapper query={movieQuery} message='Movie Details'>
-        {content}
+      <QueryWrapper
+        query={query}
+        message={`${isMovie ? 'Movie' : 'TV'} Details`}
+      >
+        {media && (
+          <>
+            <img
+              className={classes['backdrop__img']}
+              src={getBackdropImage(media.backdrop_path, 'w1280')}
+              alt={'title' in media ? media.title : media.name}
+            />
+            <DetailsPageHeader
+              title={'title' in media ? media.title : media.name}
+              overview={media.overview}
+              genres={media.genres}
+              poster_path={media.poster_path}
+              vote_average={media.vote_average}
+              release_date={'title' in media ? media.release_date : null}
+              runtime={'title' in media ? media.runtime : null}
+            />
+
+            <DetailsMainContainer media={media} />
+          </>
+        )}
       </QueryWrapper>
     </div>
   );

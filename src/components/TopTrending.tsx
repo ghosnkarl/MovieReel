@@ -9,6 +9,27 @@ import HeaderLink from './HeaderLink';
 import QueryWrapper from './QueryWrapper';
 import { IMovie, ITVShow } from '../models/mediaModel';
 
+const TopTredingItem = ({ item }: { item: IMovie | ITVShow }) => {
+  const title = 'title' in item ? item.title : item.name;
+  const date = 'title' in item ? item.release_date : item.first_air_date;
+  return (
+    <LinkWrapper
+      key={item.id}
+      link={`/${'title' in item ? 'movies' : 'tv'}/${item.id}`}
+    >
+      <li className={classes['item-container']}>
+        <img src={getPosterImage(item.poster_path, 'w185')} />
+
+        <div className={classes['item-container--right']}>
+          <h1>{title}</h1>
+          <RatingStar value={item.vote_average} size='small' />
+          <p className={classes.date}>{moment(date).format('MMM DD, YYYY')}</p>
+        </div>
+      </li>
+    </LinkWrapper>
+  );
+};
+
 const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
   const trendingQuery = useQuery({
     queryKey: [type, 'trending'],
@@ -21,7 +42,6 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
   });
 
   const { data } = trendingQuery;
-
   const message = `Trending ${type === 'movie' ? 'Movies' : 'TV Shows'}`;
 
   let content = <></>;
@@ -35,7 +55,9 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
       'title' in firstItem ? firstItem.release_date : firstItem.first_air_date;
     content = (
       <div className={classes.container}>
-        <LinkWrapper link={`/${type}/${firstItem.id}`}>
+        <LinkWrapper
+          link={`/${type === 'movie' ? 'movies' : 'tv'}/${firstItem.id}`}
+        >
           <div className={classes['container__left']}>
             <img
               src={getBackdropImage(firstItem.backdrop_path, 'w780')}
@@ -45,35 +67,15 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
               <h1>{firstItemTitle}</h1>
               <RatingStar value={firstItem.vote_average} size='small' />
               <p className={classes['top__date']}>
-                {' '}
                 {moment(date).format('MMM DD, YYYY')}
               </p>
             </div>
           </div>
         </LinkWrapper>
         <ul className={classes['container--right']}>
-          {list.map((listItem) => {
-            const title = 'title' in listItem ? listItem.title : listItem.name;
-            const date =
-              'title' in listItem
-                ? listItem.release_date
-                : listItem.first_air_date;
-            return (
-              <LinkWrapper key={listItem.id} link={`/movies/${listItem.id}`}>
-                <li className={classes['item-container']}>
-                  <img src={getPosterImage(listItem.poster_path, 'w185')} />
-
-                  <div className={classes['item-container--right']}>
-                    <h1>{title}</h1>
-                    <RatingStar value={listItem.vote_average} size='small' />
-                    <p className={classes.date}>
-                      {moment(date).format('MMM DD, YYYY')}
-                    </p>
-                  </div>
-                </li>
-              </LinkWrapper>
-            );
-          })}
+          {list.map((listItem) => (
+            <TopTredingItem key={listItem.id} item={listItem} />
+          ))}
         </ul>
       </div>
     );
@@ -81,15 +83,11 @@ const TopTrending = ({ type }: { type: 'movie' | 'tv' }) => {
 
   return (
     <QueryWrapper message={message} query={trendingQuery}>
-      <h1 className='section__title'>
-        <HeaderLink
-          title={`Top 5 ${
-            type === 'movie' ? 'Movies' : 'TV Shows'
-          } of the Week`}
-          link='/movies'
-          linkState={null}
-        />
-      </h1>
+      <HeaderLink
+        title={`Top 5 ${type === 'movie' ? 'Movies' : 'TV Shows'} of the Week`}
+        link='/movies'
+        linkState={null}
+      />
       <>{content}</>
     </QueryWrapper>
   );

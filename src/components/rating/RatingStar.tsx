@@ -14,7 +14,7 @@ const RatingStar = ({
   return (
     <div className={`${classes.container} ${classes[`container--${size}`]}`}>
       <Rating
-        value={formattedRating}
+        value={1}
         readOnly
         sx={{ fontSize: starSize, color: '#f97316' }}
         precision={0.5}
