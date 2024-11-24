@@ -43,7 +43,7 @@ const MediaList = ({
   data: IMovie[] | ITVShow[] | ISeason[] | undefined;
   type: MediaType;
 }) => {
-  if (!data) return null;
+  if (!data || data.length === 0) return null;
 
   return (
     <>
@@ -56,7 +56,7 @@ const MediaList = ({
         return (
           <MediaItem
             key={item.id}
-            id={item.id}
+            id={'air_date' in item ? item.season_number : item.id}
             title={title}
             type={type}
             poster_path={item.poster_path}

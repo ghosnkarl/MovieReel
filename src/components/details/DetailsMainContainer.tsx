@@ -7,13 +7,13 @@ import { getPosterImage } from '../../helpers/imageSizes';
 import CastList from '../lists/CastList';
 import { IMovieDetails, ITVDetails } from '../../models/detailsModel';
 import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
-import DetailsReviews from './DetailsReviews';
 import MediaDetails from './MediaDetails';
 import Keywords from '../Keywords';
 import { useQuery } from '@tanstack/react-query';
 import { fetchSingleResult } from '../../services/http';
 import { ICollectionDetails } from '../../models/commonModel';
 import MediaList from '../lists/MediaList';
+import ReviewsList from '../lists/ReviewsList';
 
 const DetailsMainContainer = ({
   media,
@@ -25,8 +25,8 @@ const DetailsMainContainer = ({
   const title = isMovie ? media.title : media.name;
   const credits = isMovie ? media.credits : media.aggregate_credits;
   const seasons = isMovie ? null : media.seasons;
-
   const collectionId = isMovie ? media?.belongs_to_collection?.id : null;
+
   const collectionQuery = useQuery<ICollectionDetails>({
     queryKey: ['collection', collectionId],
     queryFn: () =>
@@ -37,17 +37,16 @@ const DetailsMainContainer = ({
     retry: 1,
     enabled: collectionId !== null,
   });
+
   const collectionList = collectionQuery.data;
 
   return (
     <div className={classes['main-container']}>
-      {credits && (
-        <CastList
-          title={title}
-          image={getPosterImage(media.poster_path, 'w342')}
-          credits={credits}
-        />
-      )}
+      <CastList
+        title={title}
+        image={getPosterImage(media.poster_path, 'w342')}
+        credits={credits}
+      />
 
       {seasons && (
         <HorizontalListContainer title='Seasons' link={null} linkState={null}>
@@ -58,11 +57,9 @@ const DetailsMainContainer = ({
         </HorizontalListContainer>
       )}
 
-      {media.videos.results && media.videos.results.length > 0 && (
-        <VideoList videos={media.videos.results} />
-      )}
+      <VideoList videos={media.videos.results} />
 
-      <div className={classes['side__container']}>
+      <div className={classes['details__container']}>
         <MediaDetails
           status={media.status}
           homepage={media.homepage}
@@ -82,7 +79,8 @@ const DetailsMainContainer = ({
           keywords={isMovie ? media.keywords.keywords : media.keywords.results}
         />
       </div>
-      <DetailsReviews
+
+      <ReviewsList
         reviews={media.reviews}
         title={isMovie ? media.title : media.name}
         poster_path={media.poster_path}

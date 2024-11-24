@@ -11,7 +11,7 @@ interface IPersonItem {
 
 const PersonItem = ({ id, profile_path, title, text }: IPersonItem) => {
   return (
-    <NavLink key={id} to={`/people/${id}`} className={classes.container}>
+    <NavLink to={`/people/${id}`} className={classes.container}>
       <div className={classes['img-container']}>
         <img
           className={classes.img}

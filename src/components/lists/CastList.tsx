@@ -9,6 +9,8 @@ interface ICastList {
 }
 
 const CastList = ({ title, image, credits }: ICastList) => {
+  if (!credits) return null;
+
   let castList = [...credits.cast];
   if (castList.length > 20) castList = castList.slice(0, 20);
 

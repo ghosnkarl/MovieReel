@@ -28,6 +28,7 @@ const VideoItem = ({ video }: VideoItemProps) => {
 };
 
 const VideoList = ({ videos }: { videos: IVideo[] }) => {
+  if (!videos || videos.length === 0) return null;
   return (
     <HorizontalListContainer title='Videos' linkState={null} link={null}>
       {videos.map((video) => (
