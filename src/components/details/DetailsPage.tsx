@@ -1,12 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { fetchSingleResult } from '../../services/http';
-import classes from '../../styles/details-page.module.css';
+import classes from './details-page.module.css';
 import DetailsPageHeader from '../details_page_header/DetailsPageHeader';
 import QueryWrapper from '../QueryWrapper';
 import DetailsMainContainer from './DetailsMainContainer';
 import { IMovieDetails, ITVDetails } from '../../models/detailsModel';
-import { getBackdropImage } from '../../helpers/imageSizes';
 
 const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
   const params = useParams();
@@ -39,19 +38,14 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
         query={query}
         message={`${isMovie ? 'Movie' : 'TV'} Details`}
       >
-        <img
-          className={classes['backdrop__img']}
-          src={getBackdropImage(media.backdrop_path, 'w1280')}
-          alt={'title' in media ? media.title : media.name}
-        />
         <DetailsPageHeader
           title={'title' in media ? media.title : media.name}
           overview={media.overview}
           genres={media.genres}
-          poster_path={media.poster_path}
           vote_average={media.vote_average}
           release_date={'title' in media ? media.release_date : null}
           runtime={'title' in media ? media.runtime : null}
+          backdrop_path={media.backdrop_path}
         />
 
         <DetailsMainContainer media={media} />

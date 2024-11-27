@@ -1,5 +1,5 @@
 import { getGalleryImages } from '../../helpers/galleryImages';
-import classes from '../../styles/details-page.module.css';
+import classes from './details-page.module.css';
 import VideoList from '../lists/VideoList';
 import ImageList from '../lists/ImageList';
 import RecommendedList from '../lists/RecommendedList';
@@ -14,16 +14,16 @@ import { fetchSingleResult } from '../../services/http';
 import { ICollectionDetails } from '../../models/commonModel';
 import MediaList from '../lists/MediaList';
 import ReviewsList from '../lists/ReviewsList';
+import ProductionCompaniesList from '../lists/ProductionCompaniesList';
 
-const DetailsMainContainer = ({
-  media,
-}: {
+interface IDetailsMainContainer {
   media: IMovieDetails | ITVDetails;
-}) => {
+}
+
+const DetailsMainContainer = ({ media }: IDetailsMainContainer) => {
   const images = getGalleryImages({ images: media.images });
   const isMovie = 'title' in media;
   const title = isMovie ? media.title : media.name;
-  const credits = isMovie ? media.credits : media.aggregate_credits;
   const seasons = isMovie ? null : media.seasons;
   const collectionId = isMovie ? media?.belongs_to_collection?.id : null;
 
@@ -35,7 +35,7 @@ const DetailsMainContainer = ({
         params: null,
       }),
     retry: 1,
-    enabled: collectionId !== null,
+    enabled: Boolean(collectionId),
   });
 
   const collectionList = collectionQuery.data;
@@ -45,7 +45,7 @@ const DetailsMainContainer = ({
       <CastList
         title={title}
         image={getPosterImage(media.poster_path, 'w342')}
-        credits={credits}
+        credits={isMovie ? media.credits : media.aggregate_credits}
       />
 
       {seasons && (
@@ -72,18 +72,26 @@ const DetailsMainContainer = ({
           first_air_date={isMovie ? null : media.first_air_date}
           last_air_date={isMovie ? null : media.last_air_date}
           created_by={isMovie ? null : media.created_by}
-          production_companies={media.production_companies}
         />
 
         <Keywords
           keywords={isMovie ? media.keywords.keywords : media.keywords.results}
         />
       </div>
-
+      <ProductionCompaniesList
+        production_companies={media.production_companies}
+      />
       <ReviewsList
         reviews={media.reviews}
         title={isMovie ? media.title : media.name}
         poster_path={media.poster_path}
+      />
+
+      <ImageList
+        images={images}
+        backdropList={media.images.backdrops}
+        title={title}
+        image={getPosterImage(media.poster_path, 'w342')}
       />
 
       {collectionList && (
@@ -95,13 +103,6 @@ const DetailsMainContainer = ({
           <MediaList data={collectionList.parts} type='movies' />
         </HorizontalListContainer>
       )}
-
-      <ImageList
-        images={images}
-        backdropList={media.images.backdrops}
-        title={title}
-        image={getPosterImage(media.poster_path, 'w342')}
-      />
 
       <RecommendedList
         title={title}

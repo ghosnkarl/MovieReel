@@ -14,7 +14,6 @@ export interface IBaseDetails {
   genres: IIdName[];
   status: string;
   tagline: string;
-  production_companies: IIdName[];
   videos: { results: IVideo[] };
   images: IDetailsImages;
   reviews: { results: IReview[] };

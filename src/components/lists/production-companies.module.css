@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.item {
+  height: 5rem;
+}
+
+.logo {
+  height: 100%;
+  color: white;
+}
+
+.title:link,
+.title:visited {
+  text-decoration: none;
+  color: white;
+  background-color: var(--color-gray-600);
+  box-shadow: var(--card--box-shadow);
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  padding: 1.4rem 2rem;
+  border-radius: 1000px;
+  font-weight: 800;
+}
+
+.title:hover,
+.title:active {
+  background-color: var(--color-gray-500);
+}

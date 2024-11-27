@@ -1,0 +1,18 @@
+.page-container {
+  margin: 0 auto;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4.8rem;
+  max-width: var(--page-width--max);
+  margin: var(--page-width--margin);
+  padding: 7rem var(--page-padding--horizontal);
+}
+
+.details__container {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 3.2rem;
+}

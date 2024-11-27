@@ -21,7 +21,11 @@ const CastList = ({ title, image, credits }: ICastList) => {
       title='Actors'
     >
       {castList.map((cast) => (
-        <li key={cast.cast_id || cast.roles[0].credit_id}>
+        <li
+          key={
+            cast.cast_id || (cast.roles && cast.roles[0].credit_id) || cast.name
+          }
+        >
           <PersonItem
             id={cast.id}
             profile_path={cast.profile_path}

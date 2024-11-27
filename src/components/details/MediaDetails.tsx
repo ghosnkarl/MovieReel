@@ -30,7 +30,6 @@ interface IMediaDetails {
   first_air_date: string | null;
   last_air_date: string | null;
   created_by: IIdName[] | null;
-  production_companies: IIdName[] | null;
 }
 
 const formatCurrency = (amount: number) =>
@@ -48,7 +47,6 @@ const MediaDetails = ({
   first_air_date,
   last_air_date,
   created_by,
-  production_companies,
 }: IMediaDetails) => {
   const formattedCreatedBy = created_by
     ?.map((creators) => creators.name)
@@ -71,7 +69,7 @@ const MediaDetails = ({
         <MediaDetailsItem title='Status' text={status} />
         <MediaDetailsItem title='Tagline' text={tagline} />
 
-        {production_companies && (
+        {/* {production_companies && (
           <div className={classes['details__left--item']}>
             <h2>Production Companies</h2>
             <ul className={classes['production__list']}>
@@ -85,7 +83,7 @@ const MediaDetails = ({
               ))}
             </ul>
           </div>
-        )}
+        )} */}
 
         <MediaDetailsItem
           title='First Air Date'
@@ -96,19 +94,26 @@ const MediaDetails = ({
           }
         />
 
-        <div className={classes['details__left--item']}>
-          <h2>Homepage</h2>
-          <NavLink target='_blank' to={homepage}>
-            {homepage}
-          </NavLink>
-        </div>
+        {homepage && (
+          <div className={classes['details__left--item']}>
+            <h2>Homepage</h2>
+            <NavLink target='_blank' to={homepage}>
+              {homepage}
+            </NavLink>
+          </div>
+        )}
 
-        <div className={classes['details__left--item']}>
-          <h2>IMDB</h2>
-          <NavLink target='_blank' to={`https://www.imdb.com/title/${imdb_id}`}>
-            {`https://www.imdb.com/title/${imdb_id}`}
-          </NavLink>
-        </div>
+        {imdb_id && (
+          <div className={classes['details__left--item']}>
+            <h2>IMDB</h2>
+            <NavLink
+              target='_blank'
+              to={`https://www.imdb.com/title/${imdb_id}`}
+            >
+              {`https://www.imdb.com/title/${imdb_id}`}
+            </NavLink>
+          </div>
+        )}
 
         <MediaDetailsItem
           title='Seasons'

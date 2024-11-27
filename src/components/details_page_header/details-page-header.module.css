@@ -1,17 +1,37 @@
 .container {
   position: relative;
-  max-width: var(--page-width--max);
-  margin: var(--page-width--margin);
-  padding: 0 var(--page-padding--horizontal);
+  display: flex;
+  justify-content: center;
+  gap: 2.4rem;
+  height: 60vh;
 }
 
 .bottom__container {
   display: flex;
-  gap: 2.4rem;
+  flex-direction: column;
+  max-width: var(--page-width--max);
+  margin: var(--page-width--margin);
+  padding: 0 var(--page-padding--horizontal);
+  bottom: 2.4rem;
   position: absolute;
-  bottom: 0;
-  left: 6.4rem;
-  right: 6.4rem;
+}
+
+.backdrop__img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  opacity: 0.2;
+
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(20, 20, 20, 1) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(20, 20, 20, 1) 0%,
+    rgba(20, 20, 20, 0) 100%
+  );
 }
 
 .poster {
@@ -22,15 +42,9 @@
   box-shadow: var(--card--box-shadow);
 }
 
-.text__container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
 .genres {
   font-size: 1.8rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 0.4rem;
 }
 
@@ -54,9 +68,10 @@
 }
 
 .overview {
-  margin-bottom: 2.4rem;
+  width: 50%;
   font-size: 1.6rem;
   line-height: 1.4;
   align-items: center;
-  text-align: justify;
+  font-weight: 500;
+  color: var(--color-gray-200);
 }

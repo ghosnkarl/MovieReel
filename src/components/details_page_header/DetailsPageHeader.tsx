@@ -1,6 +1,6 @@
 import moment from 'moment';
 import classes from './details-page-header.module.css';
-import { getPosterImage } from '../../helpers/imageSizes';
+import { getBackdropImage } from '../../helpers/imageSizes';
 import RatingStar from '../rating/RatingStar';
 import { IIdName } from '../../models/commonModel';
 
@@ -11,7 +11,8 @@ interface IDetailsHeader {
   genres: IIdName[];
   vote_average: number;
   overview: string;
-  poster_path: string | null;
+
+  backdrop_path: string | null;
 }
 
 const DetailsPageHeader = ({
@@ -21,7 +22,8 @@ const DetailsPageHeader = ({
   genres,
   vote_average,
   overview,
-  poster_path,
+
+  backdrop_path,
 }: IDetailsHeader) => {
   const formattedGenres = genres.map((genre) => genre.name).join(' • ');
   const formattedReleaseDate = release_date
@@ -34,25 +36,23 @@ const DetailsPageHeader = ({
 
   return (
     <div className={classes.container}>
+      <img
+        className={classes['backdrop__img']}
+        src={getBackdropImage(backdrop_path, 'w1280')}
+        alt={title}
+      />
       <div className={classes['bottom__container']}>
-        <img
-          className={classes.poster}
-          src={getPosterImage(poster_path, 'w342')}
-          alt={title}
-        />
-        <div className={classes['text__container']}>
-          <p className={classes.genres}>{formattedGenres}</p>
-          <h1 className={classes.title}>{title}</h1>
+        <p className={classes.genres}>{formattedGenres}</p>
+        <h1 className={classes.title}>{title}</h1>
 
-          <div className={classes['rating__container']}>
-            <RatingStar value={vote_average} size='medium' />
-            <p className={classes['date-runtime']}>
-              {formattedReleaseDate}
-              {formattedRuntime && ` • ${formattedRuntime}`}
-            </p>
-          </div>
-          <p className={classes.overview}>{overview}</p>
+        <div className={classes['rating__container']}>
+          <RatingStar value={vote_average} size='medium' />
+          <p className={classes['date-runtime']}>
+            {formattedReleaseDate}
+            {formattedRuntime && ` • ${formattedRuntime}`}
+          </p>
         </div>
+        <p className={classes.overview}>{overview}</p>
       </div>
     </div>
   );
