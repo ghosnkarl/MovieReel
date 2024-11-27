@@ -1,6 +1,5 @@
 import classes from '../../styles/image-list.module.css';
 import { getBackdropImage } from '../../helpers/imageSizes';
-import HeaderLink from '../HeaderLink';
 import { NavLink } from 'react-router-dom';
 import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
 

@@ -43,7 +43,5 @@
 .container p {
   font-size: 1.4rem;
   line-height: 1.2;
-  /* color: var(--color-gray-300); */
-  font-weight: 500;
   line-height: 1.3;
 }

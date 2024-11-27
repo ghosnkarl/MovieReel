@@ -15,7 +15,13 @@ interface IMediaItem {
   type: MediaType;
 }
 
-const MediaItem = ({ text, id, poster_path, title, type }: IMediaItem) => {
+export const MediaItem = ({
+  text,
+  id,
+  poster_path,
+  title,
+  type,
+}: IMediaItem) => {
   const link = type === 'season' ? `seasons/${id}` : `/${type}/${id}`;
   return (
     <NavLink

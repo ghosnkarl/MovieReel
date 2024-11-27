@@ -3,28 +3,44 @@ import { useParams } from 'react-router-dom';
 import { fetchSingleResult } from '../../services/http';
 import { getProfileImage } from '../../helpers/imageSizes';
 import classes from '../../styles/people-details.module.css';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import moment from 'moment';
 import ImageList from '../../components/lists/ImageList';
 import { CREDITS_TABS } from '../../data/data';
 import Tabs, { TabObjectProps } from '../../components/Tabs';
 import { ICastMedia, ICrewMedia, IPerson } from '../../models/peopleModel';
 import { IImage } from '../../models/commonModel';
+import { MediaItem } from '../../components/lists/MediaList';
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+
+const MediaItems = ({ media }: { media: ICastMedia[] | ICrewMedia[] }) => {
+  return (
+    <div className='flex--wrap-container'>
+      {media.map((item) => (
+        <MediaItem
+          key={item.credit_id}
+          id={item.id}
+          title={item.title || item.name}
+          type={item.media_type === 'movie' ? 'movies' : 'tv'}
+          poster_path={item.poster_path}
+          text={'character' in item ? item.character : item.job}
+        />
+      ))}
+    </div>
+  );
+};
 
 const PeopleDetailsPage = () => {
   const params = useParams();
   const personId = params.personId;
   const [readMore, setReadMore] = useState(false);
+  const [selectedTab, setSelectedTab] = useState(CREDITS_TABS[0]);
+  const [selectedDepartment, setSelectedDepartment] = useState<string>('');
+  const [jobsList, setJobsList] = useState<string[]>([]);
+
   const queryParams = {
     append_to_response: 'images,combined_credits',
     include_image_language: 'en,null',
-  };
-
-  const tabs: TabObjectProps[] = CREDITS_TABS;
-  const [selectedTab, setSelectedTab] = useState(tabs[0]);
-
-  const handleSelectTab = (tab: TabObjectProps) => {
-    setSelectedTab(tab);
   };
 
   const { data } = useQuery({
@@ -37,66 +53,88 @@ const PeopleDetailsPage = () => {
     retry: 1,
   });
 
+  useEffect(() => {
+    if (data?.combined_credits?.crew) {
+      const uniqueJobs = [
+        ...new Set(
+          data.combined_credits.crew.map((crew: ICrewMedia) => crew.job)
+        ),
+      ];
+      setJobsList(uniqueJobs);
+      if (uniqueJobs.length > 0) {
+        setSelectedDepartment(uniqueJobs[0]);
+      }
+    }
+  }, [data]);
+
+  const handleSelectTab = (tab: TabObjectProps) => {
+    setSelectedTab(tab);
+  };
+
   const toggleReadMore = () => {
     setReadMore((prevState) => !prevState);
   };
 
-  if (!data) return;
+  const handleSelectDepartment = (department: string) => {
+    setSelectedDepartment(department);
+  };
 
-  let profileList = [...data.images.profiles];
-  if (profileList.length > 8) profileList = profileList.slice(0, 8);
+  const profileList = useMemo(
+    () => data?.images?.profiles.slice(0, 8) || [],
+    [data]
+  );
 
-  let profiles: { galleryImage: string; fullImage: string }[] = [];
-  if (data.images && data.images.profiles && data.images.profiles.length > 0)
-    profiles = data.images.profiles.map((profile: IImage) => {
-      return {
-        galleryImage: getProfileImage(profile.file_path, 'w185'),
-        fullImage: getProfileImage(profile.file_path, 'original'),
-      };
-    });
+  const profiles = useMemo(() => {
+    if (!data?.images?.profiles) return [];
+    return data.images.profiles.map((profile: IImage) => ({
+      galleryImage: getProfileImage(profile.file_path, 'w185'),
+      fullImage: getProfileImage(profile.file_path, 'original'),
+    }));
+  }, [data]);
+
+  if (!data) return null;
 
   return (
     <div className={classes.container}>
-      <div className={classes.sidebar}>
-        {data && (
-          <img
-            className={classes['profile-img']}
-            alt={data.name}
-            src={getProfileImage(data.profile_path, 'h632')}
-          />
-        )}
-
-        <h2>Known For</h2>
-        <p>{data?.known_for_department}</p>
-        <h2>Birthday</h2>
-        <p>
-          {moment(data?.birthday).format('MMMM DD, YYYY')} (
-          {moment().diff(data?.birthday, 'years')} years old)
-        </p>
-        {data?.deathday && (
-          <>
-            <h2>Deathday</h2>
-            <p>{moment(data?.deathday).format('MMMM DD, YYYY')}</p>
-          </>
-        )}
-
-        <h2>Place of Birth</h2>
-        <p>{data?.place_of_birth}</p>
+      <div className={classes.header}>
+        <img
+          className={classes['profile-img']}
+          alt={data.name}
+          src={getProfileImage(data.profile_path, 'h632')}
+        />
+        <div>
+          <h1 className={classes.name}>{data.name}</h1>
+          <p>Know for {data.known_for_department}</p>
+          <p>
+            Born{' '}
+            {data.birthday
+              ? moment(data.birthday).format('MMMM DD, YYYY')
+              : 'Unknown'}{' '}
+            {data.birthday &&
+              `(${moment().diff(data.birthday, 'years')} years old)`}
+          </p>
+          {data.deathday && (
+            <>
+              <p>Died {moment(data.deathday).format('MMMM DD, YYYY')}</p>
+            </>
+          )}
+          <p>Born in {data.place_of_birth || 'Unknown'}</p>
+          <p
+            className={`${classes.biography} ${
+              readMore ? '' : classes['read-more']
+            }`}
+          >
+            {data.biography || 'Biography not available'}
+          </p>
+          {data.biography && (
+            <button className={classes['btn-more']} onClick={toggleReadMore}>
+              {readMore ? 'Less' : 'More'}
+              {readMore ? <IoIosArrowUp /> : <IoIosArrowDown />}
+            </button>
+          )}
+        </div>
       </div>
       <div className={classes['main-content']}>
-        <h1 className={classes.name}>{data?.name}</h1>
-        <h1 className='section__title'>Biography</h1>
-        <p
-          className={`${classes.biography} ${
-            readMore ? '' : classes['read-more']
-          }`}
-        >
-          {data?.biography}
-        </p>
-        <button className={classes['btn-more']} onClick={toggleReadMore}>
-          <strong>Read {readMore ? 'Less' : 'More'}</strong>
-        </button>
-
         {profileList && profileList.length > 0 && (
           <ImageList
             images={profiles}
@@ -107,42 +145,40 @@ const PeopleDetailsPage = () => {
         )}
 
         <div className={classes['combined-credits']}>
-          <h2 className='section__title'>Movies &amp; TV Shows</h2>
+          <h1 className='section__title'>Movies &amp; TV Shows</h1>
           <Tabs
             onSelectType={handleSelectTab}
             selectedType={selectedTab}
-            tabs={tabs}
+            tabs={CREDITS_TABS}
             layoutId='credits_page'
           />
 
-          {/* {selectedTab.value === 'cast' && (
-            <div className='flex--wrap-container'>
-              {data.combined_credits.cast.map((castMedia: ICastMedia) => (
-                <MediaItem
-                  key={castMedia.credit_id}
-                  id={castMedia.id}
-                  title={castMedia.title || castMedia.name}
-                  type={castMedia.media_type === 'movie' ? 'movies' : 'tv'}
-                  poster_path={castMedia.poster_path}
-                  text={castMedia.character}
-                />
-              ))}
-            </div>
+          {selectedTab.value === 'cast' && (
+            <MediaItems media={data.combined_credits.cast} />
           )}
           {selectedTab.value === 'crew' && (
-            <div className='flex--wrap-container'>
-              {data.combined_credits.crew.map((crewMedia: ICrewMedia) => (
-                <MediaItem
-                  key={crewMedia.credit_id}
-                  id={crewMedia.id}
-                  title={crewMedia.title || crewMedia.name}
-                  type={crewMedia.media_type === 'movie' ? 'movies' : 'tv'}
-                  poster_path={crewMedia.poster_path}
-                  text={crewMedia.job}
-                />
-              ))}
-            </div>
-          )} */}
+            <>
+              <div className={classes['departments-container']}>
+                {jobsList &&
+                  jobsList.map((department) => (
+                    <button
+                      onClick={() => handleSelectDepartment(department)}
+                      key={department}
+                      className={`btn btn-department ${
+                        selectedDepartment === department ? 'selected' : ''
+                      }`}
+                    >
+                      {department}
+                    </button>
+                  ))}
+              </div>
+              <MediaItems
+                media={data.combined_credits.crew.filter(
+                  (item) => item.job === selectedDepartment
+                )}
+              />
+            </>
+          )}
         </div>
       </div>
     </div>
