@@ -1,9 +1,9 @@
-import moment from 'moment';
 import { IMovie, ITVShow } from '../../models/mediaModel';
 import { ISeason } from '../../models/seasonModel';
 import { NavLink } from 'react-router-dom';
 import classes from '../../styles/media-item.module.css';
 import { getPosterImage } from '../../helpers/imageSizes';
+import { formatDate } from '../../helpers/dateFormatter';
 
 type MediaType = 'movies' | 'tv' | 'season';
 
@@ -66,7 +66,7 @@ const MediaList = ({
             title={title}
             type={type}
             poster_path={item.poster_path}
-            text={moment(date).format('MMM DD, YYYY')}
+            text={formatDate(date)}
           />
         );
       })}

@@ -2,13 +2,13 @@ import { useQuery } from '@tanstack/react-query';
 import { getBackdropImage, getPosterImage } from '../helpers/imageSizes';
 import { fetchResults } from '../services/http';
 import classes from '../styles/top-trending.module.css';
-import moment from 'moment';
 import RatingStar from './rating/RatingStar';
 import LinkWrapper from './LinkWrapper';
 import HeaderLink from './HeaderLink';
 import QueryWrapper from './QueryWrapper';
 import { IMovie, ITVShow } from '../models/mediaModel';
 import { MediaType } from '../models/commonModel';
+import { formatDate } from '../helpers/dateFormatter';
 
 const TopTredingItem = ({ item }: { item: IMovie | ITVShow }) => {
   const title = 'title' in item ? item.title : item.name;
@@ -24,7 +24,7 @@ const TopTredingItem = ({ item }: { item: IMovie | ITVShow }) => {
         <div className={classes['item-container--right']}>
           <h1>{title}</h1>
           <RatingStar value={item.vote_average} size='small' />
-          <p className={classes.date}>{moment(date).format('MMM DD, YYYY')}</p>
+          <p className={classes.date}>{formatDate(date)}</p>
         </div>
       </li>
     </LinkWrapper>
@@ -67,9 +67,7 @@ const TopTrending = ({ type }: { type: MediaType }) => {
             <div className={classes['container__left--text']}>
               <h1>{firstItemTitle}</h1>
               <RatingStar value={firstItem.vote_average} size='small' />
-              <p className={classes['top__date']}>
-                {moment(date).format('MMM DD, YYYY')}
-              </p>
+              <p className={classes['top__date']}>{formatDate(date)}</p>
             </div>
           </div>
         </LinkWrapper>

@@ -1,7 +1,7 @@
-import moment from 'moment';
 import classes from '../styles/review.module.css';
 import Rating from './rating/Rating';
 import { IReview } from '../models/commonModel';
+import { formatDate } from '../helpers/dateFormatter';
 
 interface ReviewProps {
   review: IReview;
@@ -22,7 +22,7 @@ const Review = ({ review, viewFull }: ReviewProps) => {
           {rating && <Rating value={(rating * 10).toFixed(0)} size='small' />}
           <div>
             <h2>{review.author}</h2>
-            <span>{moment(review.updated_at).format('MMM DD, YYYY')}</span>
+            <span>{formatDate(review.updated_at)}</span>
           </div>
         </div>
         <p className={!viewFull ? classes['max--lines'] : ''}>

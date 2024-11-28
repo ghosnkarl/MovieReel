@@ -1,7 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import classes from '../../styles/media-details.module.css';
-import moment from 'moment';
+
 import { IIdName } from '../../models/commonModel';
+import { formatDate } from '../../helpers/dateFormatter';
 
 interface MediaDetailsItem {
   title: string;
@@ -57,42 +58,22 @@ const MediaDetails = ({
       <div className={classes.details}>
         <MediaDetailsItem title='Created By' text={formattedCreatedBy} />
 
-        <MediaDetailsItem
-          title='Last Air Date'
-          text={
-            last_air_date
-              ? moment(last_air_date).format('MMM DD, YYYY')
-              : undefined
-          }
-        />
+        {last_air_date && (
+          <MediaDetailsItem
+            title='Last Air Date'
+            text={formatDate(last_air_date)}
+          />
+        )}
 
         <MediaDetailsItem title='Status' text={status} />
         <MediaDetailsItem title='Tagline' text={tagline} />
 
-        {/* {production_companies && (
-          <div className={classes['details__left--item']}>
-            <h2>Production Companies</h2>
-            <ul className={classes['production__list']}>
-              {production_companies.map((company, index) => (
-                <li key={company.id}>
-                  <NavLink key={company.id} to={`/`}>
-                    {company.name}
-                  </NavLink>
-                  {index < production_companies.length - 1 && ' • '}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )} */}
-
-        <MediaDetailsItem
-          title='First Air Date'
-          text={
-            first_air_date
-              ? moment(first_air_date).format('MMM DD, YYYY')
-              : undefined
-          }
-        />
+        {first_air_date && (
+          <MediaDetailsItem
+            title='First Air Date'
+            text={formatDate(first_air_date)}
+          />
+        )}
 
         {homepage && (
           <div className={classes['details__left--item']}>

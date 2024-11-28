@@ -18,6 +18,7 @@ export interface IBaseDetails {
   images: IDetailsImages;
   reviews: { results: IReview[] };
   recommendations: { results: IMovie[] };
+  vote_count: number;
 }
 
 export interface IMovieDetails extends Omit<IMovie, 'genre_ids'>, IBaseDetails {

@@ -1,8 +1,10 @@
-import moment from 'moment';
 import classes from './details-page-header.module.css';
 import { getBackdropImage } from '../../helpers/imageSizes';
-import RatingStar from '../rating/RatingStar';
 import { IIdName } from '../../models/commonModel';
+import { IoPlayCircle } from 'react-icons/io5';
+import { FaImages } from 'react-icons/fa6';
+import { MdOutlineReviews } from 'react-icons/md';
+import { formatDate } from '../../helpers/dateFormatter';
 
 interface IDetailsHeader {
   title: string;
@@ -10,8 +12,8 @@ interface IDetailsHeader {
   runtime: number | null;
   genres: IIdName[];
   vote_average: number;
+  vote_count: number;
   overview: string;
-
   backdrop_path: string | null;
 }
 
@@ -22,13 +24,11 @@ const DetailsPageHeader = ({
   genres,
   vote_average,
   overview,
-
   backdrop_path,
+  vote_count,
 }: IDetailsHeader) => {
   const formattedGenres = genres.map((genre) => genre.name).join(' • ');
-  const formattedReleaseDate = release_date
-    ? moment(release_date).format('MMM DD, YYYY')
-    : null;
+
   const formattedRuntime =
     runtime && runtime !== 0
       ? `${Math.floor(runtime / 60)}h ${runtime % 60}m`
@@ -46,13 +46,26 @@ const DetailsPageHeader = ({
         <h1 className={classes.title}>{title}</h1>
 
         <div className={classes['rating__container']}>
-          <RatingStar value={vote_average} size='medium' />
+          <p className={classes.tmdb}>TMDB</p>
+
           <p className={classes['date-runtime']}>
-            {formattedReleaseDate}
+            {vote_average.toFixed(1)} ({vote_count.toLocaleString()})
+            {release_date && ` • ${formatDate(release_date)}`}
             {formattedRuntime && ` • ${formattedRuntime}`}
           </p>
         </div>
         <p className={classes.overview}>{overview}</p>
+        <div className={classes['actions__container']}>
+          <button className={`${classes.watch} ${classes['watch--filled']}`}>
+            <IoPlayCircle className={classes.icon} /> Watch Trailer
+          </button>
+          <button className={`${classes.watch} ${classes['watch--outlined']}`}>
+            <FaImages className={classes.icon} /> All Images
+          </button>
+          <button className={`${classes.watch} ${classes['watch--outlined']}`}>
+            <MdOutlineReviews className={classes.icon} /> All Reviews
+          </button>
+        </div>
       </div>
     </div>
   );

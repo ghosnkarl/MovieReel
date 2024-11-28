@@ -1,8 +1,8 @@
-import moment from 'moment';
 import { getBackdropImage } from '../helpers/imageSizes';
 import { IEpisode } from '../models/seasonModel';
 import classes from '../styles/episode-item.module.css';
 import RatingStar from './rating/RatingStar';
+import { formatDate } from '../helpers/dateFormatter';
 
 const EpisodeItem = ({ episode }: { episode: IEpisode }) => {
   return (
@@ -18,7 +18,7 @@ const EpisodeItem = ({ episode }: { episode: IEpisode }) => {
         </h1>
         <RatingStar value={episode.vote_average} size='small' />
         <p className={classes.date}>
-          {moment(episode.air_date).format('MMM DD, YYYY')} • {episode.runtime}m
+          {formatDate(episode.air_date)} • {episode.runtime}m
         </p>
         <p className={classes.overview}>{episode.overview}</p>
       </div>

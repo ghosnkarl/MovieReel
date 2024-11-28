@@ -46,6 +46,7 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
           release_date={'title' in media ? media.release_date : null}
           runtime={'title' in media ? media.runtime : null}
           backdrop_path={media.backdrop_path}
+          vote_count={media.vote_count}
         />
 
         <DetailsMainContainer media={media} />

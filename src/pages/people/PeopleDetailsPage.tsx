@@ -13,6 +13,7 @@ import { IImage } from '../../models/commonModel';
 import { MediaItem } from '../../components/lists/MediaList';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import Tags from '../../components/Tags';
+import { formatDate } from '../../helpers/dateFormatter';
 
 const MediaItems = ({ media }: { media: ICastMedia[] | ICrewMedia[] }) => {
   return (
@@ -107,16 +108,13 @@ const PeopleDetailsPage = () => {
           <h1 className={classes.name}>{data.name}</h1>
           <p>Know for {data.known_for_department}</p>
           <p>
-            Born{' '}
-            {data.birthday
-              ? moment(data.birthday).format('MMMM DD, YYYY')
-              : 'Unknown'}{' '}
+            Born {formatDate(data.birthday)}{' '}
             {data.birthday &&
               `(${moment().diff(data.birthday, 'years')} years old)`}
           </p>
           {data.deathday && (
             <>
-              <p>Died {moment(data.deathday).format('MMMM DD, YYYY')}</p>
+              <p>Died {formatDate(data.deathday)}</p>
             </>
           )}
           <p>Born in {data.place_of_birth || 'Unknown'}</p>

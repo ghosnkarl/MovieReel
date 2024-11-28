@@ -8,7 +8,7 @@
   gap: 4.8rem;
   max-width: var(--page-width--max);
   margin: var(--page-width--margin);
-  padding: 7rem var(--page-padding--horizontal);
+  padding: 3.2rem var(--page-padding--horizontal);
 }
 
 .details__container {
