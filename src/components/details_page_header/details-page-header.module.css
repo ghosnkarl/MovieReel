@@ -1,9 +1,9 @@
 .container {
   position: relative;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   gap: 2.4rem;
-  height: 60vh;
+  height: 70vh;
 }
 
 .bottom__container {

@@ -5,6 +5,7 @@ import { ICast, ICrew } from '../models/castCrewModel';
 import Tabs, { TabObjectProps } from '../components/Tabs';
 import { CREDITS_TABS } from '../data/data';
 import CreditItem from '../components/CreditItem';
+import Tags from '../components/Tags';
 
 const CreditsPage = () => {
   const location = useLocation();
@@ -59,20 +60,12 @@ const CreditsPage = () => {
 
       {selectedTab.value === 'crew' && (
         <>
-          <div className={classes['departments-container']}>
-            {departmentsList &&
-              departmentsList.map((department) => (
-                <button
-                  onClick={() => handleSelectDepartment(department)}
-                  key={department}
-                  className={`btn btn-department ${
-                    selectedDepartment === department ? 'selected' : ''
-                  }`}
-                >
-                  {department}
-                </button>
-              ))}
-          </div>
+          <Tags
+            tagsList={departmentsList}
+            selectedTag={selectedDepartment}
+            handleSelectTag={handleSelectDepartment}
+          />
+
           <div className={classes['list__container']}>
             {filteredCrewList
               .filter((item) => item.department === selectedDepartment)

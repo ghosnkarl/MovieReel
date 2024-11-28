@@ -12,6 +12,7 @@ import { ICastMedia, ICrewMedia, IPerson } from '../../models/peopleModel';
 import { IImage } from '../../models/commonModel';
 import { MediaItem } from '../../components/lists/MediaList';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import Tags from '../../components/Tags';
 
 const MediaItems = ({ media }: { media: ICastMedia[] | ICrewMedia[] }) => {
   return (
@@ -35,7 +36,7 @@ const PeopleDetailsPage = () => {
   const personId = params.personId;
   const [readMore, setReadMore] = useState(false);
   const [selectedTab, setSelectedTab] = useState(CREDITS_TABS[0]);
-  const [selectedDepartment, setSelectedDepartment] = useState<string>('');
+  const [selectedJob, setSelectedJob] = useState<string>('');
   const [jobsList, setJobsList] = useState<string[]>([]);
 
   const queryParams = {
@@ -62,7 +63,7 @@ const PeopleDetailsPage = () => {
       ];
       setJobsList(uniqueJobs);
       if (uniqueJobs.length > 0) {
-        setSelectedDepartment(uniqueJobs[0]);
+        setSelectedJob(uniqueJobs[0]);
       }
     }
   }, [data]);
@@ -75,8 +76,8 @@ const PeopleDetailsPage = () => {
     setReadMore((prevState) => !prevState);
   };
 
-  const handleSelectDepartment = (department: string) => {
-    setSelectedDepartment(department);
+  const handleSelectJob = (job: string) => {
+    setSelectedJob(job);
   };
 
   const profileList = useMemo(
@@ -158,23 +159,14 @@ const PeopleDetailsPage = () => {
           )}
           {selectedTab.value === 'crew' && (
             <>
-              <div className={classes['departments-container']}>
-                {jobsList &&
-                  jobsList.map((department) => (
-                    <button
-                      onClick={() => handleSelectDepartment(department)}
-                      key={department}
-                      className={`btn btn-department ${
-                        selectedDepartment === department ? 'selected' : ''
-                      }`}
-                    >
-                      {department}
-                    </button>
-                  ))}
-              </div>
+              <Tags
+                tagsList={jobsList}
+                handleSelectTag={handleSelectJob}
+                selectedTag={selectedJob}
+              />
               <MediaItems
                 media={data.combined_credits.crew.filter(
-                  (item) => item.job === selectedDepartment
+                  (item) => item.job === selectedJob
                 )}
               />
             </>
