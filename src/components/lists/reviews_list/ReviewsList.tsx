@@ -1,7 +1,7 @@
 import Review from '../reviews_list/ReviewItem';
 import { getPosterImage } from '../../../helpers/imageSizes';
 import { IReview } from '../../../models/commonModel';
-import HorizontalListContainer from '../../horizontal_list/HorizontalListContainer';
+import HorizontalList from '../../horizontal_list/HorizontalList';
 
 interface IReviewsList {
   reviews: { results: IReview[] };
@@ -14,7 +14,7 @@ const ReviewsList = ({ reviews, title, poster_path }: IReviewsList) => {
 
   return (
     <>
-      <HorizontalListContainer
+      <HorizontalList
         title='Reviews'
         link='review'
         linkState={{
@@ -26,7 +26,7 @@ const ReviewsList = ({ reviews, title, poster_path }: IReviewsList) => {
         {reviews.results.map((review) => (
           <Review key={review.id} review={review} viewFull={false} />
         ))}
-      </HorizontalListContainer>
+      </HorizontalList>
     </>
   );
 };

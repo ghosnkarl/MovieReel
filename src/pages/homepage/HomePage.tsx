@@ -7,7 +7,7 @@ import TopTrending from '../../components/lists/top_trending/TopTrending';
 import { IMovie, ITVShow } from '../../models/mediaModel';
 import { IPeople } from '../../models/peopleModel';
 import { airingTodayDates, upComingDates } from '../../helpers/discoverDates';
-import HorizontalWrapper from '../../components/ui/HorizontalWrapper';
+import HorizontalWrapper from '../../components/horizontal_list/HorizontalWrapper';
 import MediaList from '../../components/lists/media_list/MediaList';
 import PersonItem from '../../components/list_items/person_item/PersonItem';
 

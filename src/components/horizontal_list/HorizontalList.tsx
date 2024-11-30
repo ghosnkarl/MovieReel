@@ -1,20 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
 import ListArrows from './ListArrows';
 import HeaderLink from '../ui/HeaderLink';
+import classes from './HorizontalList.module.css';
 
-interface ListProps {
+interface IHorizontalList {
   title: string;
   children: React.ReactNode;
   linkState: unknown;
   link: string | null;
 }
 
-const HorizontalListContainer = ({
+const HorizontalList = ({
   title,
   linkState,
   children,
   link,
-}: ListProps) => {
+}: IHorizontalList) => {
   const listRef = useRef<HTMLUListElement>(null);
   const [ref, setRef] = useState<HTMLUListElement | null>(null);
 
@@ -24,9 +25,9 @@ const HorizontalListContainer = ({
 
   return (
     <div>
-      <div className='list-header'>
+      <div className={classes.header}>
         {!link ? (
-          <h1 className='section__title section__title--list'>{title}</h1>
+          <h1 className={classes.title}>{title}</h1>
         ) : (
           <HeaderLink link={link} linkState={linkState} title={title} />
         )}
@@ -34,11 +35,11 @@ const HorizontalListContainer = ({
         <ListArrows listRef={ref} />
       </div>
 
-      <ul ref={listRef} className='horizontal-list__container'>
+      <ul ref={listRef} className={classes['list__container']}>
         {children}
       </ul>
     </div>
   );
 };
 
-export default HorizontalListContainer;
+export default HorizontalList;

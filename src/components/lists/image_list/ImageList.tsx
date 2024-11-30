@@ -1,7 +1,7 @@
 import classes from './ImageList.module.css';
 import { getBackdropImage } from '../../../helpers/imageSizes';
 import { NavLink } from 'react-router-dom';
-import HorizontalListContainer from '../../horizontal_list/HorizontalListContainer';
+import HorizontalList from '../../horizontal_list/HorizontalList';
 
 interface ImageListProps {
   backdropList: { file_path: string }[];
@@ -16,7 +16,7 @@ const ImageList = ({ backdropList, title, images, image }: ImageListProps) => {
   if (backdropList.length > 10) backdropList = backdropList.slice(0, 10);
 
   return (
-    <HorizontalListContainer
+    <HorizontalList
       linkState={{ images, title, image }}
       title='Images'
       link='images'
@@ -36,7 +36,7 @@ const ImageList = ({ backdropList, title, images, image }: ImageListProps) => {
           </div>
         </NavLink>
       ))}
-    </HorizontalListContainer>
+    </HorizontalList>
   );
 };
 

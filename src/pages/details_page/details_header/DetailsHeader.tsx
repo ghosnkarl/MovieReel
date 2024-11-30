@@ -42,6 +42,7 @@ const DetailsHeader = ({
         src={getBackdropImage(backdrop_path, 'w1280')}
         alt={title}
       />
+      <div className={classes.overlay} />
       <div className={classes.grid}>
         <div className={classes['bottom__container']}>
           <p className={classes.genres}>{formattedGenres}</p>

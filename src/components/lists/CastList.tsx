@@ -1,5 +1,5 @@
 import { ICast, ICrew } from '../../models/castCrewModel';
-import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
+import HorizontalList from '../horizontal_list/HorizontalList';
 import PersonItem from '../list_items/person_item/PersonItem';
 
 interface ICastList {
@@ -15,7 +15,7 @@ const CastList = ({ title, image, credits }: ICastList) => {
   if (castList.length > 20) castList = castList.slice(0, 20);
 
   return (
-    <HorizontalListContainer
+    <HorizontalList
       link='cast'
       linkState={{ title, image, credits }}
       title='Actors'
@@ -38,7 +38,7 @@ const CastList = ({ title, image, credits }: ICastList) => {
           />
         </li>
       ))}
-    </HorizontalListContainer>
+    </HorizontalList>
   );
 };
 

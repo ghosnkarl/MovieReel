@@ -1,28 +1,43 @@
 import { useState } from 'react';
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import { motion } from 'framer-motion';
+import classes from './HorizontalList.module.css';
+
+interface IArrowButton {
+  handleClick: () => void;
+  disabled: boolean | null;
+  isNext: boolean;
+}
+
+const ArrowButton = ({ disabled, handleClick, isNext }: IArrowButton) => {
+  return (
+    <motion.button
+      whileHover={{
+        scale: disabled ? 1 : 1.2,
+      }}
+      className={`${classes['btn-arrow']} ${
+        disabled ? classes['btn-arrow--disabled'] : ''
+      }`}
+      onClick={handleClick}
+    >
+      {isNext ? <MdNavigateNext /> : <MdNavigateBefore />}
+    </motion.button>
+  );
+};
 
 interface IListArrows {
   listRef: HTMLUListElement | null;
 }
 
 const ListArrows = ({ listRef }: IListArrows) => {
-  const [scrollPosition, setScrollPosition] = useState(0); // Track the scroll position
+  const [scrollPosition, setScrollPosition] = useState(0);
 
-  const handleNext = () => {
+  const handleArrowClicked = (isNext: boolean) => {
     if (listRef) {
       setScrollPosition(() => {
-        const newScrollPosition = listRef.scrollLeft + listRef.clientWidth;
-        listRef.scrollLeft = newScrollPosition;
-        return newScrollPosition;
-      });
-    }
-  };
-
-  const handleLeft = () => {
-    if (listRef) {
-      setScrollPosition(() => {
-        const newScrollPosition = listRef.scrollLeft - listRef.clientWidth;
+        const newScrollPosition = isNext
+          ? listRef.scrollLeft + listRef.clientWidth
+          : listRef.scrollLeft - listRef.clientWidth;
         listRef.scrollLeft = newScrollPosition;
         return newScrollPosition;
       });
@@ -36,31 +51,21 @@ const ListArrows = ({ listRef }: IListArrows) => {
   if (listRef) showButtons = listRef.scrollWidth > listRef.clientWidth;
 
   return (
-    <div className='list-arrows__container'>
+    <div className={classes['arrows__container']}>
       {showButtons && (
-        <motion.button
-          whileHover={{
-            scale: scrollPosition <= 0 ? 1 : 1.2,
-          }}
-          className={`btn-arrow ${
-            scrollPosition <= 0 ? 'btn-arrow--disabled' : ''
-          }`}
-          onClick={handleLeft}
-        >
-          <MdNavigateBefore />
-        </motion.button>
+        <ArrowButton
+          disabled={scrollPosition <= 0}
+          handleClick={() => handleArrowClicked(false)}
+          isNext={false}
+        />
       )}
 
       {showButtons && (
-        <motion.button
-          whileHover={{
-            scale: disableNext ? 1 : 1.2,
-          }}
-          className={`btn-arrow ${disableNext ? 'btn-arrow--disabled' : ''}`}
-          onClick={handleNext}
-        >
-          <MdNavigateNext />
-        </motion.button>
+        <ArrowButton
+          disabled={disableNext}
+          handleClick={() => handleArrowClicked(true)}
+          isNext={true}
+        />
       )}
     </div>
   );

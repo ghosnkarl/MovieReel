@@ -6,7 +6,7 @@ import RecommendedList from '../../components/lists/RecommendedList';
 import { getPosterImage } from '../../helpers/imageSizes';
 import CastList from '../../components/lists/CastList';
 import { IMovieDetails, ITVDetails } from '../../models/detailsModel';
-import HorizontalListContainer from '../../components/horizontal_list/HorizontalListContainer';
+import HorizontalList from '../../components/horizontal_list/HorizontalList';
 import DetailsMedia from './DetailsMedia';
 import Keywords from '../../components/lists/keywords_list/KeywordsList';
 import { useQuery } from '@tanstack/react-query';
@@ -49,12 +49,12 @@ const DetailsMain = ({ media }: IDetailsMainContainer) => {
       />
 
       {seasons && (
-        <HorizontalListContainer title='Seasons' link={null} linkState={null}>
+        <HorizontalList title='Seasons' link={null} linkState={null}>
           <MediaList
             data={seasons.sort((a, b) => b.season_number - a.season_number)}
             type='season'
           />
-        </HorizontalListContainer>
+        </HorizontalList>
       )}
 
       <VideoList videos={media.videos.results} />
@@ -93,13 +93,13 @@ const DetailsMain = ({ media }: IDetailsMainContainer) => {
       />
 
       {collectionList && (
-        <HorizontalListContainer
+        <HorizontalList
           title={collectionList.name}
           link={null}
           linkState={null}
         >
           <MediaList data={collectionList.parts} type='movies' />
-        </HorizontalListContainer>
+        </HorizontalList>
       )}
 
       <RecommendedList

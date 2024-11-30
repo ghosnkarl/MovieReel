@@ -1,6 +1,6 @@
 import { UseQueryResult } from '@tanstack/react-query';
-import QueryWrapper from './QueryWrapper';
-import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
+import QueryWrapper from '../ui/QueryWrapper';
+import HorizontalList from './HorizontalList';
 
 interface IHorizontalWrapper {
   query: UseQueryResult<unknown, Error>;
@@ -17,9 +17,9 @@ const HorizontalWrapper = ({
 }: IHorizontalWrapper) => {
   return (
     <QueryWrapper message={title} query={query}>
-      <HorizontalListContainer link={link} title={title} linkState={null}>
+      <HorizontalList link={link} title={title} linkState={null}>
         {children}
-      </HorizontalListContainer>
+      </HorizontalList>
     </QueryWrapper>
   );
 };

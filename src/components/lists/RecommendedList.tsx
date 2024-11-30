@@ -1,5 +1,5 @@
 import { IMovie, ITVShow } from '../../models/mediaModel';
-import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
+import HorizontalList from '../horizontal_list/HorizontalList';
 import MediaList from './media_list/MediaList';
 
 interface IRecommendedList {
@@ -11,13 +11,13 @@ interface IRecommendedList {
 const RecommendedList = ({ items, title, type }: IRecommendedList) => {
   if (items && items.length === 0) return null;
   return (
-    <HorizontalListContainer
+    <HorizontalList
       title={`If you like ${title}, check out`}
       link={null}
       linkState={null}
     >
       <MediaList data={items} type={type} />
-    </HorizontalListContainer>
+    </HorizontalList>
   );
 };
 
