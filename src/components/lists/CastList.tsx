@@ -1,6 +1,6 @@
 import { ICast, ICrew } from '../../models/castCrewModel';
 import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
-import PersonItem from '../PersonItem';
+import PersonItem from '../list_items/person_item/PersonItem';
 
 interface ICastList {
   title: string;

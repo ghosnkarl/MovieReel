@@ -4,7 +4,7 @@ import CarouselItem from './CarouselItem';
 import { useQuery } from '@tanstack/react-query';
 import { discoverReleaseDates } from '../../helpers/discoverParams';
 import { fetchResults } from '../../services/http';
-import QueryWrapper from '../QueryWrapper';
+import QueryWrapper from '../ui/QueryWrapper';
 import { IMovie } from '../../models/mediaModel';
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import { IIdName } from '../../models/commonModel';

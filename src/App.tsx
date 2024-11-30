@@ -1,21 +1,21 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './RootLayout';
-import HomePage from './pages/HomePage';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './services/http';
-import MoviesPage from './pages/MoviesPage';
-import TVPage from './pages/tv/TVPage';
-import PeoplePage from './pages/people/PeoplePage';
-import DiscoverPage from './pages/DiscoverPage';
-import ReviewsPage from './pages/ReviewsPage';
-import ImagesPage from './pages/ImagesPages';
-import PeopleDetailsPage from './pages/people/PeopleDetailsPage';
-import CreditsPage from './pages/CreditsPage';
-import DetailsRootLayout from './pages/DetailsRootLayout';
-import ErrorPage from './components/ErrorPage';
-import OutletRootLayout from './components/OutletRootLayout';
-import SeasonDetailsPage from './pages/tv/SeasonDetailsPage';
-import DetailsPage from './pages/details/DetailsPage';
+import TVPage from './pages/tv_pages/TVPage';
+import PeoplePage from './pages/people_pages/PeoplePage';
+import DiscoverPage from './pages/discover_page/DiscoverPage';
+import ImagesPage from './pages/images_page/ImagesPages';
+import PeopleDetailsPage from './pages/people_pages/PeopleDetailsPage';
+import DetailsRootLayout from './components/ui/details_root_layout/DetailsRootLayout';
+import ErrorPage from './pages/error_page/ErrorPage';
+import SeasonDetailsPage from './pages/tv_pages/SeasonDetailsPage';
+import DetailsPage from './pages/details_page/DetailsPage';
+import OutletRootLayout from './components/ui/OutletRootLayout';
+import HomePage from './pages/homepage/HomePage';
+import MoviesPage from './pages/movies_page/MoviesPage';
+import CreditsPage from './pages/credits_page/CreditsPage';
+import ReviewsPage from './pages/reviews_page/ReviewsPage';
 
 const router = createBrowserRouter([
   {

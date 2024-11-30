@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import ListArrows from './ListArrows';
-import HeaderLink from '../HeaderLink';
+import HeaderLink from '../ui/HeaderLink';
 
 interface ListProps {
   title: string;
