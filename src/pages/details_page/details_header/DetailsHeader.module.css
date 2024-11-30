@@ -53,8 +53,9 @@
 
   background: linear-gradient(
     to right,
-    rgba(20, 20, 20, 0.7),
-    rgba(20, 20, 20, 0.3)
+    rgba(20, 20, 20, 0.9),
+    rgba(20, 20, 20, 0.9),
+    rgba(20, 20, 20, 0)
   );
 }
 

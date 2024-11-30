@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import classes from './ReviewsPage.module.css';
-import Review from '../../components/lists/reviews_list/ReviewItem';
 import { IReview } from '../../models/commonModel';
+import { ReviewItem } from '../../components/lists/reviews_list/ReviewsList';
 
 const ReviewsPage = () => {
   const location = useLocation();
@@ -10,7 +10,7 @@ const ReviewsPage = () => {
   return (
     <ul className={classes['reviews-list']}>
       {reviews.results.map((review: IReview) => (
-        <Review key={review.id} review={review} viewFull={true} />
+        <ReviewItem key={review.id} review={review} viewFull={true} />
       ))}
     </ul>
   );

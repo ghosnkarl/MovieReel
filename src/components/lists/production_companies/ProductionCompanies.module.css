@@ -9,11 +9,6 @@
   height: 5rem;
 }
 
-.logo {
-  height: 100%;
-  color: white;
-}
-
 .title:link,
 .title:visited {
   text-decoration: none;

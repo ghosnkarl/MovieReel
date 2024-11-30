@@ -22,19 +22,19 @@
   align-items: center;
 }
 
-.container h2 {
+.author {
   font-size: 1.6rem;
   font-weight: 600;
   margin-bottom: 0.8rem;
 }
 
-.container span {
+.date {
   display: inline-block;
   font-size: 1.4rem;
   color: var(--color-gray-300);
 }
 
-.container p {
+.content {
   font-size: 1.4rem;
   margin-top: 2.4rem;
   line-height: 1.6;
@@ -46,27 +46,4 @@
   -webkit-line-clamp: 4;
   line-clamp: 4;
   -webkit-box-orient: vertical;
-}
-
-.flex {
-  display: flex;
-  gap: 2.4rem;
-  align-items: center;
-  margin-bottom: 0.8rem;
-}
-
-.flex span {
-  font-size: 1.8rem;
-  font-weight: 600;
-}
-
-.flex p {
-  font-size: 1.8rem;
-}
-
-.rating {
-  display: flex;
-  font-size: 1.8rem !important;
-  align-items: center;
-  color: var(--color-primary-900) !important;
 }
