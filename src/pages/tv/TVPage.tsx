@@ -3,9 +3,9 @@ import classes from '../../styles/movies-page.module.css';
 import { ITVShow } from '../../models/mediaModel';
 import { useState } from 'react';
 import Tabs, { TabObjectProps } from '../../components/Tabs';
-import LoadingIndicator from '../../components/ui/LoadingIndicator';
+import LoadingIndicator from '../../components/ui/loading_indicator/LoadingIndicator';
 import { TV_TABS } from '../../data/data';
-import MediaList from '../../components/lists/MediaList';
+import MediaList from '../../components/lists/media_list/MediaList';
 
 export default function TVPage() {
   const tabs: TabObjectProps[] = TV_TABS;

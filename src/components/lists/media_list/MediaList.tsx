@@ -1,9 +1,9 @@
-import { IMovie, ITVShow } from '../../models/mediaModel';
-import { ISeason } from '../../models/seasonModel';
+import { IMovie, ITVShow } from '../../../models/mediaModel';
+import { ISeason } from '../../../models/seasonModel';
 import { NavLink } from 'react-router-dom';
-import classes from '../../styles/media-item.module.css';
-import { getPosterImage } from '../../helpers/imageSizes';
-import { formatDate } from '../../helpers/dateFormatter';
+import classes from './MediaItem.module.css';
+import { getPosterImage } from '../../../helpers/imageSizes';
+import { formatDate } from '../../../helpers/dateFormatter';
 
 type MediaType = 'movies' | 'tv' | 'season';
 

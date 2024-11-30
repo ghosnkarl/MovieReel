@@ -11,30 +11,24 @@ const SeasonDetailsPage = () => {
   const tvId = splitPath[2];
   const seasonNumber = splitPath[4];
 
-  const seasonQuery = useQuery({
+  const { data } = useQuery<ISeason>({
     queryKey: ['season', seasonNumber],
     queryFn: () =>
-      fetchSingleResult({
+      fetchSingleResult<ISeason>({
         path: `tv/${tvId}/season/${seasonNumber}`,
         params: null,
       }),
     retry: 1,
   });
 
-  // const { episodes } = location.state;
+  if (!data) return;
 
   return (
-    <>
-      {seasonQuery.data ? (
-        <ul>
-          {(seasonQuery.data as ISeason).episodes.map((episode) => (
-            <EpisodeItem key={episode.id} episode={episode} />
-          ))}
-        </ul>
-      ) : (
-        <></>
-      )}
-    </>
+    <ul>
+      {data.episodes.map((episode) => (
+        <EpisodeItem key={episode.id} episode={episode} />
+      ))}
+    </ul>
   );
 };
 export default SeasonDetailsPage;

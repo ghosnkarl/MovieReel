@@ -19,6 +19,7 @@ export interface IBaseDetails {
   reviews: { results: IReview[] };
   recommendations: { results: IMovie[] };
   vote_count: number;
+  production_companies: IIdName[];
 }
 
 export interface IMovieDetails extends Omit<IMovie, 'genre_ids'>, IBaseDetails {

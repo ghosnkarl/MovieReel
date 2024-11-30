@@ -1,6 +1,6 @@
 import { UseQueryResult } from '@tanstack/react-query';
-import ErrorBlock from './ui/ErrorBlock';
-import LoadingIndicator from './ui/LoadingIndicator';
+import ErrorBlock from './ui/error_block/ErrorBlock';
+import LoadingIndicator from './ui/loading_indicator/LoadingIndicator';
 
 interface QueryWrapperProps {
   children: JSX.Element | JSX.Element[];

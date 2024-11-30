@@ -1,7 +1,7 @@
-import classes from '../../styles/image-list.module.css';
-import { getBackdropImage } from '../../helpers/imageSizes';
+import classes from './ImageList.module.css';
+import { getBackdropImage } from '../../../helpers/imageSizes';
 import { NavLink } from 'react-router-dom';
-import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
+import HorizontalListContainer from '../../horizontal_list/HorizontalListContainer';
 
 interface ImageListProps {
   backdropList: { file_path: string }[];

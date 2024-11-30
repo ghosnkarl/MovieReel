@@ -1,7 +1,7 @@
-import classes from '../../styles/video.module.css';
+import classes from './VideoList.module.css';
 import { NavLink } from 'react-router-dom';
-import { IVideo } from '../../models/commonModel';
-import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
+import { IVideo } from '../../../models/commonModel';
+import HorizontalListContainer from '../../horizontal_list/HorizontalListContainer';
 
 interface VideoItemProps {
   video: IVideo;

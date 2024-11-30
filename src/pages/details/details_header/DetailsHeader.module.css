@@ -7,22 +7,30 @@
   height: 70vh;
 }
 
-.bottom__container {
-  display: flex;
-  flex-direction: column;
+.grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
   max-width: var(--page-width--max);
   margin: var(--page-width--margin);
-  padding: 0 var(--page-padding--horizontal);
+  padding: 7rem var(--page-padding--horizontal);
+  position: absolute;
+  gap: 12.8rem;
   top: 50%;
   transform: translateY(-50%);
-  position: absolute;
+}
+
+.bottom__container {
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .backdrop__img {
   object-fit: cover;
   height: 100%;
   width: 100%;
-  opacity: 0.3;
+  opacity: 0.2;
 
   mask-image: linear-gradient(
     to bottom,
@@ -37,8 +45,8 @@
 }
 
 .poster {
-  width: 20rem;
-  aspect-ratio: 2 / 3;
+  height: 55vh;
+  aspect-ratio: 2/3;
   object-fit: cover;
   border-radius: 10px;
   box-shadow: var(--card--box-shadow);
@@ -59,24 +67,23 @@
 
 .rating__container {
   display: flex;
-  gap: 1.2rem;
+  gap: 3.2rem;
   margin-bottom: 2.4rem;
   align-items: center;
 }
 
 .date-runtime {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 600;
-  color: var(--color-gray-200);
+  color: var(--color-gray-100);
 }
 
 .overview {
-  width: 50%;
   font-size: 1.6rem;
   line-height: 1.4;
   align-items: center;
   margin-bottom: 3.2rem;
-  color: var(--color-gray-200);
+  color: var(--color-gray-100);
 }
 
 .actions__container {
@@ -110,12 +117,4 @@
 
 .icon {
   font-size: 2.4rem;
-}
-
-.tmdb {
-  background-color: var(--color-primary-900);
-  padding: 0.4rem 0.8rem;
-  font-size: 1.6rem;
-  font-weight: 600;
-  border-radius: 4px;
 }

@@ -1,6 +1,6 @@
 import DropdownButton from './DropdownButton';
 import DropdownItem from './DropdownItem';
-import classes from '../../styles/dropdown.module.css';
+import classes from './Dropdown.module.css';
 import { useEffect, useRef, useState } from 'react';
 
 export interface ItemProps {

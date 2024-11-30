@@ -1,26 +1,26 @@
 import { getGalleryImages } from '../../helpers/galleryImages';
-import classes from './details-page.module.css';
-import VideoList from '../lists/VideoList';
-import ImageList from '../lists/ImageList';
-import RecommendedList from '../lists/RecommendedList';
+import classes from './DetailsPage.module.css';
+import VideoList from '../../components/lists/video_list/VideoList';
+import ImageList from '../../components/lists/image_list/ImageList';
+import RecommendedList from '../../components/lists/RecommendedList';
 import { getPosterImage } from '../../helpers/imageSizes';
-import CastList from '../lists/CastList';
+import CastList from '../../components/lists/CastList';
 import { IMovieDetails, ITVDetails } from '../../models/detailsModel';
-import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
-import MediaDetails from './MediaDetails';
-import Keywords from '../Keywords';
+import HorizontalListContainer from '../../components/horizontal_list/HorizontalListContainer';
+import DetailsMedia from './DetailsMedia';
+import Keywords from '../../components/Keywords';
 import { useQuery } from '@tanstack/react-query';
 import { fetchSingleResult } from '../../services/http';
 import { ICollectionDetails } from '../../models/commonModel';
-import MediaList from '../lists/MediaList';
-import ReviewsList from '../lists/ReviewsList';
-import ProductionCompaniesList from '../lists/ProductionCompaniesList';
+import MediaList from '../../components/lists/media_list/MediaList';
+import ReviewsList from '../../components/lists/ReviewsList';
+import ProductionCompanies from '../../components/lists/production_companies/ProductionCompanies';
 
 interface IDetailsMainContainer {
   media: IMovieDetails | ITVDetails;
 }
 
-const DetailsMainContainer = ({ media }: IDetailsMainContainer) => {
+const DetailsMain = ({ media }: IDetailsMainContainer) => {
   const images = getGalleryImages({ images: media.images });
   const isMovie = 'title' in media;
   const title = isMovie ? media.title : media.name;
@@ -60,7 +60,7 @@ const DetailsMainContainer = ({ media }: IDetailsMainContainer) => {
       <VideoList videos={media.videos.results} />
 
       <div className={classes['details__container']}>
-        <MediaDetails
+        <DetailsMedia
           status={media.status}
           homepage={media.homepage}
           imdb_id={isMovie ? media.imdb_id : null}
@@ -78,9 +78,7 @@ const DetailsMainContainer = ({ media }: IDetailsMainContainer) => {
           keywords={isMovie ? media.keywords.keywords : media.keywords.results}
         />
       </div>
-      <ProductionCompaniesList
-        production_companies={media.production_companies}
-      />
+      <ProductionCompanies production_companies={media.production_companies} />
       <ReviewsList
         reviews={media.reviews}
         title={isMovie ? media.title : media.name}
@@ -113,4 +111,4 @@ const DetailsMainContainer = ({ media }: IDetailsMainContainer) => {
   );
 };
 
-export default DetailsMainContainer;
+export default DetailsMain;

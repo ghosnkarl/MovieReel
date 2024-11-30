@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import classes from '../../styles/media-details.module.css';
-
+import classes from './DetailsMedia.module.css';
 import { IIdName } from '../../models/commonModel';
 import { formatDate } from '../../helpers/dateFormatter';
 
@@ -9,7 +8,7 @@ interface MediaDetailsItem {
   text: string | number | undefined;
 }
 
-const MediaDetailsItem = ({ title, text }: MediaDetailsItem) => {
+const DetailsMediaItem = ({ title, text }: MediaDetailsItem) => {
   if (!text) return null;
   return (
     <div className={classes['details__left--item']}>
@@ -36,7 +35,7 @@ interface IMediaDetails {
 const formatCurrency = (amount: number) =>
   amount > 0 ? `$ ${amount.toLocaleString('en-US')}` : '-';
 
-const MediaDetails = ({
+const DetailsMedia = ({
   status,
   homepage,
   imdb_id,
@@ -56,20 +55,20 @@ const MediaDetails = ({
     <div>
       <h1 className='section__title'>Details</h1>
       <div className={classes.details}>
-        <MediaDetailsItem title='Created By' text={formattedCreatedBy} />
+        <DetailsMediaItem title='Created By' text={formattedCreatedBy} />
 
         {last_air_date && (
-          <MediaDetailsItem
+          <DetailsMediaItem
             title='Last Air Date'
             text={formatDate(last_air_date)}
           />
         )}
 
-        <MediaDetailsItem title='Status' text={status} />
-        <MediaDetailsItem title='Tagline' text={tagline} />
+        <DetailsMediaItem title='Status' text={status} />
+        <DetailsMediaItem title='Tagline' text={tagline} />
 
         {first_air_date && (
-          <MediaDetailsItem
+          <DetailsMediaItem
             title='First Air Date'
             text={formatDate(first_air_date)}
           />
@@ -96,7 +95,7 @@ const MediaDetails = ({
           </div>
         )}
 
-        <MediaDetailsItem
+        <DetailsMediaItem
           title='Seasons'
           text={
             number_of_seasons && number_of_seasons > 0
@@ -105,7 +104,7 @@ const MediaDetails = ({
           }
         />
 
-        <MediaDetailsItem
+        <DetailsMediaItem
           title='Episodes'
           text={
             number_of_episodes && number_of_episodes > 0
@@ -114,12 +113,12 @@ const MediaDetails = ({
           }
         />
 
-        <MediaDetailsItem
+        <DetailsMediaItem
           title='Budget'
           text={budget && budget > 0 ? formatCurrency(budget) : undefined}
         />
 
-        <MediaDetailsItem
+        <DetailsMediaItem
           title='Revenue'
           text={revenue && revenue > 0 ? formatCurrency(revenue) : undefined}
         />
@@ -128,4 +127,4 @@ const MediaDetails = ({
   );
 };
 
-export default MediaDetails;
+export default DetailsMedia;

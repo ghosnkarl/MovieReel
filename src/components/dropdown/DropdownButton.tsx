@@ -1,5 +1,5 @@
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import classes from '../../styles/dropdown.module.css';
+import classes from './Dropdown.module.css';
 
 interface DropdownButtonProps {
   children: string | JSX.Element;

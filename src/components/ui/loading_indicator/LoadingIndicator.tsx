@@ -1,4 +1,4 @@
-import classes from '../../styles/loading.module.css';
+import classes from './LoadingIndicator.module.css';
 
 export default function LoadingIndicator({ title }: { title: string }) {
   return (

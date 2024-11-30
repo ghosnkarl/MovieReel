@@ -1,6 +1,6 @@
 import { IMovie, ITVShow } from '../../models/mediaModel';
 import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
-import MediaList from './MediaList';
+import MediaList from './media_list/MediaList';
 
 interface IRecommendedList {
   items: IMovie[] | ITVShow[];

@@ -8,7 +8,7 @@ import { IMovie, ITVShow } from '../models/mediaModel';
 import { IPeople } from '../models/peopleModel';
 import { airingTodayDates, upComingDates } from '../helpers/discoverDates';
 import HorizontalWrapper from '../components/HorizontalWrapper';
-import MediaList from '../components/lists/MediaList';
+import MediaList from '../components/lists/media_list/MediaList';
 import PersonItem from '../components/PersonItem';
 
 export default function HomePage() {

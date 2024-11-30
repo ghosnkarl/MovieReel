@@ -5,7 +5,7 @@ import Tabs, { TabObjectProps } from '../components/Tabs';
 import { MOVIE_TABS } from '../data/data';
 import QueryWrapper from '../components/QueryWrapper';
 import { IMovie } from '../models/mediaModel';
-import MediaList from '../components/lists/MediaList';
+import MediaList from '../components/lists/media_list/MediaList';
 
 export default function MoviesPage() {
   const tabs = MOVIE_TABS;

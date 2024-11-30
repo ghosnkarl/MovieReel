@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import classes from '../styles/credits-item.module.css';
-import { getProfileImage } from '../helpers/imageSizes';
+import classes from './CreditsItem.module.css';
+import { getProfileImage } from '../../../helpers/imageSizes';
 
 interface CreditItemProps {
   id: number | string;

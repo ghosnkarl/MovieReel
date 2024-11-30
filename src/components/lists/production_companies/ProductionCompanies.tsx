@@ -1,15 +1,15 @@
 import { NavLink } from 'react-router-dom';
-import { IIdName } from '../../models/commonModel';
-import HorizontalListContainer from '../horizontal_list/HorizontalListContainer';
-import classes from './production-companies.module.css';
+import { IIdName } from '../../../models/commonModel';
+import HorizontalListContainer from '../../horizontal_list/HorizontalListContainer';
+import classes from './ProductionCompanies.module.css';
 
-interface IProductionCompaniesList {
+interface IProductionCompanies {
   production_companies: IIdName[];
 }
 
-const ProductionCompaniesList = ({
+const ProductionCompanies = ({
   production_companies,
-}: IProductionCompaniesList) => {
+}: IProductionCompanies) => {
   return (
     <HorizontalListContainer
       title='Production Companies'
@@ -28,4 +28,4 @@ const ProductionCompaniesList = ({
   );
 };
 
-export default ProductionCompaniesList;
+export default ProductionCompanies;

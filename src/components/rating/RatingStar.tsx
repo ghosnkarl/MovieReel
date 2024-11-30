@@ -1,15 +1,18 @@
 import { Rating } from '@mui/material';
-import classes from '../../styles/rating-star.module.css';
+import classes from './RatingStar.module.css';
 import { MdOutlineStarBorder } from 'react-icons/md';
 
-const RatingStar = ({
-  value,
-  size,
-}: {
+interface IRatingStar {
   value: number;
   size: 'small' | 'medium';
-}) => {
-  const formattedRating = +(value / 2).toFixed(1);
+  vote_count?: number;
+}
+
+function toOneDecimalWithoutRounding(num: number) {
+  return Math.trunc(num * 10) / 10;
+}
+const RatingStar = ({ value, size, vote_count }: IRatingStar) => {
+  const formattedRating = toOneDecimalWithoutRounding(+(value / 2));
   const starSize = size === 'small' ? '2.2rem' : '2.4rem';
   return (
     <div className={`${classes.container} ${classes[`container--${size}`]}`}>
@@ -20,7 +23,12 @@ const RatingStar = ({
         precision={0.5}
         emptyIcon={<MdOutlineStarBorder style={{ color: '#ececec' }} />}
       />
-      <p>{formattedRating === 0 ? 'NR' : formattedRating}</p>
+      <p>
+        {formattedRating === 0 ? 'NR' : formattedRating}{' '}
+        {formattedRating > 0 &&
+          vote_count &&
+          `(${vote_count?.toLocaleString()})`}
+      </p>
     </div>
   );
 };

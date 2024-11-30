@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { fetchSingleResult } from '../../services/http';
-import classes from './details-page.module.css';
-import DetailsPageHeader from '../details_page_header/DetailsPageHeader';
-import QueryWrapper from '../QueryWrapper';
-import DetailsMainContainer from './DetailsMainContainer';
+import classes from './DetailsPage.module.css';
+import DetailsHeader from './details_header/DetailsHeader';
+import QueryWrapper from '../../components/QueryWrapper';
+import DetailsMain from './DetailsMain';
 import { IMovieDetails, ITVDetails } from '../../models/detailsModel';
 
 const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
@@ -38,7 +38,7 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
         query={query}
         message={`${isMovie ? 'Movie' : 'TV'} Details`}
       >
-        <DetailsPageHeader
+        <DetailsHeader
           title={'title' in media ? media.title : media.name}
           overview={media.overview}
           genres={media.genres}
@@ -49,7 +49,7 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
           vote_count={media.vote_count}
         />
 
-        <DetailsMainContainer media={media} />
+        <DetailsMain media={media} />
       </QueryWrapper>
     </div>
   );

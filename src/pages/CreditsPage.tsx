@@ -1,11 +1,10 @@
 import { useLocation } from 'react-router-dom';
-import classes from '../styles/credits-page.module.css';
 import { useState } from 'react';
-import { ICast, ICrew } from '../models/castCrewModel';
+import { ICrew } from '../models/castCrewModel';
 import Tabs, { TabObjectProps } from '../components/Tabs';
 import { CREDITS_TABS } from '../data/data';
-import CreditItem from '../components/CreditItem';
 import Tags from '../components/Tags';
+import CreditsList from '../components/lists/credits_list/CreditsList';
 
 const CreditsPage = () => {
   const location = useLocation();
@@ -41,21 +40,7 @@ const CreditsPage = () => {
         layoutId='credits_page'
       />
       {selectedTab.value === 'cast' && (
-        <div className={classes['list__container']}>
-          {credits.cast.map((cast: ICast) => (
-            <CreditItem
-              key={cast.cast_id || cast.roles[0].credit_id}
-              id={cast.id}
-              profile_path={cast.profile_path}
-              title={cast.name}
-              text={
-                cast.character ||
-                (cast.roles &&
-                  cast.roles.map((role) => role.character).join(', '))
-              }
-            />
-          ))}
-        </div>
+        <CreditsList credits={credits.cast}></CreditsList>
       )}
 
       {selectedTab.value === 'crew' && (
@@ -66,27 +51,11 @@ const CreditsPage = () => {
             handleSelectTag={handleSelectDepartment}
           />
 
-          <div className={classes['list__container']}>
-            {filteredCrewList
-              .filter((item) => item.department === selectedDepartment)
-              .map((crew) => (
-                <CreditItem
-                  key={crew.credit_id || crew.jobs[0].credit_id}
-                  id={crew.id}
-                  profile_path={crew.profile_path}
-                  title={crew.name}
-                  text={
-                    crew.job ||
-                    (crew.jobs &&
-                      `${crew.jobs
-                        .map(
-                          (job) => `${job.job} (${job.episode_count} episodes)`
-                        )
-                        .join(', ')}`)
-                  }
-                />
-              ))}
-          </div>
+          <CreditsList
+            credits={filteredCrewList.filter(
+              (item) => item.department === selectedDepartment
+            )}
+          />
         </>
       )}
     </div>

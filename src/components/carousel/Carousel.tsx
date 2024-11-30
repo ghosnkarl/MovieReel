@@ -1,4 +1,4 @@
-import classes from './carousel.module.css';
+import classes from './Carousel.module.css';
 import { useState } from 'react';
 import CarouselItem from './CarouselItem';
 import { useQuery } from '@tanstack/react-query';
@@ -25,19 +25,6 @@ const CarouselArrow = ({ direction, handleClick }: ICarouselArrow) => {
     </button>
   );
 };
-
-const CarouselControls = ({
-  onNext,
-  onPrev,
-}: {
-  onNext: () => void;
-  onPrev: () => void;
-}) => (
-  <>
-    <CarouselArrow direction='left' handleClick={onPrev} />
-    <CarouselArrow direction='right' handleClick={onNext} />
-  </>
-);
 
 interface ICarouselSlide {
   genres: IIdName[] | undefined;
@@ -94,7 +81,8 @@ const Carousel = ({ genres }: ICarousel) => {
           current={currentIndex}
           content={movies}
         />
-        <CarouselControls onNext={nextSlide} onPrev={prevSlide} />
+        <CarouselArrow direction='left' handleClick={prevSlide} />
+        <CarouselArrow direction='right' handleClick={nextSlide} />
       </div>
     </QueryWrapper>
   );

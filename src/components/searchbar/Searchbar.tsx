@@ -1,5 +1,5 @@
 import { ChangeEvent, useRef, useState } from 'react';
-import classes from '../../styles/searchbar.module.css';
+import classes from './SearchBar.module.css';
 import SearchTag from './SearchTag';
 import { useQuery } from '@tanstack/react-query';
 import { fetchResults } from '../../services/http';

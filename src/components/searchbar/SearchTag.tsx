@@ -1,5 +1,5 @@
 import { IoClose } from 'react-icons/io5';
-import classes from '../../styles/search-tag.module.css';
+import classes from './SearchTag.module.css';
 
 interface SearchTagProps {
   title: string;

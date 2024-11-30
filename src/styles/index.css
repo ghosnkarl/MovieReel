@@ -283,3 +283,9 @@ body {
   height: 3.4rem;
   gap: 1.6rem;
 }
+
+.credits-list__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}

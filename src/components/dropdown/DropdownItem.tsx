@@ -1,4 +1,4 @@
-import classes from '../../styles/dropdown.module.css';
+import classes from './Dropdown.module.css';
 
 interface DropdownItemProps {
   isSelected: boolean;
