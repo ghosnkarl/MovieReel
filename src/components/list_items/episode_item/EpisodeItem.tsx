@@ -10,7 +10,7 @@ const EpisodeItem = ({ episode }: { episode: IEpisode }) => {
       <img
         src={getBackdropImage(episode.still_path, 'w780')}
         alt={episode.name}
-        className={classes.image}
+        className={classes.backdrop}
       />
       <div>
         <h1 className={classes.title}>

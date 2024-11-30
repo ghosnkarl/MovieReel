@@ -6,12 +6,11 @@
   box-shadow: var(--card--box-shadow);
   align-items: center;
   padding-right: 2.4rem;
-  transition: all 0.2s ease-in-out;
   border-radius: 8px;
   overflow: hidden;
 }
 
-.image {
+.backdrop {
   width: 28rem;
   aspect-ratio: 1.4;
   object-fit: cover;

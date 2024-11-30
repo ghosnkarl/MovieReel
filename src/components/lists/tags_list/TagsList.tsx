@@ -13,7 +13,7 @@ const TagsList = ({ tagsList, handleSelectTag, selectedTag }: ITags) => {
         <button
           onClick={() => handleSelectTag(job)}
           key={job}
-          className={`btn ${classes['btn-tag']} ${
+          className={`${classes['btn-tag']} ${
             selectedTag === job ? classes.selected : ''
           }`}
         >

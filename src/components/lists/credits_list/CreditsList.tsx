@@ -5,33 +5,30 @@ interface ICreditsList {
   credits: ICast[] | ICrew[];
 }
 
+const getCreditDetails = (credit: ICast | ICrew) => {
+  const isCast = 'character' in credit || 'roles' in credit;
+  const key = isCast
+    ? credit.cast_id || credit.roles?.[0]?.credit_id
+    : credit.credit_id || credit.jobs?.[0]?.credit_id;
+
+  const text = isCast
+    ? credit.character ||
+      credit.roles
+        ?.map((role) => `${role.character} (${role.episode_count} episodes)`)
+        .join(', ')
+    : credit.job ||
+      credit.jobs
+        ?.map((job) => `${job.job} (${job.episode_count} episodes)`)
+        .join(', ');
+
+  return { key, text };
+};
+
 const CreditsList = ({ credits }: ICreditsList) => {
   return (
     <div className='credits-list__container'>
       {credits.map((credit) => {
-        const isCast = 'character' in credit || 'roles' in credit;
-        let key: string | number;
-        let text: string;
-
-        if (isCast) {
-          key = credit.cast_id || credit.roles[0].credit_id;
-          text =
-            credit.character ||
-            (credit.roles &&
-              credit.roles
-                .map(
-                  (role) => `${role.character} (${role.episode_count} episodes)`
-                )
-                .join(', '));
-        } else {
-          key = credit.credit_id || credit.jobs[0].credit_id;
-          text =
-            credit.job ||
-            (credit.jobs &&
-              `${credit.jobs
-                .map((job) => `${job.job} (${job.episode_count} episodes)`)
-                .join(', ')}`);
-        }
+        const { key, text } = getCreditDetails(credit);
 
         return (
           <CreditItem
