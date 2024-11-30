@@ -26,30 +26,31 @@ export const MediaItem = ({
   return (
     <NavLink
       to={link}
-      className={classes['container__link']}
+      className={classes['link__wrapper']}
       state={{ title, image: getPosterImage(poster_path, 'w342') }}
     >
-      <div className={classes['container']}>
-        <div className={classes['img-container']}>
-          <img src={getPosterImage(poster_path, 'w342')} alt={title} />
+      <div className={classes.container}>
+        <div className={classes['img__container']}>
+          <img
+            className={classes.poster}
+            src={getPosterImage(poster_path, 'w342')}
+            alt={title}
+          />
         </div>
-        <div className={classes['text-container']}>
-          <h2>{title}</h2>
-          <p>{text}</p>
-        </div>
+        <h2 className={classes.title}>{title}</h2>
+        <p className={classes.text}>{text}</p>
       </div>
     </NavLink>
   );
 };
 
-const MediaList = ({
-  data,
-  type,
-}: {
+interface IMediaList {
   data: IMovie[] | ITVShow[] | ISeason[] | undefined;
   type: MediaType;
-}) => {
-  if (!data || data.length === 0) return null;
+}
+
+const MediaList = ({ data, type }: IMediaList) => {
+  if (!data || data.length === 0) return;
 
   return (
     <>

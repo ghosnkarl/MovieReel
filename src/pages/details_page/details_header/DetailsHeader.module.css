@@ -14,7 +14,6 @@
   margin: var(--page-width--margin);
   padding: 7rem var(--page-padding--horizontal);
   position: absolute;
-  z-index: 3; /* Places it above the darkened backdrop */
   gap: 12.8rem;
   top: 50%;
   transform: translateY(-50%);
@@ -54,7 +53,7 @@
 
   background: linear-gradient(
     to right,
-    rgba(20, 20, 20, 0.9),
+    rgba(20, 20, 20, 0.7),
     rgba(20, 20, 20, 0.3)
   );
 }
