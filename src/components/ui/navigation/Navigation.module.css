@@ -10,32 +10,26 @@
   z-index: 1;
 }
 
-.header nav {
+.navigation {
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: space-between;
 }
 
-.header nav img {
+.logo {
   width: 5rem;
   margin-right: 3.2rem;
 }
 
-.icon {
-  color: white;
-  width: 2.4rem;
-  height: 2.4rem;
-}
-
-.nav-list {
+.list {
   display: flex;
   list-style: none;
   gap: 4.8rem;
 }
 
-.nav-list a:link,
-.nav-list a:visited {
+.list a:link,
+.list a:visited {
   color: white;
   text-decoration: none;
   font-size: 1.7rem;
@@ -43,8 +37,14 @@
   border-radius: 1000px;
 }
 
-.nav-list a:hover,
-.nav-list a:active,
+.list a:hover,
+.list a:active,
 .active {
   color: var(--color-primary-900) !important;
+}
+
+.search-icon {
+  color: white;
+  width: 2.4rem;
+  height: 2.4rem;
 }
