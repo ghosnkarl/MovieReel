@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import classes from '../movies_page/MoviesPage.module.css';
 import { ITVShow } from '../../models/mediaModel';
 import { useState } from 'react';
-import Tabs, { TabObjectProps } from '../../components/ui/Tabs';
+import Tabs, { TabObjectProps } from '../../components/ui/tabs/Tabs';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import { TV_TABS } from '../../data/tabsData';
 import MediaList from '../../components/lists/media_list/MediaList';
@@ -37,7 +37,7 @@ export default function TVPage() {
       />
       <div className={classes.container}>
         <ul className={classes['main-container']}>{content}</ul>
-        <button className={`btn ${classes['btn--more']}`}>Load More</button>
+        <button className={classes['btn--more']}>Load More</button>
       </div>
     </div>
   );

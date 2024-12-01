@@ -7,7 +7,7 @@ import { useEffect, useMemo, useState } from 'react';
 import moment from 'moment';
 import ImageList from '../../components/lists/image_list/ImageList';
 import { CREDITS_TABS } from '../../data/tabsData';
-import Tabs, { TabObjectProps } from '../../components/ui/Tabs';
+import Tabs, { TabObjectProps } from '../../components/ui/tabs/Tabs';
 import { ICastMedia, ICrewMedia, IPerson } from '../../models/peopleModel';
 import { IImage } from '../../models/commonModel';
 import { MediaItem } from '../../components/lists/media_list/MediaList';

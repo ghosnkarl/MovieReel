@@ -53,6 +53,23 @@ html {
   font-size: 62.5%;
 }
 
+a:link,
+a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+button {
+  outline: none;
+  background: none;
+  cursor: pointer;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 500;
+}
+
 body {
   font-family: 'Manrope', sans-serif;
   background-color: var(--color-background);
@@ -91,12 +108,6 @@ body {
 }
 
 /********************** Links **********************/
-.link__wrapper:link,
-.link__wrapper:visited {
-  text-decoration: none;
-  color: white;
-}
-
 .link--gradient:link,
 .link--gradient:visited {
   display: flex;
@@ -143,14 +154,6 @@ body {
 }
 
 /********************** Buttons **********************/
-.btn {
-  outline: none;
-  background: none;
-  cursor: pointer;
-  color: white;
-  display: flex;
-  align-items: center;
-}
 
 .btn--gradient {
   border: none;
@@ -171,30 +174,6 @@ body {
 
 .btn--gradient:hover {
   background-position: right center;
-}
-
-/********************** Tabs **********************/
-.tabs {
-  list-style: none;
-  gap: 1.6rem;
-  margin-bottom: 1.6rem;
-}
-
-.tabs--btn {
-  border: none;
-  padding: 0.5rem 1rem;
-  font-size: 1.7rem;
-}
-
-.tab-active,
-.tabs--btn:hover {
-  color: var(--color-primary-900) !important;
-}
-
-.tab-selector {
-  height: 1.5px;
-  background-color: var(--color-primary-900);
-  border-radius: 8px;
 }
 
 .credits-list__container {

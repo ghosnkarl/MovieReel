@@ -11,8 +11,6 @@
 
 .title:link,
 .title:visited {
-  text-decoration: none;
-  color: white;
   background-color: var(--color-gray-600);
   box-shadow: var(--card--box-shadow);
   font-size: 1.6rem;

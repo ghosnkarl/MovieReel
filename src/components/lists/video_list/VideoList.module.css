@@ -1,8 +1,7 @@
 .container:link,
 .container:visited {
   display: flex;
-  text-decoration: none;
-  color: white;
+
   flex-direction: column;
   cursor: pointer;
 }

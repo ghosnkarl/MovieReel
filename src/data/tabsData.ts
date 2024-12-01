@@ -1,4 +1,4 @@
-import { TabObjectProps } from '../components/ui/Tabs';
+import { TabObjectProps } from '../components/ui/tabs/Tabs';
 import {
   airingTodayDates,
   nowPlayingDates,

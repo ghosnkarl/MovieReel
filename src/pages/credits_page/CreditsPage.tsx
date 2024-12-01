@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { ICrew } from '../../models/castCrewModel';
-import Tabs, { TabObjectProps } from '../../components/ui/Tabs';
+import Tabs, { TabObjectProps } from '../../components/ui/tabs/Tabs';
 import { CREDITS_TABS } from '../../data/tabsData';
 import TagsList from '../../components/lists/tags_list/TagsList';
 import CreditsList from '../../components/lists/credits_list/CreditsList';

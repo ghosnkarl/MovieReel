@@ -3,13 +3,13 @@ import { getBackdropImage, getPosterImage } from '../../../helpers/imageSizes';
 import { fetchResults } from '../../../services/http';
 import classes from './TopTrending.module.css';
 import RatingStar from '../../rating/RatingStar';
-import LinkWrapper from '../../ui/LinkWrapper';
 import HeaderLink from '../../ui/header_link/HeaderLink';
 import { IMovie, ITVShow } from '../../../models/mediaModel';
 import { MediaType } from '../../../models/commonModel';
 import { formatDate } from '../../../helpers/dateFormatter';
 import LoadingIndicator from '../../ui/LoadingIndicator';
 import ErrorBlock from '../../ui/error_block/ErrorBlock';
+import { NavLink } from 'react-router-dom';
 
 const getTitle = (item: IMovie | ITVShow) =>
   'title' in item ? item.title : item.name;
@@ -37,7 +37,7 @@ const TopTrendingItem = ({ item, isTopOne }: ITopTrendingItem) => {
   const styleType = isTopOne ? 'top' : 'regular';
 
   return (
-    <LinkWrapper key={item.id} link={getItemLink(item)}>
+    <NavLink key={item.id} to={getItemLink(item)}>
       <div
         className={`${classes['item__container']} ${
           classes[`item__container--${styleType}`]
@@ -56,7 +56,7 @@ const TopTrendingItem = ({ item, isTopOne }: ITopTrendingItem) => {
           <p className={classes[`date--${styleType}`]}>{formatDate(date)}</p>
         </div>
       </div>
-    </LinkWrapper>
+    </NavLink>
   );
 };
 

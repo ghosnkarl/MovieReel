@@ -33,7 +33,7 @@ const ErrorPage = () => {
       <div className={classes.error}>
         <h1 className={classes['error__title']}>Oops! An error Occured!</h1>
         <h2 className={classes['error__message']}>{errorMessage}</h2>
-        <button onClick={() => navigate(-1)} className='btn btn--gradient'>
+        <button onClick={() => navigate(-1)} className='btn--gradient'>
           <IoArrowBack />
           Back
         </button>

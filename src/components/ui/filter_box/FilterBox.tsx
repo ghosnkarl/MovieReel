@@ -84,9 +84,7 @@ const FilterBox = () => {
         <h1>Keywords</h1>
         <Searchbar />
       </div>
-      <button onClick={handleSearch} className='btn'>
-        Search
-      </button>
+      <button onClick={handleSearch}>Search</button>
     </div>
   );
 };
