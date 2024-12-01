@@ -4,7 +4,7 @@ import { fetchResults } from '../../../services/http';
 import classes from './TopTrending.module.css';
 import RatingStar from '../../rating/RatingStar';
 import LinkWrapper from '../../ui/LinkWrapper';
-import HeaderLink from '../../ui/HeaderLink';
+import HeaderLink from '../../ui/header_link/HeaderLink';
 import { IMovie, ITVShow } from '../../../models/mediaModel';
 import { MediaType } from '../../../models/commonModel';
 import { formatDate } from '../../../helpers/dateFormatter';

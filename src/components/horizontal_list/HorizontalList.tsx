@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import ListArrows from './ListArrows';
-import HeaderLink from '../ui/HeaderLink';
+import HeaderLink from '../ui/header_link/HeaderLink';
 import classes from './HorizontalList.module.css';
 
 interface IHorizontalList {

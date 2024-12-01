@@ -90,11 +90,6 @@ body {
   margin-bottom: 3.2rem;
 }
 
-.list__header--icon {
-  font-size: 3.5rem;
-  transition: all 0.2s ease-in-out;
-}
-
 /********************** Links **********************/
 .link__wrapper:link,
 .link__wrapper:visited {
@@ -145,23 +140,6 @@ body {
 .section__title {
   font-size: var(--section--title-size);
   font-weight: 700;
-}
-
-.section__link:link,
-.section__link:visited {
-  width: fit-content;
-  font-size: var(--section--title-size);
-  font-weight: 700;
-  text-decoration: none;
-  color: white;
-  display: flex;
-  align-items: center;
-  gap: 0.2rem;
-}
-
-.section__link:hover .list__header--icon,
-.section__link:active .list__header--icon {
-  transform: translateX(20%);
 }
 
 /********************** Buttons **********************/

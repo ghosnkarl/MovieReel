@@ -1,0 +1,21 @@
+.container:link,
+.container:visited {
+  width: fit-content;
+  font-size: var(--section--title-size);
+  font-weight: 700;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.container:hover .icon,
+.container:active .icon {
+  transform: translateX(20%);
+}
+
+.icon {
+  font-size: 3.5rem;
+  transition: all 0.2s ease-in-out;
+}

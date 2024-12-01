@@ -1,5 +1,6 @@
 import { MdNavigateNext } from 'react-icons/md';
 import { NavLink } from 'react-router-dom';
+import classes from './HeaderLink.module.css';
 
 interface HeaderLinkProps {
   title: string;
@@ -9,9 +10,9 @@ interface HeaderLinkProps {
 
 const HeaderLink = ({ title, link, linkState }: HeaderLinkProps) => {
   return (
-    <NavLink to={link} state={linkState} className='section__link'>
+    <NavLink to={link} state={linkState} className={classes.container}>
       {title}
-      <MdNavigateNext className='list__header--icon' />
+      <MdNavigateNext className={classes.icon} />
     </NavLink>
   );
 };
