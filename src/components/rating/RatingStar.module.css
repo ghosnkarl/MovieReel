@@ -14,3 +14,8 @@
 .container--medium {
   font-size: 1.8rem !important;
 }
+
+.star {
+  font-size: 1.8rem;
+  color: var(--color-primary-900);
+}

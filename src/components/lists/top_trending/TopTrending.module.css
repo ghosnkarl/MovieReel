@@ -6,15 +6,12 @@
   justify-content: center;
 }
 
-.container__left {
-  width: 100%;
-  height: 100%;
-  background-color: var(--color-background--card);
+.item__container {
   display: flex;
-  flex-direction: column;
+  background-color: var(--color-background--card);
   box-shadow: var(--card--box-shadow);
   cursor: pointer;
-  border-radius: 10px;
+
   overflow: hidden;
 
   &:hover {
@@ -22,73 +19,69 @@
   }
 }
 
-.container__left img {
+.item__container--top {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  border-radius: 10px;
+}
+
+.item__container--regular {
+  border-radius: 7px;
+  padding: 1.2rem;
+  gap: 2.4rem;
+}
+
+.image--top {
   width: 100%;
   height: 70%;
   object-fit: cover;
   margin-bottom: 2.4rem;
 }
 
-.container__left--text {
-  display: flex;
-  flex-direction: column;
-  padding-left: 2.4rem;
-}
-
-.container__left--text h1 {
-  font-size: 2.8rem;
-  font-weight: 500;
-  margin-bottom: 0.8rem;
-}
-
-.top__date {
-  margin-top: 1.6rem;
-  font-size: 1.6rem;
-  color: var(--color-gray-200);
-}
-
-.container--right {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.item-container {
-  display: flex;
-  background-color: var(--color-background--card);
-  box-shadow: var(--card--box-shadow);
-  /* border: 2px solid var(--color-background--border); */
-  padding: 1.2rem;
-  border-radius: 7px;
-  cursor: pointer;
-  gap: 2.4rem;
-
-  &:hover {
-    /* background-color: var(--color-gray-600); */
-    box-shadow: var(--hover-border);
-  }
-}
-
-.item-container img {
+.image--regular {
   width: 6rem;
   object-fit: cover;
   border-radius: 5px;
 }
 
-.item-container--right {
+.item__container__text--top {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2.4rem;
+}
+
+.item__container__text--regular {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   margin-top: 0.4rem;
 }
 
-.item-container--right h1 {
+.title--top {
+  font-size: 2.8rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+
+.title--regular {
   font-size: 1.8rem;
   font-weight: 600;
 }
 
-.date {
+.date--top {
+  margin-top: 1rem;
+  font-size: 1.6rem;
+  color: var(--color-gray-300);
+}
+
+.date--regular {
   font-size: 1.4rem;
   color: var(--color-gray-300);
+}
+
+.container__right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 }

@@ -5,6 +5,7 @@ export interface IBaseMedia {
   vote_average: number;
   backdrop_path: string;
   genre_ids: number[];
+  vote_count: number;
 }
 
 export interface IMovie extends IBaseMedia {

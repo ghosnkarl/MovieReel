@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { Fragment } from 'react';
 import RatingStar from '../rating/RatingStar';
 import { IIdName } from '../../models/commonModel';
+import { getGenres } from '../../helpers/commonHelpers';
 
 const itemTransition = {
   type: 'spring',
@@ -13,12 +14,6 @@ const itemTransition = {
   damping: 30,
   duration: 0.1,
 };
-
-const getGenres = (genreIds: number[], genres: IIdName[]) =>
-  genreIds
-    .map((id) => genres.find((genre) => genre.id === id)?.name)
-    .filter(Boolean) // Remove undefined values
-    .join(', ');
 
 interface ICarousel {
   current: { index: number; isRight: boolean };

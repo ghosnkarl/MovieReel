@@ -3,9 +3,10 @@ import { useParams } from 'react-router-dom';
 import { fetchSingleResult } from '../../services/http';
 import classes from './DetailsPage.module.css';
 import DetailsHeader from './details_header/DetailsHeader';
-import QueryWrapper from '../../components/ui/QueryWrapper';
+
 import DetailsMain from './DetailsMain';
 import { IMovieDetails, ITVDetails } from '../../models/detailsModel';
+import QueryWrapper from '../../components/ui/QueryWrapper';
 
 const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
   const params = useParams();
