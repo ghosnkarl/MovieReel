@@ -8,7 +8,7 @@ import HeaderLink from '../../ui/HeaderLink';
 import { IMovie, ITVShow } from '../../../models/mediaModel';
 import { MediaType } from '../../../models/commonModel';
 import { formatDate } from '../../../helpers/dateFormatter';
-import LoadingIndicator from '../../ui/loading_indicator/LoadingIndicator';
+import LoadingIndicator from '../../ui/LoadingIndicator';
 import ErrorBlock from '../../ui/error_block/ErrorBlock';
 
 const getTitle = (item: IMovie | ITVShow) =>
@@ -79,8 +79,7 @@ const TopTrending = ({ type }: ITopTrending) => {
   const message = `Trending ${isMovie ? 'Movies' : 'TV Shows'}`;
   const headerTitle = `Top 5 ${isMovie ? 'Movies' : 'TV Shows'} of the Week`;
 
-  if (trendingQuery.isLoading)
-    return <LoadingIndicator title={`Fetching ${message}...`} />;
+  if (trendingQuery.isLoading) return <LoadingIndicator />;
 
   if (trendingQuery.isError)
     return (

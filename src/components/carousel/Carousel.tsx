@@ -7,7 +7,7 @@ import { fetchResults } from '../../services/http';
 import { IMovie } from '../../models/mediaModel';
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import { IIdName } from '../../models/commonModel';
-import LoadingIndicator from '../ui/loading_indicator/LoadingIndicator';
+import LoadingIndicator from '../ui/LoadingIndicator';
 import ErrorBlock from '../ui/error_block/ErrorBlock';
 
 interface ICarouselArrow {
@@ -58,8 +58,7 @@ const Carousel = ({ genres }: ICarousel) => {
     retry: 1,
   });
 
-  if (moviesQuery.isLoading)
-    return <LoadingIndicator title='Fetching Now Playing Movies' />;
+  if (moviesQuery.isLoading) return <LoadingIndicator />;
   if (moviesQuery.isError)
     return (
       <ErrorBlock

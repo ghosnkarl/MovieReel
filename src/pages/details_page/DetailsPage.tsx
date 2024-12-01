@@ -5,7 +5,7 @@ import classes from './DetailsPage.module.css';
 import DetailsHeader from './details_header/DetailsHeader';
 import DetailsMain from './DetailsMain';
 import { IMovieDetails, ITVDetails } from '../../models/detailsModel';
-import LoadingIndicator from '../../components/ui/loading_indicator/LoadingIndicator';
+import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import ErrorPage from '../error_page/ErrorPage';
 
 const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
@@ -27,12 +27,7 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
     retry: 0,
   });
 
-  if (query.isLoading)
-    return (
-      <LoadingIndicator
-        title={`Fetching ${isMovie ? 'Movie' : 'TV'} Details...`}
-      />
-    );
+  if (query.isLoading) return <LoadingIndicator />;
 
   if (query.isError) return <ErrorPage />;
 

@@ -3,7 +3,7 @@ import classes from '../movies_page/MoviesPage.module.css';
 import { ITVShow } from '../../models/mediaModel';
 import { useState } from 'react';
 import Tabs, { TabObjectProps } from '../../components/ui/Tabs';
-import LoadingIndicator from '../../components/ui/loading_indicator/LoadingIndicator';
+import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import { TV_TABS } from '../../data/tabsData';
 import MediaList from '../../components/lists/media_list/MediaList';
 
@@ -21,7 +21,7 @@ export default function TVPage() {
     retry: 1,
   });
 
-  let content = <LoadingIndicator title={`Fetching ${selectedTab.title}...`} />;
+  let content = <LoadingIndicator />;
 
   if (data) {
     content = <MediaList type='tv' data={data as ITVShow[]} />;

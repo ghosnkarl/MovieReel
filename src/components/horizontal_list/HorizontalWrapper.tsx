@@ -1,7 +1,7 @@
 import { UseQueryResult } from '@tanstack/react-query';
 
 import HorizontalList from './HorizontalList';
-import LoadingIndicator from '../ui/loading_indicator/LoadingIndicator';
+import LoadingIndicator from '../ui/LoadingIndicator';
 import ErrorBlock from '../ui/error_block/ErrorBlock';
 
 interface IHorizontalWrapper {
@@ -17,8 +17,7 @@ const HorizontalWrapper = ({
   link,
   children,
 }: IHorizontalWrapper) => {
-  if (query.isLoading)
-    return <LoadingIndicator title={`Fetching ${title}...`} />;
+  if (query.isLoading) return <LoadingIndicator />;
 
   if (query.isError)
     return (

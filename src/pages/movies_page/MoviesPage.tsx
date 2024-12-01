@@ -5,7 +5,7 @@ import Tabs, { TabObjectProps } from '../../components/ui/Tabs';
 import { MOVIE_TABS } from '../../data/tabsData';
 import { IMovie } from '../../models/mediaModel';
 import MediaList from '../../components/lists/media_list/MediaList';
-import LoadingIndicator from '../../components/ui/loading_indicator/LoadingIndicator';
+import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import ErrorPage from '../error_page/ErrorPage';
 
 export default function MoviesPage() {
@@ -22,8 +22,7 @@ export default function MoviesPage() {
     retry: 1,
   });
 
-  if (selectedQuery.isLoading)
-    return <LoadingIndicator title={`Fetching ${selectedTab.title}...`} />;
+  if (selectedQuery.isLoading) return <LoadingIndicator />;
   if (selectedQuery.isError) return <ErrorPage />;
 
   return (
