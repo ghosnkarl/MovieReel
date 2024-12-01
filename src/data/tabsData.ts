@@ -1,14 +1,14 @@
-import { TabObjectProps } from '../components/ui/tabs/Tabs';
+import { ITabObject } from '../components/ui/tabs/Tabs';
 import {
   airingTodayDates,
   nowPlayingDates,
   onAirDates,
   upComingDates,
-} from '../helpers/discoverDates';
+} from '../helpers/discoverHelpers';
 import { IMovie, ITVShow } from '../models/mediaModel';
 import { fetchResults } from '../services/http';
 
-export const MOVIE_TABS: TabObjectProps[] = [
+export const MOVIE_TABS: ITabObject[] = [
   {
     title: 'Trending',
     value: 'trending',
@@ -50,7 +50,7 @@ export const CREDITS_TABS = [
   { title: 'Crew', value: 'crew' },
 ];
 
-export const TV_TABS = [
+export const TV_TABS: ITabObject[] = [
   {
     title: 'Trending',
     value: 'trending',

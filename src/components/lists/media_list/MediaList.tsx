@@ -3,7 +3,7 @@ import { ISeason } from '../../../models/seasonModel';
 import { NavLink } from 'react-router-dom';
 import classes from './MediaItem.module.css';
 import { getPosterImage } from '../../../helpers/imageSizes';
-import { formatDate } from '../../../helpers/dateFormatter';
+import { formatDate } from '../../../helpers/commonHelpers';
 
 type MediaType = 'movies' | 'tv' | 'season';
 

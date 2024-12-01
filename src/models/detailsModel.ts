@@ -3,7 +3,7 @@ import { ICast, ICrew } from './castCrewModel';
 import { IMovie, ITVShow } from './mediaModel';
 import { ISeason } from './seasonModel';
 
-interface IDetailsImages {
+export interface IDetailsImages {
   backdrops: IImage[];
   posters: IImage[];
   logos: IImage[];

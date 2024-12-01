@@ -1,4 +1,9 @@
 import { IIdName } from '../models/commonModel';
+import moment from 'moment';
+
+export const formatDate = (date: string | null) => {
+  return date ? moment(date).format('MMM DD, YYYY') : 'Unknown';
+};
 
 export const getGenres = (
   genreIds: number[],

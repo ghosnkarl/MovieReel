@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import classes from './DetailsMedia.module.css';
 import { IIdName } from '../../models/commonModel';
-import { formatDate } from '../../helpers/dateFormatter';
+import { formatDate } from '../../helpers/commonHelpers';
 
 interface MediaDetailsItem {
   title: string;

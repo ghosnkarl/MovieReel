@@ -7,13 +7,13 @@ import { useEffect, useMemo, useState } from 'react';
 import moment from 'moment';
 import ImageList from '../../components/lists/image_list/ImageList';
 import { CREDITS_TABS } from '../../data/tabsData';
-import Tabs, { TabObjectProps } from '../../components/ui/tabs/Tabs';
+import Tabs, { ITabObject } from '../../components/ui/tabs/Tabs';
 import { ICastMedia, ICrewMedia, IPerson } from '../../models/peopleModel';
 import { IImage } from '../../models/commonModel';
 import { MediaItem } from '../../components/lists/media_list/MediaList';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import TagsList from '../../components/lists/tags_list/TagsList';
-import { formatDate } from '../../helpers/dateFormatter';
+import { formatDate } from '../../helpers/commonHelpers';
 
 const MediaItems = ({ media }: { media: ICastMedia[] | ICrewMedia[] }) => {
   return (
@@ -69,7 +69,7 @@ const PeopleDetailsPage = () => {
     }
   }, [data]);
 
-  const handleSelectTab = (tab: TabObjectProps) => {
+  const handleSelectTab = (tab: ITabObject) => {
     setSelectedTab(tab);
   };
 

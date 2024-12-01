@@ -6,7 +6,7 @@ import RatingStar from '../../rating/RatingStar';
 import HeaderLink from '../../ui/header_link/HeaderLink';
 import { IMovie, ITVShow } from '../../../models/mediaModel';
 import { MediaType } from '../../../models/commonModel';
-import { formatDate } from '../../../helpers/dateFormatter';
+import { formatDate } from '../../../helpers/commonHelpers';
 import LoadingIndicator from '../../ui/LoadingIndicator';
 import ErrorBlock from '../../ui/error_block/ErrorBlock';
 import { NavLink } from 'react-router-dom';

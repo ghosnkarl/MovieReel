@@ -2,7 +2,7 @@ import { getBackdropImage } from '../../../helpers/imageSizes';
 import { IEpisode } from '../../../models/seasonModel';
 import classes from './EpisodeItem.module.css';
 import RatingStar from '../../rating/RatingStar';
-import { formatDate } from '../../../helpers/dateFormatter';
+import { formatDate } from '../../../helpers/commonHelpers';
 
 const EpisodeItem = ({ episode }: { episode: IEpisode }) => {
   return (

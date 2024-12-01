@@ -1,8 +1,8 @@
-import { MovieDetailsImagesInterface } from '../models/mediaModel';
+import { IDetailsImages } from '../models/detailsModel';
 import { getBackdropImage, getLogoImage, getPosterImage } from './imageSizes';
 
 interface GalleryImagesProps {
-  images: MovieDetailsImagesInterface;
+  images: IDetailsImages;
 }
 
 export const getGalleryImages = ({ images }: GalleryImagesProps) => {

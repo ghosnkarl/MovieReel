@@ -3,7 +3,7 @@ import { IReview } from '../../../models/commonModel';
 import HorizontalList from '../../horizontal_list/HorizontalList';
 import classes from './ReviewItem.module.css';
 import Rating from '../../rating/Rating';
-import { formatDate } from '../../../helpers/dateFormatter';
+import { formatDate } from '../../../helpers/commonHelpers';
 
 interface IReviewItem {
   review: IReview;

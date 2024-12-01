@@ -2,7 +2,7 @@ import classes from './Carousel.module.css';
 import { useState } from 'react';
 import CarouselItem from './CarouselItem';
 import { useQuery } from '@tanstack/react-query';
-import { discoverReleaseDates } from '../../helpers/discoverParams';
+import { discoverReleaseDates } from '../../helpers/discoverHelpers';
 import { fetchResults } from '../../services/http';
 import { IMovie } from '../../models/mediaModel';
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';

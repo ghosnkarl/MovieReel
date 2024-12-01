@@ -4,7 +4,7 @@ import { IIdName } from '../../../models/commonModel';
 import { IoPlayCircle } from 'react-icons/io5';
 import { FaImages } from 'react-icons/fa6';
 import { MdOutlineReviews } from 'react-icons/md';
-import { formatDate } from '../../../helpers/dateFormatter';
+import { formatDate } from '../../../helpers/commonHelpers';
 import RatingStar from '../../../components/rating/RatingStar';
 
 interface IDetailsHeader {

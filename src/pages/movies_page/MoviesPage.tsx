@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import classes from './MoviesPage.module.css';
 import { useState } from 'react';
-import Tabs, { TabObjectProps } from '../../components/ui/tabs/Tabs';
+import Tabs, { ITabObject } from '../../components/ui/tabs/Tabs';
 import { MOVIE_TABS } from '../../data/tabsData';
 import { IMovie } from '../../models/mediaModel';
 import MediaList from '../../components/lists/media_list/MediaList';
@@ -12,7 +12,7 @@ export default function MoviesPage() {
   const tabs = MOVIE_TABS;
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
 
-  const handleSelectTab = (tab: TabObjectProps) => {
+  const handleSelectTab = (tab: ITabObject) => {
     setSelectedTab(tab);
   };
 
