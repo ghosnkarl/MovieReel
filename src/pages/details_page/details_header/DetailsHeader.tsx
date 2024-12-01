@@ -18,6 +18,18 @@ interface IDetailsHeader {
   backdrop_path: string | null;
 }
 
+interface IActionButton {
+  icon: React.ReactNode;
+  text: string;
+  styleClass?: string;
+}
+
+const ActionButton = ({ icon, text, styleClass = '' }: IActionButton) => (
+  <button className={`${classes.watch} ${classes[styleClass]}`}>
+    {icon} {text}
+  </button>
+);
+
 const DetailsHeader = ({
   title,
   release_date,
@@ -61,19 +73,21 @@ const DetailsHeader = ({
           </div>
           <p className={classes.overview}>{overview}</p>
           <div className={classes['actions__container']}>
-            <button className={`${classes.watch} ${classes['watch--filled']}`}>
-              <IoPlayCircle className={classes.icon} /> Watch Trailer
-            </button>
-            <button
-              className={`${classes.watch} ${classes['watch--outlined']}`}
-            >
-              <FaImages className={classes.icon} /> All Images
-            </button>
-            <button
-              className={`${classes.watch} ${classes['watch--outlined']}`}
-            >
-              <MdOutlineReviews className={classes.icon} /> All Reviews
-            </button>
+            <ActionButton
+              icon={<IoPlayCircle className={classes.icon} />}
+              text='Watch Trailer'
+              styleClass='watch--filled'
+            />
+            <ActionButton
+              icon={<FaImages className={classes.icon} />}
+              text='All Images'
+              styleClass='watch--outlined'
+            />
+            <ActionButton
+              icon={<MdOutlineReviews className={classes.icon} />}
+              text='All Reviews'
+              styleClass='watch--outlined'
+            />
           </div>
         </div>
       </div>

@@ -17,9 +17,7 @@ const CreditsPage = () => {
     setSelectedTab(tab);
   };
 
-  let departmentsList: string[] = [];
-
-  departmentsList = credits.crew.map((crew: ICrew) => crew.department);
+  let departmentsList = credits.crew.map((crew: ICrew) => crew.department);
   departmentsList = [...new Set(departmentsList)];
   filteredCrewList = [...credits.crew];
 
