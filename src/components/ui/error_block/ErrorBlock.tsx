@@ -13,17 +13,12 @@ export default function ErrorBlock({
   return (
     <div className={classes.container}>
       <div className={classes['error__container']}>
-        <div className={classes['error__block']}>
-          <FaCircleExclamation className={classes['error__block--icon']} />
-          <div>
-            <h2 className={classes['error__block--title']}>
-              Error Fetching Data
-            </h2>
-            <p className={classes['error__block--message']}>{message}</p>
-          </div>
-        </div>
+        <FaCircleExclamation className={classes.icon} />
 
-        <button onClick={onTryAgainClick} className={classes['error__btn']}>
+        <h2 className={classes.title}>Error Fetching Data</h2>
+        <p className={classes.message}>{message}</p>
+
+        <button onClick={onTryAgainClick} className={classes.refresh}>
           Refresh
         </button>
       </div>

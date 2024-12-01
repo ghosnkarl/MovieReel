@@ -4,10 +4,11 @@ import CarouselItem from './CarouselItem';
 import { useQuery } from '@tanstack/react-query';
 import { discoverReleaseDates } from '../../helpers/discoverParams';
 import { fetchResults } from '../../services/http';
-import QueryWrapper from '../ui/QueryWrapper';
 import { IMovie } from '../../models/mediaModel';
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import { IIdName } from '../../models/commonModel';
+import LoadingIndicator from '../ui/loading_indicator/LoadingIndicator';
+import ErrorBlock from '../ui/error_block/ErrorBlock';
 
 interface ICarouselArrow {
   direction: 'left' | 'right';
@@ -46,7 +47,8 @@ interface ICarousel {
 
 const Carousel = ({ genres }: ICarousel) => {
   const discoverParams = discoverReleaseDates(true, -1, 'month', 5, 'days');
-  const upcomingMoviesQuery = useQuery({
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const moviesQuery = useQuery({
     queryKey: ['movies', discoverParams],
     queryFn: () =>
       fetchResults<IMovie>({
@@ -56,14 +58,18 @@ const Carousel = ({ genres }: ICarousel) => {
     retry: 1,
   });
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  if (moviesQuery.isLoading)
+    return <LoadingIndicator title='Fetching Now Playing Movies' />;
+  if (moviesQuery.isError)
+    return (
+      <ErrorBlock
+        message='There was an error fetching now playing movies'
+        onTryAgainClick={moviesQuery.refetch}
+      />
+    );
 
-  if (!upcomingMoviesQuery.data || upcomingMoviesQuery.data.length === 0) {
-    return <div>No upcoming movies available.</div>;
-  }
-
-  const movies = upcomingMoviesQuery.data;
-  const length = movies.length;
+  const moviesData = moviesQuery.data!;
+  const length = moviesData.length;
 
   const nextSlide = () =>
     setCurrentIndex((prevIndex) => (prevIndex + 1) % length);
@@ -74,17 +80,15 @@ const Carousel = ({ genres }: ICarousel) => {
     );
 
   return (
-    <QueryWrapper query={upcomingMoviesQuery} message='Upcoming Movies'>
-      <div className={classes.container}>
-        <CarouselSlide
-          genres={genres}
-          current={currentIndex}
-          content={movies}
-        />
-        <CarouselArrow direction='left' handleClick={prevSlide} />
-        <CarouselArrow direction='right' handleClick={nextSlide} />
-      </div>
-    </QueryWrapper>
+    <div className={classes.container}>
+      <CarouselSlide
+        genres={genres}
+        current={currentIndex}
+        content={moviesData}
+      />
+      <CarouselArrow direction='left' handleClick={prevSlide} />
+      <CarouselArrow direction='right' handleClick={nextSlide} />
+    </div>
   );
 };
 

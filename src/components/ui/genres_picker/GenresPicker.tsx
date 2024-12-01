@@ -2,7 +2,6 @@ import { useQuery } from '@tanstack/react-query';
 import classes from './GenresPicker.module.css';
 import { useState } from 'react';
 import { fetchGenres } from '../../../services/http';
-import QueryWrapper from '../QueryWrapper';
 import { IIdName } from '../../../models/commonModel';
 
 const GenresPicker = () => {
@@ -22,28 +21,24 @@ const GenresPicker = () => {
     }
   };
 
+  if (genresQuery.isLoading || genresQuery.isError) return;
+
+  const genres = genresQuery.data!;
+
   return (
-    <QueryWrapper query={genresQuery} message='Genres'>
-      <>
-        {genresQuery.data && (
-          <div className={classes['genres-container']}>
-            {genresQuery.data.map((genre: IIdName) => (
-              <span
-                className={`${
-                  selectedGenres.find((id) => id == genre.id)
-                    ? classes.active
-                    : ''
-                }`}
-                onClick={() => handleGenreClicked(genre)}
-                key={genre.name}
-              >
-                {genre.name}
-              </span>
-            ))}
-          </div>
-        )}
-      </>
-    </QueryWrapper>
+    <div className={classes['genres-container']}>
+      {genres.map((genre) => (
+        <span
+          className={`${
+            selectedGenres.find((id) => id == genre.id) ? classes.active : ''
+          }`}
+          onClick={() => handleGenreClicked(genre)}
+          key={genre.name}
+        >
+          {genre.name}
+        </span>
+      ))}
+    </div>
   );
 };
 export default GenresPicker;

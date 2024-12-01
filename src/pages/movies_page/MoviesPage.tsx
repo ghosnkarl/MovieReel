@@ -3,9 +3,10 @@ import classes from './MoviesPage.module.css';
 import { useState } from 'react';
 import Tabs, { TabObjectProps } from '../../components/ui/Tabs';
 import { MOVIE_TABS } from '../../data/tabsData';
-import QueryWrapper from '../../components/ui/QueryWrapper';
 import { IMovie } from '../../models/mediaModel';
 import MediaList from '../../components/lists/media_list/MediaList';
+import LoadingIndicator from '../../components/ui/loading_indicator/LoadingIndicator';
+import ErrorPage from '../error_page/ErrorPage';
 
 export default function MoviesPage() {
   const tabs = MOVIE_TABS;
@@ -21,26 +22,24 @@ export default function MoviesPage() {
     retry: 1,
   });
 
-  let content = <></>;
-
-  if (selectedQuery.data) {
-    content = <MediaList type='movies' data={selectedQuery.data as IMovie[]} />;
-  }
+  if (selectedQuery.isLoading)
+    return <LoadingIndicator title={`Fetching ${selectedTab.title}...`} />;
+  if (selectedQuery.isError) return <ErrorPage />;
 
   return (
     <div className='page-container'>
-      <QueryWrapper query={selectedQuery} message={selectedTab.title}>
-        <Tabs
-          onSelectType={handleSelectTab}
-          selectedType={selectedTab}
-          tabs={tabs}
-          layoutId='movies_page'
-        />
-        <div className={classes.container}>
-          <ul className={classes['main-container']}>{content}</ul>
-          <button className={`btn ${classes['btn--more']}`}>Load More</button>
-        </div>
-      </QueryWrapper>
+      <Tabs
+        onSelectType={handleSelectTab}
+        selectedType={selectedTab}
+        tabs={tabs}
+        layoutId='movies_page'
+      />
+      <div className={classes.container}>
+        <ul className={classes['main-container']}>
+          <MediaList type='movies' data={selectedQuery.data as IMovie[]} />
+        </ul>
+        <button className={`btn ${classes['btn--more']}`}>Load More</button>
+      </div>
     </div>
   );
 }

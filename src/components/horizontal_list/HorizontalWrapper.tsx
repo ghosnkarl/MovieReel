@@ -1,6 +1,8 @@
 import { UseQueryResult } from '@tanstack/react-query';
-import QueryWrapper from '../ui/QueryWrapper';
+
 import HorizontalList from './HorizontalList';
+import LoadingIndicator from '../ui/loading_indicator/LoadingIndicator';
+import ErrorBlock from '../ui/error_block/ErrorBlock';
 
 interface IHorizontalWrapper {
   query: UseQueryResult<unknown, Error>;
@@ -15,12 +17,20 @@ const HorizontalWrapper = ({
   link,
   children,
 }: IHorizontalWrapper) => {
+  if (query.isLoading)
+    return <LoadingIndicator title={`Fetching ${title}...`} />;
+
+  if (query.isError)
+    return (
+      <ErrorBlock
+        message={`There was an error fetching ${title.toLocaleLowerCase()}`}
+        onTryAgainClick={query.refetch}
+      />
+    );
   return (
-    <QueryWrapper message={title} query={query}>
-      <HorizontalList link={link} title={title} linkState={null}>
-        {children}
-      </HorizontalList>
-    </QueryWrapper>
+    <HorizontalList link={link} title={title} linkState={null}>
+      {children}
+    </HorizontalList>
   );
 };
 

@@ -5,10 +5,11 @@ import classes from './TopTrending.module.css';
 import RatingStar from '../../rating/RatingStar';
 import LinkWrapper from '../../ui/LinkWrapper';
 import HeaderLink from '../../ui/HeaderLink';
-import QueryWrapper from '../../ui/QueryWrapper';
 import { IMovie, ITVShow } from '../../../models/mediaModel';
 import { MediaType } from '../../../models/commonModel';
 import { formatDate } from '../../../helpers/dateFormatter';
+import LoadingIndicator from '../../ui/loading_indicator/LoadingIndicator';
+import ErrorBlock from '../../ui/error_block/ErrorBlock';
 
 const getTitle = (item: IMovie | ITVShow) =>
   'title' in item ? item.title : item.name;
@@ -74,17 +75,29 @@ const TopTrending = ({ type }: ITopTrending) => {
     retry: 1,
   });
 
-  const { data } = trendingQuery;
   const isMovie = type === 'movie';
   const message = `Trending ${isMovie ? 'Movies' : 'TV Shows'}`;
   const headerTitle = `Top 5 ${isMovie ? 'Movies' : 'TV Shows'} of the Week`;
 
-  let content = <></>;
+  if (trendingQuery.isLoading)
+    return <LoadingIndicator title={`Fetching ${message}...`} />;
 
-  if (data) {
-    const list = data.slice(1, 5);
-    const firstItem = data[0];
-    content = (
+  if (trendingQuery.isError)
+    return (
+      <ErrorBlock
+        message={`There was an error fetching ${message.toLocaleLowerCase()}`}
+        onTryAgainClick={trendingQuery.refetch}
+      />
+    );
+
+  const moviesData = trendingQuery.data!;
+
+  const list = moviesData.slice(1, 5);
+  const firstItem = moviesData[0];
+
+  return (
+    <div>
+      <HeaderLink title={headerTitle} link='/movies' linkState={null} />
       <div className={classes.container}>
         <TopTrendingItem item={firstItem} isTopOne />
         <ul className={classes['container__right']}>
@@ -97,14 +110,7 @@ const TopTrending = ({ type }: ITopTrending) => {
           ))}
         </ul>
       </div>
-    );
-  }
-
-  return (
-    <QueryWrapper message={message} query={trendingQuery}>
-      <HeaderLink title={headerTitle} link='/movies' linkState={null} />
-      <>{content}</>
-    </QueryWrapper>
+    </div>
   );
 };
 

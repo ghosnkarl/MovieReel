@@ -17,7 +17,7 @@ const RatingStar = ({ value, size, vote_count, isSingleStar }: IRatingStar) => {
   const starSize = size === 'small' ? '2.2rem' : '2.4rem';
   return (
     <div className={`${classes.container} ${classes[`container--${size}`]}`}>
-      {!isSingleStar && (
+      {!isSingleStar ? (
         <Rating
           value={formattedRating}
           readOnly
@@ -25,13 +25,15 @@ const RatingStar = ({ value, size, vote_count, isSingleStar }: IRatingStar) => {
           precision={0.5}
           emptyIcon={<MdOutlineStarBorder style={{ color: '#ececec' }} />}
         />
+      ) : (
+        <MdStar className={classes.star} />
       )}
-      {isSingleStar && <MdStar className={classes.star} />}
+
       <p>
-        {formattedRating === 0 ? 'NR' : formattedRating}{' '}
+        {formattedRating === 0 ? 'NR' : formattedRating}
         {formattedRating > 0 &&
           vote_count &&
-          `(${vote_count?.toLocaleString()})`}
+          ` (${vote_count?.toLocaleString()})`}
       </p>
     </div>
   );

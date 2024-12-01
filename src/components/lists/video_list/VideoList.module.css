@@ -18,9 +18,9 @@
 .img__container {
   border-radius: 15px;
   overflow: hidden;
-  width: 27rem;
+  width: 30rem;
   box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
-  aspect-ratio: 1.5;
+  aspect-ratio: 3/2;
   margin-bottom: 1.2rem;
 }
 

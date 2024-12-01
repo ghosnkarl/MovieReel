@@ -3,11 +3,11 @@ import { NavLink } from 'react-router-dom';
 import { IVideo } from '../../../models/commonModel';
 import HorizontalList from '../../horizontal_list/HorizontalList';
 
-interface VideoItemProps {
+interface IVideoItem {
   video: IVideo;
 }
 
-const VideoItem = ({ video }: VideoItemProps) => {
+const VideoItem = ({ video }: IVideoItem) => {
   return (
     <NavLink
       to={`https://www.youtube.com/watch?v=${video.key}`}
@@ -27,7 +27,11 @@ const VideoItem = ({ video }: VideoItemProps) => {
   );
 };
 
-const VideoList = ({ videos }: { videos: IVideo[] }) => {
+interface IVideoList {
+  videos: IVideo[];
+}
+
+const VideoList = ({ videos }: IVideoList) => {
   if (!videos || videos.length === 0) return null;
   return (
     <HorizontalList title='Videos' linkState={null} link={null}>
