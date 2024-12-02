@@ -4,7 +4,7 @@ import { getProfileImage } from '../../../helpers/imageSizes';
 
 interface IPersonItem {
   id: number;
-  profile_path: string;
+  profile_path: string | null;
   title: string;
   text: string | null;
 }

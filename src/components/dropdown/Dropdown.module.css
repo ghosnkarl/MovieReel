@@ -7,8 +7,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.2rem;
-  font-size: 1.4rem;
-
+  font-size: 1.5rem;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -20,7 +19,7 @@
 }
 
 .button-open {
-  box-shadow: inset 0px 0px 2px 2px var(--color-gray-500);
+  /* box-shadow: inset 0px 0px 2px 2px var(--color-gray-500); */
 }
 
 .dropdown-content {
@@ -30,7 +29,6 @@
   flex-direction: column;
   align-items: center;
   margin-top: 0.6rem;
-
   border-radius: 5px;
   max-height: 40vh;
   overflow-y: scroll;
@@ -40,6 +38,8 @@
   transform: translateY(-5%);
   transition: all 0.2s ease-in-out;
   pointer-events: none;
+  background-color: var(--color-background--card);
+  box-shadow: var(--card--box-shadow);
 }
 
 .dropdown-content::-webkit-scrollbar {
@@ -55,7 +55,7 @@
 
 .dropdown-item {
   padding: 1.2rem;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   width: 100%;
   cursor: pointer;
 }

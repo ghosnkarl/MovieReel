@@ -108,9 +108,9 @@ const PeopleDetailsPage = () => {
           <h1 className={classes.name}>{data.name}</h1>
           <p>Know for {data.known_for_department}</p>
           <p>
-            Born {formatDate(data.birthday)}{' '}
+            Born {formatDate(data.birthday)}
             {data.birthday &&
-              `(${moment().diff(data.birthday, 'years')} years old)`}
+              ` (${moment().diff(data.birthday, 'years')} years old)`}
           </p>
           {data.deathday && (
             <>

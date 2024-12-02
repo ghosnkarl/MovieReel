@@ -4,7 +4,6 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-
   border-radius: 5px;
   padding: 1.2rem 1.2rem 1.2rem 0;
   gap: 1.2rem;
@@ -24,8 +23,7 @@
   outline: none;
   color: white;
   padding-left: 1.2rem;
-  font-family: inherit;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 
 .dropdown-content {
@@ -37,7 +35,6 @@
   max-height: 40vh;
   flex-direction: column;
   align-items: center;
-
   border-radius: 5px;
   overflow-y: scroll;
   -ms-overflow-style: none;
@@ -55,7 +52,7 @@
 
 .search-item {
   padding: 1.2rem;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   width: 100%;
   cursor: pointer;
 }

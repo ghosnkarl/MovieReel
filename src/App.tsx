@@ -16,6 +16,7 @@ import HomePage from './pages/homepage/HomePage';
 import MoviesPage from './pages/movies_page/MoviesPage';
 import CreditsPage from './pages/credits_page/CreditsPage';
 import ReviewsPage from './pages/reviews_page/ReviewsPage';
+import SearchPage from './pages/search_page/SearchPage';
 
 const router = createBrowserRouter([
   {
@@ -132,6 +133,7 @@ const router = createBrowserRouter([
         ],
       },
       { path: 'discover', element: <DiscoverPage /> },
+      { path: 'search', element: <SearchPage /> },
     ],
   },
 ]);

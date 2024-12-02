@@ -17,7 +17,7 @@ const Searchbar = () => {
   const { data } = useQuery({
     queryKey: ['keywords', { search: searchTerm }],
     queryFn: () =>
-      fetchResults({ path: 'search/keywords', params: searchTerm }),
+      fetchResults({ path: 'search/keyword', params: { query: searchTerm } }),
     retry: 1,
   });
 
@@ -64,7 +64,7 @@ const Searchbar = () => {
         <input
           ref={inputRef}
           type='text'
-          placeholder='Search Keywords'
+          placeholder='Search'
           onChange={handleChange}
         />
         <div

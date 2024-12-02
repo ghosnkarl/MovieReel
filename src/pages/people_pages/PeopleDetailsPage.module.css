@@ -1,7 +1,7 @@
 .container {
   max-width: var(--page-width--max);
   margin: 0 auto;
-  padding: 12.8rem 3.2rem 3.2rem 3.2rem;
+  padding: 12.8rem 6.4rem 3.2rem 6.4rem;
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
