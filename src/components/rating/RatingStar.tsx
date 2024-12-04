@@ -4,7 +4,7 @@ import { MdOutlineStarBorder, MdStar } from 'react-icons/md';
 
 interface IRatingStar {
   value: number;
-  size: 'small' | 'medium';
+  size: 'small' | 'medium' | 'large';
   vote_count?: number;
   isSingleStar?: boolean;
 }
@@ -14,7 +14,11 @@ function toOneDecimalWithoutRounding(num: number) {
 }
 const RatingStar = ({ value, size, vote_count, isSingleStar }: IRatingStar) => {
   const formattedRating = toOneDecimalWithoutRounding(+(value / 2));
-  const starSize = size === 'small' ? '2.2rem' : '2.4rem';
+  let starSize = '2.2rem';
+
+  if (size === 'medium') starSize = '2.4rem';
+  if (size === 'large') starSize = '2.6rem';
+
   return (
     <div className={`${classes.container} ${classes[`container--${size}`]}`}>
       {!isSingleStar ? (
@@ -23,7 +27,7 @@ const RatingStar = ({ value, size, vote_count, isSingleStar }: IRatingStar) => {
           readOnly
           sx={{ fontSize: starSize, color: '#f97316' }}
           precision={0.5}
-          emptyIcon={<MdOutlineStarBorder style={{ color: '#ececec' }} />}
+          emptyIcon={<MdOutlineStarBorder style={{ color: '#FFFFFF' }} />}
         />
       ) : (
         <MdStar className={classes.star} />

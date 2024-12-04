@@ -2,7 +2,6 @@ import { useQuery } from '@tanstack/react-query';
 import { fetchGenres, fetchResults } from '../../services/http';
 import classes from './Homepage.module.css';
 import Carousel from '../../components/carousel/Carousel';
-import { NavLink } from 'react-router-dom';
 import TopTrending from '../../components/lists/top_trending/TopTrending';
 import { IMovie, ITVShow } from '../../models/mediaModel';
 import { IPeople } from '../../models/peopleModel';
@@ -41,16 +40,7 @@ export default function HomePage() {
 
   return (
     <div className={classes.container}>
-      <div className={classes['header']}>
-        <div className={classes['welcome-container']}>
-          <p>Movies, TV Shows and People</p>
-          <h1>Discover millions of movies, tv shows and people</h1>
-          <NavLink className='link--gradient link--discover' to='/discover'>
-            Discover
-          </NavLink>
-        </div>
-        <Carousel genres={genresQuery.data} />
-      </div>
+      <Carousel genres={genresQuery.data} />
 
       <HorizontalWrapper
         query={upcomingMoviesQuery}

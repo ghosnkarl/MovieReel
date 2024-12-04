@@ -7,7 +7,7 @@ const buildImageUrl = (
   size: string,
   placeholder: string
 ): string => {
-  return path ? `${BASE_IMAGE_URL}${size}/${path}` : placeholder;
+  return path ? `${BASE_IMAGE_URL}${size}${path}` : placeholder;
 };
 
 // Get backdrop image with size options

@@ -9,8 +9,7 @@ import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import ErrorPage from '../error_page/ErrorPage';
 
 export default function MoviesPage() {
-  const tabs = MOVIE_TABS;
-  const [selectedTab, setSelectedTab] = useState(tabs[0]);
+  const [selectedTab, setSelectedTab] = useState(MOVIE_TABS[0]);
 
   const handleSelectTab = (tab: ITabObject) => {
     setSelectedTab(tab);
@@ -30,7 +29,7 @@ export default function MoviesPage() {
       <Tabs
         onSelectType={handleSelectTab}
         selectedType={selectedTab}
-        tabs={tabs}
+        tabs={MOVIE_TABS}
         layoutId='movies_page'
       />
       <div className={classes.container}>

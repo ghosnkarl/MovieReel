@@ -3,54 +3,7 @@
   flex-direction: column;
   max-width: var(--page-width--max);
   margin: 0 auto;
-  padding: 12.8rem var(--page-padding--horizontal) var(--page-padding--bottom)
+  padding: 9.6rem var(--page-padding--horizontal) var(--page-padding--bottom)
     var(--page-padding--horizontal);
   gap: 4.8rem;
-}
-
-.header {
-  display: grid;
-  gap: 3.2rem;
-  grid-template-columns: 1fr 1.3fr;
-  height: 42rem;
-}
-
-.welcome-container {
-  display: flex;
-  flex-direction: column;
-  border-radius: 20px;
-  justify-content: center;
-}
-
-.welcome-container p {
-  font-size: 2.4rem;
-  line-height: 1.2;
-  color: var(--color-gray-200);
-  margin-bottom: 1.2rem;
-}
-
-.welcome-container h1 {
-  font-size: 5.2rem;
-  line-height: 1.2;
-  font-weight: 600;
-  margin-bottom: 3.2rem;
-}
-
-.discover:link,
-.discover:visited {
-  background-image: linear-gradient(to right, #ea580c, #f59e0b);
-  transition: 0.5s;
-  align-items: center;
-  color: white;
-  border-radius: 15px;
-  font-size: 2rem;
-  font-weight: 600;
-  width: fit-content;
-  text-decoration: none;
-  padding: 1.4rem 3.2rem;
-}
-
-.discover:hover,
-.discover:active {
-  box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 20px 0px;
 }

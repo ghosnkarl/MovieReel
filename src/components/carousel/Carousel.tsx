@@ -48,7 +48,7 @@ interface ICarousel {
 const Carousel = ({ genres }: ICarousel) => {
   const discoverParams = discoverReleaseDates(true, -1, 'month', 5, 'days');
   const [currentIndex, setCurrentIndex] = useState(0);
-  const moviesQuery = useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ['movies', discoverParams],
     queryFn: () =>
       fetchResults<IMovie>({
@@ -58,17 +58,16 @@ const Carousel = ({ genres }: ICarousel) => {
     retry: 1,
   });
 
-  if (moviesQuery.isLoading) return <LoadingIndicator />;
-  if (moviesQuery.isError)
+  if (isLoading) return <LoadingIndicator />;
+  if (isError || !data)
     return (
       <ErrorBlock
         message='There was an error fetching now playing movies'
-        onTryAgainClick={moviesQuery.refetch}
+        onTryAgainClick={refetch}
       />
     );
 
-  const moviesData = moviesQuery.data!;
-  const length = moviesData.length;
+  const length = data.length;
 
   const nextSlide = () =>
     setCurrentIndex((prevIndex) => (prevIndex + 1) % length);
@@ -80,11 +79,7 @@ const Carousel = ({ genres }: ICarousel) => {
 
   return (
     <div className={classes.container}>
-      <CarouselSlide
-        genres={genres}
-        current={currentIndex}
-        content={moviesData}
-      />
+      <CarouselSlide genres={genres} current={currentIndex} content={data} />
       <CarouselArrow direction='left' handleClick={prevSlide} />
       <CarouselArrow direction='right' handleClick={nextSlide} />
     </div>

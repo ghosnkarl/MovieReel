@@ -2,11 +2,10 @@ import { motion } from 'framer-motion';
 import { IMovie } from '../../models/mediaModel';
 import { getBackdropImage } from '../../helpers/imageSizes';
 import classes from './carousel.module.css';
-import { NavLink } from 'react-router-dom';
 import { Fragment } from 'react';
 import RatingStar from '../rating/RatingStar';
 import { IIdName } from '../../models/commonModel';
-import { getGenres } from '../../helpers/commonHelpers';
+import { formatDate, getGenres } from '../../helpers/commonHelpers';
 
 const itemTransition = {
   type: 'spring',
@@ -21,6 +20,45 @@ interface ICarousel {
   genres: IIdName[] | undefined;
 }
 
+const ItemLayout = ({
+  genres,
+  item,
+}: {
+  genres: IIdName[] | undefined;
+  item: IMovie;
+}) => {
+  const { release_date } = item;
+
+  return (
+    <>
+      {' '}
+      <img
+        className={classes.backdrop}
+        src={getBackdropImage(item.backdrop_path, 'w1280')}
+        alt={item.title}
+      />
+      <div className={classes['text__container']}>
+        {genres && (
+          <p className={classes.genres}>{getGenres(item.genre_ids, genres)}</p>
+        )}
+        <h1 className={classes.title}>{item.title}</h1>
+        <div className={classes['details__container']}>
+          <RatingStar
+            value={item.vote_average}
+            size='medium'
+            vote_count={item.vote_count}
+          />
+
+          <p className={classes.date}>
+            {release_date && `${formatDate(release_date)}`}
+          </p>
+        </div>
+        <p className={classes.overview}>{item.overview}</p>
+      </div>
+    </>
+  );
+};
+
 const CarouselItem = ({ current, content, genres }: ICarousel) => (
   <>
     {content.map((slide, index) => (
@@ -29,23 +67,11 @@ const CarouselItem = ({ current, content, genres }: ICarousel) => (
           <motion.div
             animate={current.isRight ? { x: [-1000, 0] } : { x: [1000, 0] }}
             transition={itemTransition}
+            className={classes['item__container']}
           >
-            <NavLink className={classes.item} to={`/movies/${slide.id}`}>
-              <img
-                className={classes.backdrop}
-                src={getBackdropImage(slide.backdrop_path, 'w780')}
-                alt={slide.title}
-              />
-              <div className={classes['text__container']}>
-                <h1 className={classes.title}>{slide.title}</h1>
-                {genres && (
-                  <p className={classes.genres}>
-                    {getGenres(slide.genre_ids, genres)}
-                  </p>
-                )}
-                <RatingStar value={slide.vote_average} size='small' />
-              </div>
-            </NavLink>
+            {/* <NavLink className={classes.item} to={`/movies/${slide.id}`}> */}
+            <ItemLayout item={slide} genres={genres} />
+            {/* </NavLink> */}
           </motion.div>
         )}
       </Fragment>

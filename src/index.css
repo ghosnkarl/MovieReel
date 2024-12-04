@@ -139,14 +139,6 @@ body {
   padding: 0.8rem 2.2rem 0.8rem 1.2rem;
 }
 
-.link--discover:link,
-.link--discover:visited {
-  gap: 1rem;
-  font-size: 2rem;
-  font-weight: 600;
-  padding: 1.4rem 2.8rem;
-}
-
 /********************** Typography **********************/
 .section__title {
   font-size: var(--section--title-size);
