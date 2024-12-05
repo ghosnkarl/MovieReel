@@ -1,14 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchGenres, fetchResults } from '../../services/http';
+import { fetchResults } from '../../services/http';
 import classes from './Homepage.module.css';
-import Carousel from '../../components/carousel/Carousel';
 import TopTrending from '../../components/lists/top_trending/TopTrending';
 import { IMovie, ITVShow } from '../../models/mediaModel';
 import { IPeople } from '../../models/peopleModel';
 import { airingTodayDates, upComingDates } from '../../helpers/discoverHelpers';
 import HorizontalWrapper from '../../components/horizontal_list/HorizontalWrapper';
-import MediaList from '../../components/lists/media_list/MediaList';
-import PersonItem from '../../components/list_items/person_item/PersonItem';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import Carousel from '../../components/carousel/Carousel';
 
 export default function HomePage() {
   const upcomingMoviesQuery = useQuery({
@@ -25,12 +26,6 @@ export default function HomePage() {
     retry: 1,
   });
 
-  const genresQuery = useQuery({
-    queryKey: ['genres', 'movie'],
-    queryFn: () => fetchGenres('movie'),
-    retry: 1,
-  });
-
   const popularPeopleQuery = useQuery({
     queryKey: ['popular', 'people'],
     queryFn: () =>
@@ -40,15 +35,14 @@ export default function HomePage() {
 
   return (
     <div className={classes.container}>
-      <Carousel genres={genresQuery.data} />
+      <Carousel />
 
       <HorizontalWrapper
         query={upcomingMoviesQuery}
         title='Upcoming Movies'
         link='/movies'
-      >
-        <MediaList type='movies' data={upcomingMoviesQuery.data} />
-      </HorizontalWrapper>
+        type='movie'
+      />
 
       <TopTrending type='movie' />
 
@@ -56,9 +50,8 @@ export default function HomePage() {
         query={airingTodayTVQuery}
         title='Airing Today TV Shows'
         link='/tv'
-      >
-        <MediaList type='tv' data={airingTodayTVQuery.data} />
-      </HorizontalWrapper>
+        type='tvShows'
+      />
 
       <TopTrending type='tv' />
 
@@ -66,20 +59,8 @@ export default function HomePage() {
         query={popularPeopleQuery}
         title='Most Popular Celebrities'
         link='/people'
-      >
-        <>
-          {popularPeopleQuery.data &&
-            popularPeopleQuery.data.map((person) => (
-              <PersonItem
-                key={person.id}
-                id={person.id}
-                text={null}
-                title={person.name}
-                profile_path={person.profile_path}
-              />
-            ))}
-        </>
-      </HorizontalWrapper>
+        type='people'
+      />
     </div>
   );
 }

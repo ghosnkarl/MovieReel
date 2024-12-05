@@ -2,7 +2,8 @@
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 1.6rem;
+  gap: 4.8rem;
+  /* justify-content: center; */
   margin-bottom: 1.6rem;
 }
 

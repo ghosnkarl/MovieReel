@@ -9,9 +9,9 @@ import CreditsList from '../../components/lists/credits_list/CreditsList';
 const CreditsPage = () => {
   const location = useLocation();
   const { credits } = location.state;
-  let filteredCrewList: ICrew[] = [];
   const tabs: ITabObject[] = CREDITS_TABS;
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
+  let filteredCrewList: ICrew[] = [];
 
   const handleSelectTab = (tab: ITabObject) => {
     setSelectedTab(tab);
@@ -37,9 +37,7 @@ const CreditsPage = () => {
         tabs={tabs}
         layoutId='credits_page'
       />
-      {selectedTab.value === 'cast' && (
-        <CreditsList credits={credits.cast}></CreditsList>
-      )}
+      {selectedTab.value === 'cast' && <CreditsList credits={credits.cast} />}
 
       {selectedTab.value === 'crew' && (
         <>

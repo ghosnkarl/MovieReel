@@ -1,9 +1,6 @@
 import classes from './DetailsHeader.module.css';
 import { getBackdropImage } from '../../../helpers/imageSizes';
 import { IIdName } from '../../../models/commonModel';
-import { IoPlayCircle } from 'react-icons/io5';
-import { FaImages } from 'react-icons/fa6';
-import { MdOutlineReviews } from 'react-icons/md';
 import { formatDate } from '../../../helpers/commonHelpers';
 import RatingStar from '../../../components/rating/RatingStar';
 
@@ -17,18 +14,6 @@ interface IDetailsHeader {
   overview: string;
   backdrop_path: string | null;
 }
-
-interface IActionButton {
-  icon: React.ReactNode;
-  text: string;
-  styleClass?: string;
-}
-
-const ActionButton = ({ icon, text, styleClass = '' }: IActionButton) => (
-  <button className={`${classes.watch} ${classes[styleClass]}`}>
-    {icon} {text}
-  </button>
-);
 
 const DetailsHeader = ({
   title,
@@ -72,23 +57,6 @@ const DetailsHeader = ({
             </p>
           </div>
           <p className={classes.overview}>{overview}</p>
-          <div className={classes['actions__container']}>
-            <ActionButton
-              icon={<IoPlayCircle className={classes.icon} />}
-              text='Watch Trailer'
-              styleClass='watch--filled'
-            />
-            <ActionButton
-              icon={<FaImages className={classes.icon} />}
-              text='All Images'
-              styleClass='watch--outlined'
-            />
-            <ActionButton
-              icon={<MdOutlineReviews className={classes.icon} />}
-              text='All Reviews'
-              styleClass='watch--outlined'
-            />
-          </div>
         </div>
       </div>
     </div>

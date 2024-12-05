@@ -32,6 +32,10 @@
   transition: all 0.2s ease-in-out;
 }
 
+.text__container {
+  padding: 1.2rem 0;
+}
+
 .title {
   font-size: 1.8rem;
   font-weight: 600;

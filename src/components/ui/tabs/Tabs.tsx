@@ -46,7 +46,6 @@ export default function Tabs({
   tabs,
   layoutId,
 }: ITabs) {
-  // Use useCallback to memoize the onSelectType handler to prevent unnecessary re-renders
   const handleSelectTab = useCallback(
     (tab: ITabObject) => {
       onSelectType(tab);

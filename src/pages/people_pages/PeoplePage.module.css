@@ -2,7 +2,7 @@
   max-width: var(--page-width--max);
   margin: 0 auto;
   padding: 12.8rem 3.2rem 0 3.2rem;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
   gap: 2.4rem;
 }

@@ -19,7 +19,7 @@ const CreditItem = ({ id, profile_path, title, text }: ICreditItem) => {
           alt={title}
         />
       </div>
-      <div>
+      <div className={classes['text__container']}>
         <h2 className={classes.title}>{title}</h2>
         {text && <p>{text}</p>}
       </div>

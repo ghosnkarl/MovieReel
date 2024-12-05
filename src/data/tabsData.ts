@@ -50,6 +50,14 @@ export const CREDITS_TABS = [
   { title: 'Crew', value: 'crew' },
 ];
 
+export const DETAILS_TABS = [
+  { title: 'Overview', value: 'overview' },
+  { title: 'Cast', value: 'cast' },
+  { title: 'Crew', value: 'crew' },
+  { title: 'Reviews', value: 'reviews' },
+  { title: 'Images', value: 'images' },
+];
+
 export const TV_TABS: ITabObject[] = [
   {
     title: 'Trending',
