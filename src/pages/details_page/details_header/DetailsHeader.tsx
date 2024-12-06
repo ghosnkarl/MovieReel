@@ -3,6 +3,8 @@ import { getBackdropImage } from '../../../helpers/imageSizes';
 import { IIdName } from '../../../models/commonModel';
 import { formatDate } from '../../../helpers/commonHelpers';
 import RatingStar from '../../../components/rating/RatingStar';
+import Tabs, { ITabObject } from '../../../components/ui/tabs/Tabs';
+import { DETAILS_TABS } from '../../../data/tabsData';
 
 interface IDetailsHeader {
   title: string;
@@ -11,8 +13,9 @@ interface IDetailsHeader {
   genres: IIdName[];
   vote_average: number;
   vote_count: number;
-  overview: string;
   backdrop_path: string | null;
+  selectedTab: ITabObject;
+  handleSelectTab: (tab: ITabObject) => void;
 }
 
 const DetailsHeader = ({
@@ -21,9 +24,10 @@ const DetailsHeader = ({
   runtime,
   genres,
   vote_average,
-  overview,
   backdrop_path,
   vote_count,
+  handleSelectTab,
+  selectedTab,
 }: IDetailsHeader) => {
   const formattedGenres = genres.map((genre) => genre.name).join(' • ');
 
@@ -56,7 +60,13 @@ const DetailsHeader = ({
               {formattedRuntime && ` • ${formattedRuntime}`}
             </p>
           </div>
-          <p className={classes.overview}>{overview}</p>
+
+          <Tabs
+            onSelectType={handleSelectTab}
+            selectedType={selectedTab}
+            tabs={DETAILS_TABS}
+            layoutId='details_page'
+          />
         </div>
       </div>
     </div>

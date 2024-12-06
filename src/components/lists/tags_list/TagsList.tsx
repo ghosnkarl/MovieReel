@@ -1,3 +1,5 @@
+import { ICrew } from '../../../models/castCrewModel';
+import { ICrewMedia } from '../../../models/peopleModel';
 import classes from './TagsList.module.css';
 
 interface ITags {

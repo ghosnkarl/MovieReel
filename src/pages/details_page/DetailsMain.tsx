@@ -33,6 +33,10 @@ const DetailsMain = ({ media }: IDetailsMainContainer) => {
 
   return (
     <div className={classes['details__main']}>
+      <div>
+        <p className={classes.tagline}>{media.tagline}</p>
+        <p className={classes.overview}>{media.overview}</p>
+      </div>
       <div className={classes['details__container']}>
         <DetailsMedia
           status={media.status}
@@ -40,12 +44,12 @@ const DetailsMain = ({ media }: IDetailsMainContainer) => {
           imdb_id={isMovie ? media.imdb_id : null}
           revenue={isMovie ? media.revenue : null}
           budget={isMovie ? media.budget : null}
-          tagline={media.tagline}
           number_of_episodes={isMovie ? null : media.number_of_episodes}
           number_of_seasons={isMovie ? null : media.number_of_seasons}
           first_air_date={isMovie ? null : media.first_air_date}
           last_air_date={isMovie ? null : media.last_air_date}
           created_by={isMovie ? null : media.created_by}
+          production_companies={media.production_companies}
         />
 
         <Keywords
@@ -63,12 +67,7 @@ const DetailsMain = ({ media }: IDetailsMainContainer) => {
 
       {/* <VideoList videos={media.videos.results} /> */}
 
-      {/* <ProductionCompanies production_companies={media.production_companies} /> */}
-      {/* <ReviewsList
-        reviews={media.reviews}
-        title={isMovie ? media.title : media.name}
-        poster_path={media.poster_path}
-      />
+      {/* 
 
       <ImageList
         images={images}

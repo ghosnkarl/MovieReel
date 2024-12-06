@@ -5,12 +5,13 @@ import DetailsMain from './DetailsMain';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import ErrorPage from '../error_page/ErrorPage';
 import useDetails from '../../hooks/useDetails';
-import Tabs, { ITabObject } from '../../components/ui/tabs/Tabs';
+import { ITabObject } from '../../components/ui/tabs/Tabs';
 import { DETAILS_TABS } from '../../data/tabsData';
 import { useState } from 'react';
 import CreditsList from '../../components/lists/credits_list/CreditsList';
 import { ReviewItem } from '../../components/lists/reviews_list/ReviewsList';
 import CrewList from '../../components/lists/crew_list/CrewList';
+import VideoList from '../../components/lists/video_list/VideoList';
 
 const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
   const params = useParams();
@@ -31,22 +32,17 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
     <div className={classes['page-container']}>
       <DetailsHeader
         title={'title' in data ? data.title : data.name}
-        overview={data.overview}
         genres={data.genres}
         vote_average={data.vote_average}
         release_date={'title' in data ? data.release_date : null}
         runtime={'title' in data ? data.runtime : null}
         backdrop_path={data.backdrop_path}
         vote_count={data.vote_count}
+        handleSelectTab={handleSelectTab}
+        selectedTab={selectedTab}
       />
 
       <div className={classes['main-container']}>
-        <Tabs
-          onSelectType={handleSelectTab}
-          selectedType={selectedTab}
-          tabs={tabs}
-          layoutId='details_page'
-        />
         {selectedTab.value === 'overview' && <DetailsMain media={data} />}
         {selectedTab.value === 'cast' && (
           <CreditsList
@@ -68,6 +64,10 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
               <ReviewItem key={review.id} review={review} viewFull={true} />
             ))}
           </ul>
+        )}
+
+        {selectedTab.value === 'videos' && (
+          <VideoList videos={data.videos.results} />
         )}
       </div>
     </div>

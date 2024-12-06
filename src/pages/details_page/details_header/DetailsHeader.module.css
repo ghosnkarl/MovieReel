@@ -1,31 +1,27 @@
 .container {
   position: relative;
   margin-top: 7rem;
-  justify-content: center;
   gap: 2.4rem;
   overflow: hidden;
-  height: 55vh;
+  height: 50vh;
+  display: flex;
 }
 
 .container::after {
   content: '';
   position: absolute;
   background-color: rgb(20, 20, 20);
-  opacity: 0.8;
+  opacity: 0.6;
   width: 100%;
   height: 100%;
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
   max-width: var(--page-width--max);
   margin: var(--page-width--margin);
   padding: 0 var(--page-padding--horizontal);
   position: absolute;
-  gap: 12.8rem;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 0;
   z-index: 1;
 }
 
@@ -43,12 +39,12 @@
 
   mask-image: linear-gradient(
     to bottom,
-    rgba(20, 20, 20, 1) 50%,
+    rgba(20, 20, 20, 1) 0%,
     rgba(0, 0, 0, 0) 100%
   );
   -webkit-mask-image: linear-gradient(
     to bottom,
-    rgba(20, 20, 20, 1) 50%,
+    rgba(20, 20, 20, 1) 0%,
     rgba(20, 20, 20, 0) 100%
   );
 }
@@ -64,7 +60,7 @@
 .genres {
   font-size: 1.6rem;
   font-weight: 600;
-  color: var(--color-gray-300);
+  color: var(--color-gray-200);
   margin-bottom: 0.4rem;
   text-shadow: 1px 1px 2px rgb(20, 20, 20);
 }
@@ -89,6 +85,14 @@
   font-size: 1.8rem;
   font-weight: 600;
   color: var(--color-gray-100);
+}
+
+.tagline {
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+  color: var(--color-gray-200);
+  font-style: italic;
+  text-shadow: 1px 1px 2px rgb(20, 20, 20);
 }
 
 .overview {

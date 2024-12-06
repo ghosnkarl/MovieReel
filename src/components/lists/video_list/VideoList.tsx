@@ -1,7 +1,6 @@
 import classes from './VideoList.module.css';
 import { NavLink } from 'react-router-dom';
 import { IVideo } from '../../../models/commonModel';
-import HorizontalList from '../../horizontal_list/HorizontalList';
 
 interface IVideoItem {
   video: IVideo;
@@ -34,11 +33,11 @@ interface IVideoList {
 const VideoList = ({ videos }: IVideoList) => {
   if (!videos || videos.length === 0) return null;
   return (
-    <HorizontalList title='Videos' linkState={null} link={null}>
+    <div className={classes['videos__container']}>
       {videos.map((video) => (
         <VideoItem key={video.key} video={video} />
       ))}
-    </HorizontalList>
+    </div>
   );
 };
 

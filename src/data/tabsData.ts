@@ -46,8 +46,10 @@ export const MOVIE_TABS: ITabObject[] = [
 ];
 
 export const CREDITS_TABS = [
-  { title: 'Cast', value: 'cast' },
+  { title: 'Movies', value: 'movies' },
+  { title: 'TV Shows', value: 'tv' },
   { title: 'Crew', value: 'crew' },
+  { title: 'Images', value: 'images' },
 ];
 
 export const DETAILS_TABS = [
@@ -55,6 +57,7 @@ export const DETAILS_TABS = [
   { title: 'Cast', value: 'cast' },
   { title: 'Crew', value: 'crew' },
   { title: 'Reviews', value: 'reviews' },
+  { title: 'Videos', value: 'videos' },
   { title: 'Images', value: 'images' },
 ];
 

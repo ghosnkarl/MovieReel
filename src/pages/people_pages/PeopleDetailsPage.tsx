@@ -5,7 +5,6 @@ import { getProfileImage } from '../../helpers/imageSizes';
 import classes from './PeopleDetailsPage.module.css';
 import { useEffect, useMemo, useState } from 'react';
 import moment from 'moment';
-import ImageList from '../../components/lists/image_list/ImageList';
 import { CREDITS_TABS } from '../../data/tabsData';
 import Tabs, { ITabObject } from '../../components/ui/tabs/Tabs';
 import { ICastMedia, ICrewMedia, IPerson } from '../../models/peopleModel';
@@ -17,7 +16,7 @@ import { formatDate } from '../../helpers/commonHelpers';
 
 const MediaItems = ({ media }: { media: ICastMedia[] | ICrewMedia[] }) => {
   return (
-    <div className='flex--wrap-container'>
+    <div className={classes['media__container']}>
       {media.map((item) => (
         <MediaItem
           key={item.credit_id}
@@ -134,14 +133,14 @@ const PeopleDetailsPage = () => {
         </div>
       </div>
       <div className={classes['main-content']}>
-        {profileList && profileList.length > 0 && (
+        {/* {profileList && profileList.length > 0 && (
           <ImageList
             images={profiles}
             backdropList={profileList}
             title={data.name}
             image={getProfileImage(data.profile_path, 'w185')}
           />
-        )}
+        )} */}
 
         <div className={classes['combined-credits']}>
           <h1 className='section__title'>Movies &amp; TV Shows</h1>
@@ -152,8 +151,19 @@ const PeopleDetailsPage = () => {
             layoutId='credits_page'
           />
 
-          {selectedTab.value === 'cast' && (
-            <MediaItems media={data.combined_credits.cast} />
+          {selectedTab.value === 'movies' && (
+            <MediaItems
+              media={data.combined_credits.cast.filter(
+                (item) => item.media_type === 'movie'
+              )}
+            />
+          )}
+          {selectedTab.value === 'tv' && (
+            <MediaItems
+              media={data.combined_credits.cast.filter(
+                (item) => item.media_type === 'tv'
+              )}
+            />
           )}
           {selectedTab.value === 'crew' && (
             <>
