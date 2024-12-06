@@ -24,7 +24,6 @@ const CrewList = ({ crew }: { crew: ICrew[] }) => {
         tagsList={departmentsList}
         selectedTag={selectedDepartment}
         handleSelectTag={handleSelectDepartment}
-        list={filteredCrewList}
       />
 
       <CreditsList

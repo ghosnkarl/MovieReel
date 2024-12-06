@@ -12,7 +12,7 @@ export const getGalleryImages = ({ images }: GalleryImagesProps) => {
   if (images && images.backdrops && images.backdrops.length > 0)
     backdrops = images.backdrops.map((backdrop) => {
       return {
-        galleryImage: getBackdropImage(backdrop.file_path, 'w300'),
+        galleryImage: getBackdropImage(backdrop.file_path, 'w780'),
         fullImage: getBackdropImage(backdrop.file_path, 'original'),
       };
     });

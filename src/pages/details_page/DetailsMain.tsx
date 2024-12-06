@@ -33,10 +33,6 @@ const DetailsMain = ({ media }: IDetailsMainContainer) => {
 
   return (
     <div className={classes['details__main']}>
-      <div>
-        <p className={classes.tagline}>{media.tagline}</p>
-        <p className={classes.overview}>{media.overview}</p>
-      </div>
       <div className={classes['details__container']}>
         <DetailsMedia
           status={media.status}
@@ -64,17 +60,6 @@ const DetailsMain = ({ media }: IDetailsMainContainer) => {
           />
         </HorizontalList>
       )} */}
-
-      {/* <VideoList videos={media.videos.results} /> */}
-
-      {/* 
-
-      <ImageList
-        images={images}
-        backdropList={media.images.backdrops}
-        title={title}
-        image={getPosterImage(media.poster_path, 'w342')}
-      /> */}
 
       {collectionList && (
         <HorizontalList

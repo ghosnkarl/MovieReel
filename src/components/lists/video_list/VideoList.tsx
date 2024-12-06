@@ -1,6 +1,7 @@
 import classes from './VideoList.module.css';
 import { NavLink } from 'react-router-dom';
 import { IVideo } from '../../../models/commonModel';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 interface IVideoItem {
   video: IVideo;
@@ -14,7 +15,7 @@ const VideoItem = ({ video }: IVideoItem) => {
       className={classes.container}
     >
       <div className={classes['img__container']}>
-        <img
+        <LazyLoadImage
           className={classes['video__img']}
           alt={video.name}
           src={`https://i.ytimg.com/vi/${video.key}/hqdefault.jpg`}

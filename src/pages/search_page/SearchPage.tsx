@@ -84,31 +84,40 @@ const SearchPage = () => {
         </ul>
       </div>
       {searchQuery.data && searchQuery.data?.length > 0 && (
-        <ul className={classes['search__list']}>
+        <div>
           {(searchType.value === 'movie' || searchType.value === 'tv') && (
-            <MediaList
-              data={searchQuery.data as IMovie[]}
-              type={searchType.value === 'movie' ? 'movies' : 'tv'}
-            />
-          )}
-          {searchType.value === 'person' &&
-            (searchQuery.data as IPerson[]).map((person) => (
-              <PersonItem
-                key={person.id}
-                id={person.id}
-                profile_path={person.profile_path}
-                title={person.name}
-                text={person.known_for_department}
+            <ul className='grid--5-cols'>
+              <MediaList
+                data={searchQuery.data as IMovie[]}
+                type={searchType.value === 'movie' ? 'movies' : 'tv'}
               />
-            ))}
+            </ul>
+          )}
+          {searchType.value === 'person' && (
+            <ul className='grid--7-cols'>
+              {(searchQuery.data as IPerson[]).map((person) => (
+                <PersonItem
+                  key={person.id}
+                  id={person.id}
+                  profile_path={person.profile_path}
+                  title={person.name}
+                  text={person.known_for_department}
+                />
+              ))}
+            </ul>
+          )}
 
-          {(searchType.value === 'keyword' || searchType.value === 'company') &&
-            (searchQuery.data as IIdName[]).map((item) => (
-              <li className={classes.name} key={item.id}>
-                {item.name}
-              </li>
-            ))}
-        </ul>
+          {(searchType.value === 'keyword' ||
+            searchType.value === 'company') && (
+            <ul className='flex--wrap'>
+              {(searchQuery.data as IIdName[]).map((item) => (
+                <li className={classes.name} key={item.id}>
+                  {item.name}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       )}
       {searchTerm !== '' && searchQuery.data?.length === 0 && (
         <h1>No Results</h1>

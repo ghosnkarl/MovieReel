@@ -1,16 +1,11 @@
-import { useQuery } from '@tanstack/react-query';
 import classes from './GenresPicker.module.css';
 import { useState } from 'react';
-import { fetchGenres } from '../../../services/http';
 import { IIdName } from '../../../models/commonModel';
+import useGenres from '../../../hooks/useGenres';
 
 const GenresPicker = () => {
   const [selectedGenres, setSelectedGenres] = useState<number[]>([]);
-  const genresQuery = useQuery({
-    queryKey: ['genres', 'movie'],
-    queryFn: () => fetchGenres('movie'),
-    retry: 1,
-  });
+  const { data, isLoading, isError } = useGenres({ type: 'movie' });
 
   const handleGenreClicked = (genre: IIdName) => {
     if (!selectedGenres.find((id) => genre.id === id)) {
@@ -21,13 +16,11 @@ const GenresPicker = () => {
     }
   };
 
-  if (genresQuery.isLoading || genresQuery.isError) return;
-
-  const genres = genresQuery.data!;
+  if (isLoading || isError || !data) return;
 
   return (
     <div className={classes['genres-container']}>
-      {genres.map((genre) => (
+      {data.map((genre) => (
         <span
           className={`${
             selectedGenres.find((id) => id == genre.id) ? classes.active : ''

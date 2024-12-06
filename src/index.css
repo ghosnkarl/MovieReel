@@ -96,76 +96,14 @@ body {
 .page-container {
   max-width: var(--page-width--max);
   margin: 0 auto;
-  padding: 12.8rem var(--page-padding--horizontal) 0
+  padding: 12.8rem var(--page-padding--horizontal) 3.2rem
     var(--page-padding--horizontal);
-}
-
-.flex--wrap-container {
-  display: flex;
-  gap: 2.4rem;
-  flex-wrap: wrap;
-  margin-bottom: 3.2rem;
-}
-
-/********************** Links **********************/
-.link--gradient:link,
-.link--gradient:visited {
-  display: flex;
-  width: fit-content;
-  background-image: linear-gradient(
-    to right,
-    #ff512f 0%,
-    #f09819 51%,
-    #ff512f 100%
-  );
-  background-size: 200% auto;
-  transition: all 0.5s ease-in-out;
-  align-items: center;
-  text-decoration: none;
-  border-radius: 1000px;
-  color: white;
-}
-
-.link--gradient:hover,
-.link--gradient:active {
-  background-position: right center;
-}
-
-.link--search:link,
-.link--search:visited {
-  gap: 1rem;
-  font-size: 1.7rem;
-  font-weight: 600;
-  padding: 0.8rem 2.2rem 0.8rem 1.2rem;
 }
 
 /********************** Typography **********************/
 .section__title {
   font-size: var(--section--title-size);
   font-weight: 700;
-}
-
-/********************** Buttons **********************/
-
-.btn--gradient {
-  border: none;
-  background-image: linear-gradient(
-    to right,
-    #ff512f 0%,
-    #f09819 51%,
-    #ff512f 100%
-  );
-  padding: 1rem 2.2rem 1rem 1.2rem;
-  font-size: 2rem;
-  display: flex;
-  gap: 0.8rem;
-  border-radius: 1000px;
-  background-size: 200% auto;
-  transition: all 0.5s ease-in-out;
-}
-
-.btn--gradient:hover {
-  background-position: right center;
 }
 
 .credits-list__container {
@@ -230,4 +168,26 @@ body {
   height: 0.3rem;
   border-radius: 1000px;
   color: white;
+}
+
+.grid--5-cols,
+.grid--7-cols {
+  display: grid;
+  gap: 2rem;
+  list-style: none;
+}
+
+.grid--5-cols {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.grid--7-cols {
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.flex--wrap {
+  display: flex;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+  list-style: none;
 }

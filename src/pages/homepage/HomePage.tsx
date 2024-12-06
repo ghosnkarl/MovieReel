@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchResults } from '../../services/http';
 import classes from './Homepage.module.css';
-import TopTrending from '../../components/lists/top_trending/TopTrending';
 import { IMovie, ITVShow } from '../../models/mediaModel';
 import { IPeople } from '../../models/peopleModel';
 import { airingTodayDates, upComingDates } from '../../helpers/discoverHelpers';
@@ -33,6 +32,26 @@ export default function HomePage() {
     retry: 1,
   });
 
+  const trendingQuery = useQuery({
+    queryKey: ['movie', 'trending'],
+    queryFn: () =>
+      fetchResults<IMovie>({
+        path: `trending/movie/week`,
+        params: null,
+      }),
+    retry: 1,
+  });
+
+  const tvTrendingQuery = useQuery({
+    queryKey: ['tv', 'trending'],
+    queryFn: () =>
+      fetchResults<ITVShow>({
+        path: `trending/tv/week`,
+        params: null,
+      }),
+    retry: 1,
+  });
+
   return (
     <div className={classes.container}>
       <Carousel />
@@ -44,7 +63,12 @@ export default function HomePage() {
         type='movie'
       />
 
-      <TopTrending type='movie' />
+      <HorizontalWrapper
+        query={trendingQuery}
+        title='Trending Movies'
+        link={null}
+        type='movie'
+      />
 
       <HorizontalWrapper
         query={airingTodayTVQuery}
@@ -53,7 +77,12 @@ export default function HomePage() {
         type='tvShows'
       />
 
-      <TopTrending type='tv' />
+      <HorizontalWrapper
+        query={tvTrendingQuery}
+        title='Trending TV Shows'
+        link={null}
+        type='tvShows'
+      />
 
       <HorizontalWrapper
         query={popularPeopleQuery}

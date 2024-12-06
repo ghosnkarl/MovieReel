@@ -3,7 +3,7 @@
   margin-top: 7rem;
   gap: 2.4rem;
   overflow: hidden;
-  height: 50vh;
+  height: 70vh;
   display: flex;
 }
 
@@ -23,6 +23,7 @@
   position: absolute;
   bottom: 0;
   z-index: 1;
+  width: 60%;
 }
 
 .bottom__container {
@@ -47,14 +48,6 @@
     rgba(20, 20, 20, 1) 0%,
     rgba(20, 20, 20, 0) 100%
   );
-}
-
-.poster {
-  height: 55vh;
-  aspect-ratio: 2/3;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: var(--card--box-shadow);
 }
 
 .genres {

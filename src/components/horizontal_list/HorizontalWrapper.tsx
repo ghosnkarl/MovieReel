@@ -11,7 +11,7 @@ export type DataType = 'movie' | 'tvShows' | 'people';
 interface IHorizontalWrapper {
   query: UseQueryResult<QueryData, Error>;
   title: string;
-  link: string;
+  link: string | null;
   type: DataType;
 }
 

@@ -96,7 +96,7 @@ const PeopleDetailsPage = () => {
   if (!data) return null;
 
   return (
-    <div className={classes.container}>
+    <div className='page-container'>
       <div className={classes.header}>
         <img
           className={classes['profile-img']}
@@ -143,7 +143,6 @@ const PeopleDetailsPage = () => {
         )} */}
 
         <div className={classes['combined-credits']}>
-          <h1 className='section__title'>Movies &amp; TV Shows</h1>
           <Tabs
             onSelectType={handleSelectTab}
             selectedType={selectedTab}

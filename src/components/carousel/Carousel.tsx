@@ -1,20 +1,15 @@
-import { useQuery } from '@tanstack/react-query';
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { fetchGenres } from '../../services/http';
 import useDiscoverMovies from '../../hooks/useDiscoverMovies';
 import CarouselItem from './CarouselItem';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import classes from './CarouselItem.module.css';
 import ErrorBlock from '../ui/error_block/ErrorBlock';
 import LoadingIndicator from '../ui/LoadingIndicator';
+import useGenres from '../../hooks/useGenres';
 
 const Carousel = () => {
-  const genresQuery = useQuery({
-    queryKey: ['genres', 'movie'],
-    queryFn: () => fetchGenres('movie'),
-    retry: 1,
-  });
+  const { data: genres } = useGenres({ type: 'movie' });
   const { data, isError, isLoading, refetch } = useDiscoverMovies();
 
   if (isLoading) return <LoadingIndicator />;
@@ -49,7 +44,7 @@ const Carousel = () => {
       >
         {data.map((item) => (
           <SwiperSlide key={item.id}>
-            <CarouselItem genres={genresQuery.data} item={item} />
+            <CarouselItem genres={genres} item={item} />
           </SwiperSlide>
         ))}
       </Swiper>

@@ -30,9 +30,8 @@ export default function Navigation() {
             <NavigationItem key={item.title} item={item} />
           ))}
         </ul>
-        <NavLink to='/search' className='link--gradient link--search'>
+        <NavLink to='/search'>
           <IoMdSearch className={classes['search-icon']} />
-          Search
         </NavLink>
       </nav>
     </header>

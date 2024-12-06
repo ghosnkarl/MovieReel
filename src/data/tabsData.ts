@@ -10,14 +10,6 @@ import { fetchResults } from '../services/http';
 
 export const MOVIE_TABS: ITabObject[] = [
   {
-    title: 'Trending',
-    value: 'trending',
-    query: fetchResults<IMovie>({
-      path: 'trending/movie/week',
-      params: null,
-    }),
-  },
-  {
     title: 'Upcoming',
     value: upComingDates,
     query: fetchResults<IMovie>({
@@ -62,14 +54,6 @@ export const DETAILS_TABS = [
 ];
 
 export const TV_TABS: ITabObject[] = [
-  {
-    title: 'Trending',
-    value: 'trending',
-    query: fetchResults<ITVShow>({
-      path: 'trending/tv/week',
-      params: null,
-    }),
-  },
   {
     title: 'Airing Today',
     value: airingTodayDates,

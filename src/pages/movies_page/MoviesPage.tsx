@@ -33,10 +33,9 @@ export default function MoviesPage() {
         layoutId='movies_page'
       />
       <div className={classes.container}>
-        <ul className={classes['main-container']}>
+        <ul className='grid--5-cols'>
           <MediaList type='movies' data={selectedQuery.data as IMovie[]} />
         </ul>
-        <button className={classes['btn--more']}>Load More</button>
       </div>
     </div>
   );
