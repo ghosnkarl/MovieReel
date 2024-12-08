@@ -2,9 +2,8 @@
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 4.8rem;
-  /* justify-content: center; */
-  margin-bottom: 1.6rem;
+  gap: 1.6rem;
+  margin-bottom: 2.4rem;
 }
 
 .tab {
@@ -19,7 +18,7 @@
 }
 
 .selector {
-  height: 1.5px;
+  height: 2px;
   background-color: var(--color-primary-900);
   border-radius: 8px;
 }

@@ -82,15 +82,12 @@ body {
 }
 
 ::-webkit-scrollbar {
-  height: 1rem;
-  width: 1.2rem;
-  background-color: transparent;
+  width: 0;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-gray-600);
-  border-radius: 10px;
-  cursor: pointer;
+  background: transparent;
 }
 
 .page-container {
@@ -171,18 +168,24 @@ body {
 }
 
 .grid--5-cols,
+.grid--4-cols,
 .grid--7-cols {
   display: grid;
   gap: 2rem;
   list-style: none;
+  grid-template-columns: repeat(var(--cols), 1fr);
 }
 
 .grid--5-cols {
-  grid-template-columns: repeat(5, 1fr);
+  --cols: 5;
+}
+
+.grid--4-cols {
+  --cols: 4;
 }
 
 .grid--7-cols {
-  grid-template-columns: repeat(7, 1fr);
+  --cols: 7;
 }
 
 .flex--wrap {

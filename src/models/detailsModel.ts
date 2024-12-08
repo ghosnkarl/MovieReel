@@ -13,7 +13,7 @@ export interface IDetailsImages {
 }
 
 export interface IDetails extends IMedia {
-  // Common keys
+  // Common
   homepage: string;
   genres: IIdName[];
   status: string;
@@ -26,7 +26,7 @@ export interface IDetails extends IMedia {
   production_companies: IIdName[];
   keywords: { [key: string]: IIdName[] };
 
-  // Movie keys
+  // Movie
   belongs_to_collection?: IIdName | null;
   budget?: number;
   imdb_id?: string;
@@ -34,7 +34,7 @@ export interface IDetails extends IMedia {
   runtime?: number;
   credits?: Credits;
 
-  // TV Show keys
+  // TV Show
   last_air_date?: string;
   aggregate_credits?: Credits;
   created_by?: IIdName[];

@@ -1,4 +1,21 @@
+import { MdCheck } from 'react-icons/md';
 import classes from './TagsList.module.css';
+
+interface ITagProps {
+  children: string;
+  selected?: boolean;
+  onClick: () => void;
+}
+
+const Tag: React.FC<ITagProps> = ({ children, selected, onClick }) => (
+  <span
+    onClick={onClick}
+    className={`${classes.tag} ${selected ? classes['tag--selected'] : ''}`}
+  >
+    {selected && <MdCheck className={classes['tag__check']} />}
+    {children}
+  </span>
+);
 
 interface ITags {
   tagsList: string[];
@@ -6,19 +23,21 @@ interface ITags {
   selectedTag: string;
 }
 
-const TagsList = ({ tagsList, handleSelectTag, selectedTag }: ITags) => {
+const TagsList: React.FC<ITags> = ({
+  tagsList,
+  handleSelectTag,
+  selectedTag,
+}: ITags) => {
   return (
-    <div className={classes.container}>
+    <div className={classes.tags}>
       {tagsList.map((job) => (
-        <button
-          onClick={() => handleSelectTag(job)}
+        <Tag
           key={job}
-          className={`${classes['btn-tag']} ${
-            selectedTag === job ? classes.selected : ''
-          }`}
+          selected={job === selectedTag}
+          onClick={() => handleSelectTag(job)}
         >
           {job}
-        </button>
+        </Tag>
       ))}
     </div>
   );

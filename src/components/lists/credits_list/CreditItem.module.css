@@ -1,15 +1,13 @@
 .container {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
+  display: flex;
+  flex-direction: column;
   color: white;
-  gap: 2.4rem;
+
   transition: all 0.2s ease-in-out;
   text-decoration: none;
-  align-items: center;
   background-color: var(--color-background--card);
   border-radius: 7px;
   overflow: hidden;
-  padding-right: 1.2rem;
 }
 
 .container:hover {
@@ -20,9 +18,15 @@
   transform: scale(1.2);
 }
 
+.text__container {
+  padding: 0 1.2rem 1.2rem 1.2rem;
+}
+
 .img__container {
+  width: 100%;
   aspect-ratio: 1;
   overflow: hidden;
+  margin-bottom: 2.4rem;
 }
 
 .profile__img {
@@ -30,10 +34,6 @@
   height: 100%;
   object-fit: cover;
   transition: all 0.2s ease-in-out;
-}
-
-.text__container {
-  padding: 1.2rem 0;
 }
 
 .title {
@@ -46,7 +46,6 @@
 
 .container p {
   font-size: 1.4rem;
-  line-height: 1.2;
-  line-height: 1.3;
+  line-height: 1.4;
   color: var(--color-gray-300);
 }

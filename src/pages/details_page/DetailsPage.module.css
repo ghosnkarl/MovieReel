@@ -1,13 +1,9 @@
-.page-container {
-  /* margin-top: 7rem; */
-}
-
 .main-container {
   display: flex;
   flex-direction: column;
   max-width: var(--page-width--max);
   margin: var(--page-width--margin);
-  padding: 2.4rem var(--page-padding--horizontal) 4.8rem
+  padding: 1.2rem var(--page-padding--horizontal) 4.8rem
     var(--page-padding--horizontal);
   gap: 1.2rem;
 }

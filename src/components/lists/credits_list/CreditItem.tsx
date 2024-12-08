@@ -15,7 +15,7 @@ const CreditItem = ({ id, profile_path, title, text }: ICreditItem) => {
       <div className={classes['img__container']}>
         <img
           className={classes['profile__img']}
-          src={getProfileImage(profile_path, 'w185')}
+          src={getProfileImage(profile_path, 'h632')}
           alt={title}
         />
       </div>

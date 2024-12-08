@@ -1,26 +1,33 @@
-.container {
+.tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 1.6rem;
-  width: fit-content;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
 }
 
-.btn-tag {
-  border: none;
-  outline: none;
-  background: none;
+.tag {
   cursor: pointer;
   display: flex;
   align-items: center;
-  padding: 0.7rem 1.8rem;
+  gap: 0.8rem;
+  padding: 0.8rem 2rem;
   font-size: 1.4rem;
-  border-radius: 5px;
-  font-weight: 600;
+  border-radius: 12px;
+  background-color: var(--color-background--border);
+  box-shadow: var(--card--box-shadow);
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.btn-tag:hover,
-.selected {
-  color: white;
-  background-image: linear-gradient(90deg, #ff7426 0, #f93a13 100%);
+.tag:hover {
+  background-color: var(--color-gray-500);
+  transform: scale(1.05);
+}
+
+.tag--selected {
+  background-color: var(--color-gray-500);
+  padding: 0.8rem 2rem 0.8rem 1.2rem;
+}
+
+.tag__check {
+  font-size: 2rem;
 }

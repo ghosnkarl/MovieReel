@@ -41,40 +41,42 @@ export default function HomePage() {
     <div className={classes.container}>
       <Carousel />
 
-      <HorizontalWrapper
-        query={upcomingMoviesQuery}
-        title='Upcoming Movies'
-        link='/movies'
-        type='movies'
-      />
+      <div className={classes['list__container']}>
+        <HorizontalWrapper
+          query={upcomingMoviesQuery}
+          title='Upcoming Movies'
+          link='/movies'
+          type='movies'
+        />
 
-      <HorizontalWrapper
-        query={trendingQuery}
-        title='Trending Movies'
-        link={null}
-        type='movies'
-      />
+        <HorizontalWrapper
+          query={trendingQuery}
+          title='Trending Movies'
+          link={null}
+          type='movies'
+        />
 
-      <HorizontalWrapper
-        query={airingTodayTVQuery}
-        title='Airing Today TV Shows'
-        link='/tv'
-        type='tv'
-      />
+        <HorizontalWrapper
+          query={airingTodayTVQuery}
+          title='Airing Today TV Shows'
+          link='/tv'
+          type='tv'
+        />
 
-      <HorizontalWrapper
-        query={tvTrendingQuery}
-        title='Trending TV Shows'
-        link={null}
-        type='tv'
-      />
+        <HorizontalWrapper
+          query={tvTrendingQuery}
+          title='Trending TV Shows'
+          link={null}
+          type='tv'
+        />
 
-      <HorizontalWrapper
-        query={popularPeopleQuery}
-        title='Most Popular Celebrities'
-        link='/people'
-        type='people'
-      />
+        <HorizontalWrapper
+          query={popularPeopleQuery}
+          title='Most Popular Celebrities'
+          link='/people'
+          type='people'
+        />
+      </div>
     </div>
   );
 }
