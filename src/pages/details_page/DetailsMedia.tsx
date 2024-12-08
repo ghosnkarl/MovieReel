@@ -21,14 +21,14 @@ const DetailsMediaItem = ({ title, text }: MediaDetailsItem) => {
 interface IMediaDetails {
   status: string;
   homepage: string;
-  imdb_id: string | null;
-  budget: number | null;
-  revenue: number | null;
-  number_of_seasons: number | null;
-  number_of_episodes: number | null;
-  first_air_date: string | null;
-  last_air_date: string | null;
-  created_by: IIdName[] | null;
+  imdb_id: string | null | undefined;
+  budget: number | null | undefined;
+  revenue: number | null | undefined;
+  number_of_seasons: number | null | undefined;
+  number_of_episodes: number | null | undefined;
+  first_air_date: string | null | undefined;
+  last_air_date: string | null | undefined;
+  created_by: IIdName[] | null | undefined;
   production_companies: IIdName[] | null;
 }
 

@@ -1,6 +1,5 @@
 import HeaderLink from '../ui/header_link/HeaderLink';
 import classes from './HorizontalList.module.css';
-import { IMovie, ITVShow } from '../../models/mediaModel';
 import { IPeople } from '../../models/peopleModel';
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -15,6 +14,7 @@ import { motion } from 'framer-motion';
 import { DataType, QueryData } from './HorizontalWrapper';
 import { useRef, useState } from 'react';
 import { NavigationOptions, Swiper as SwiperType } from 'swiper/types';
+import { IMedia } from '../../models/mediaModel';
 
 interface IHorizontalList {
   title: string;
@@ -43,32 +43,21 @@ const HorizontalList = ({
   };
 
   // Create a generic slide component
-  const renderSlide = (item: IMovie | ITVShow | IPeople) => {
-    if (type === 'movie') {
-      const movie = item as IMovie;
+  const renderSlide = (item: IMedia | IPeople) => {
+    if (type === 'movies' || type === 'tv') {
+      const media = item as IMedia;
       return (
-        <SwiperSlide key={movie.id}>
+        <SwiperSlide key={media.id}>
           <MediaItem
-            id={movie.id}
-            title={movie.title}
-            poster_path={movie.poster_path}
-            text={formatDate(movie.release_date)}
-            type='movies'
-          />
-        </SwiperSlide>
-      );
-    }
-
-    if (type === 'tvShows') {
-      const tv = item as ITVShow;
-      return (
-        <SwiperSlide key={tv.id}>
-          <MediaItem
-            id={tv.id}
-            title={tv.name}
-            poster_path={tv.poster_path}
-            text={formatDate(tv.first_air_date)}
-            type='tv'
+            id={media.id}
+            title={media.title || media.name}
+            poster_path={media.poster_path}
+            text={
+              media.release_date
+                ? formatDate(media.release_date)
+                : formatDate(media.first_air_date)
+            }
+            type={type}
           />
         </SwiperSlide>
       );

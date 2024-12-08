@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { IMovieDetails, ITVDetails } from '../models/detailsModel';
+import { IDetails } from '../models/detailsModel';
 import { fetchSingleResult } from '../services/http';
 
 interface IUseDetails {
@@ -15,10 +15,10 @@ const useDetails = ({ isMovie, id }: IUseDetails) => {
   };
   const mediaType = isMovie ? 'movie' : 'tv';
 
-  return useQuery<IMovieDetails | ITVDetails>({
+  return useQuery<IDetails>({
     queryKey: [isMovie ? 'movie' : 'tv', id],
     queryFn: () =>
-      fetchSingleResult<IMovieDetails | ITVDetails>({
+      fetchSingleResult({
         path: `${mediaType}/${id}`,
         params: queryParams,
       }),

@@ -2,11 +2,11 @@ import { UseQueryResult } from '@tanstack/react-query';
 import HorizontalList from './HorizontalList';
 import LoadingIndicator from '../ui/LoadingIndicator';
 import ErrorBlock from '../ui/error_block/ErrorBlock';
-import { IMovie, ITVShow } from '../../models/mediaModel';
+import { IMedia } from '../../models/mediaModel';
 import { IPeople } from '../../models/peopleModel';
 
-export type QueryData = IMovie[] | ITVShow[] | IPeople[];
-export type DataType = 'movie' | 'tvShows' | 'people';
+export type QueryData = IMedia[] | IPeople[];
+export type DataType = 'movies' | 'tv' | 'people';
 
 interface IHorizontalWrapper {
   query: UseQueryResult<QueryData, Error>;

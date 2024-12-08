@@ -1,9 +1,9 @@
-import { IMovie, ITVShow } from '../../../models/mediaModel';
 import { ISeason } from '../../../models/seasonModel';
 import { NavLink } from 'react-router-dom';
 import classes from './MediaItem.module.css';
 import { getPosterImage } from '../../../helpers/imageSizes';
 import { formatDate } from '../../../helpers/commonHelpers';
+import { IMedia } from '../../../models/mediaModel';
 
 type MediaType = 'movies' | 'tv' | 'season';
 
@@ -45,7 +45,7 @@ export const MediaItem = ({
 };
 
 interface IMediaList {
-  data: IMovie[] | ITVShow[] | ISeason[] | undefined;
+  data: IMedia[] | ISeason[] | undefined;
   type: MediaType;
 }
 

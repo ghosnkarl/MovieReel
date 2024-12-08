@@ -5,12 +5,12 @@ import classes from './SearchPage.module.css';
 import { useQuery } from '@tanstack/react-query';
 import { fetchResults } from '../../services/http';
 import MediaList from '../../components/lists/media_list/MediaList';
-import { IMovie } from '../../models/mediaModel';
 import { MdSearch } from 'react-icons/md';
 import { CircularProgress } from '@mui/material';
 import { IPerson } from '../../models/peopleModel';
 import PersonItem from '../../components/list_items/person_item/PersonItem';
 import { IIdName } from '../../models/commonModel';
+import { IMedia } from '../../models/mediaModel';
 
 const SearchPage = () => {
   const [searchType, setSearchType] = useState<ItemProps>(SEARCH_OPTIONS[0]);
@@ -88,7 +88,7 @@ const SearchPage = () => {
           {(searchType.value === 'movie' || searchType.value === 'tv') && (
             <ul className='grid--5-cols'>
               <MediaList
-                data={searchQuery.data as IMovie[]}
+                data={searchQuery.data as IMedia[]}
                 type={searchType.value === 'movie' ? 'movies' : 'tv'}
               />
             </ul>

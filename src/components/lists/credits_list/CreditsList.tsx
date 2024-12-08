@@ -2,7 +2,7 @@ import { ICast, ICrew } from '../../../models/castCrewModel';
 import CreditItem from './CreditItem';
 
 interface ICreditsList {
-  credits: ICast[] | ICrew[];
+  credits: ICast[] | ICrew[] | undefined;
 }
 
 const getCreditDetails = (credit: ICast | ICrew) => {
@@ -27,7 +27,7 @@ const getCreditDetails = (credit: ICast | ICrew) => {
 const CreditsList = ({ credits }: ICreditsList) => {
   return (
     <div className='credits-list__container'>
-      {credits.map((credit) => {
+      {credits?.map((credit) => {
         const { key, text } = getCreditDetails(credit);
 
         return (

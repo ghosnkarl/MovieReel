@@ -1,6 +1,6 @@
 import classes from './DetailsPage.module.css';
 import RecommendedList from '../../components/lists/RecommendedList';
-import { IMovieDetails, ITVDetails } from '../../models/detailsModel';
+import { IDetails } from '../../models/detailsModel';
 import HorizontalList from '../../components/horizontal_list/HorizontalList';
 import DetailsMedia from './DetailsMedia';
 import Keywords from '../../components/lists/keywords_list/KeywordsList';
@@ -9,14 +9,14 @@ import { fetchSingleResult } from '../../services/http';
 import { ICollectionDetails } from '../../models/commonModel';
 
 interface IDetailsMainContainer {
-  media: IMovieDetails | ITVDetails;
+  media: IDetails;
 }
 
 const DetailsMain = ({ media }: IDetailsMainContainer) => {
   const isMovie = 'title' in media;
-  const title = isMovie ? media.title : media.name;
-  // const seasons = isMovie ? null : media.seasons;
-  const collectionId = isMovie ? media?.belongs_to_collection?.id : null;
+  const title = media.title || media.name;
+
+  const collectionId = media?.belongs_to_collection?.id || null;
 
   const collectionQuery = useQuery<ICollectionDetails>({
     queryKey: ['collection', collectionId],
@@ -37,14 +37,14 @@ const DetailsMain = ({ media }: IDetailsMainContainer) => {
         <DetailsMedia
           status={media.status}
           homepage={media.homepage}
-          imdb_id={isMovie ? media.imdb_id : null}
-          revenue={isMovie ? media.revenue : null}
-          budget={isMovie ? media.budget : null}
-          number_of_episodes={isMovie ? null : media.number_of_episodes}
-          number_of_seasons={isMovie ? null : media.number_of_seasons}
-          first_air_date={isMovie ? null : media.first_air_date}
-          last_air_date={isMovie ? null : media.last_air_date}
-          created_by={isMovie ? null : media.created_by}
+          imdb_id={media.imdb_id}
+          revenue={media.revenue}
+          budget={media.budget}
+          number_of_episodes={media.number_of_episodes}
+          number_of_seasons={media.number_of_seasons}
+          first_air_date={media.first_air_date}
+          last_air_date={media.last_air_date}
+          created_by={media.created_by}
           production_companies={media.production_companies}
         />
 
@@ -67,7 +67,7 @@ const DetailsMain = ({ media }: IDetailsMainContainer) => {
           link={null}
           linkState={null}
           data={collectionList.parts}
-          type='movie'
+          type='movies'
         />
       )}
 

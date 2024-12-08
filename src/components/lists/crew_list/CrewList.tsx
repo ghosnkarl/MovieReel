@@ -3,12 +3,12 @@ import { ICrew } from '../../../models/castCrewModel';
 import TagsList from '../tags_list/TagsList';
 import CreditsList from '../credits_list/CreditsList';
 
-const CrewList = ({ crew }: { crew: ICrew[] }) => {
+const CrewList = ({ crew }: { crew: ICrew[] | undefined }) => {
   let filteredCrewList: ICrew[] = [];
 
-  let departmentsList = crew.map((crew: ICrew) => crew.department);
+  let departmentsList = crew ? crew.map((crew: ICrew) => crew.department) : [];
   departmentsList = [...new Set(departmentsList)];
-  filteredCrewList = [...crew];
+  filteredCrewList = crew ? [...crew] : [];
 
   const [selectedDepartment, setSelectedDepartment] = useState<string>(
     departmentsList[0]

@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import classes from '../movies_page/MoviesPage.module.css';
-import { ITVShow } from '../../models/mediaModel';
 import { useState } from 'react';
 import Tabs, { ITabObject } from '../../components/ui/tabs/Tabs';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import { TV_TABS } from '../../data/tabsData';
 import MediaList from '../../components/lists/media_list/MediaList';
+import { IMedia } from '../../models/mediaModel';
 
 export default function TVPage() {
   const tabs: ITabObject[] = TV_TABS;
@@ -24,7 +24,7 @@ export default function TVPage() {
   let content = <LoadingIndicator />;
 
   if (data) {
-    content = <MediaList type='tv' data={data as ITVShow[]} />;
+    content = <MediaList type='tv' data={data as IMedia[]} />;
   }
 
   return (

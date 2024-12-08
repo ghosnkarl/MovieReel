@@ -1,4 +1,4 @@
-import { IMovie } from '../../models/mediaModel';
+import { IMedia } from '../../models/mediaModel';
 import { getBackdropImage } from '../../helpers/imageSizes';
 import classes from './CarouselItem.module.css';
 import RatingStar from '../rating/RatingStar';
@@ -7,7 +7,7 @@ import { formatDate, getGenres } from '../../helpers/commonHelpers';
 import { NavLink } from 'react-router-dom';
 
 interface ICarousel {
-  item: IMovie;
+  item: IMedia;
   genres: IIdName[] | undefined;
 }
 

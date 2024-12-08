@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { fetchSingleResult } from '../../services/http';
 import { getProfileImage } from '../../helpers/imageSizes';
 import classes from './PeopleDetailsPage.module.css';
@@ -13,6 +13,9 @@ import { MediaItem } from '../../components/lists/media_list/MediaList';
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import TagsList from '../../components/lists/tags_list/TagsList';
 import { formatDate } from '../../helpers/commonHelpers';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import LoadingIndicator from '../../components/ui/LoadingIndicator';
+import ErrorPage from '../error_page/ErrorPage';
 
 const MediaItems = ({ media }: { media: ICastMedia[] | ICrewMedia[] }) => {
   return (
@@ -44,7 +47,7 @@ const PeopleDetailsPage = () => {
     include_image_language: 'en,null',
   };
 
-  const { data } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ['people', personId],
     queryFn: () =>
       fetchSingleResult<IPerson>({
@@ -80,11 +83,6 @@ const PeopleDetailsPage = () => {
     setSelectedJob(job);
   };
 
-  const profileList = useMemo(
-    () => data?.images?.profiles.slice(0, 8) || [],
-    [data]
-  );
-
   const profiles = useMemo(() => {
     if (!data?.images?.profiles) return [];
     return data.images.profiles.map((profile: IImage) => ({
@@ -93,7 +91,8 @@ const PeopleDetailsPage = () => {
     }));
   }, [data]);
 
-  if (!data) return null;
+  if (isLoading) return <LoadingIndicator />;
+  if (isError || !data) return <ErrorPage />;
 
   return (
     <div className='page-container'>
@@ -177,6 +176,21 @@ const PeopleDetailsPage = () => {
                 )}
               />
             </>
+          )}
+
+          {selectedTab.value === 'images' && (
+            <div className='grid--5-cols'>
+              {profiles.map((image) => (
+                <NavLink
+                  className={classes.container}
+                  key={image.galleryImage}
+                  to={image.fullImage}
+                  target='_blank'
+                >
+                  <LazyLoadImage src={image.galleryImage} />
+                </NavLink>
+              ))}
+            </div>
           )}
         </div>
       </div>

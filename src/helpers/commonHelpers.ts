@@ -1,7 +1,7 @@
 import { IIdName } from '../models/commonModel';
 import moment from 'moment';
 
-export const formatDate = (date: string | null) => {
+export const formatDate = (date: string | null | undefined) => {
   return date ? moment(date).format('MMM DD, YYYY') : 'Unknown';
 };
 

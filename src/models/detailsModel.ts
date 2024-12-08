@@ -1,7 +1,10 @@
 import { IIdName, IImage, IReview, IVideo } from './commonModel';
 import { ICast, ICrew } from './castCrewModel';
-import { IMovie, ITVShow } from './mediaModel';
+import { IMedia } from './mediaModel';
 import { ISeason } from './seasonModel';
+
+export type Results<T> = { results: T[] };
+export type Credits = { cast: ICast[]; crew: ICrew[] };
 
 export interface IDetailsImages {
   backdrops: IImage[];
@@ -9,35 +12,33 @@ export interface IDetailsImages {
   logos: IImage[];
 }
 
-export interface IBaseDetails {
+export interface IDetails extends IMedia {
+  // Common keys
   homepage: string;
   genres: IIdName[];
   status: string;
   tagline: string;
-  videos: { results: IVideo[] };
+  videos: Results<IVideo>;
   images: IDetailsImages;
-  reviews: { results: IReview[] };
-  recommendations: { results: IMovie[] };
+  reviews: Results<IReview>;
+  recommendations: Results<IMedia>;
   vote_count: number;
   production_companies: IIdName[];
-}
+  keywords: { [key: string]: IIdName[] };
 
-export interface IMovieDetails extends Omit<IMovie, 'genre_ids'>, IBaseDetails {
-  belongs_to_collection: IIdName | null;
-  budget: number;
-  imdb_id: string;
-  revenue: number;
-  runtime: number;
-  credits: { cast: ICast[]; crew: ICrew[] };
-  keywords: { keywords: IIdName[] };
-}
+  // Movie keys
+  belongs_to_collection?: IIdName | null;
+  budget?: number;
+  imdb_id?: string;
+  revenue?: number;
+  runtime?: number;
+  credits?: Credits;
 
-export interface ITVDetails extends Omit<ITVShow, 'genre_ids'>, IBaseDetails {
-  last_air_date: string;
-  aggregate_credits: { cast: ICast[]; crew: ICrew[] };
-  keywords: { results: IIdName[] };
-  created_by: IIdName[];
-  number_of_episodes: number;
-  number_of_seasons: number;
-  seasons: ISeason[];
+  // TV Show keys
+  last_air_date?: string;
+  aggregate_credits?: Credits;
+  created_by?: IIdName[];
+  number_of_episodes?: number;
+  number_of_seasons?: number;
+  seasons?: ISeason[];
 }

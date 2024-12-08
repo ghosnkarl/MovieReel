@@ -3,10 +3,10 @@ import classes from './MoviesPage.module.css';
 import { useState } from 'react';
 import Tabs, { ITabObject } from '../../components/ui/tabs/Tabs';
 import { MOVIE_TABS } from '../../data/tabsData';
-import { IMovie } from '../../models/mediaModel';
 import MediaList from '../../components/lists/media_list/MediaList';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import ErrorPage from '../error_page/ErrorPage';
+import { IMedia } from '../../models/mediaModel';
 
 export default function MoviesPage() {
   const [selectedTab, setSelectedTab] = useState(MOVIE_TABS[0]);
@@ -34,7 +34,7 @@ export default function MoviesPage() {
       />
       <div className={classes.container}>
         <ul className='grid--5-cols'>
-          <MediaList type='movies' data={selectedQuery.data as IMovie[]} />
+          <MediaList type='movies' data={selectedQuery.data as IMedia[]} />
         </ul>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { IMovie } from './mediaModel';
+import { IMedia } from './mediaModel';
 
 export interface IIdName {
   id: number;
@@ -8,7 +8,7 @@ export interface IIdName {
 export type MediaType = 'movie' | 'tv';
 
 export interface ICollectionDetails extends IIdName {
-  parts: IMovie[];
+  parts: IMedia[];
 }
 
 export interface IImage {

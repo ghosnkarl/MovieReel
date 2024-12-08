@@ -5,14 +5,14 @@ import {
   onAirDates,
   upComingDates,
 } from '../helpers/discoverHelpers';
-import { IMovie, ITVShow } from '../models/mediaModel';
+import { IMedia } from '../models/mediaModel';
 import { fetchResults } from '../services/http';
 
 export const MOVIE_TABS: ITabObject[] = [
   {
     title: 'Upcoming',
     value: upComingDates,
-    query: fetchResults<IMovie>({
+    query: fetchResults<IMedia>({
       path: 'discover/movie',
       params: upComingDates,
     }),
@@ -20,7 +20,7 @@ export const MOVIE_TABS: ITabObject[] = [
   {
     title: 'Now Playing',
     value: nowPlayingDates,
-    query: fetchResults<IMovie>({
+    query: fetchResults<IMedia>({
       path: 'discover/movie',
       params: nowPlayingDates,
     }),
@@ -28,12 +28,12 @@ export const MOVIE_TABS: ITabObject[] = [
   {
     title: 'Popular',
     value: 'popular',
-    query: fetchResults<IMovie>({ path: 'movie/popular', params: null }),
+    query: fetchResults<IMedia>({ path: 'movie/popular', params: null }),
   },
   {
     title: 'Top Rated',
     value: 'top_rated',
-    query: fetchResults<IMovie>({ path: 'movie/top_rated', params: null }),
+    query: fetchResults<IMedia>({ path: 'movie/top_rated', params: null }),
   },
 ];
 
@@ -57,7 +57,7 @@ export const TV_TABS: ITabObject[] = [
   {
     title: 'Airing Today',
     value: airingTodayDates,
-    query: fetchResults<ITVShow>({
+    query: fetchResults<IMedia>({
       path: 'discover/tv',
       params: airingTodayDates,
     }),
@@ -65,16 +65,16 @@ export const TV_TABS: ITabObject[] = [
   {
     title: 'On Air',
     value: onAirDates,
-    query: fetchResults<ITVShow>({ path: 'discover/tv', params: onAirDates }),
+    query: fetchResults<IMedia>({ path: 'discover/tv', params: onAirDates }),
   },
   {
     title: 'Popular',
     value: 'popular',
-    query: fetchResults<ITVShow>({ path: 'tv/popular', params: null }),
+    query: fetchResults<IMedia>({ path: 'tv/popular', params: null }),
   },
   {
     title: 'Top Rated',
     value: 'top_rated',
-    query: fetchResults<ITVShow>({ path: 'tv/top_rated', params: null }),
+    query: fetchResults<IMedia>({ path: 'tv/top_rated', params: null }),
   },
 ];

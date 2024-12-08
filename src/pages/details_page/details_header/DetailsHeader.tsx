@@ -7,8 +7,8 @@ import Tabs, { ITabObject } from '../../../components/ui/tabs/Tabs';
 import { DETAILS_TABS } from '../../../data/tabsData';
 
 interface IDetailsHeader {
-  title: string;
-  release_date: string | null;
+  title: string | undefined;
+  release_date: string | null | undefined;
   runtime: number | null;
   genres: IIdName[];
   vote_average: number;

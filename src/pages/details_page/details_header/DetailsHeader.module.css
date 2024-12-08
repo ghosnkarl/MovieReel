@@ -3,7 +3,7 @@
   margin-top: 7rem;
   gap: 2.4rem;
   overflow: hidden;
-  height: 70vh;
+  height: 65vh;
   display: flex;
 }
 
@@ -11,7 +11,7 @@
   content: '';
   position: absolute;
   background-color: rgb(20, 20, 20);
-  opacity: 0.6;
+  opacity: 0.7;
   width: 100%;
   height: 100%;
 }
@@ -46,7 +46,7 @@
   -webkit-mask-image: linear-gradient(
     to bottom,
     rgba(20, 20, 20, 1) 0%,
-    rgba(20, 20, 20, 0) 100%
+    rgba(20, 20, 20, 0) 80%
   );
 }
 

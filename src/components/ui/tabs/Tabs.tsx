@@ -1,13 +1,13 @@
 import { MouseEventHandler, useCallback } from 'react';
-import { IMovie, ITVShow } from '../../../models/mediaModel';
 import { IPeople } from '../../../models/peopleModel';
 import { motion } from 'framer-motion';
 import classes from './Tabs.module.css';
+import { IMedia } from '../../../models/mediaModel';
 
 export interface ITabObject {
   title: string;
   value: string;
-  query?: Promise<IMovie[] | ITVShow[] | IPeople[]>;
+  query?: Promise<IMedia[] | IPeople[]>;
 }
 
 interface ITab {

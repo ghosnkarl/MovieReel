@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-export const discoverReleaseDates = (
+const discoverReleaseDates = (
   isMovie: boolean,
   start: number,
   startType: 'days' | 'month',

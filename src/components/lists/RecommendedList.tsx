@@ -1,9 +1,9 @@
-import { IMovie, ITVShow } from '../../models/mediaModel';
+import { IMedia } from '../../models/mediaModel';
 import HorizontalList from '../horizontal_list/HorizontalList';
 
 interface IRecommendedList {
-  items: IMovie[] | ITVShow[];
-  title: string;
+  items: IMedia[];
+  title: string | undefined;
   type: 'movies' | 'tv';
 }
 
@@ -15,7 +15,7 @@ const RecommendedList = ({ items, title, type }: IRecommendedList) => {
       link={null}
       linkState={null}
       data={items}
-      type={type === 'movies' ? 'movie' : 'tvShows'}
+      type={type}
     />
   );
 };

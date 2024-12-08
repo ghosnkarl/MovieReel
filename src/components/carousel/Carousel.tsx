@@ -7,10 +7,13 @@ import classes from './CarouselItem.module.css';
 import ErrorBlock from '../ui/error_block/ErrorBlock';
 import LoadingIndicator from '../ui/LoadingIndicator';
 import useGenres from '../../hooks/useGenres';
+import { nowPlayingDates } from '../../helpers/discoverHelpers';
 
 const Carousel = () => {
   const { data: genres } = useGenres({ type: 'movie' });
-  const { data, isError, isLoading, refetch } = useDiscoverMovies();
+  const { data, isError, isLoading, refetch } = useDiscoverMovies({
+    params: nowPlayingDates,
+  });
 
   if (isLoading) return <LoadingIndicator />;
 
