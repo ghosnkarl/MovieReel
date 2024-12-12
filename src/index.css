@@ -127,13 +127,6 @@ body {
   background-color: white;
 }
 
-.container-box {
-  position: relative;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: var(--card--box-shadow);
-}
-
 .arrows__container {
   display: flex;
   align-items: center;

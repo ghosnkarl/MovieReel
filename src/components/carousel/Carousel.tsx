@@ -25,34 +25,32 @@ const Carousel = () => {
     );
 
   return (
-    <div className='container-box'>
-      <Swiper
-        slidesPerView={1}
-        loop={true}
-        allowTouchMove={false}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Autoplay, Pagination, Navigation]}
-        navigation={true}
-        className={classes.swiper}
-      >
-        {data.map((item) => (
-          <SwiperSlide key={item.id}>
-            <CarouselItem
-              genres={genres}
-              item={item}
-              type='normal'
-              media_type='movies'
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+    <Swiper
+      slidesPerView={1}
+      loop={true}
+      allowTouchMove={false}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+      }}
+      pagination={{
+        clickable: true,
+      }}
+      modules={[Autoplay, Pagination, Navigation]}
+      navigation={true}
+      className={classes.swiper}
+    >
+      {data.map((item) => (
+        <SwiperSlide key={item.id}>
+          <CarouselItem
+            genres={genres}
+            item={item}
+            type='normal'
+            media_type='movies'
+          />
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 };
 

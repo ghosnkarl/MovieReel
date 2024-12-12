@@ -4,9 +4,6 @@ import classes from './CarouselCoverflow.module.css';
 import { IMedia } from '../../models/mediaModel';
 import CarouselItem from '../carousel/CarouselItem';
 import useGenres from '../../hooks/useGenres';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/effect-coverflow';
 
 interface ICarouselCoverflow {
   data: IMedia[];
