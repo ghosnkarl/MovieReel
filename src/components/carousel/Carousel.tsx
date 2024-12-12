@@ -1,4 +1,3 @@
-import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import useDiscoverMovies from '../../hooks/useDiscoverMovies';
 import CarouselItem from './CarouselItem';
@@ -26,39 +25,32 @@ const Carousel = () => {
     );
 
   return (
-    <div className='container-box'>
-      <Swiper
-        slidesPerView={1}
-        loop={true}
-        allowTouchMove={false}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Autoplay, Pagination, Navigation]}
-        className={classes.swiper}
-        navigation={{
-          nextEl: `.${classes.arrowRight}`,
-          prevEl: `.${classes.arrowLeft}`,
-        }}
-      >
-        {data.map((item) => (
-          <SwiperSlide key={item.id}>
-            <CarouselItem genres={genres} item={item} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
-      <button className={`${classes.arrowLeft}`}>
-        <MdNavigateBefore />
-      </button>
-      <button className={`${classes.arrowRight}`}>
-        <MdNavigateNext />
-      </button>
-    </div>
+    <Swiper
+      slidesPerView={1}
+      loop={true}
+      allowTouchMove={false}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+      }}
+      pagination={{
+        clickable: true,
+      }}
+      modules={[Autoplay, Pagination, Navigation]}
+      navigation={true}
+      className={classes.swiper}
+    >
+      {data.map((item) => (
+        <SwiperSlide key={item.id}>
+          <CarouselItem
+            genres={genres}
+            item={item}
+            type='normal'
+            media_type='movies'
+          />
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 };
 

@@ -10,6 +10,7 @@ import 'swiper/css/navigation';
 import Carousel from '../../components/carousel/Carousel';
 import useTrending from '../../hooks/useTrending';
 import { IMedia } from '../../models/mediaModel';
+import CarouselCoverflow from '../../components/carousel_coverflow/CarouselCoverflow';
 
 export default function HomePage() {
   const upcomingMoviesQuery = useQuery({
@@ -41,42 +42,34 @@ export default function HomePage() {
     <div className={classes.container}>
       <Carousel />
 
-      <div className={classes['list__container']}>
-        <HorizontalWrapper
-          query={upcomingMoviesQuery}
-          title='Upcoming Movies'
-          link='/movies'
-          type='movies'
-        />
+      <HorizontalWrapper
+        query={upcomingMoviesQuery}
+        title='Upcoming Movies'
+        link='/movies'
+        type='movies'
+      />
 
-        <HorizontalWrapper
-          query={trendingQuery}
-          title='Trending Movies'
-          link={null}
-          type='movies'
-        />
+      {trendingQuery.data && (
+        <CarouselCoverflow data={trendingQuery.data} media_type='movies' />
+      )}
 
-        <HorizontalWrapper
-          query={airingTodayTVQuery}
-          title='Airing Today TV Shows'
-          link='/tv'
-          type='tv'
-        />
+      <HorizontalWrapper
+        query={airingTodayTVQuery}
+        title='Airing Today TV Shows'
+        link='/tv'
+        type='tv'
+      />
 
-        <HorizontalWrapper
-          query={tvTrendingQuery}
-          title='Trending TV Shows'
-          link={null}
-          type='tv'
-        />
+      {tvTrendingQuery.data && (
+        <CarouselCoverflow data={tvTrendingQuery.data} media_type='tv' />
+      )}
 
-        <HorizontalWrapper
-          query={popularPeopleQuery}
-          title='Most Popular Celebrities'
-          link='/people'
-          type='people'
-        />
-      </div>
+      <HorizontalWrapper
+        query={popularPeopleQuery}
+        title='Most Popular Celebrities'
+        link='/people'
+        type='people'
+      />
     </div>
   );
 }
