@@ -1,0 +1,7 @@
+.swiper__slide {
+  width: 60%;
+  background-color: var(--color-background--card);
+  box-shadow: var(--card--box-shadow);
+  border-radius: 10px;
+  overflow: hidden;
+}

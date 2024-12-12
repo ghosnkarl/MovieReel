@@ -10,6 +10,7 @@ import 'swiper/css/navigation';
 import Carousel from '../../components/carousel/Carousel';
 import useTrending from '../../hooks/useTrending';
 import { IMedia } from '../../models/mediaModel';
+import CarouselCoverflow from '../../components/carousel_coverflow/CarouselCoverflow';
 
 export default function HomePage() {
   const upcomingMoviesQuery = useQuery({
@@ -48,12 +49,9 @@ export default function HomePage() {
         type='movies'
       />
 
-      <HorizontalWrapper
-        query={trendingQuery}
-        title='Trending Movies'
-        link={null}
-        type='movies'
-      />
+      {trendingQuery.data && (
+        <CarouselCoverflow data={trendingQuery.data} media_type='movies' />
+      )}
 
       <HorizontalWrapper
         query={airingTodayTVQuery}
@@ -62,12 +60,9 @@ export default function HomePage() {
         type='tv'
       />
 
-      <HorizontalWrapper
-        query={tvTrendingQuery}
-        title='Trending TV Shows'
-        link={null}
-        type='tv'
-      />
+      {tvTrendingQuery.data && (
+        <CarouselCoverflow data={tvTrendingQuery.data} media_type='tv' />
+      )}
 
       <HorizontalWrapper
         query={popularPeopleQuery}

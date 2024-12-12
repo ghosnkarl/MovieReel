@@ -112,8 +112,7 @@ body {
 .customSwiper {
   width: 100%;
   height: fit-content;
-  padding: 1.6rem var(--horizontal-list--padding) 4.8rem
-    var(--horizontal-list--padding);
+  padding: 1.6rem 0 4.8rem 0;
   display: flex;
   flex-direction: column;
 }
@@ -196,4 +195,43 @@ body {
   gap: 1.6rem;
   flex-wrap: wrap;
   list-style: none;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  background: none;
+  color: white;
+  width: 5rem;
+  height: 5rem;
+  background-color: rgba(20, 20, 20, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 1000px;
+  padding: 0.6rem;
+
+  &:hover {
+    color: var(--color-primary-900);
+    border: 1px solid var(--color-primary-900);
+    background-color: rgba(20, 20, 20, 0.5);
+  }
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  content: '';
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  background-size: contain;
+  width: 5rem;
+  height: 5rem;
+  opacity: 1;
+}
+
+.swiper-button-next::after {
+  background: url('./assets/arrow_next.svg') no-repeat center;
+}
+
+.swiper-button-prev::after {
+  background: url('./assets/arrow_prev.svg') no-repeat center;
 }

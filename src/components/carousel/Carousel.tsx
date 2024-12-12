@@ -1,4 +1,3 @@
-import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import useDiscoverMovies from '../../hooks/useDiscoverMovies';
 import CarouselItem from './CarouselItem';
@@ -39,25 +38,20 @@ const Carousel = () => {
           clickable: true,
         }}
         modules={[Autoplay, Pagination, Navigation]}
+        navigation={true}
         className={classes.swiper}
-        navigation={{
-          nextEl: `.${classes.arrowRight}`,
-          prevEl: `.${classes.arrowLeft}`,
-        }}
       >
         {data.map((item) => (
           <SwiperSlide key={item.id}>
-            <CarouselItem genres={genres} item={item} />
+            <CarouselItem
+              genres={genres}
+              item={item}
+              type='normal'
+              media_type='movies'
+            />
           </SwiperSlide>
         ))}
       </Swiper>
-
-      <button className={`${classes.arrowLeft}`}>
-        <MdNavigateBefore />
-      </button>
-      <button className={`${classes.arrowRight}`}>
-        <MdNavigateNext />
-      </button>
     </div>
   );
 };
