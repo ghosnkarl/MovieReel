@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import classes from './Navigation.module.css';
 import logoImg from '../../../assets/tmdb.svg';
-import { IoMdSearch } from 'react-icons/io';
 import { NAV_LINKS } from '../../../data/navLinks';
+import SearchBarHeader from '../../searchbar/SearchBarHeader';
 
 const NavigationItem = ({ item }: { item: (typeof NAV_LINKS)[0] }) => {
   return (
@@ -25,14 +25,13 @@ export default function Navigation() {
           <img className={classes.logo} src={logoImg} alt='Logo' />
         </NavLink>
 
+        <SearchBarHeader />
+
         <ul className={classes.list}>
           {NAV_LINKS.map((item) => (
             <NavigationItem key={item.title} item={item} />
           ))}
         </ul>
-        <NavLink to='/search'>
-          <IoMdSearch className={classes['search-icon']} />
-        </NavLink>
       </nav>
     </header>
   );

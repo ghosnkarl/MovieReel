@@ -12,11 +12,11 @@ export const SEARCH_OPTIONS = [
     value: 'person',
   },
   {
-    output: 'Keyword',
+    output: 'Keywords',
     value: 'keyword',
   },
   {
-    output: 'Company',
+    output: 'Companies',
     value: 'company',
   },
 ];

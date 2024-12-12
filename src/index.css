@@ -162,9 +162,9 @@ body {
   border-radius: 1000px;
   color: white;
 }
-
-.grid--5-cols,
 .grid--4-cols,
+.grid--5-cols,
+.grid--6-cols,
 .grid--7-cols {
   display: grid;
   gap: 2rem;
@@ -172,12 +172,16 @@ body {
   grid-template-columns: repeat(var(--cols), 1fr);
 }
 
+.grid--4-cols {
+  --cols: 4;
+}
+
 .grid--5-cols {
   --cols: 5;
 }
 
-.grid--4-cols {
-  --cols: 4;
+.grid--6-cols {
+  --cols: 6;
 }
 
 .grid--7-cols {

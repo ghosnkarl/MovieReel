@@ -1,0 +1,42 @@
+.list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 0.6rem;
+}
+
+.item {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  padding: 0.6rem 1.2rem 0.6rem 1.2rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-gray-600);
+  }
+}
+
+.poster {
+  width: 5rem;
+  aspect-ratio: 0.7;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.text__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.text {
+  font-size: 1.4rem;
+  color: var(--color-gray-300);
+}

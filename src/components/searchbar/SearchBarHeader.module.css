@@ -1,0 +1,52 @@
+.search__container {
+  flex: 1;
+  position: relative;
+  height: fit-content;
+  display: flex;
+  background-color: var(--color-background--border);
+  border-radius: 7px;
+  align-items: center;
+  border: 1px solid var(--color-gray-600);
+}
+
+.search {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  padding-left: 1.2rem;
+  font-size: 1.6rem;
+  padding: 1rem 1.4rem;
+}
+
+.search__icon {
+  font-size: 2.6rem;
+  margin-right: 1.6rem;
+}
+
+.dropdown-content {
+  position: absolute;
+  min-width: 100%;
+  top: 100%;
+  margin-top: 1rem;
+  display: flex;
+  max-height: 60vh;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  opacity: 0;
+  transform: translateY(-5%);
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+  background-color: var(--color-background--border);
+  box-shadow: var(--card--box-shadow);
+}
+
+.content-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
