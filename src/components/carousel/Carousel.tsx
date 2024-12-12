@@ -7,9 +7,10 @@ import ErrorBlock from '../ui/error_block/ErrorBlock';
 import LoadingIndicator from '../ui/LoadingIndicator';
 import useGenres from '../../hooks/useGenres';
 import { nowPlayingDates } from '../../helpers/discoverHelpers';
+import { MOVIE_TYPE } from '../../helpers/constants';
 
 const Carousel = () => {
-  const { data: genres } = useGenres({ type: 'movie' });
+  const { data: genres } = useGenres({ type: MOVIE_TYPE });
   const { data, isError, isLoading, refetch } = useDiscoverMovies({
     params: nowPlayingDates,
   });
@@ -46,7 +47,7 @@ const Carousel = () => {
             genres={genres}
             item={item}
             type='normal'
-            media_type='movies'
+            media_type={MOVIE_TYPE}
           />
         </SwiperSlide>
       ))}

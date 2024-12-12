@@ -112,7 +112,8 @@ body {
 .customSwiper {
   width: 100%;
   height: fit-content;
-  padding: 1.6rem 0 4.8rem 0;
+  padding: 1.6rem var(--horizontal-list--padding) 4.8rem
+    var(--horizontal-list--padding);
   display: flex;
   flex-direction: column;
 }

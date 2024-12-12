@@ -15,6 +15,7 @@ import { DataType, QueryData } from './HorizontalWrapper';
 import { useRef, useState } from 'react';
 import { NavigationOptions, Swiper as SwiperType } from 'swiper/types';
 import { IMedia } from '../../models/mediaModel';
+import { MOVIE_TYPE, TV_TYPE } from '../../helpers/constants';
 
 interface IHorizontalList {
   title: string;
@@ -44,7 +45,7 @@ const HorizontalList = ({
 
   // Create a generic slide component
   const renderSlide = (item: IMedia | IPeople) => {
-    if (type === 'movies' || type === 'tv') {
+    if (type === MOVIE_TYPE || type === TV_TYPE) {
       const media = item as IMedia;
       return (
         <SwiperSlide key={media.id}>

@@ -4,7 +4,7 @@ export const NAV_LINKS = [
     title: 'Home',
   },
   {
-    link: '/movies',
+    link: '/movie',
     title: 'Movies',
   },
   {

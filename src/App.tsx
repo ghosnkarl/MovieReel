@@ -11,8 +11,8 @@ import DetailsPage from './pages/details_page/DetailsPage';
 import OutletRootLayout from './components/ui/OutletRootLayout';
 import HomePage from './pages/homepage/HomePage';
 import MoviesPage from './pages/movies_page/MoviesPage';
-
 import SearchPage from './pages/search_page/SearchPage';
+import { MOVIE_TYPE, TV_TYPE } from './helpers/constants';
 
 const router = createBrowserRouter([
   {
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       {
-        path: 'movies',
+        path: MOVIE_TYPE,
         element: <OutletRootLayout />,
         children: [
           {
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: 'tv',
+        path: TV_TYPE,
         element: <OutletRootLayout />,
         children: [
           {

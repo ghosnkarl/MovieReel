@@ -7,6 +7,7 @@ import MediaList from '../../components/lists/media_list/MediaList';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import ErrorPage from '../error_page/ErrorPage';
 import { IMedia } from '../../models/mediaModel';
+import { MOVIE_TYPE } from '../../helpers/constants';
 
 export default function MoviesPage() {
   const [selectedTab, setSelectedTab] = useState(MOVIE_TABS[0]);
@@ -16,7 +17,7 @@ export default function MoviesPage() {
   };
 
   const selectedQuery = useQuery({
-    queryKey: ['movies', selectedTab.value],
+    queryKey: [MOVIE_TYPE, selectedTab.value],
     queryFn: () => selectedTab.query,
     retry: 1,
   });
@@ -34,7 +35,7 @@ export default function MoviesPage() {
       />
       <div className={classes.container}>
         <ul className='grid--5-cols'>
-          <MediaList type='movies' data={selectedQuery.data as IMedia[]} />
+          <MediaList type={MOVIE_TYPE} data={selectedQuery.data as IMedia[]} />
         </ul>
       </div>
     </div>

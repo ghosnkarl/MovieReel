@@ -4,15 +4,16 @@ import classes from './MediaItem.module.css';
 import { getPosterImage } from '../../../helpers/imageSizes';
 import { formatDate } from '../../../helpers/commonHelpers';
 import { IMedia } from '../../../models/mediaModel';
+import { MediaType } from '../../../helpers/constants';
 
-type MediaType = 'movies' | 'tv' | 'season';
+type MediaTypeSeason = MediaType | 'season';
 
 interface IMediaItem {
   text: string;
   id: number;
   poster_path: string | null;
   title: string | undefined;
-  type: MediaType;
+  type: MediaTypeSeason;
 }
 
 export const MediaItem = ({

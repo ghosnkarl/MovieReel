@@ -4,10 +4,11 @@ import classes from './CarouselCoverflow.module.css';
 import { IMedia } from '../../models/mediaModel';
 import CarouselItem from '../carousel/CarouselItem';
 import useGenres from '../../hooks/useGenres';
+import { MediaType } from '../../helpers/constants';
 
 interface ICarouselCoverflow {
   data: IMedia[];
-  media_type: 'movies' | 'tv';
+  media_type: MediaType;
 }
 
 const CarouselCoverflow = ({ data, media_type }: ICarouselCoverflow) => {

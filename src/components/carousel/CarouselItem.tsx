@@ -5,12 +5,13 @@ import RatingStar from '../rating/RatingStar';
 import { IIdName } from '../../models/commonModel';
 import { formatDate, getGenres } from '../../helpers/commonHelpers';
 import { NavLink } from 'react-router-dom';
+import { MediaType } from '../../helpers/constants';
 
 interface ICarousel {
   item: IMedia;
   genres: IIdName[] | undefined;
   type: 'coverflow' | 'normal';
-  media_type: 'movies' | 'tv';
+  media_type: MediaType;
 }
 
 const CarouselItem = ({ item, genres, type, media_type }: ICarousel) => (

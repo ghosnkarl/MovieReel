@@ -7,6 +7,7 @@ import Keywords from '../../components/lists/keywords_list/KeywordsList';
 import { useQuery } from '@tanstack/react-query';
 import { fetchSingleResult } from '../../services/http';
 import { ICollectionDetails } from '../../models/commonModel';
+import { MOVIE_TYPE, TV_TYPE } from '../../helpers/constants';
 
 interface IDetailsMainContainer {
   media: IDetails;
@@ -67,14 +68,14 @@ const DetailsMain = ({ media }: IDetailsMainContainer) => {
           link={null}
           linkState={null}
           data={collectionList.parts}
-          type='movies'
+          type={MOVIE_TYPE}
         />
       )}
 
       <RecommendedList
         title={title}
         items={media.recommendations.results}
-        type={isMovie ? 'movies' : 'tv'}
+        type={isMovie ? MOVIE_TYPE : TV_TYPE}
       />
     </div>
   );

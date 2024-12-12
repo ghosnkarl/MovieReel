@@ -4,9 +4,10 @@ import LoadingIndicator from '../ui/LoadingIndicator';
 import ErrorBlock from '../ui/error_block/ErrorBlock';
 import { IMedia } from '../../models/mediaModel';
 import { IPeople } from '../../models/peopleModel';
+import { MediaType } from '../../helpers/constants';
 
 export type QueryData = IMedia[] | IPeople[];
-export type DataType = 'movies' | 'tv' | 'people';
+export type DataType = MediaType | 'people';
 
 interface IHorizontalWrapper {
   query: UseQueryResult<QueryData, Error>;

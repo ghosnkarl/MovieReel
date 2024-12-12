@@ -5,8 +5,6 @@ export interface IIdName {
   name: string;
 }
 
-export type MediaType = 'movie' | 'tv';
-
 export interface ICollectionDetails extends IIdName {
   parts: IMedia[];
 }

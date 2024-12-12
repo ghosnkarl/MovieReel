@@ -11,6 +11,7 @@ import Carousel from '../../components/carousel/Carousel';
 import useTrending from '../../hooks/useTrending';
 import { IMedia } from '../../models/mediaModel';
 import CarouselCoverflow from '../../components/carousel_coverflow/CarouselCoverflow';
+import { MOVIE_TYPE } from '../../helpers/constants';
 
 export default function HomePage() {
   const upcomingMoviesQuery = useQuery({
@@ -45,12 +46,12 @@ export default function HomePage() {
       <HorizontalWrapper
         query={upcomingMoviesQuery}
         title='Upcoming Movies'
-        link='/movies'
-        type='movies'
+        link='/movie'
+        type={MOVIE_TYPE}
       />
 
       {trendingQuery.data && (
-        <CarouselCoverflow data={trendingQuery.data} media_type='movies' />
+        <CarouselCoverflow data={trendingQuery.data} media_type={MOVIE_TYPE} />
       )}
 
       <HorizontalWrapper

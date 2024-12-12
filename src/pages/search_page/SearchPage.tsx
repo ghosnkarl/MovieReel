@@ -89,7 +89,7 @@ const SearchPage = () => {
             <ul className='grid--5-cols'>
               <MediaList
                 data={searchQuery.data as IMedia[]}
-                type={searchType.value === 'movie' ? 'movies' : 'tv'}
+                type={searchType.value}
               />
             </ul>
           )}
