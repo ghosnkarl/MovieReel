@@ -75,7 +75,8 @@
 .text__container {
   position: absolute;
   right: 40%;
-  bottom: 9.6rem;
+  top: 50%;
+  transform: translateY(-50%);
   left: 9.6rem;
   display: flex;
   flex-direction: column;
