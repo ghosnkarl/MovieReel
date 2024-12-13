@@ -82,20 +82,3 @@
   font-weight: 600;
   color: var(--color-gray-200);
 }
-
-.tagline {
-  font-size: 1.6rem;
-  margin-bottom: 1.2rem;
-  color: var(--color-gray-300);
-  font-style: italic;
-  text-shadow: 2px 2px 2px rgb(0, 0, 0);
-}
-
-.overview {
-  font-size: 1.6rem;
-  line-height: 1.4;
-  align-items: center;
-  margin-bottom: 3.2rem;
-  color: var(--color-gray-100);
-  text-shadow: 2px 2px 2px rgb(0, 0, 0);
-}

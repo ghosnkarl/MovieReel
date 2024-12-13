@@ -3,7 +3,7 @@ import RecommendedList from '../../components/lists/RecommendedList';
 import { IDetails } from '../../models/detailsModel';
 import HorizontalList from '../../components/horizontal_list/HorizontalList';
 import DetailsMedia from './DetailsMedia';
-import Keywords from '../../components/lists/keywords_list/KeywordsList';
+
 import { useQuery } from '@tanstack/react-query';
 import { fetchSingleResult } from '../../services/http';
 import { ICollectionDetails } from '../../models/commonModel';
@@ -47,11 +47,13 @@ const DetailsMain = ({ media }: IDetailsMainContainer) => {
           last_air_date={media.last_air_date}
           created_by={media.created_by}
           production_companies={media.production_companies}
-        />
-
-        <Keywords
           keywords={isMovie ? media.keywords.keywords : media.keywords.results}
         />
+        <div>
+          <h1 className='section__title'>Storyline</h1>
+          {/* <p className={classes.tagline}>{media.tagline}</p> */}
+          <p className={classes.overview}>{media.overview}</p>
+        </div>
       </div>
       {/* {seasons && (
         <HorizontalList title='Seasons' link={null} linkState={null}>

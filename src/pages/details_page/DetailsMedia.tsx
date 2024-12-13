@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import classes from './DetailsMedia.module.css';
 import { IIdName } from '../../models/commonModel';
 import { formatDate } from '../../helpers/commonHelpers';
+import Keywords from '../../components/lists/keywords_list/KeywordsList';
 
 interface MediaDetailsItem {
   title: string;
@@ -30,6 +31,7 @@ interface IMediaDetails {
   last_air_date: string | null | undefined;
   created_by: IIdName[] | null | undefined;
   production_companies: IIdName[] | null;
+  keywords: IIdName[] | null;
 }
 
 const formatCurrency = (amount: number) =>
@@ -47,6 +49,7 @@ const DetailsMedia = ({
   last_air_date,
   created_by,
   production_companies,
+  keywords,
 }: IMediaDetails) => {
   const formattedCreatedBy = created_by
     ?.map((creators) => creators.name)
@@ -144,6 +147,7 @@ const DetailsMedia = ({
           )}
         </div>
       </div>
+      <Keywords keywords={keywords} />
     </div>
   );
 };

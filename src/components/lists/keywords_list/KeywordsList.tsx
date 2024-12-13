@@ -2,7 +2,7 @@ import { IIdName } from '../../../models/commonModel';
 import classes from './KeywordsList.module.css';
 
 interface IKeywords {
-  keywords: IIdName[];
+  keywords: IIdName[] | null;
 }
 
 const Keywords = ({ keywords }: IKeywords) => {

@@ -64,8 +64,7 @@ const DetailsHeader = ({
               {formattedRuntime && ` • ${formattedRuntime}`}
             </p>
           </div>
-          <p className={classes.tagline}>{tagline}</p>
-          <p className={classes.overview}>{overview}</p>
+
           <Tabs
             onSelectType={handleSelectTab}
             selectedType={selectedTab}
