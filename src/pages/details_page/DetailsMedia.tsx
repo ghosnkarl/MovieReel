@@ -32,6 +32,7 @@ interface IMediaDetails {
   created_by: IIdName[] | null | undefined;
   production_companies: IIdName[] | null;
   keywords: IIdName[] | null;
+  tagline: string | undefined;
 }
 
 const formatCurrency = (amount: number) =>
@@ -50,6 +51,7 @@ const DetailsMedia = ({
   created_by,
   production_companies,
   keywords,
+  tagline,
 }: IMediaDetails) => {
   const formattedCreatedBy = created_by
     ?.map((creators) => creators.name)
@@ -63,12 +65,14 @@ const DetailsMedia = ({
       : undefined;
 
   return (
-    <div>
+    <div className={classes.container}>
       <h1 className='section__title'>Details</h1>
       <div className={classes.details}>
         <DetailsMediaItem title='Created By' text={formattedCreatedBy} />
 
         <DetailsMediaItem title='Status' text={status} />
+
+        <DetailsMediaItem title='Tagline' text={tagline} />
 
         {last_air_date && (
           <DetailsMediaItem

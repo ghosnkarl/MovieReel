@@ -1,9 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
 .details {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 3.2rem;
-  margin-top: 2.4rem;
 }
 
 .details__left--item {

@@ -16,16 +16,17 @@ import { formatDate } from '../../helpers/commonHelpers';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import ErrorPage from '../error_page/ErrorPage';
+import { MOVIE_TYPE } from '../../helpers/constants';
 
 const MediaItems = ({ media }: { media: ICastMedia[] | ICrewMedia[] }) => {
   return (
-    <div className={classes['media__container']}>
+    <div className={'grid--6-cols'}>
       {media.map((item) => (
         <MediaItem
           key={item.credit_id}
           id={item.id}
           title={item.title || item.name}
-          type={item.media_type === 'movie' ? 'movies' : 'tv'}
+          type={item.media_type}
           poster_path={item.poster_path}
           text={'character' in item ? item.character : item.job}
         />
@@ -149,10 +150,10 @@ const PeopleDetailsPage = () => {
             layoutId='credits_page'
           />
 
-          {selectedTab.value === 'movies' && (
+          {selectedTab.value === MOVIE_TYPE && (
             <MediaItems
               media={data.combined_credits.cast.filter(
-                (item) => item.media_type === 'movie'
+                (item) => item.media_type === MOVIE_TYPE
               )}
             />
           )}

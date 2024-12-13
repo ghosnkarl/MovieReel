@@ -46,9 +46,11 @@ const CarouselItem = ({ item, genres, type, media_type }: ICarousel) => (
       <p className={`${classes.overview} ${classes[`overview--${type}`]}`}>
         {item.overview}
       </p>
-      <NavLink to={`/${media_type}/${item.id}`} className={classes.watch}>
-        More Information
-      </NavLink>
+      {media_type === 'movie' && (
+        <NavLink to={`/${media_type}/${item.id}`} className={classes.watch}>
+          More Information
+        </NavLink>
+      )}
     </div>
   </div>
 );

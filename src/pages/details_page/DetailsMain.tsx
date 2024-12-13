@@ -48,10 +48,10 @@ const DetailsMain = ({ media }: IDetailsMainContainer) => {
           created_by={media.created_by}
           production_companies={media.production_companies}
           keywords={isMovie ? media.keywords.keywords : media.keywords.results}
+          tagline={media.tagline}
         />
         <div>
           <h1 className='section__title'>Storyline</h1>
-          {/* <p className={classes.tagline}>{media.tagline}</p> */}
           <p className={classes.overview}>{media.overview}</p>
         </div>
       </div>

@@ -74,9 +74,3 @@
 .combined-credits h1 {
   margin-bottom: 2.4rem;
 }
-
-.media__container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 2.4rem;
-}

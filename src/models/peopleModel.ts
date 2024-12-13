@@ -1,4 +1,5 @@
-import { IIdName, IImage, MediaType } from './commonModel';
+import { MediaType } from '../helpers/constants';
+import { IIdName, IImage } from './commonModel';
 
 export interface IPeople extends IIdName {
   profile_path: string;

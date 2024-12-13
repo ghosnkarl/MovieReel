@@ -43,34 +43,39 @@ export default function HomePage() {
     <div className={classes.container}>
       <Carousel />
 
-      <HorizontalWrapper
-        query={upcomingMoviesQuery}
-        title='Upcoming Movies'
-        link='/movie'
-        type={MOVIE_TYPE}
-      />
+      <div className={classes['main-content']}>
+        <HorizontalWrapper
+          query={upcomingMoviesQuery}
+          title='Upcoming Movies'
+          link='/movie'
+          type={MOVIE_TYPE}
+        />
 
-      {trendingQuery.data && (
-        <CarouselCoverflow data={trendingQuery.data} media_type={MOVIE_TYPE} />
-      )}
+        {trendingQuery.data && (
+          <CarouselCoverflow
+            data={trendingQuery.data}
+            media_type={MOVIE_TYPE}
+          />
+        )}
 
-      <HorizontalWrapper
-        query={airingTodayTVQuery}
-        title='Airing Today TV Shows'
-        link='/tv'
-        type='tv'
-      />
+        <HorizontalWrapper
+          query={airingTodayTVQuery}
+          title='Airing Today TV Shows'
+          link='/tv'
+          type='tv'
+        />
 
-      {tvTrendingQuery.data && (
-        <CarouselCoverflow data={tvTrendingQuery.data} media_type='tv' />
-      )}
+        {tvTrendingQuery.data && (
+          <CarouselCoverflow data={tvTrendingQuery.data} media_type='tv' />
+        )}
 
-      <HorizontalWrapper
-        query={popularPeopleQuery}
-        title='Most Popular Celebrities'
-        link='/people'
-        type='people'
-      />
+        <HorizontalWrapper
+          query={popularPeopleQuery}
+          title='Most Popular Celebrities'
+          link='/people'
+          type='people'
+        />
+      </div>
     </div>
   );
 }

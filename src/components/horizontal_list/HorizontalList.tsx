@@ -105,7 +105,7 @@ const HorizontalList = ({
         ) : (
           <HeaderLink link={link} linkState={linkState} title={title} />
         )}
-        {data.length > 5 && (
+        {data.length > 6 && (
           <div className='arrows__container'>
             <motion.button
               whileHover={{
@@ -130,9 +130,9 @@ const HorizontalList = ({
       </div>
       <div>
         <Swiper
-          slidesPerView={type === 'people' ? 7 : 5}
+          slidesPerView={type === 'people' ? 7 : 6}
           spaceBetween={15}
-          slidesPerGroup={5}
+          slidesPerGroup={6}
           loop={false}
           allowTouchMove={false}
           modules={[Pagination, Navigation]}

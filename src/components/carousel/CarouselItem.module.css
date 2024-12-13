@@ -1,8 +1,6 @@
 .swiper {
   width: 100%;
-  height: 55rem;
-  border-radius: 15px;
-  overflow: hidden;
+  height: 60rem;
   box-shadow: var(--card--box-shadow);
 }
 
