@@ -2,6 +2,7 @@ import classes from './SearchList.module.css';
 import { getPosterImage, getProfileImage } from '../../../helpers/imageSizes';
 import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export interface ISearchItem {
   id: number;
@@ -9,27 +10,23 @@ export interface ISearchItem {
   type: 'movie' | 'tv' | 'person' | 'keyword' | 'company';
   title: string;
   date: string | null;
-  setOpen: (dropdownOpen: boolean) => void;
-  clearInput: () => void;
+}
+
+interface SearchItemProps extends ISearchItem {
+  isFocused: boolean;
+  onClick: () => void;
+  itemRef: (el: HTMLDivElement | null) => void;
 }
 
 const SearchItem = ({
-  id,
   image,
   type,
   title,
   date,
-  setOpen,
-  clearInput,
-}: ISearchItem) => {
-  const navigate = useNavigate();
-
-  const handleSearchClicked = () => {
-    navigate(`/${type}/${id}`);
-    clearInput();
-    setOpen(false);
-  };
-
+  isFocused,
+  onClick,
+  itemRef,
+}: SearchItemProps) => {
   const poster =
     type === 'person'
       ? getProfileImage(image, 'w185')
@@ -37,7 +34,12 @@ const SearchItem = ({
       ? getPosterImage(image, 'w342')
       : null;
   return (
-    <div onClick={handleSearchClicked} key={id} className={classes.item}>
+    <div
+      ref={itemRef}
+      onClick={onClick}
+      className={`${classes.item} ${isFocused ? classes.focused : ''}`}
+      tabIndex={-1}
+    >
       {poster && <img className={classes.poster} src={poster} alt={title} />}
       <div className={classes['text__container']}>
         <h1 className={classes.title}>{title}</h1>
@@ -47,23 +49,90 @@ const SearchItem = ({
   );
 };
 
-const SearchList = ({
-  data,
-  setOpen,
-  clearInput,
-}: {
+interface SearchListProps {
   data: ISearchItem[];
   setOpen: (dropdownOpen: boolean) => void;
   clearInput: () => void;
-}) => {
+}
+
+const SearchList = ({ data, setOpen, clearInput }: SearchListProps) => {
+  const [focusedIndex, setFocusedIndex] = useState<number>(-1);
+  const navigate = useNavigate();
+  const listRef = useRef<HTMLUListElement>(null);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    listRef.current?.focus();
+  }, []);
+
+  const handleSearchClicked = useCallback(
+    (item: ISearchItem) => {
+      navigate(`/${item.type}/${item.id}`);
+      clearInput();
+      setOpen(false);
+    },
+    [navigate, clearInput, setOpen]
+  );
+
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (data.length === 0) return;
+
+      switch (e.key) {
+        case 'ArrowDown':
+          e.preventDefault();
+          setFocusedIndex((prev) => (prev + 1) % data.length);
+          break;
+        case 'ArrowUp':
+          e.preventDefault();
+          setFocusedIndex((prev) => (prev - 1 + data.length) % data.length);
+          break;
+        case 'Enter':
+          if (focusedIndex >= 0) {
+            handleSearchClicked(data[focusedIndex]);
+          }
+          break;
+        case 'Escape':
+          setOpen(false);
+          break;
+        default:
+          break;
+      }
+    },
+    [data, focusedIndex, handleSearchClicked, setOpen]
+  );
+
+  useEffect(() => {
+    if (data.length > 0) {
+      setFocusedIndex(0);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (focusedIndex >= 0 && itemRefs.current[focusedIndex]) {
+      itemRefs.current[focusedIndex]?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+      });
+    }
+  }, [focusedIndex]);
+
   return (
-    <ul className={classes.list}>
-      {data.map((item) => (
+    <ul
+      ref={listRef}
+      className={classes.list}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+    >
+      {data.map((item, index) => (
         <SearchItem
           key={item.id}
           {...item}
-          setOpen={setOpen}
-          clearInput={clearInput}
+          isFocused={index === focusedIndex}
+          onClick={() => handleSearchClicked(item)}
+          itemRef={(el: HTMLDivElement | null) =>
+            (itemRefs.current[index] = el)
+          }
         />
       ))}
     </ul>

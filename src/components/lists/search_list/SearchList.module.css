@@ -3,7 +3,14 @@
   display: flex;
   flex-direction: column;
   list-style: none;
+  overflow: auto;
+  max-height: 80%;
   gap: 0.6rem;
+  scroll-behavior: smooth;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .item {
@@ -16,6 +23,10 @@
   &:hover {
     background-color: var(--color-gray-600);
   }
+}
+
+.focused {
+  background-color: var(--color-gray-600);
 }
 
 .poster {
