@@ -34,8 +34,6 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
     vote_average,
     backdrop_path,
     vote_count,
-    overview,
-    tagline,
     reviews,
     videos,
     images,
@@ -98,8 +96,6 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
         vote_count={vote_count}
         handleSelectTab={setSelectedTab}
         selectedTab={selectedTab}
-        overview={overview}
-        tagline={tagline}
       />
 
       <div className={classes['main-container']}>{renderTabContent()}</div>

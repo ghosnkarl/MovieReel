@@ -16,8 +16,6 @@ interface IDetailsHeader {
   backdrop_path: string | null;
   selectedTab: ITabObject;
   handleSelectTab: (tab: ITabObject) => void;
-  tagline: string;
-  overview: string;
 }
 
 const DetailsHeader = ({
@@ -30,8 +28,6 @@ const DetailsHeader = ({
   vote_count,
   handleSelectTab,
   selectedTab,
-  tagline,
-  overview,
 }: IDetailsHeader) => {
   const formattedGenres = genres.map((genre) => genre.name).join(' • ');
 
