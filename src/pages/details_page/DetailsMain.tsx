@@ -42,14 +42,15 @@ const DetailsMain = ({ media }: IDetailsMainContainer) => {
           <p className={classes.overview}>{media.overview}</p>
         </div>
       </div>
-      {/* {seasons && (
-        <HorizontalList title='Seasons' link={null} linkState={null}>
-          <MediaList
-            data={seasons.sort((a, b) => b.season_number - a.season_number)}
-            type='season'
-          />
-        </HorizontalList>
-      )} */}
+      {media.seasons && (
+        <HorizontalList
+          title='Seasons'
+          link={null}
+          linkState={null}
+          data={media.seasons}
+          type='season'
+        />
+      )}
 
       {collectionList && (
         <HorizontalList

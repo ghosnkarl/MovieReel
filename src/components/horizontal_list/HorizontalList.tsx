@@ -16,6 +16,8 @@ import { useRef, useState } from 'react';
 import { NavigationOptions, Swiper as SwiperType } from 'swiper/types';
 import { IMedia } from '../../models/mediaModel';
 import { MOVIE_TYPE, PERSON_TYPE, TV_TYPE } from '../../helpers/constants';
+import { ISeason } from '../../models/seasonModel';
+import { getPosterImage } from '../../helpers/imageSizes';
 
 interface IHorizontalList {
   title: string;
@@ -44,7 +46,7 @@ const HorizontalList = ({
   };
 
   // Create a generic slide component
-  const renderSlide = (item: IMedia | IPeople) => {
+  const renderSlide = (item: IMedia | IPeople | ISeason) => {
     if (type === MOVIE_TYPE || type === TV_TYPE) {
       const media = item as IMedia;
       return (
@@ -73,6 +75,21 @@ const HorizontalList = ({
             text={null}
             title={person.name}
             profile_path={person.profile_path}
+          />
+        </SwiperSlide>
+      );
+    }
+
+    if (type === 'season') {
+      const season = item as ISeason;
+      return (
+        <SwiperSlide key={season.id}>
+          <MediaItem
+            id={season.id}
+            text={formatDate(season.air_date)}
+            title={season.name}
+            poster_path={getPosterImage(season.poster_path, 'w342')}
+            type='season'
           />
         </SwiperSlide>
       );

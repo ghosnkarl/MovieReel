@@ -10,7 +10,7 @@
 
   --color-error--border: #404040;
   --color-background--border: #1e1e1e;
-  --color-background--card: #191919;
+  --color-background--card: #111;
   --color-background--root: #141414;
 
   --color-primary-600: #f9c762;
@@ -38,6 +38,8 @@
 
   /* Text Sizes */
   --horizontal-list--header: 1.6rem;
+
+  --header-size: 6rem;
 }
 
 * {
@@ -72,7 +74,7 @@ button {
 
 body {
   font-family: 'Manrope', sans-serif;
-  background-color: var(--color-background);
+  background-color: #0a0a0a;
   color: white;
   line-height: 1;
   font-weight: 500;

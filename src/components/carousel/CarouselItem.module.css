@@ -100,9 +100,10 @@
   background: none;
   font-weight: 600;
   padding: 1.6rem 3rem;
-  border-radius: 1000px;
+  border-radius: 7px;
   cursor: pointer;
-  background-image: linear-gradient(90deg, #ff7426 0, #f93a13 100%);
+  color: var(--color-background--card);
+  background-color: white;
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
 

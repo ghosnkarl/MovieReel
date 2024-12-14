@@ -44,30 +44,28 @@ const DetailsHeader = ({
         alt={title}
       />
 
-      <div className={classes.grid}>
-        <div className={classes['bottom__container']}>
-          <p className={classes.genres}>{formattedGenres}</p>
-          <h1 className={classes.title}>{title}</h1>
+      <div className={classes['bottom__container']}>
+        <p className={classes.genres}>{formattedGenres}</p>
+        <h1 className={classes.title}>{title}</h1>
 
-          <div className={classes['rating__container']}>
-            <RatingStar
-              value={vote_average}
-              size='medium'
-              vote_count={vote_count}
-            />
-            <p className={classes['date-runtime']}>
-              {release_date && `${formatDate(release_date)}`}
-              {formattedRuntime && ` • ${formattedRuntime}`}
-            </p>
-          </div>
-
-          <Tabs
-            onSelectType={handleSelectTab}
-            selectedType={selectedTab}
-            tabs={DETAILS_TABS}
-            layoutId='details_page'
+        <div className={classes['rating__container']}>
+          <RatingStar
+            value={vote_average}
+            size='medium'
+            vote_count={vote_count}
           />
+          <p className={classes['date-runtime']}>
+            {release_date && `${formatDate(release_date)}`}
+            {formattedRuntime && ` • ${formattedRuntime}`}
+          </p>
         </div>
+
+        <Tabs
+          onSelectType={handleSelectTab}
+          selectedType={selectedTab}
+          tabs={DETAILS_TABS}
+          layoutId='details_page'
+        />
       </div>
     </div>
   );

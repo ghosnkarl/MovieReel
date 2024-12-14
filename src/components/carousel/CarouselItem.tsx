@@ -6,6 +6,7 @@ import { IIdName } from '../../models/commonModel';
 import { formatDate, getGenres } from '../../helpers/commonHelpers';
 import { NavLink } from 'react-router-dom';
 import { MediaType } from '../../helpers/constants';
+import { FiArrowRight } from 'react-icons/fi';
 
 interface ICarousel {
   item: IMedia;
@@ -39,7 +40,7 @@ const CarouselItem = ({ item, genres, media_type }: ICarousel) => (
       <p className={classes.overview}>{item.overview}</p>
 
       <NavLink to={`/${media_type}/${item.id}`} className={classes.watch}>
-        More Information
+        Details <FiArrowRight />
       </NavLink>
     </div>
   </div>

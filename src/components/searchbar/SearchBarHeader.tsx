@@ -67,7 +67,7 @@ const SearchBarHeader = () => {
         ref={inputRef}
         className={classes.search}
         type='text'
-        placeholder='Search for movies, tv shows, people and other...'
+        placeholder='Search Movie Reel'
         onChange={handleChange}
       />
       {(isLoading || !searchQuery.data) && (

@@ -5,9 +5,10 @@ import { IMedia } from '../../models/mediaModel';
 import { IPeople } from '../../models/peopleModel';
 import { MediaType } from '../../helpers/constants';
 import ErrorComponent from '../ui/error_component/ErrorComponent';
+import { ISeason } from '../../models/seasonModel';
 
-export type QueryData = IMedia[] | IPeople[];
-export type DataType = MediaType | 'person';
+export type QueryData = IMedia[] | IPeople[] | ISeason[];
+export type DataType = MediaType | 'person' | 'season';
 
 interface IHorizontalWrapper {
   query: UseQueryResult<QueryData, Error>;

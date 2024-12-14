@@ -1,6 +1,6 @@
 .search__container {
   --search-container-height: 4.2rem;
-  flex: 1;
+  width: 45rem;
   position: relative;
   height: var(--search-container-height);
   display: flex;
@@ -52,15 +52,15 @@
 }
 
 .progress {
-  height: calc(var(--search-container-height) - 1.6rem) !important;
-  width: calc(var(--search-container-height) - 1.6rem) !important;
+  height: calc(var(--search-container-height) - 2rem) !important;
+  width: calc(var(--search-container-height) - 2rem) !important;
   color: #f97316 !important;
   margin-right: 1.6rem;
 }
 
 .clear {
-  height: calc(var(--search-container-height) - 1.9rem);
-  width: calc(var(--search-container-height) - 1.9rem);
+  height: calc(var(--search-container-height) - 2.2rem);
+  width: calc(var(--search-container-height) - 2.2rem);
   margin-right: 1.6rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
