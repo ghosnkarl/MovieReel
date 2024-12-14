@@ -1,7 +1,8 @@
 .search__container {
+  --search-container-height: 4.2rem;
   flex: 1;
   position: relative;
-  height: fit-content;
+  height: var(--search-container-height);
   display: flex;
   background-color: var(--color-background--border);
   border-radius: 7px;
@@ -29,14 +30,13 @@
   position: absolute;
   min-width: 100%;
   top: 100%;
+  overflow: hidden;
   margin-top: 1rem;
   display: flex;
   max-height: 60vh;
   flex-direction: column;
   align-items: center;
-  border-radius: 5px;
-  overflow-y: scroll;
-  -ms-overflow-style: none;
+  border-radius: 7px;
   opacity: 0;
   transform: translateY(-5%);
   transition: all 0.2s ease-in-out;
@@ -49,4 +49,23 @@
   opacity: 1;
   transform: translateY(0);
   pointer-events: all;
+}
+
+.progress {
+  height: calc(var(--search-container-height) - 1.6rem) !important;
+  width: calc(var(--search-container-height) - 1.6rem) !important;
+  color: #f97316 !important;
+  margin-right: 1.6rem;
+}
+
+.clear {
+  height: calc(var(--search-container-height) - 1.9rem);
+  width: calc(var(--search-container-height) - 1.9rem);
+  margin-right: 1.6rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 }

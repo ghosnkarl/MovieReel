@@ -9,6 +9,8 @@ import { IIdName } from '../../models/commonModel';
 import { IPerson } from '../../models/peopleModel';
 import { CircularProgress } from '@mui/material';
 import SearchList, { ISearchItem } from '../lists/search_list/SearchList';
+import { MdOutlineClear } from 'react-icons/md';
+import EmptyResource from '../ui/empty_resource/EmptyResource';
 
 const SearchBarHeader = () => {
   const [open, setOpen] = useState(false);
@@ -31,6 +33,7 @@ const SearchBarHeader = () => {
 
   const clearInput = () => {
     if (inputRef && inputRef.current) inputRef.current.value = '';
+    setSearchTerm('');
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -77,15 +80,10 @@ const SearchBarHeader = () => {
         onChange={handleChange}
       />
       {(isLoading || !searchQuery.data) && (
-        <CircularProgress
-          sx={{
-            color: '#f97316',
-            justifySelf: 'center',
-            alignSelf: 'center',
-            marginRight: '1.6rem',
-          }}
-          size={22}
-        />
+        <CircularProgress className={classes.progress} />
+      )}
+      {!isLoading && searchQuery.data && searchTerm.length > 0 && (
+        <MdOutlineClear onClick={clearInput} className={classes.clear} />
       )}
       <div
         ref={dropdownRef}
@@ -120,6 +118,13 @@ const SearchBarHeader = () => {
                 type: searchType.value,
               } as ISearchItem;
             })}
+          />
+        )}
+
+        {searchQuery.data && searchQuery.data.length === 0 && (
+          <EmptyResource
+            title='No Results Found'
+            description='No matches found. Please refine your search or check for errors.'
           />
         )}
       </div>

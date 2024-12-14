@@ -11,7 +11,7 @@ import Carousel from '../../components/carousel/Carousel';
 import useTrending from '../../hooks/useTrending';
 import { IMedia } from '../../models/mediaModel';
 import CarouselCoverflow from '../../components/carousel_coverflow/CarouselCoverflow';
-import { MOVIE_TYPE } from '../../helpers/constants';
+import { MOVIE_TYPE, PERSON_TYPE } from '../../helpers/constants';
 
 export default function HomePage() {
   const upcomingMoviesQuery = useQuery({
@@ -29,7 +29,7 @@ export default function HomePage() {
   });
 
   const popularPeopleQuery = useQuery({
-    queryKey: ['popular', 'people'],
+    queryKey: ['popular', 'person'],
     queryFn: () =>
       fetchResults<IPeople>({ path: 'person/popular', params: null }),
     retry: 1,
@@ -72,8 +72,8 @@ export default function HomePage() {
         <HorizontalWrapper
           query={popularPeopleQuery}
           title='Most Popular Celebrities'
-          link='/people'
-          type='people'
+          link='/person'
+          type={PERSON_TYPE}
         />
       </div>
     </div>

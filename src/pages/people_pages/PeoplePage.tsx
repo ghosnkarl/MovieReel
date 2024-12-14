@@ -5,7 +5,7 @@ import PersonItem from '../../components/list_items/person_item/PersonItem';
 
 export default function PeoplePage() {
   const { data } = useQuery({
-    queryKey: ['popular', 'people'],
+    queryKey: ['popular', 'person'],
     queryFn: () =>
       fetchResults<IPeople>({ path: 'person/popular', params: null }),
     retry: 1,

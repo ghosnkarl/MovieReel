@@ -12,7 +12,7 @@ export const NAV_LINKS = [
     title: 'TV Shows',
   },
   {
-    link: '/people',
+    link: '/person',
     title: 'People',
   },
   {

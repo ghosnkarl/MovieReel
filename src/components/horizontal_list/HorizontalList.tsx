@@ -15,7 +15,7 @@ import { DataType, QueryData } from './HorizontalWrapper';
 import { useRef, useState } from 'react';
 import { NavigationOptions, Swiper as SwiperType } from 'swiper/types';
 import { IMedia } from '../../models/mediaModel';
-import { MOVIE_TYPE, TV_TYPE } from '../../helpers/constants';
+import { MOVIE_TYPE, PERSON_TYPE, TV_TYPE } from '../../helpers/constants';
 
 interface IHorizontalList {
   title: string;
@@ -64,7 +64,7 @@ const HorizontalList = ({
       );
     }
 
-    if (type === 'people') {
+    if (type === PERSON_TYPE) {
       const person = item as IPeople;
       return (
         <SwiperSlide key={person.id}>
@@ -130,7 +130,7 @@ const HorizontalList = ({
       </div>
       <div>
         <Swiper
-          slidesPerView={type === 'people' ? 7 : 6}
+          slidesPerView={type === PERSON_TYPE ? 7 : 6}
           spaceBetween={15}
           slidesPerGroup={6}
           loop={false}

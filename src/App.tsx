@@ -48,7 +48,7 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: 'people',
+        path: 'person',
         element: <OutletRootLayout />,
         children: [
           {

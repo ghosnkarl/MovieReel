@@ -7,7 +7,7 @@ import { MediaType } from '../../helpers/constants';
 import ErrorComponent from '../ui/error_component/ErrorComponent';
 
 export type QueryData = IMedia[] | IPeople[];
-export type DataType = MediaType | 'people';
+export type DataType = MediaType | 'person';
 
 interface IHorizontalWrapper {
   query: UseQueryResult<QueryData, Error>;

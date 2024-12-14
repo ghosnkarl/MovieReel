@@ -82,12 +82,21 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 0;
+  width: 1rem;
+}
+
+::-webkit-scrollbar-track {
   background: transparent;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: transparent;
+  background: #444;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .page-container {
@@ -186,6 +195,10 @@ body {
 
 .grid--7-cols {
   --cols: 7;
+}
+
+.gallery-grid--gap {
+  gap: 1.2rem !important;
 }
 
 .flex--wrap {

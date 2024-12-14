@@ -2,6 +2,7 @@ import classes from './VideoList.module.css';
 import { NavLink } from 'react-router-dom';
 import { IVideo } from '../../../models/commonModel';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import EmptyResource from '../../ui/empty_resource/EmptyResource';
 
 interface IVideoItem {
   video: IVideo;
@@ -29,16 +30,27 @@ const VideoItem = ({ video }: IVideoItem) => {
 
 interface IVideoList {
   videos: IVideo[];
+  mediaTitle: string | undefined;
 }
 
-const VideoList = ({ videos }: IVideoList) => {
-  if (!videos || videos.length === 0) return null;
+const VideoList = ({ videos, mediaTitle }: IVideoList) => {
   return (
-    <div className={classes['videos__container']}>
-      {videos.map((video) => (
-        <VideoItem key={video.key} video={video} />
-      ))}
-    </div>
+    <>
+      {videos.length > 0 && (
+        <div className={classes['videos__container']}>
+          {videos.map((video) => (
+            <VideoItem key={video.key} video={video} />
+          ))}
+        </div>
+      )}
+
+      {videos.length === 0 && (
+        <EmptyResource
+          title='No Videos'
+          description={`There are no videos for ${mediaTitle}.`}
+        />
+      )}
+    </>
   );
 };
 

@@ -1,42 +1,44 @@
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import classes from './ImageList.module.css';
-import { getBackdropImage } from '../../../helpers/imageSizes';
 import { NavLink } from 'react-router-dom';
-import HorizontalList from '../../horizontal_list/HorizontalList';
+import EmptyResource from '../../ui/empty_resource/EmptyResource';
 
 interface IImageList {
-  backdropList: { file_path: string }[];
-  title: string;
-  images: { galleryImage: string; fullImage: string }[];
-  image: string;
+  images: {
+    galleryImage: string;
+    fullImage: string;
+  }[];
+  mediaTitle: string | undefined;
 }
 
-const ImageList = ({ backdropList, title, images, image }: IImageList) => {
-  if (backdropList && backdropList.length === 0) return null;
-
-  if (backdropList.length > 10) backdropList = backdropList.slice(0, 10);
-
+const ImageList = ({ images, mediaTitle }: IImageList) => {
   return (
-    <HorizontalList
-      linkState={{ images, title, image }}
-      title='Images'
-      link='images'
-    >
-      {backdropList.map((backdrop) => (
-        <NavLink
-          to={getBackdropImage(backdrop.file_path, 'original')}
-          target='_blank'
-          key={backdrop.file_path}
-        >
-          <div className={classes.container}>
-            <img
-              className={classes.backdrop}
-              src={getBackdropImage(backdrop.file_path, 'w780')}
-              alt={title}
-            />
-          </div>
-        </NavLink>
-      ))}
-    </HorizontalList>
+    <>
+      {images.length > 0 && (
+        <div className='grid--4-cols gallery-grid--gap'>
+          {images.map((image) => (
+            <NavLink
+              className={classes.container}
+              key={image.galleryImage}
+              to={image.fullImage}
+              target='_blank'
+            >
+              <LazyLoadImage
+                className={classes.image}
+                alt={image.galleryImage}
+                src={image.galleryImage}
+              />
+            </NavLink>
+          ))}
+        </div>
+      )}
+      {images.length === 0 && (
+        <EmptyResource
+          title='No Images'
+          description={`There are no images for ${mediaTitle}`}
+        />
+      )}
+    </>
   );
 };
 

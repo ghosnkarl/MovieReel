@@ -39,6 +39,7 @@ export const MOVIE_TABS: ITabObject[] = [
 ];
 
 export const CREDITS_TABS = [
+  { title: 'Biography', value: 'biography' },
   { title: 'Movies', value: MOVIE_TYPE },
   { title: 'TV Shows', value: TV_TYPE },
   { title: 'Crew', value: 'crew' },
