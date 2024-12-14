@@ -1,18 +1,22 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchResults } from '../services/http';
 import { IMedia } from '../models/mediaModel';
-import { MOVIE_TYPE } from '../helpers/constants';
 
-const useDiscoverMovies = ({ params }: { params: string }) => {
+interface IDiscover {
+  mediaType: 'movie' | 'tv';
+  params: string;
+}
+
+const useDiscover = ({ params, mediaType }: IDiscover) => {
   return useQuery({
-    queryKey: [MOVIE_TYPE, params],
+    queryKey: [mediaType, params],
     queryFn: () =>
       fetchResults<IMedia>({
-        path: 'discover/movie',
+        path: `discover/${mediaType}`,
         params: params,
       }),
     retry: 1,
   });
 };
 
-export default useDiscoverMovies;
+export default useDiscover;

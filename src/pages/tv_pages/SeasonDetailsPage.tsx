@@ -1,8 +1,6 @@
 import { useLocation } from 'react-router-dom';
-import { ISeason } from '../../models/seasonModel';
-import { useQuery } from '@tanstack/react-query';
-import { fetchSingleResult } from '../../services/http';
 import EpisodeItem from '../../components/list_items/episode_item/EpisodeItem';
+import useSeasonDetails from '../../hooks/useSeasonDetails';
 
 const SeasonDetailsPage = () => {
   const location = useLocation();
@@ -11,15 +9,7 @@ const SeasonDetailsPage = () => {
   const tvId = splitPath[2];
   const seasonNumber = splitPath[4];
 
-  const { data } = useQuery<ISeason>({
-    queryKey: ['season', seasonNumber],
-    queryFn: () =>
-      fetchSingleResult<ISeason>({
-        path: `tv/${tvId}/season/${seasonNumber}`,
-        params: null,
-      }),
-    retry: 1,
-  });
+  const { data } = useSeasonDetails({ tvId, seasonNumber });
 
   if (!data) return;
 

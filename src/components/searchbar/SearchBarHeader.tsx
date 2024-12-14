@@ -2,15 +2,11 @@ import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { SEARCH_OPTIONS } from '../../data/searchOptions';
 import Dropdown, { ItemProps } from '../dropdown/Dropdown';
 import classes from './SearchBarHeader.module.css';
-import { useQuery } from '@tanstack/react-query';
-import { fetchResults } from '../../services/http';
-import { IMedia } from '../../models/mediaModel';
-import { IIdName } from '../../models/commonModel';
-import { IPerson } from '../../models/peopleModel';
 import { CircularProgress } from '@mui/material';
 import SearchList, { ISearchItem } from '../lists/search_list/SearchList';
 import { MdOutlineClear } from 'react-icons/md';
 import EmptyResource from '../ui/empty_resource/EmptyResource';
+import useSearch from '../../hooks/useSearch';
 
 const SearchBarHeader = () => {
   const [open, setOpen] = useState(false);
@@ -21,14 +17,9 @@ const SearchBarHeader = () => {
   const [isLoading, setIsLoading] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const searchQuery = useQuery({
-    queryKey: [searchType.value, { search: searchTerm }],
-    queryFn: () =>
-      fetchResults<IMedia | IIdName | IPerson>({
-        path: `search/${searchType.value}`,
-        params: { query: searchTerm },
-      }),
-    retry: 1,
+  const searchQuery = useSearch({
+    value: searchType.value,
+    query: searchTerm,
   });
 
   const clearInput = () => {

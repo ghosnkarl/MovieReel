@@ -1,15 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
-import { fetchResults } from '../../services/http';
-import { IPeople } from '../../models/peopleModel';
 import PersonItem from '../../components/list_items/person_item/PersonItem';
+import usePopularPeople from '../../hooks/usePopularPeople';
 
 export default function PeoplePage() {
-  const { data } = useQuery({
-    queryKey: ['popular', 'person'],
-    queryFn: () =>
-      fetchResults<IPeople>({ path: 'person/popular', params: null }),
-    retry: 1,
-  });
+  const { data } = usePopularPeople();
 
   return (
     <div className='page-container'>

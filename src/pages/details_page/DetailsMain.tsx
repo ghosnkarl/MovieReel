@@ -3,11 +3,8 @@ import RecommendedList from '../../components/lists/RecommendedList';
 import { IDetails } from '../../models/detailsModel';
 import HorizontalList from '../../components/horizontal_list/HorizontalList';
 import DetailsMedia from './DetailsMedia';
-
-import { useQuery } from '@tanstack/react-query';
-import { fetchSingleResult } from '../../services/http';
-import { ICollectionDetails } from '../../models/commonModel';
 import { MOVIE_TYPE, TV_TYPE } from '../../helpers/constants';
+import useCollectionDetails from '../../hooks/useCollectionDetails';
 
 interface IDetailsMainContainer {
   media: IDetails;
@@ -18,17 +15,7 @@ const DetailsMain = ({ media }: IDetailsMainContainer) => {
   const title = media.title || media.name;
 
   const collectionId = media?.belongs_to_collection?.id || null;
-
-  const collectionQuery = useQuery<ICollectionDetails>({
-    queryKey: ['collection', collectionId],
-    queryFn: () =>
-      fetchSingleResult<ICollectionDetails>({
-        path: `collection/${collectionId}`,
-        params: null,
-      }),
-    retry: 1,
-    enabled: Boolean(collectionId),
-  });
+  const collectionQuery = useCollectionDetails({ collectionId });
 
   const collectionList = collectionQuery.data;
 

@@ -1,13 +1,11 @@
-import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
-import { fetchSingleResult } from '../../services/http';
 import { getProfileImage } from '../../helpers/imageSizes';
 import classes from './PeopleDetailsPage.module.css';
 import { useMemo, useState } from 'react';
 import moment from 'moment';
 import { CREDITS_TABS } from '../../data/tabsData';
 import Tabs, { ITabObject } from '../../components/ui/tabs/Tabs';
-import { ICastMedia, ICrewMedia, IPerson } from '../../models/peopleModel';
+import { ICastMedia, ICrewMedia } from '../../models/peopleModel';
 import { IImage } from '../../models/commonModel';
 import { MediaItem } from '../../components/lists/media_list/MediaList';
 import { formatDate } from '../../helpers/commonHelpers';
@@ -17,6 +15,7 @@ import { MOVIE_TYPE, TV_TYPE } from '../../helpers/constants';
 import ImageList from '../../components/lists/image_list/ImageList';
 import TaggedList from './TaggedList';
 import EmptyResource from '../../components/ui/empty_resource/EmptyResource';
+import usePersonDetails from '../../hooks/usePersonDetails';
 
 interface IMediaItemsProps {
   media: ICastMedia[] | ICrewMedia[];
@@ -70,20 +69,7 @@ const PeopleDetailsPage = () => {
   const personId = params.personId;
   const [selectedTab, setSelectedTab] = useState(CREDITS_TABS[0]);
 
-  const queryParams = {
-    append_to_response: 'images,combined_credits',
-    include_image_language: 'en,null',
-  };
-
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ['people', personId],
-    queryFn: () =>
-      fetchSingleResult<IPerson>({
-        path: `person/${personId}`,
-        params: queryParams,
-      }),
-    retry: 1,
-  });
+  const { data, isLoading, isError } = usePersonDetails({ personId });
 
   const handleSelectTab = (tab: ITabObject) => {
     setSelectedTab(tab);

@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import useDiscoverMovies from '../../hooks/useDiscoverMovies';
+import useDiscover from '../../hooks/useDiscover';
 import CarouselItem from './CarouselItem';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import classes from './CarouselItem.module.css';
@@ -11,7 +11,8 @@ import ErrorComponent from '../ui/error_component/ErrorComponent';
 
 const Carousel = () => {
   const { data: genres } = useGenres({ type: MOVIE_TYPE });
-  const { data, isError, isLoading, refetch } = useDiscoverMovies({
+  const { data, isError, isLoading, refetch } = useDiscover({
+    mediaType: MOVIE_TYPE,
     params: nowPlayingDates,
   });
 
