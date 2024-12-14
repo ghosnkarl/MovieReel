@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import classes from './Navigation.module.css';
-import logoImg from '../../../assets/tmdb.svg';
 import { NAV_LINKS } from '../../../data/navLinks';
 import SearchBarHeader from '../../searchbar/SearchBarHeader';
 
@@ -23,10 +22,6 @@ export default function Navigation() {
   return (
     <header className={classes.header}>
       <nav className={classes.navigation}>
-        <NavLink to='/' end>
-          <img className={classes.logo} src={logoImg} alt='Logo' />
-        </NavLink>
-
         <ul className={classes.list}>
           {NAV_LINKS.map((item) => (
             <NavigationItem key={item.title} item={item} />
