@@ -2,9 +2,51 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 import classes from './CarouselCoverflow.module.css';
 import { IMedia } from '../../models/mediaModel';
-import CarouselItem from '../carousel/CarouselItem';
 import useGenres from '../../hooks/useGenres';
 import { MediaType } from '../../helpers/constants';
+import { getPosterImage } from '../../helpers/imageSizes';
+import { formatDate, getGenres } from '../../helpers/commonHelpers';
+import RatingStar from '../rating/RatingStar';
+import { NavLink } from 'react-router-dom';
+
+interface IMovieCarouselItem {
+  item: IMedia;
+  genres: string;
+  mediaType: MediaType;
+}
+
+const MovieCarouselItem = ({ item, genres, mediaType }: IMovieCarouselItem) => {
+  return (
+    <NavLink
+      to={`/${mediaType}/${item.id}`}
+      className={classes['carousel-item']}
+    >
+      <img
+        src={getPosterImage(item.poster_path, 'w342')}
+        alt={item.title || item.name}
+        className={classes['carousel-item-poster']}
+      />
+      <div>
+        <h2 className={classes['carousel-item-title']}>
+          {item.title || item.name}
+        </h2>
+        <div className={classes['carousel-item-genres']}>{genres}</div>
+        <div className={classes['carousel-item-meta']}>
+          <RatingStar
+            value={item.vote_average}
+            size='small'
+            vote_count={item.vote_count}
+          />
+          <span className={classes['carousel-item-release']}>
+            {formatDate(item.release_date || item.first_air_date)}
+          </span>
+        </div>
+
+        <p className={classes['carousel-item-description']}>{item.overview}</p>
+      </div>
+    </NavLink>
+  );
+};
 
 interface ICarouselCoverflow {
   data: IMedia[];
@@ -26,7 +68,7 @@ const CarouselCoverflow = ({ data, media_type }: ICarouselCoverflow) => {
         coverflowEffect={{
           rotate: 50,
           stretch: 0,
-          depth: 100,
+          depth: 0,
           modifier: 1,
           slideShadows: true,
         }}
@@ -38,11 +80,10 @@ const CarouselCoverflow = ({ data, media_type }: ICarouselCoverflow) => {
       >
         {data.map((item) => (
           <SwiperSlide className={classes['swiper__slide']} key={item.id}>
-            <CarouselItem
-              genres={genres}
+            <MovieCarouselItem
+              genres={getGenres(item.genre_ids, genres)}
               item={item}
-              type='coverflow'
-              media_type={media_type}
+              mediaType={media_type}
             />
           </SwiperSlide>
         ))}

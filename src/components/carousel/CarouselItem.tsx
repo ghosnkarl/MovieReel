@@ -10,28 +10,21 @@ import { MediaType } from '../../helpers/constants';
 interface ICarousel {
   item: IMedia;
   genres: IIdName[] | undefined;
-  type: 'coverflow' | 'normal';
   media_type: MediaType;
 }
 
-const CarouselItem = ({ item, genres, type, media_type }: ICarousel) => (
+const CarouselItem = ({ item, genres, media_type }: ICarousel) => (
   <div className={classes['item__container']}>
     <img
       className={classes.backdrop}
       src={getBackdropImage(item.backdrop_path, 'w1280')}
       alt={item.title || item.name}
     />
-    <div
-      className={`${classes['text__container']} ${
-        classes[`text__container--${type}`]
-      }`}
-    >
+    <div className={classes['text__container']}>
       {genres && (
         <p className={classes.genres}>{getGenres(item.genre_ids, genres)}</p>
       )}
-      <h1 className={`${classes.title} ${classes[`title--${type}`]}`}>
-        {item.title || item.name}
-      </h1>
+      <h1 className={classes.title}>{item.title || item.name}</h1>
       <div className={classes['details__container']}>
         <RatingStar
           value={item.vote_average}
@@ -43,14 +36,11 @@ const CarouselItem = ({ item, genres, type, media_type }: ICarousel) => (
           {item.release_date && `${formatDate(item.release_date)}`}
         </p>
       </div>
-      <p className={`${classes.overview} ${classes[`overview--${type}`]}`}>
-        {item.overview}
-      </p>
-      {type === 'normal' && (
-        <NavLink to={`/${media_type}/${item.id}`} className={classes.watch}>
-          More Information
-        </NavLink>
-      )}
+      <p className={classes.overview}>{item.overview}</p>
+
+      <NavLink to={`/${media_type}/${item.id}`} className={classes.watch}>
+        More Information
+      </NavLink>
     </div>
   </div>
 );
