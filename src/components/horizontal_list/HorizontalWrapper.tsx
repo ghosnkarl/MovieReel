@@ -1,10 +1,10 @@
 import { UseQueryResult } from '@tanstack/react-query';
 import HorizontalList from './HorizontalList';
 import LoadingIndicator from '../ui/LoadingIndicator';
-import ErrorBlock from '../ui/error_block/ErrorBlock';
 import { IMedia } from '../../models/mediaModel';
 import { IPeople } from '../../models/peopleModel';
 import { MediaType } from '../../helpers/constants';
+import ErrorComponent from '../ui/error_component/ErrorComponent';
 
 export type QueryData = IMedia[] | IPeople[];
 export type DataType = MediaType | 'people';
@@ -25,13 +25,7 @@ const HorizontalWrapper = ({
   const { data, isError, isLoading, refetch } = query;
   if (isLoading) return <LoadingIndicator />;
 
-  if (isError || !data)
-    return (
-      <ErrorBlock
-        message={`There was an error fetching ${title.toLocaleLowerCase()}`}
-        onTryAgainClick={refetch}
-      />
-    );
+  if (isError || !data) return <ErrorComponent onRetry={refetch} />;
 
   return (
     <HorizontalList

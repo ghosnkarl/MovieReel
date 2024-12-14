@@ -3,11 +3,11 @@ import useDiscoverMovies from '../../hooks/useDiscoverMovies';
 import CarouselItem from './CarouselItem';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import classes from './CarouselItem.module.css';
-import ErrorBlock from '../ui/error_block/ErrorBlock';
 import LoadingIndicator from '../ui/LoadingIndicator';
 import useGenres from '../../hooks/useGenres';
 import { nowPlayingDates } from '../../helpers/discoverHelpers';
 import { MOVIE_TYPE } from '../../helpers/constants';
+import ErrorComponent from '../ui/error_component/ErrorComponent';
 
 const Carousel = () => {
   const { data: genres } = useGenres({ type: MOVIE_TYPE });
@@ -17,13 +17,7 @@ const Carousel = () => {
 
   if (isLoading) return <LoadingIndicator />;
 
-  if (isError || !data)
-    return (
-      <ErrorBlock
-        onTryAgainClick={refetch}
-        message='There was an error fetching now playing movies.'
-      />
-    );
+  if (isError || !data) return <ErrorComponent onRetry={refetch} />;
 
   return (
     <Swiper
