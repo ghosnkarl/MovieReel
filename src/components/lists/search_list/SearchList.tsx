@@ -61,9 +61,9 @@ const SearchList = ({ data, setOpen, clearInput }: SearchListProps) => {
   const listRef = useRef<HTMLUListElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  useEffect(() => {
-    listRef.current?.focus();
-  }, []);
+  // useEffect(() => {
+  //   listRef.current?.focus();
+  // }, []);
 
   const handleSearchClicked = useCallback(
     (item: ISearchItem) => {
@@ -74,18 +74,20 @@ const SearchList = ({ data, setOpen, clearInput }: SearchListProps) => {
     [navigate, clearInput, setOpen]
   );
 
-  const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
+  const handleGlobalKeyDown = useCallback(
+    (e: KeyboardEvent) => {
       if (data.length === 0) return;
 
       switch (e.key) {
         case 'ArrowDown':
           e.preventDefault();
           setFocusedIndex((prev) => (prev + 1) % data.length);
+          listRef.current?.focus(); // Focus the list
           break;
         case 'ArrowUp':
           e.preventDefault();
           setFocusedIndex((prev) => (prev - 1 + data.length) % data.length);
+          listRef.current?.focus();
           break;
         case 'Enter':
           if (focusedIndex >= 0) {
@@ -117,13 +119,15 @@ const SearchList = ({ data, setOpen, clearInput }: SearchListProps) => {
     }
   }, [focusedIndex]);
 
+  useEffect(() => {
+    window.addEventListener('keydown', handleGlobalKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleGlobalKeyDown);
+    };
+  }, [handleGlobalKeyDown]);
+
   return (
-    <ul
-      ref={listRef}
-      className={classes.list}
-      onKeyDown={handleKeyDown}
-      tabIndex={0}
-    >
+    <ul ref={listRef} className={classes.list} tabIndex={-1}>
       {data.map((item, index) => (
         <SearchItem
           key={item.id}
