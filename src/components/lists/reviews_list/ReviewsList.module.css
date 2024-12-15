@@ -15,7 +15,15 @@
 .header {
   display: flex;
   gap: 2.4rem;
+
   align-items: center;
+}
+
+.avatar {
+  width: 5rem;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .author {

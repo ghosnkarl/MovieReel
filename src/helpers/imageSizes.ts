@@ -1,7 +1,6 @@
 // Base URL for image requests
 const BASE_IMAGE_URL = 'https://image.tmdb.org/t/p/';
 
-// Helper function to build image URLs based on type and size
 const buildImageUrl = (
   path: string | null,
   size: string,
@@ -10,7 +9,6 @@ const buildImageUrl = (
   return path ? `${BASE_IMAGE_URL}${size}${path}` : placeholder;
 };
 
-// Get backdrop image with size options
 export const getBackdropImage = (
   path: string | null,
   size: 'w300' | 'w780' | 'w1280' | 'original'
@@ -18,7 +16,6 @@ export const getBackdropImage = (
   return buildImageUrl(path, size, '/backdrop_placeholder.jpg');
 };
 
-// Get logo image with size options
 export const getLogoImage = (
   path: string | null,
   size: 'w45' | 'w92' | 'w154' | 'w185' | 'w300' | 'w500' | 'original'
@@ -26,7 +23,6 @@ export const getLogoImage = (
   return buildImageUrl(path, size, '/placeholder.png');
 };
 
-// Get poster image with size options
 export const getPosterImage = (
   path: string | null,
   size: 'w92' | 'w154' | 'w185' | 'w342' | 'w500' | 'w780' | 'original'
@@ -34,10 +30,13 @@ export const getPosterImage = (
   return buildImageUrl(path, size, '/placeholder.png');
 };
 
-// Get profile image with size options
 export const getProfileImage = (
   path: string | null,
   size: 'w45' | 'w185' | 'h632' | 'original'
 ): string => {
   return buildImageUrl(path, size, '/person_placeholder.jpg');
+};
+
+export const getAvatarImage = (path: string | null) => {
+  return buildImageUrl(path, 'w200', '/person_placeholder.jpg');
 };

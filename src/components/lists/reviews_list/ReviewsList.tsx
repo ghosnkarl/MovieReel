@@ -3,23 +3,30 @@ import classes from './ReviewsList.module.css';
 import { formatDate } from '../../../helpers/commonHelpers';
 import EmptyResource from '../../ui/empty_resource/EmptyResource';
 import Rating from '../../rating/Rating';
+import { getAvatarImage } from '../../../helpers/imageSizes';
 
 interface IReviewItem {
   review: IReview;
 }
 
 const ReviewItem = ({ review }: IReviewItem) => {
-  const { rating } = review.author_details;
+  const { rating, avatar_path } = review.author_details;
 
   return (
     <div>
       <div className={classes.container}>
         <div className={classes.header}>
-          <Rating rating={rating} />
-          <div>
+          <img
+            src={getAvatarImage(avatar_path)}
+            alt={`${review.author} avatar`}
+            className={classes.avatar}
+          />
+
+          <div style={{ flex: 1 }}>
             <h2 className={classes.author}>{review.author}</h2>
             <p className={classes.date}>{formatDate(review.updated_at)}</p>
           </div>
+          <Rating rating={rating} />
         </div>
         <p className={classes.content}>{review.content}</p>
       </div>
