@@ -7,7 +7,6 @@
 .details {
   display: grid;
   grid-template-columns: repeat(4, auto);
-  align-items: center;
   gap: 3.2rem;
 }
 

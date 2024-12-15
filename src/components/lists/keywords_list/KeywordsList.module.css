@@ -1,7 +1,7 @@
 .keywords {
   width: 50%;
   display: flex;
-  gap: 1rem;
+  gap: 1.2rem;
   flex-wrap: wrap;
   margin-top: 2.4rem;
   list-style: none;
@@ -11,10 +11,5 @@
   font-size: 1.4rem;
   padding: 0.8rem 1rem;
   border-radius: 7px;
-  cursor: pointer;
   background-color: var(--color-gray-800);
-
-  &:hover {
-    background-color: var(--color-gray-700);
-  }
 }

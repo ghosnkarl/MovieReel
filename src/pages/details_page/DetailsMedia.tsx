@@ -3,6 +3,7 @@ import classes from './DetailsMedia.module.css';
 import KeywordsList from '../../components/lists/keywords_list/KeywordsList';
 import DetailsMediaItem from '../../components/details_media_item/DetailsMediaItem';
 import { IDetails } from '../../models/detailsModel';
+import LinksList from '../../components/lists/links_list/LinksList';
 
 interface IMediaDetails {
   media: IDetails;
@@ -22,6 +23,7 @@ const DetailsMedia = ({ media }: IMediaDetails) => {
     number_of_episodes,
     production_companies,
     keywords,
+    networks,
   } = media;
   const formattedCreatedBy = created_by
     ?.map((creators) => creators.name)
@@ -59,7 +61,7 @@ const DetailsMedia = ({ media }: IMediaDetails) => {
           }
         />
 
-        <div className={classes['details__left--item']}>
+        <div>
           <p className={classes['details__title']}>External Links</p>
           <div className={classes['links__container']}>
             {!homepage && !imdb_id && (
@@ -86,22 +88,8 @@ const DetailsMedia = ({ media }: IMediaDetails) => {
             )}
           </div>
         </div>
-        <div className={classes['details__left--item']}>
-          <p className={classes['details__title']}>Production Companies</p>
-          {production_companies && (
-            <div className={classes['links__container']}>
-              {production_companies.map((company) => (
-                <NavLink
-                  className={classes['external__link']}
-                  key={company.id}
-                  to={`https://www.imdb.com/title/${imdb_id}`}
-                >
-                  {company.name}
-                </NavLink>
-              ))}
-            </div>
-          )}
-        </div>
+        <LinksList links={production_companies} title='Production Companies' />
+        <LinksList links={networks} title='Networks' />
       </div>
 
       <KeywordsList
