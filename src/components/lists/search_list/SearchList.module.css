@@ -43,11 +43,12 @@
 }
 
 .title {
-  font-size: 1.6rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 .text {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: var(--color-gray-300);
 }

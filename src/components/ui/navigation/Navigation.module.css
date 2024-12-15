@@ -1,15 +1,21 @@
 .header {
   width: 100%;
-  display: flex;
   top: 0;
   height: var(--header-size);
   background-color: #0a0a0a;
   border-bottom: 1px solid #27272a;
-  padding: 0 4.8rem;
   position: fixed;
   z-index: 2;
+}
+
+.header__content {
+  display: flex;
+  height: 100%;
   justify-content: space-between;
   align-items: center;
+  max-width: var(--page-width--max);
+  margin: 0 auto;
+  padding: 0 var(--page-padding--horizontal);
 }
 
 .navigation {

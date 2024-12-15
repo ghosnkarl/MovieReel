@@ -21,14 +21,16 @@ const NavigationItem = ({ item }: { item: (typeof NAV_LINKS)[0] }) => {
 export default function Navigation() {
   return (
     <header className={classes.header}>
-      <nav className={classes.navigation}>
-        <ul className={classes.list}>
-          {NAV_LINKS.map((item) => (
-            <NavigationItem key={item.title} item={item} />
-          ))}
-        </ul>
-      </nav>
-      <SearchBarHeader />
+      <div className={classes['header__content']}>
+        <nav className={classes.navigation}>
+          <ul className={classes.list}>
+            {NAV_LINKS.map((item) => (
+              <NavigationItem key={item.title} item={item} />
+            ))}
+          </ul>
+        </nav>
+        <SearchBarHeader />
+      </div>
     </header>
   );
 }

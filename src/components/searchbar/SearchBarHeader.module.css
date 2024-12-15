@@ -1,6 +1,5 @@
 .search__container {
   --search-container-height: 4.2rem;
-  width: 80%;
   position: relative;
   height: var(--search-container-height);
   display: flex;
