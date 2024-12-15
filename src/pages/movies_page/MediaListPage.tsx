@@ -7,13 +7,16 @@ import MediaList from '../../components/lists/media_list/MediaList';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import ErrorPage from '../error_page/ErrorPage';
 import { IMedia } from '../../models/mediaModel';
+import { useLocation } from 'react-router-dom';
 
 export default function MoviesPage({ type }: { type: 'movie' | 'tv' }) {
+  const location = useLocation();
+  const initialTabIndex = location.state?.initialTab || 0;
   const tabs = type === 'movie' ? MOVIE_TABS : TV_TABS;
-  const [selectedTab, setSelectedTab] = useState(tabs[0]);
+  const [selectedTab, setSelectedTab] = useState(tabs[initialTabIndex]);
 
   useEffect(() => {
-    setSelectedTab(tabs[0]);
+    setSelectedTab(tabs[initialTabIndex]);
   }, [type]);
 
   const handleSelectTab = (tab: ITabObject) => {

@@ -1,14 +1,14 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
+  gap: 3.2rem;
 }
 
 .details {
   display: grid;
   grid-template-columns: repeat(4, auto);
   align-items: center;
-  row-gap: 3.2rem;
+  gap: 3.2rem;
 }
 
 .external__link:link,

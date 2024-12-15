@@ -3,7 +3,7 @@
   flex-direction: column;
   max-width: var(--page-width--max);
   margin: var(--page-width--margin);
-  padding: 1.2rem var(--page-padding--horizontal) 4.8rem
+  padding: 3.2rem var(--page-padding--horizontal) 4.8rem
     var(--page-padding--horizontal);
   gap: 1.2rem;
 }

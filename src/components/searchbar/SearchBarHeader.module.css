@@ -1,12 +1,12 @@
 .search__container {
   --search-container-height: 4.2rem;
-  width: 45rem;
+  width: 60rem;
   position: relative;
   height: var(--search-container-height);
   display: flex;
   border-radius: 7px;
   align-items: center;
-  border: 1px solid var(--color-gray-600);
+  border: 1px solid var(--color-gray-700);
 }
 
 .search {

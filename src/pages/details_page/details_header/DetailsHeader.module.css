@@ -23,7 +23,7 @@
   height: 100%;
   width: 100%;
   position: absolute;
-  filter: blur(3px);
+  filter: blur(10px);
 }
 
 .header__content {

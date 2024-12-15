@@ -1,11 +1,13 @@
 .keywords {
+  width: 50%;
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   margin-top: 2.4rem;
+  list-style: none;
 }
 
-.keywords span {
+.keyword {
   font-size: 1.4rem;
   padding: 0.8rem 1rem;
   border-radius: 7px;

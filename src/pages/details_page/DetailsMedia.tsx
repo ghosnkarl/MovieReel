@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import classes from './DetailsMedia.module.css';
-import Keywords from '../../components/lists/keywords_list/KeywordsList';
+import KeywordsList from '../../components/lists/keywords_list/KeywordsList';
 import DetailsMediaItem from '../../components/details_media_item/DetailsMediaItem';
 import { IDetails } from '../../models/detailsModel';
 
@@ -86,24 +86,25 @@ const DetailsMedia = ({ media }: IMediaDetails) => {
             )}
           </div>
         </div>
+        <div className={classes['details__left--item']}>
+          <p className={classes['details__title']}>Production Companies</p>
+          {production_companies && (
+            <div className={classes['links__container']}>
+              {production_companies.map((company) => (
+                <NavLink
+                  className={classes['external__link']}
+                  key={company.id}
+                  to={`https://www.imdb.com/title/${imdb_id}`}
+                >
+                  {company.name}
+                </NavLink>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
-      <div className={classes['details__left--item']}>
-        <p className={classes['details__title']}>Production Companies</p>
-        {production_companies && (
-          <div className={classes['links__container']}>
-            {production_companies.map((company) => (
-              <NavLink
-                className={classes['external__link']}
-                key={company.id}
-                to={`https://www.imdb.com/title/${imdb_id}`}
-              >
-                {company.name}
-              </NavLink>
-            ))}
-          </div>
-        )}
-      </div>
-      <Keywords
+
+      <KeywordsList
         keywords={'title' in media ? keywords.keywords : keywords.results}
       />
     </div>
