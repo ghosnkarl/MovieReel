@@ -1,6 +1,6 @@
 .search__container {
   --search-container-height: 4.2rem;
-  width: 60rem;
+  width: 80%;
   position: relative;
   height: var(--search-container-height);
   display: flex;
@@ -53,7 +53,7 @@
 .progress {
   height: calc(var(--search-container-height) - 2rem) !important;
   width: calc(var(--search-container-height) - 2rem) !important;
-  color: #f97316 !important;
+  color: white !important;
   margin-right: 1.6rem;
 }
 

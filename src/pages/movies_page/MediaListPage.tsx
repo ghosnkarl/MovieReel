@@ -33,7 +33,7 @@ export default function MoviesPage({ type }: { type: 'movie' | 'tv' }) {
   if (selectedQuery.isError) return <ErrorPage />;
 
   return (
-    <div className='page-container'>
+    <div>
       <Tabs
         onSelectType={handleSelectTab}
         selectedType={selectedTab}

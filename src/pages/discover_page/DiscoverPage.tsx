@@ -1,3 +1,7 @@
 export default function DiscoverPage() {
-  return <div className='page-container'></div>;
+  return (
+    <div>
+      <h1>Discover</h1>
+    </div>
+  );
 }

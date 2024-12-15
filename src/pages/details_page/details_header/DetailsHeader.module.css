@@ -1,6 +1,5 @@
 .header {
   position: relative;
-  margin-top: var(--header-size);
   gap: 2.4rem;
   min-height: 60rem;
   margin-bottom: 3.2rem;
@@ -23,7 +22,7 @@
   height: 100%;
   width: 100%;
   position: absolute;
-  filter: blur(10px);
+  filter: blur(2px);
 }
 
 .header__content {

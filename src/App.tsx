@@ -11,6 +11,7 @@ import OutletRootLayout from './components/ui/OutletRootLayout';
 import HomePage from './pages/homepage/HomePage';
 import MediaListPage from './pages/movies_page/MediaListPage';
 import { MOVIE_TYPE, TV_TYPE } from './helpers/constants';
+import SeasonDetailsPage from './pages/tv_pages/SeasonDetailsPage';
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,11 @@ const router = createBrowserRouter([
           },
           {
             path: ':tvId',
-            element: <DetailsPage isMovie={false} />,
+            element: <OutletRootLayout />,
+            children: [
+              { index: true, element: <DetailsPage isMovie={false} /> },
+              { path: 'seasons/:seasonNumber', element: <SeasonDetailsPage /> },
+            ],
           },
         ],
       },

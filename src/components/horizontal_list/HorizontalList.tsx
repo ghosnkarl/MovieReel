@@ -85,7 +85,7 @@ const HorizontalList = ({
       return (
         <SwiperSlide key={season.id}>
           <MediaItem
-            id={season.id}
+            id={season.season_number}
             text={formatDate(season.air_date)}
             title={season.name}
             poster_path={getPosterImage(season.poster_path, 'w342')}

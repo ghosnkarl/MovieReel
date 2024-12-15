@@ -1,6 +1,40 @@
 import { useLocation } from 'react-router-dom';
-import EpisodeItem from '../../components/list_items/episode_item/EpisodeItem';
+import classes from './SeasonDetailsPage.module.css';
 import useSeasonDetails from '../../hooks/useSeasonDetails';
+import { IEpisode } from '../../models/seasonModel';
+import { getBackdropImage } from '../../helpers/imageSizes';
+import Rating from '../../components/rating/Rating';
+import { formatDate } from '../../helpers/commonHelpers';
+import { AiOutlineCalendar, AiOutlineClockCircle } from 'react-icons/ai';
+
+const EpisodeItem = ({ episode }: { episode: IEpisode }) => {
+  return (
+    <div className={classes['item__container']}>
+      <img
+        src={getBackdropImage(episode.still_path, 'w780')}
+        alt={episode.name}
+        className={classes.backdrop}
+      />
+      <div className={classes['text__container']}>
+        <h2 className={classes.title}>
+          {String(episode.episode_number).padStart(2, '0')}. {episode.name}
+        </h2>
+        <p className={classes.overview}>{episode.overview}</p>
+        <div className={classes['details__container']}>
+          <Rating rating={episode.vote_average} />
+          <p className={classes.runtime}>
+            <AiOutlineClockCircle />
+            {formatDate(episode.air_date)}
+          </p>
+          <p className={classes.runtime}>
+            <AiOutlineCalendar />
+            {episode.runtime}m
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const SeasonDetailsPage = () => {
   const location = useLocation();
@@ -14,11 +48,15 @@ const SeasonDetailsPage = () => {
   if (!data) return;
 
   return (
-    <ul>
-      {data.episodes.map((episode) => (
-        <EpisodeItem key={episode.id} episode={episode} />
-      ))}
-    </ul>
+    <div>
+      <h1 className='section__title'>{data.name}</h1>
+      <p className={classes['season__overview']}>{data.overview}</p>
+      <ul className={classes.episodes}>
+        {data.episodes.map((episode) => (
+          <EpisodeItem key={episode.id} episode={episode} />
+        ))}
+      </ul>
+    </div>
   );
 };
 export default SeasonDetailsPage;

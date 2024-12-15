@@ -7,7 +7,7 @@ export default function RootLayout() {
   return (
     <div>
       <Navigation />
-      <main style={{ minHeight: '100vh' }}>
+      <main className='page-container'>
         <ScrollToTop>
           <Outlet />
         </ScrollToTop>

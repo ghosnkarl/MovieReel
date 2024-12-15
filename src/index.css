@@ -93,6 +93,7 @@ body {
 }
 
 .page-container {
+  min-height: 100vh;
   max-width: var(--page-width--max);
   margin: 0 auto;
   padding: 9.6rem var(--page-padding--horizontal) 3.2rem

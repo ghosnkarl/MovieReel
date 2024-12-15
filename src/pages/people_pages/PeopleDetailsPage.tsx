@@ -103,7 +103,7 @@ const PeopleDetailsPage = () => {
     : 'Unknown';
 
   return (
-    <div className='page-container'>
+    <div>
       <div className={classes.header}>
         <img
           className={classes['profile-img']}
@@ -155,7 +155,6 @@ const PeopleDetailsPage = () => {
             onSelectType={handleSelectTab}
             selectedType={selectedTab}
             tabs={CREDITS_TABS}
-            layoutId='credits_page'
           />
 
           {selectedTab.value === 'biography' && (
