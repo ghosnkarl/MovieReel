@@ -5,7 +5,7 @@ import DetailsMain from './DetailsMain';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import ErrorPage from '../error_page/ErrorPage';
 import useDetails from '../../hooks/useDetails';
-import { ITabObject } from '../../components/ui/tabs/Tabs';
+import Tabs, { ITabObject } from '../../components/ui/tabs/Tabs';
 import { DETAILS_TABS } from '../../data/tabsData';
 import { useMemo, useState } from 'react';
 import CreditsList from '../../components/lists/credits_list/CreditsList';
@@ -28,10 +28,6 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
   if (isError || !data) return <ErrorPage />;
 
   const {
-    genres,
-    vote_average,
-    backdrop_path,
-    vote_count,
     reviews: { results: reviewsResults },
     videos: { results: videosResults },
     images,
@@ -79,19 +75,15 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
 
   return (
     <div>
-      <DetailsHeader
-        title={data.title || data.name}
-        genres={genres}
-        vote_average={vote_average}
-        release_date={data.release_date || data.last_air_date}
-        runtime={data.runtime || null}
-        backdrop_path={backdrop_path}
-        vote_count={vote_count}
-        handleSelectTab={setSelectedTab}
-        selectedTab={selectedTab}
-      />
-
-      <div className={classes['main-container']}>{renderTabContent()}</div>
+      <div className={classes['main-container']}>
+        <DetailsHeader media={data} />
+        <Tabs
+          onSelectType={setSelectedTab}
+          selectedType={selectedTab}
+          tabs={DETAILS_TABS}
+        />
+        {renderTabContent()}
+      </div>
     </div>
   );
 };

@@ -1,8 +1,9 @@
 import { getBackdropImage } from '../../../helpers/imageSizes';
 import { IEpisode } from '../../../models/seasonModel';
 import classes from './EpisodeItem.module.css';
-import RatingStar from '../../rating/RatingStar';
+
 import { formatDate } from '../../../helpers/commonHelpers';
+import Rating from '../../rating/Rating';
 
 const EpisodeItem = ({ episode }: { episode: IEpisode }) => {
   return (
@@ -16,7 +17,7 @@ const EpisodeItem = ({ episode }: { episode: IEpisode }) => {
         <h1 className={classes.title}>
           S{episode.season_number}.E{episode.episode_number} - {episode.name}
         </h1>
-        <RatingStar value={episode.vote_average} size='small' />
+        <Rating rating={episode.vote_average} />
         <p className={classes.date}>
           {formatDate(episode.air_date)} • {episode.runtime}m
         </p>

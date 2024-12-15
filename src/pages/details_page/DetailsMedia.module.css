@@ -5,42 +5,36 @@
 }
 
 .details {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
   align-items: center;
-  gap: 3.2rem;
-}
-
-.details__left--item {
-  display: flex;
-  flex-direction: column;
-}
-
-.details__title {
-  font-size: 1.6rem;
-  color: var(--color-gray-300);
-  margin-bottom: 1.2rem;
-}
-
-.details__text {
-  font-size: 1.6rem;
+  row-gap: 3.2rem;
 }
 
 .external__link:link,
 .external__link:visited {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+  text-decoration-thickness: 0.2rem;
   display: flex;
   gap: 0.8rem;
   font-size: 1.6em;
-  color: var(--color-primary-900);
+  color: var(--color-gray-400);
 }
 
 .external__link:hover,
 .external__link:active {
-  text-decoration: underline;
+  color: white;
 }
 
 .links__container {
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
+}
+
+.details__title {
+  font-size: 1.8rem;
+  color: var(--color-gray-300);
+  margin-bottom: 1.8rem;
 }

@@ -21,12 +21,12 @@
   cursor: pointer;
 
   &:hover {
-    background-color: var(--color-gray-600);
+    background-color: var(--color-gray-700);
   }
 }
 
 .focused {
-  background-color: var(--color-gray-600);
+  background-color: var(--color-gray-700);
 }
 
 .poster {

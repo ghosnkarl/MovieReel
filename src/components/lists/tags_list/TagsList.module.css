@@ -10,22 +10,25 @@
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  padding: 0.8rem 2rem;
+  padding: 1rem 2rem;
   font-size: 1.4rem;
-  border-radius: 12px;
-  background-color: var(--color-background--border);
+  border-radius: 7px;
+  background-color: var(--color-gray-800);
+  color: var(--color-gray-500);
   box-shadow: var(--card--box-shadow);
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
+  transition: background-color 0.2s ease, transform 0.2s ease;
 
-.tag:hover {
-  background-color: var(--color-gray-500);
-  transform: scale(1.05);
+  &:hover {
+    background-color: var(--color-gray-700);
+    color: white;
+    transform: scale(1.05);
+  }
 }
 
 .tag--selected {
-  background-color: var(--color-gray-500);
-  padding: 0.8rem 2rem 0.8rem 1.2rem;
+  background-color: var(--color-gray-700);
+  padding: 0.6rem 2rem 0.6rem 1.2rem;
+  color: white;
 }
 
 .tag__check {

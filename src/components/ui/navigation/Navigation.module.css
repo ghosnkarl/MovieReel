@@ -43,7 +43,7 @@
 .list a:hover,
 .list a:active,
 .active {
-  background-color: var(--color-gray-600);
+  background-color: var(--color-gray-800);
 }
 
 .icon {

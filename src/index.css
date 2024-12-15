@@ -1,28 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&family=Permanent+Marker&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 :root {
-  --color-background: var(--color-background--root);
-
-  --color-gray-200: #e5e5e5;
+  --color-gray-950: #0a0a0a;
+  --color-gray-900: #171717;
+  --color-gray-800: #262626;
+  --color-gray-700: #404040;
+  --color-gray-600: #525252;
+  --color-gray-500: #737373;
+  --color-gray-400: #a3a3a3;
   --color-gray-300: #d4d4d4;
-  --color-gray-500: #434343;
-  --color-gray-600: #2c2c2c;
+  --color-gray-200: #e5e5e5;
+  --color-gray-100: #f5f5f5;
+  --color-gray-50: #fafafa;
 
-  --color-error--border: #404040;
-  --color-background--border: #1e1e1e;
-  --color-background--card: #111;
-  --color-background--root: #141414;
-
-  --color-primary-600: #f9c762;
-  --color-primary-700: #fbc14d;
-  --color-primary-900: #f97316;
-
-  --color-rating-red: #ef4444;
-  --color-rating-red--alpha: rgba(239, 68, 68, 0.3);
-  --color-rating-amber: #fbbf24;
-  --color-rating-amber--alpha: rgba(251, 190, 36, 0.3);
-  --color-rating-green: #4ade80;
-  --color-rating-green--alpha: rgba(74, 222, 128, 0.3);
+  --color-background--card: #151515;
 
   --section--title-size: 2.2rem;
 
@@ -74,7 +65,7 @@ button {
 
 body {
   font-family: 'Manrope', sans-serif;
-  background-color: #0a0a0a;
+  background-color: var(--color-gray-950);
   color: white;
   line-height: 1;
   font-weight: 500;
@@ -104,7 +95,7 @@ body {
 .page-container {
   max-width: var(--page-width--max);
   margin: 0 auto;
-  padding: 12.8rem var(--page-padding--horizontal) 3.2rem
+  padding: 9.6rem var(--page-padding--horizontal) 3.2rem
     var(--page-padding--horizontal);
 }
 
@@ -157,7 +148,7 @@ body {
   align-items: center;
   justify-content: center;
   color: white;
-  background-color: var(--color-gray-600);
+  background-color: var(--color-gray-800);
   cursor: pointer;
   border-radius: 1000px;
 }
@@ -220,13 +211,10 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 1000px;
   padding: 0.6rem;
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
 
   &:hover {
-    color: var(--color-primary-900);
-    border: 1px solid var(--color-primary-900);
-    background-color: rgba(20, 20, 20, 0.5);
-    box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
   }
 }
 
@@ -249,4 +237,16 @@ body {
 
 .swiper-button-prev::after {
   background: url('./assets/arrow_prev.svg') no-repeat center;
+}
+
+/* Loading bar container */
+.loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: transparent;
+  z-index: 9999;
+  overflow: hidden;
 }

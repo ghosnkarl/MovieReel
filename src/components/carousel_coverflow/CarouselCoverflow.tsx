@@ -6,8 +6,8 @@ import useGenres from '../../hooks/useGenres';
 import { MediaType } from '../../helpers/constants';
 import { getPosterImage } from '../../helpers/imageSizes';
 import { formatDate, getGenres } from '../../helpers/commonHelpers';
-import RatingStar from '../rating/RatingStar';
 import { NavLink } from 'react-router-dom';
+import Rating from '../rating/Rating';
 
 interface IMovieCarouselItem {
   item: IMedia;
@@ -32,11 +32,7 @@ const MovieCarouselItem = ({ item, genres, mediaType }: IMovieCarouselItem) => {
         </h2>
         <div className={classes['carousel-item-genres']}>{genres}</div>
         <div className={classes['carousel-item-meta']}>
-          <RatingStar
-            value={item.vote_average}
-            size='small'
-            vote_count={item.vote_count}
-          />
+          <Rating rating={item.vote_average} />
           <span className={classes['carousel-item-release']}>
             {formatDate(item.release_date || item.first_air_date)}
           </span>

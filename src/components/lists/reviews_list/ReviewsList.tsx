@@ -1,8 +1,8 @@
 import { IReview } from '../../../models/commonModel';
 import classes from './ReviewsList.module.css';
-import Rating from '../../rating/Rating';
 import { formatDate } from '../../../helpers/commonHelpers';
 import EmptyResource from '../../ui/empty_resource/EmptyResource';
+import Rating from '../../rating/Rating';
 
 interface IReviewItem {
   review: IReview;
@@ -15,7 +15,7 @@ const ReviewItem = ({ review }: IReviewItem) => {
     <div>
       <div className={classes.container}>
         <div className={classes.header}>
-          {rating && <Rating value={(rating * 10).toFixed(0)} size='small' />}
+          <Rating rating={rating} />
           <div>
             <h2 className={classes.author}>{review.author}</h2>
             <p className={classes.date}>{formatDate(review.updated_at)}</p>

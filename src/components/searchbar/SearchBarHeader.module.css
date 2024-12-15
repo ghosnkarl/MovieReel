@@ -4,7 +4,6 @@
   position: relative;
   height: var(--search-container-height);
   display: flex;
-  background-color: var(--color-background--border);
   border-radius: 7px;
   align-items: center;
   border: 1px solid var(--color-gray-600);
@@ -41,7 +40,7 @@
   transform: translateY(-5%);
   transition: all 0.2s ease-in-out;
   pointer-events: none;
-  background-color: var(--color-background--border);
+  background-color: var(--color-gray-800);
   box-shadow: var(--card--box-shadow);
 }
 

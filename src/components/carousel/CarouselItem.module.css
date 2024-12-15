@@ -36,7 +36,7 @@
   height: 100%;
   object-fit: cover;
   transition: all 0.2s ease-in-out;
-  filter: brightness(0.9);
+  filter: brightness(0.4);
   z-index: 0;
 }
 

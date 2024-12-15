@@ -26,7 +26,7 @@ const Carousel = () => {
       loop={true}
       allowTouchMove={false}
       autoplay={{
-        delay: 3000,
+        delay: 5000,
         disableOnInteraction: false,
       }}
       pagination={{
@@ -38,12 +38,7 @@ const Carousel = () => {
     >
       {data.map((item) => (
         <SwiperSlide key={item.id}>
-          <CarouselItem
-            genres={genres}
-            item={item}
-            type='normal'
-            media_type={MOVIE_TYPE}
-          />
+          <CarouselItem genres={genres} item={item} media_type={MOVIE_TYPE} />
         </SwiperSlide>
       ))}
     </Swiper>

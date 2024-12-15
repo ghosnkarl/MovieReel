@@ -21,27 +21,8 @@ const DetailsMain = ({ media }: IDetailsMainContainer) => {
 
   return (
     <div className={classes['details__main']}>
-      <div className={classes['details__container']}>
-        <DetailsMedia
-          status={media.status}
-          homepage={media.homepage}
-          imdb_id={media.imdb_id}
-          revenue={media.revenue}
-          budget={media.budget}
-          number_of_episodes={media.number_of_episodes}
-          number_of_seasons={media.number_of_seasons}
-          first_air_date={media.first_air_date}
-          last_air_date={media.last_air_date}
-          created_by={media.created_by}
-          production_companies={media.production_companies}
-          keywords={isMovie ? media.keywords.keywords : media.keywords.results}
-          tagline={media.tagline}
-        />
-        <div>
-          <h1 className='section__title'>Storyline</h1>
-          <p className={classes.overview}>{media.overview}</p>
-        </div>
-      </div>
+      <DetailsMedia media={media} />
+
       {media.seasons && (
         <HorizontalList
           title='Seasons'
