@@ -56,14 +56,10 @@ interface SearchListProps {
 }
 
 const SearchList = ({ data, setOpen, clearInput }: SearchListProps) => {
-  const [focusedIndex, setFocusedIndex] = useState<number>(-1);
+  const [focusedIndex, setFocusedIndex] = useState<number>(0);
   const navigate = useNavigate();
   const listRef = useRef<HTMLUListElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  // useEffect(() => {
-  //   listRef.current?.focus();
-  // }, []);
 
   const handleSearchClicked = useCallback(
     (item: ISearchItem) => {
@@ -74,56 +70,53 @@ const SearchList = ({ data, setOpen, clearInput }: SearchListProps) => {
     [navigate, clearInput, setOpen]
   );
 
+  // Combined navigation logic
+  const navigateFocus = (direction: 'up' | 'down') => {
+    setFocusedIndex((prev) =>
+      direction === 'down'
+        ? (prev + 1) % data.length
+        : (prev - 1 + data.length) % data.length
+    );
+    listRef.current?.focus();
+  };
+
   const handleGlobalKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (data.length === 0) return;
+      if (!data.length) return;
 
       switch (e.key) {
         case 'ArrowDown':
           e.preventDefault();
-          setFocusedIndex((prev) => (prev + 1) % data.length);
-          listRef.current?.focus(); // Focus the list
+          navigateFocus('down');
           break;
         case 'ArrowUp':
           e.preventDefault();
-          setFocusedIndex((prev) => (prev - 1 + data.length) % data.length);
-          listRef.current?.focus();
+          navigateFocus('up');
           break;
         case 'Enter':
-          if (focusedIndex >= 0) {
-            handleSearchClicked(data[focusedIndex]);
-          }
+          if (focusedIndex >= 0) handleSearchClicked(data[focusedIndex]);
           break;
         case 'Escape':
           setOpen(false);
-          break;
-        default:
           break;
       }
     },
     [data, focusedIndex, handleSearchClicked, setOpen]
   );
 
-  useEffect(() => {
-    if (data.length > 0) {
-      setFocusedIndex(0);
-    }
-  }, [data]);
+  // Auto-focus logic
+  useEffect(() => setFocusedIndex(0), [data]);
 
   useEffect(() => {
-    if (focusedIndex >= 0 && itemRefs.current[focusedIndex]) {
-      itemRefs.current[focusedIndex]?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-      });
-    }
+    itemRefs.current[focusedIndex]?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+    });
   }, [focusedIndex]);
 
   useEffect(() => {
     window.addEventListener('keydown', handleGlobalKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleGlobalKeyDown);
-    };
+    return () => window.removeEventListener('keydown', handleGlobalKeyDown);
   }, [handleGlobalKeyDown]);
 
   return (
