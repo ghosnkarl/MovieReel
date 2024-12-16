@@ -1,9 +1,8 @@
 import { ChangeEvent, useRef, useState } from 'react';
 import classes from './SearchBar.module.css';
 import SearchTag from './SearchTag';
-import { useQuery } from '@tanstack/react-query';
-import { fetchResults } from '../../services/http';
 import { IIdName } from '../../models/commonModel';
+import useSearch from '../../hooks/useSearch';
 
 const Searchbar = () => {
   const [open, setOpen] = useState(false);
@@ -14,12 +13,7 @@ const Searchbar = () => {
     []
   );
 
-  const { data } = useQuery({
-    queryKey: ['keywords', { search: searchTerm }],
-    queryFn: () =>
-      fetchResults({ path: 'search/keyword', params: { query: searchTerm } }),
-    retry: 1,
-  });
+  const { data } = useSearch({ value: 'keyword', query: searchTerm });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (lastChange.current) {

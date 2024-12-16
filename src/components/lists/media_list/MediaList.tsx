@@ -1,18 +1,19 @@
 import { ISeason } from '../../../models/seasonModel';
 import { NavLink } from 'react-router-dom';
 import classes from './MediaItem.module.css';
-import { getPosterImage } from '../../../helpers/imageSizes';
-import { formatDate } from '../../../helpers/commonHelpers';
 import { IMedia } from '../../../models/mediaModel';
+import { MediaType } from '../../../helpers/constants';
+import { tmdbImage } from '../../../helpers/imageSizes';
+import { format } from '../../../helpers/format';
 
-type MediaType = 'movies' | 'tv' | 'season';
+type MediaTypeSeason = MediaType | 'season';
 
 interface IMediaItem {
   text: string;
   id: number;
   poster_path: string | null;
   title: string | undefined;
-  type: MediaType;
+  type: MediaTypeSeason;
 }
 
 export const MediaItem = ({
@@ -27,13 +28,13 @@ export const MediaItem = ({
     <NavLink
       to={link}
       className={classes['link__wrapper']}
-      state={{ title, image: getPosterImage(poster_path, 'w342') }}
+      state={{ title, image: tmdbImage.poster(poster_path, 'w342') }}
     >
       <div className={classes.container}>
         <div className={classes['img__container']}>
           <img
             className={classes.poster}
-            src={getPosterImage(poster_path, 'w342')}
+            src={tmdbImage.poster(poster_path, 'w342')}
             alt={title}
           />
         </div>
@@ -67,7 +68,7 @@ const MediaList = ({ data, type }: IMediaList) => {
             title={title}
             type={type}
             poster_path={item.poster_path}
-            text={formatDate(date)}
+            text={format.date(date)}
           />
         );
       })}

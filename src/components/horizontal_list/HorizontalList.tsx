@@ -8,13 +8,16 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { MediaItem } from '../lists/media_list/MediaList';
-import { formatDate } from '../../helpers/commonHelpers';
 import PersonItem from '../list_items/person_item/PersonItem';
 import { motion } from 'framer-motion';
 import { DataType, QueryData } from './HorizontalWrapper';
 import { useRef, useState } from 'react';
 import { NavigationOptions, Swiper as SwiperType } from 'swiper/types';
 import { IMedia } from '../../models/mediaModel';
+import { MOVIE_TYPE, PERSON_TYPE, TV_TYPE } from '../../helpers/constants';
+import { ISeason } from '../../models/seasonModel';
+import { tmdbImage } from '../../helpers/imageSizes';
+import { format } from '../../helpers/format';
 
 interface IHorizontalList {
   title: string;
@@ -43,8 +46,8 @@ const HorizontalList = ({
   };
 
   // Create a generic slide component
-  const renderSlide = (item: IMedia | IPeople) => {
-    if (type === 'movies' || type === 'tv') {
+  const renderSlide = (item: IMedia | IPeople | ISeason) => {
+    if (type === MOVIE_TYPE || type === TV_TYPE) {
       const media = item as IMedia;
       return (
         <SwiperSlide key={media.id}>
@@ -54,8 +57,8 @@ const HorizontalList = ({
             poster_path={media.poster_path}
             text={
               media.release_date
-                ? formatDate(media.release_date)
-                : formatDate(media.first_air_date)
+                ? format.date(media.release_date)
+                : format.date(media.first_air_date)
             }
             type={type}
           />
@@ -63,7 +66,7 @@ const HorizontalList = ({
       );
     }
 
-    if (type === 'people') {
+    if (type === PERSON_TYPE) {
       const person = item as IPeople;
       return (
         <SwiperSlide key={person.id}>
@@ -72,6 +75,21 @@ const HorizontalList = ({
             text={null}
             title={person.name}
             profile_path={person.profile_path}
+          />
+        </SwiperSlide>
+      );
+    }
+
+    if (type === 'season') {
+      const season = item as ISeason;
+      return (
+        <SwiperSlide key={season.id}>
+          <MediaItem
+            id={season.season_number}
+            text={format.date(season.air_date)}
+            title={season.name}
+            poster_path={tmdbImage.poster(season.poster_path, 'w342')}
+            type='season'
           />
         </SwiperSlide>
       );
@@ -104,7 +122,7 @@ const HorizontalList = ({
         ) : (
           <HeaderLink link={link} linkState={linkState} title={title} />
         )}
-        {data.length > 5 && (
+        {data.length > 6 && (
           <div className='arrows__container'>
             <motion.button
               whileHover={{
@@ -129,9 +147,9 @@ const HorizontalList = ({
       </div>
       <div>
         <Swiper
-          slidesPerView={type === 'people' ? 7 : 5}
+          slidesPerView={type === PERSON_TYPE ? 7 : 6}
           spaceBetween={15}
-          slidesPerGroup={5}
+          slidesPerGroup={6}
           loop={false}
           allowTouchMove={false}
           modules={[Pagination, Navigation]}

@@ -1,67 +1,62 @@
-import { getPosterImage } from '../../../helpers/imageSizes';
 import { IReview } from '../../../models/commonModel';
-import HorizontalList from '../../horizontal_list/HorizontalList';
-import classes from './ReviewItem.module.css';
+import classes from './ReviewsList.module.css';
+import EmptyResource from '../../ui/empty_resource/EmptyResource';
 import Rating from '../../rating/Rating';
-import { formatDate } from '../../../helpers/commonHelpers';
+import { tmdbImage } from '../../../helpers/imageSizes';
+import { format } from '../../../helpers/format';
 
 interface IReviewItem {
   review: IReview;
-  viewFull: boolean;
 }
 
-export const ReviewItem = ({ review, viewFull }: IReviewItem) => {
-  const { rating } = review.author_details;
+const ReviewItem = ({ review }: IReviewItem) => {
+  const { rating, avatar_path } = review.author_details;
 
   return (
     <div>
-      <div
-        className={`${classes.container} ${
-          viewFull ? classes['container--full'] : ''
-        }`}
-      >
+      <div className={classes.container}>
         <div className={classes.header}>
-          {rating && <Rating value={(rating * 10).toFixed(0)} size='small' />}
-          <div>
+          <img
+            src={tmdbImage.avatar(avatar_path)}
+            alt={`${review.author} avatar`}
+            className={classes.avatar}
+          />
+
+          <div style={{ flex: 1 }}>
             <h2 className={classes.author}>{review.author}</h2>
-            <p className={classes.date}>{formatDate(review.updated_at)}</p>
+            <p className={classes.date}>{format.date(review.updated_at)}</p>
           </div>
+          <Rating rating={rating} />
         </div>
-        <p
-          className={`${classes.content} ${
-            !viewFull ? classes['max--lines'] : ''
-          }`}
-        >
-          {review.content}
-        </p>
+        <p className={classes.content}>{review.content}</p>
       </div>
     </div>
   );
 };
 
 interface IReviewsList {
-  reviews: { results: IReview[] };
-  title: string;
-  poster_path: string;
+  reviews: IReview[];
+  mediaTitle: string | undefined;
 }
 
-const ReviewsList = ({ reviews, title, poster_path }: IReviewsList) => {
-  if (!reviews || !reviews.results || reviews.results.length === 0) return null;
-
+const ReviewsList = ({ reviews, mediaTitle }: IReviewsList) => {
   return (
-    <HorizontalList
-      title='Reviews'
-      link='review'
-      linkState={{
-        reviews: reviews,
-        title: title,
-        image: getPosterImage(poster_path, 'w342'),
-      }}
-    >
-      {reviews.results.map((review) => (
-        <ReviewItem key={review.id} review={review} viewFull={false} />
-      ))}
-    </HorizontalList>
+    <>
+      {reviews.length > 0 && (
+        <ul className={classes['reviews-list']}>
+          {reviews.map((review) => (
+            <ReviewItem key={review.id} review={review} />
+          ))}
+        </ul>
+      )}
+
+      {reviews.length === 0 && (
+        <EmptyResource
+          title='No Reviews Yet'
+          description={`There are no reviews for ${mediaTitle} yet.`}
+        />
+      )}
+    </>
   );
 };
 

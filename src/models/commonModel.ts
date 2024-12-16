@@ -5,8 +5,6 @@ export interface IIdName {
   name: string;
 }
 
-export type MediaType = 'movie' | 'tv';
-
 export interface ICollectionDetails extends IIdName {
   parts: IMedia[];
 }
@@ -19,7 +17,10 @@ export interface IReview {
   author: string;
   content: string;
   create_at: string;
-  author_details: { rating: number | null };
+  author_details: {
+    rating: number | null;
+    avatar_path: string | null;
+  };
   id: string;
   updated_at: string;
   url: string;

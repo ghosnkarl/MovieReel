@@ -1,25 +1,29 @@
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
 .container {
-  background-color: var(--color-background--card);
-  border: 1px solid var(--color-error--border);
+  border: 1px solid var(--color-gray-700);
   padding: 2.4rem;
   border-radius: 10px;
-  width: 30rem;
-  height: 100%;
-  cursor: pointer;
-}
-
-.container--full {
   width: 100%;
-}
-
-.container:hover {
-  box-shadow: var(--hover-border);
+  height: 100%;
 }
 
 .header {
   display: flex;
   gap: 2.4rem;
+
   align-items: center;
+}
+
+.avatar {
+  width: 5rem;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .author {
@@ -38,12 +42,4 @@
   font-size: 1.4rem;
   margin-top: 2.4rem;
   line-height: 1.6;
-  overflow: hidden;
-  display: -webkit-box;
-}
-
-.max--lines {
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
-  -webkit-box-orient: vertical;
 }

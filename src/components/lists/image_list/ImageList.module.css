@@ -1,15 +1,15 @@
 .container {
-  width: 40rem;
-  border-radius: 10px;
   overflow: hidden;
+  border-radius: 7px;
+  aspect-ratio: 1.3;
 }
 
-.backdrop {
+.image {
   width: 100%;
-  aspect-ratio: 1.5;
+  height: 100%;
   object-fit: cover;
   transition: all 0.2s ease-in-out;
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.3);
   }
 }

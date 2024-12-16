@@ -1,28 +1,24 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import useDiscoverMovies from '../../hooks/useDiscoverMovies';
+import useDiscover from '../../hooks/useDiscover';
 import CarouselItem from './CarouselItem';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import classes from './CarouselItem.module.css';
-import ErrorBlock from '../ui/error_block/ErrorBlock';
 import LoadingIndicator from '../ui/LoadingIndicator';
 import useGenres from '../../hooks/useGenres';
 import { nowPlayingDates } from '../../helpers/discoverHelpers';
+import { MOVIE_TYPE } from '../../helpers/constants';
+import ErrorComponent from '../ui/error_component/ErrorComponent';
 
 const Carousel = () => {
-  const { data: genres } = useGenres({ type: 'movie' });
-  const { data, isError, isLoading, refetch } = useDiscoverMovies({
+  const { data: genres } = useGenres({ type: MOVIE_TYPE });
+  const { data, isError, isLoading, refetch } = useDiscover({
+    mediaType: MOVIE_TYPE,
     params: nowPlayingDates,
   });
 
   if (isLoading) return <LoadingIndicator />;
 
-  if (isError || !data)
-    return (
-      <ErrorBlock
-        onTryAgainClick={refetch}
-        message='There was an error fetching now playing movies.'
-      />
-    );
+  if (isError || !data) return <ErrorComponent onRetry={refetch} />;
 
   return (
     <Swiper
@@ -30,7 +26,7 @@ const Carousel = () => {
       loop={true}
       allowTouchMove={false}
       autoplay={{
-        delay: 3000,
+        delay: 5000,
         disableOnInteraction: false,
       }}
       pagination={{
@@ -42,12 +38,7 @@ const Carousel = () => {
     >
       {data.map((item) => (
         <SwiperSlide key={item.id}>
-          <CarouselItem
-            genres={genres}
-            item={item}
-            type='normal'
-            media_type='movies'
-          />
+          <CarouselItem genres={genres} item={item} media_type={MOVIE_TYPE} />
         </SwiperSlide>
       ))}
     </Swiper>

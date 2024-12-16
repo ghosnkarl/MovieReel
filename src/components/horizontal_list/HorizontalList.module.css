@@ -26,23 +26,3 @@
   height: 3.4rem;
   gap: 1.6rem;
 }
-
-.btn-arrow {
-  background: none;
-  border: none;
-  aspect-ratio: 1;
-  height: 100%;
-  font-size: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  background-color: var(--color-gray-600);
-  cursor: pointer;
-  border-radius: 1000px;
-}
-
-.btn-arrow--disabled {
-  opacity: 0.4;
-  pointer-events: none;
-}

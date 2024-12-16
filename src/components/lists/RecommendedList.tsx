@@ -1,10 +1,11 @@
+import { MediaType } from '../../helpers/constants';
 import { IMedia } from '../../models/mediaModel';
 import HorizontalList from '../horizontal_list/HorizontalList';
 
 interface IRecommendedList {
   items: IMedia[];
   title: string | undefined;
-  type: 'movies' | 'tv';
+  type: MediaType;
 }
 
 const RecommendedList = ({ items, title, type }: IRecommendedList) => {

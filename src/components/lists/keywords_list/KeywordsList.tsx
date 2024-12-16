@@ -2,24 +2,23 @@ import { IIdName } from '../../../models/commonModel';
 import classes from './KeywordsList.module.css';
 
 interface IKeywords {
-  keywords: IIdName[];
+  keywords: IIdName[] | null;
 }
 
-const Keywords = ({ keywords }: IKeywords) => {
+const KeywordsList = ({ keywords }: IKeywords) => {
+  if (!keywords) return null;
   return (
     <div>
-      {keywords && keywords.length > 0 && (
-        <>
-          <h1 className='section__title'>Keywords</h1>
-          <div className={classes.keywords}>
-            {keywords.map((keyword) => (
-              <span key={keyword.id}>{keyword.name}</span>
-            ))}
-          </div>
-        </>
-      )}
+      <h1 className='section__title'>Keywords</h1>
+      <ul className={classes.keywords}>
+        {keywords.map((keyword) => (
+          <li className={classes.keyword} key={keyword.id}>
+            {keyword.name}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
 
-export default Keywords;
+export default KeywordsList;

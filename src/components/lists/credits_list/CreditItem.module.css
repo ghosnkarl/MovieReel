@@ -27,6 +27,7 @@
   aspect-ratio: 1;
   overflow: hidden;
   margin-bottom: 2.4rem;
+  background-color: var(--color-gray-600);
 }
 
 .profile__img {

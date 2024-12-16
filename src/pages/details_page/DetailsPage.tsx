@@ -1,19 +1,19 @@
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import classes from './DetailsPage.module.css';
 import DetailsHeader from './details_header/DetailsHeader';
 import DetailsMain from './DetailsMain';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import ErrorPage from '../error_page/ErrorPage';
 import useDetails from '../../hooks/useDetails';
-import { ITabObject } from '../../components/ui/tabs/Tabs';
+import Tabs, { ITabObject } from '../../components/ui/tabs/Tabs';
 import { DETAILS_TABS } from '../../data/tabsData';
 import { useMemo, useState } from 'react';
 import CreditsList from '../../components/lists/credits_list/CreditsList';
-import { ReviewItem } from '../../components/lists/reviews_list/ReviewsList';
+import ReviewsList from '../../components/lists/reviews_list/ReviewsList';
 import CrewList from '../../components/lists/crew_list/CrewList';
 import VideoList from '../../components/lists/video_list/VideoList';
+import ImageList from '../../components/lists/image_list/ImageList';
 import { getGalleryImages } from '../../helpers/galleryImages';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
   const params = useParams();
@@ -24,24 +24,15 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
 
   const { data, isLoading, isError } = useDetails({ id, isMovie });
 
-  // Handle loading and error states
   if (isLoading) return <LoadingIndicator />;
   if (isError || !data) return <ErrorPage />;
 
-  // Destructure data fields for cleaner access
   const {
-    genres,
-    vote_average,
-    backdrop_path,
-    vote_count,
-    overview,
-    tagline,
-    reviews,
-    videos,
+    reviews: { results: reviewsResults },
+    videos: { results: videosResults },
     images,
   } = data;
 
-  // Render tab content based on selectedTab
   const renderTabContent = () => {
     switch (selectedTab.value) {
       case 'overview':
@@ -58,28 +49,24 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
         );
       case 'reviews':
         return (
-          <ul className={classes['reviews-list']}>
-            {reviews.results.map((review) => (
-              <ReviewItem key={review.id} review={review} viewFull={true} />
-            ))}
-          </ul>
+          <ReviewsList
+            reviews={reviewsResults}
+            mediaTitle={data.title || data.name}
+          />
         );
       case 'videos':
-        return <VideoList videos={videos.results} />;
+        return (
+          <VideoList
+            videos={videosResults}
+            mediaTitle={data.title || data.name}
+          />
+        );
       case 'images':
         return (
-          <div className={classes['images-container']}>
-            {getGalleryImages({ images }).map((image) => (
-              <NavLink
-                className={classes.container}
-                key={image.galleryImage}
-                to={image.fullImage}
-                target='_blank'
-              >
-                <LazyLoadImage src={image.galleryImage} />
-              </NavLink>
-            ))}
-          </div>
+          <ImageList
+            images={getGalleryImages({ images })}
+            mediaTitle={data.title || data.name}
+          />
         );
       default:
         return null;
@@ -88,21 +75,15 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
 
   return (
     <div>
-      <DetailsHeader
-        title={data.title || data.name}
-        genres={genres}
-        vote_average={vote_average}
-        release_date={data.release_date || data.last_air_date}
-        runtime={data.runtime || null}
-        backdrop_path={backdrop_path}
-        vote_count={vote_count}
-        handleSelectTab={setSelectedTab}
-        selectedTab={selectedTab}
-        overview={overview}
-        tagline={tagline}
-      />
-
-      <div className={classes['main-container']}>{renderTabContent()}</div>
+      <div className={classes['main-container']}>
+        <DetailsHeader media={data} />
+        <Tabs
+          onSelectType={setSelectedTab}
+          selectedType={selectedTab}
+          tabs={DETAILS_TABS}
+        />
+        {renderTabContent()}
+      </div>
     </div>
   );
 };

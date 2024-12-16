@@ -1,7 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
-import { fetchResults } from '../../services/http';
 import classes from './Homepage.module.css';
-import { IPeople } from '../../models/peopleModel';
 import { airingTodayDates, upComingDates } from '../../helpers/discoverHelpers';
 import HorizontalWrapper from '../../components/horizontal_list/HorizontalWrapper';
 import 'swiper/css';
@@ -9,48 +6,39 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import Carousel from '../../components/carousel/Carousel';
 import useTrending from '../../hooks/useTrending';
-import { IMedia } from '../../models/mediaModel';
 import CarouselCoverflow from '../../components/carousel_coverflow/CarouselCoverflow';
+import { MOVIE_TYPE, PERSON_TYPE } from '../../helpers/constants';
+import useDiscover from '../../hooks/useDiscover';
+import usePopularPeople from '../../hooks/usePopularPeople';
 
 export default function HomePage() {
-  const upcomingMoviesQuery = useQuery({
-    queryKey: ['movie', upComingDates],
-    queryFn: () =>
-      fetchResults<IMedia>({ path: 'discover/movie', params: upComingDates }),
-    retry: 1,
+  const upcomingMoviesQuery = useDiscover({
+    mediaType: MOVIE_TYPE,
+    params: upComingDates,
   });
 
-  const airingTodayTVQuery = useQuery({
-    queryKey: ['tv', airingTodayDates],
-    queryFn: () =>
-      fetchResults<IMedia>({ path: 'discover/tv', params: airingTodayDates }),
-    retry: 1,
+  const airingTodayTVQuery = useDiscover({
+    mediaType: 'tv',
+    params: airingTodayDates,
   });
 
-  const popularPeopleQuery = useQuery({
-    queryKey: ['popular', 'people'],
-    queryFn: () =>
-      fetchResults<IPeople>({ path: 'person/popular', params: null }),
-    retry: 1,
-  });
-
+  const popularPeopleQuery = usePopularPeople();
   const trendingQuery = useTrending({ type: 'movie' });
-
   const tvTrendingQuery = useTrending({ type: 'tv' });
 
   return (
-    <div className={classes.container}>
+    <div className={classes['main-content']}>
       <Carousel />
 
       <HorizontalWrapper
         query={upcomingMoviesQuery}
         title='Upcoming Movies'
-        link='/movies'
-        type='movies'
+        link='/movie'
+        type={MOVIE_TYPE}
       />
 
       {trendingQuery.data && (
-        <CarouselCoverflow data={trendingQuery.data} media_type='movies' />
+        <CarouselCoverflow data={trendingQuery.data} media_type={MOVIE_TYPE} />
       )}
 
       <HorizontalWrapper
@@ -67,8 +55,8 @@ export default function HomePage() {
       <HorizontalWrapper
         query={popularPeopleQuery}
         title='Most Popular Celebrities'
-        link='/people'
-        type='people'
+        link='/person'
+        type={PERSON_TYPE}
       />
     </div>
   );

@@ -1,0 +1,69 @@
+.search__container {
+  --search-container-height: 4.2rem;
+  position: relative;
+  height: var(--search-container-height);
+  display: flex;
+  border-radius: 7px;
+  align-items: center;
+  border: 1px solid var(--color-gray-700);
+}
+
+.search {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  padding-left: 1.2rem;
+  font-size: 1.4rem;
+  padding: 1rem 1.4rem;
+}
+
+.search__icon {
+  font-size: 2.6rem;
+  margin-right: 1.6rem;
+}
+
+.dropdown-content {
+  position: absolute;
+  min-width: 100%;
+  top: 100%;
+  overflow: hidden;
+  margin-top: 1rem;
+  display: flex;
+  max-height: 60vh;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 7px;
+  opacity: 0;
+  transform: translateY(-5%);
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+  background-color: var(--color-gray-800);
+  box-shadow: var(--card--box-shadow);
+}
+
+.content-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.progress {
+  height: calc(var(--search-container-height) - 2rem) !important;
+  width: calc(var(--search-container-height) - 2rem) !important;
+  color: white !important;
+  margin-right: 1.6rem;
+}
+
+.clear {
+  height: calc(var(--search-container-height) - 2.2rem);
+  width: calc(var(--search-container-height) - 2.2rem);
+  margin-right: 1.6rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}

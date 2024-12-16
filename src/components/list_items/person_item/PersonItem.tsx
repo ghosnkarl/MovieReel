@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import classes from './PersonItem.module.css';
-import { getProfileImage } from '../../../helpers/imageSizes';
+import { PERSON_TYPE } from '../../../helpers/constants';
+import { tmdbImage } from '../../../helpers/imageSizes';
 
 interface IPersonItem {
   id: number;
@@ -11,11 +12,11 @@ interface IPersonItem {
 
 const PersonItem = ({ id, profile_path, title, text }: IPersonItem) => {
   return (
-    <NavLink to={`/people/${id}`} className={classes.container}>
+    <NavLink to={`/${PERSON_TYPE}/${id}`} className={classes.container}>
       <div className={classes['img-container']}>
         <img
           className={classes.img}
-          src={getProfileImage(profile_path, 'w185')}
+          src={tmdbImage.profile(profile_path, 'w185')}
           alt={title}
         />
       </div>

@@ -35,6 +35,7 @@ export interface IDetails extends IMedia {
   credits?: Credits;
 
   // TV Show
+  networks?: IIdName[];
   last_air_date?: string;
   aggregate_credits?: Credits;
   created_by?: IIdName[];

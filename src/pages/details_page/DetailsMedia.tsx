@@ -1,53 +1,30 @@
 import { NavLink } from 'react-router-dom';
 import classes from './DetailsMedia.module.css';
-import { IIdName } from '../../models/commonModel';
-import { formatDate } from '../../helpers/commonHelpers';
-
-interface MediaDetailsItem {
-  title: string;
-  text: string | number | undefined;
-}
-
-const DetailsMediaItem = ({ title, text }: MediaDetailsItem) => {
-  if (!text) return null;
-  return (
-    <div className={classes['details__left--item']}>
-      <p className={classes['details__title']}>{title}</p>
-      <p className={classes['details__text']}>{text}</p>
-    </div>
-  );
-};
+import KeywordsList from '../../components/lists/keywords_list/KeywordsList';
+import DetailsMediaItem from '../../components/details_media_item/DetailsMediaItem';
+import { IDetails } from '../../models/detailsModel';
+import LinksList from '../../components/lists/links_list/LinksList';
 
 interface IMediaDetails {
-  status: string;
-  homepage: string;
-  imdb_id: string | null | undefined;
-  budget: number | null | undefined;
-  revenue: number | null | undefined;
-  number_of_seasons: number | null | undefined;
-  number_of_episodes: number | null | undefined;
-  first_air_date: string | null | undefined;
-  last_air_date: string | null | undefined;
-  created_by: IIdName[] | null | undefined;
-  production_companies: IIdName[] | null;
+  media: IDetails;
 }
 
 const formatCurrency = (amount: number) =>
   amount > 0 ? `$ ${amount.toLocaleString('en-US')}` : '-';
 
-const DetailsMedia = ({
-  status,
-  homepage,
-  imdb_id,
-  budget,
-  revenue,
-  number_of_seasons,
-  number_of_episodes,
-  first_air_date,
-  last_air_date,
-  created_by,
-  production_companies,
-}: IMediaDetails) => {
+const DetailsMedia = ({ media }: IMediaDetails) => {
+  const {
+    created_by,
+    homepage,
+    imdb_id,
+    budget,
+    revenue,
+    number_of_seasons,
+    number_of_episodes,
+    production_companies,
+    keywords,
+    networks,
+  } = media;
   const formattedCreatedBy = created_by
     ?.map((creators) => creators.name)
     .join(', ');
@@ -60,26 +37,10 @@ const DetailsMedia = ({
       : undefined;
 
   return (
-    <div>
+    <div className={classes.container}>
       <h1 className='section__title'>Details</h1>
       <div className={classes.details}>
         <DetailsMediaItem title='Created By' text={formattedCreatedBy} />
-
-        <DetailsMediaItem title='Status' text={status} />
-
-        {last_air_date && (
-          <DetailsMediaItem
-            title='Last Air Date'
-            text={formatDate(last_air_date)}
-          />
-        )}
-
-        {first_air_date && (
-          <DetailsMediaItem
-            title='First Air Date'
-            text={formatDate(first_air_date)}
-          />
-        )}
 
         {number_of_seasons && number_of_episodes && (
           <DetailsMediaItem
@@ -100,7 +61,7 @@ const DetailsMedia = ({
           }
         />
 
-        <div className={classes['details__left--item']}>
+        <div>
           <p className={classes['details__title']}>External Links</p>
           <div className={classes['links__container']}>
             {!homepage && !imdb_id && (
@@ -127,23 +88,13 @@ const DetailsMedia = ({
             )}
           </div>
         </div>
-        <div className={classes['details__left--item']}>
-          <p className={classes['details__title']}>Production Companies</p>
-          {production_companies && (
-            <div className={classes['links__container']}>
-              {production_companies.map((company) => (
-                <NavLink
-                  className={classes['external__link']}
-                  key={company.id}
-                  to={`https://www.imdb.com/title/${imdb_id}`}
-                >
-                  {company.name}
-                </NavLink>
-              ))}
-            </div>
-          )}
-        </div>
+        <LinksList links={production_companies} title='Production Companies' />
+        <LinksList links={networks} title='Networks' />
       </div>
+
+      <KeywordsList
+        keywords={'title' in media ? keywords.keywords : keywords.results}
+      />
     </div>
   );
 };

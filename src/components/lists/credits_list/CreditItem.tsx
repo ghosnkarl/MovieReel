@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import classes from './CreditItem.module.css';
-import { getProfileImage } from '../../../helpers/imageSizes';
+import { PERSON_TYPE } from '../../../helpers/constants';
+import { tmdbImage } from '../../../helpers/imageSizes';
 
 interface ICreditItem {
   id: number | string;
@@ -11,11 +12,15 @@ interface ICreditItem {
 
 const CreditItem = ({ id, profile_path, title, text }: ICreditItem) => {
   return (
-    <NavLink key={id} to={`/people/${id}`} className={classes.container}>
+    <NavLink
+      key={id}
+      to={`/${PERSON_TYPE}/${id}`}
+      className={classes.container}
+    >
       <div className={classes['img__container']}>
         <img
           className={classes['profile__img']}
-          src={getProfileImage(profile_path, 'h632')}
+          src={tmdbImage.profile(profile_path, 'h632')}
           alt={title}
         />
       </div>

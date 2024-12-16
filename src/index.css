@@ -1,28 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&family=Permanent+Marker&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 :root {
-  --color-background: var(--color-background--root);
-
-  --color-gray-200: #e5e5e5;
+  --color-gray-950: #0a0a0a;
+  --color-gray-900: #171717;
+  --color-gray-800: #262626;
+  --color-gray-700: #404040;
+  --color-gray-600: #525252;
+  --color-gray-500: #737373;
+  --color-gray-400: #a3a3a3;
   --color-gray-300: #d4d4d4;
-  --color-gray-500: #434343;
-  --color-gray-600: #2c2c2c;
+  --color-gray-200: #e5e5e5;
+  --color-gray-100: #f5f5f5;
+  --color-gray-50: #fafafa;
 
-  --color-error--border: #404040;
-  --color-background--border: #1e1e1e;
-  --color-background--card: #191919;
-  --color-background--root: #141414;
-
-  --color-primary-600: #f9c762;
-  --color-primary-700: #fbc14d;
-  --color-primary-900: #f97316;
-
-  --color-rating-red: #ef4444;
-  --color-rating-red--alpha: rgba(239, 68, 68, 0.3);
-  --color-rating-amber: #fbbf24;
-  --color-rating-amber--alpha: rgba(251, 190, 36, 0.3);
-  --color-rating-green: #4ade80;
-  --color-rating-green--alpha: rgba(74, 222, 128, 0.3);
+  --color-background--card: #151515;
 
   --section--title-size: 2.2rem;
 
@@ -38,6 +29,8 @@
 
   /* Text Sizes */
   --horizontal-list--header: 1.6rem;
+
+  --header-size: 6rem;
 }
 
 * {
@@ -72,7 +65,7 @@ button {
 
 body {
   font-family: 'Manrope', sans-serif;
-  background-color: var(--color-background);
+  background-color: var(--color-gray-950);
   color: white;
   line-height: 1;
   font-weight: 500;
@@ -82,18 +75,30 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 0;
+  width: 1rem;
+}
+
+::-webkit-scrollbar-track {
   background: transparent;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: transparent;
+  background: #444;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   max-width: var(--page-width--max);
   margin: 0 auto;
-  padding: 12.8rem var(--page-padding--horizontal) 3.2rem
+  padding: 9.6rem var(--page-padding--horizontal) 3.2rem
     var(--page-padding--horizontal);
 }
 
@@ -112,7 +117,8 @@ body {
 .customSwiper {
   width: 100%;
   height: fit-content;
-  padding: 1.6rem 0 4.8rem 0;
+  padding: 1.6rem var(--horizontal-list--padding) 4.8rem
+    var(--horizontal-list--padding);
   display: flex;
   flex-direction: column;
 }
@@ -145,7 +151,7 @@ body {
   align-items: center;
   justify-content: center;
   color: white;
-  background-color: var(--color-gray-600);
+  background-color: var(--color-gray-800);
   cursor: pointer;
   border-radius: 1000px;
 }
@@ -161,9 +167,9 @@ body {
   border-radius: 1000px;
   color: white;
 }
-
-.grid--5-cols,
 .grid--4-cols,
+.grid--5-cols,
+.grid--6-cols,
 .grid--7-cols {
   display: grid;
   gap: 2rem;
@@ -171,16 +177,24 @@ body {
   grid-template-columns: repeat(var(--cols), 1fr);
 }
 
-.grid--5-cols {
-  --cols: 5;
-}
-
 .grid--4-cols {
   --cols: 4;
 }
 
+.grid--5-cols {
+  --cols: 5;
+}
+
+.grid--6-cols {
+  --cols: 6;
+}
+
 .grid--7-cols {
   --cols: 7;
+}
+
+.gallery-grid--gap {
+  gap: 1.2rem !important;
 }
 
 .flex--wrap {
@@ -193,18 +207,29 @@ body {
 .swiper-button-prev,
 .swiper-button-next {
   background: none;
-  color: white;
-  width: 5rem;
-  height: 5rem;
-  background-color: rgba(20, 20, 20, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 1000px;
-  padding: 0.6rem;
+  color: #ffffff;
+  width: 4.5rem;
+  height: 4.5rem;
+  background-color: rgba(20, 20, 20, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
-    color: var(--color-primary-900);
-    border: 1px solid var(--color-primary-900);
-    background-color: rgba(20, 20, 20, 0.5);
+    color: #333;
+    transform: scale(1.15);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  &:active {
+    transform: scale(1);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   }
 }
 

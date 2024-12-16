@@ -1,52 +1,45 @@
 import { IMedia } from '../../models/mediaModel';
-import { getBackdropImage } from '../../helpers/imageSizes';
 import classes from './CarouselItem.module.css';
-import RatingStar from '../rating/RatingStar';
 import { IIdName } from '../../models/commonModel';
-import { formatDate, getGenres } from '../../helpers/commonHelpers';
+import { getGenres } from '../../helpers/commonHelpers';
 import { NavLink } from 'react-router-dom';
+import { MediaType } from '../../helpers/constants';
+import { FiArrowRight } from 'react-icons/fi';
+import Rating from '../rating/Rating';
+import { tmdbImage } from '../../helpers/imageSizes';
 
 interface ICarousel {
   item: IMedia;
   genres: IIdName[] | undefined;
-  type: 'coverflow' | 'normal';
-  media_type: 'movies' | 'tv';
+  media_type: MediaType;
 }
 
-const CarouselItem = ({ item, genres, type, media_type }: ICarousel) => (
+const CarouselItem = ({ item, genres, media_type }: ICarousel) => (
   <div className={classes['item__container']}>
     <img
       className={classes.backdrop}
-      src={getBackdropImage(item.backdrop_path, 'w1280')}
+      src={tmdbImage.backdrop(item.backdrop_path, 'w1280')}
       alt={item.title || item.name}
     />
-    <div
-      className={`${classes['text__container']} ${
-        classes[`text__container--${type}`]
-      }`}
-    >
+    <div className={classes['text__container']}>
       {genres && (
         <p className={classes.genres}>{getGenres(item.genre_ids, genres)}</p>
       )}
-      <h1 className={`${classes.title} ${classes[`title--${type}`]}`}>
-        {item.title || item.name}
-      </h1>
+      <h1 className={classes.title}>{item.title || item.name}</h1>
       <div className={classes['details__container']}>
-        <RatingStar
-          value={item.vote_average}
-          size='medium'
-          vote_count={item.vote_count}
-        />
+        <Rating rating={item.vote_average} />
 
         <p className={classes.date}>
-          {item.release_date && `${formatDate(item.release_date)}`}
+          {item.release_date &&
+            `${new Date(item.release_date).toLocaleDateString('en-US', {
+              dateStyle: 'medium',
+            })}`}
         </p>
       </div>
-      <p className={`${classes.overview} ${classes[`overview--${type}`]}`}>
-        {item.overview}
-      </p>
+      <p className={classes.overview}>{item.overview}</p>
+
       <NavLink to={`/${media_type}/${item.id}`} className={classes.watch}>
-        More Information
+        Details <FiArrowRight />
       </NavLink>
     </div>
   </div>

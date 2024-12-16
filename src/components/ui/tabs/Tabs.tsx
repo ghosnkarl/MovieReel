@@ -1,6 +1,5 @@
 import { MouseEventHandler, useCallback } from 'react';
 import { IPeople } from '../../../models/peopleModel';
-import { motion } from 'framer-motion';
 import classes from './Tabs.module.css';
 import { IMedia } from '../../../models/mediaModel';
 
@@ -14,10 +13,9 @@ interface ITab {
   isSelected: boolean;
   onSelect: MouseEventHandler<HTMLButtonElement>;
   children: string;
-  layoutId: string;
 }
 
-function Tab({ isSelected, onSelect, children, layoutId }: ITab) {
+function Tab({ isSelected, onSelect, children }: ITab) {
   return (
     <li>
       <button
@@ -26,9 +24,6 @@ function Tab({ isSelected, onSelect, children, layoutId }: ITab) {
       >
         {children}
       </button>
-      {isSelected && (
-        <motion.div layoutId={layoutId} className={classes.selector} />
-      )}
     </li>
   );
 }
@@ -37,15 +32,9 @@ interface ITabs {
   selectedType: ITabObject | null;
   onSelectType: (type: ITabObject) => void;
   tabs: ITabObject[];
-  layoutId: string;
 }
 
-export default function Tabs({
-  selectedType,
-  onSelectType,
-  tabs,
-  layoutId,
-}: ITabs) {
+export default function Tabs({ selectedType, onSelectType, tabs }: ITabs) {
   const handleSelectTab = useCallback(
     (tab: ITabObject) => {
       onSelectType(tab);
@@ -59,7 +48,6 @@ export default function Tabs({
           key={tab.value}
           isSelected={selectedType?.value === tab.value}
           onSelect={() => handleSelectTab(tab)}
-          layoutId={layoutId}
         >
           {tab.title}
         </Tab>

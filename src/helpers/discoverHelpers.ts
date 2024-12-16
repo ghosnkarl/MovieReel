@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 const discoverReleaseDates = (
   isMovie: boolean,
   start: number,
@@ -7,8 +5,24 @@ const discoverReleaseDates = (
   end: number,
   endType: 'days' | 'month'
 ): string => {
-  const date_gte = moment().add(start, startType).format('YYYY-MM-DD');
-  const date_lte = moment().add(end, endType).format('YYYY-MM-DD');
+  const addTime = (date: Date, value: number, type: 'days' | 'month') => {
+    const newDate = new Date(date);
+    if (type === 'days') {
+      newDate.setDate(newDate.getDate() + value);
+    } else if (type === 'month') {
+      newDate.setMonth(newDate.getMonth() + value);
+    }
+    return newDate;
+  };
+
+  const formatDate = (date: Date): string => {
+    return date.toISOString().split('T')[0];
+  };
+
+  const today = new Date();
+  const date_gte = formatDate(addTime(today, start, startType));
+  const date_lte = formatDate(addTime(today, end, endType));
+
   const date_gte_key = isMovie ? 'primary_release_date.gte' : 'air_date.gte';
   const date_lte_key = isMovie ? 'primary_release_date.lte' : 'air_date.lte';
 
@@ -16,7 +30,10 @@ const discoverReleaseDates = (
     [date_gte_key]: date_gte,
     [date_lte_key]: date_lte,
   };
-  return Object.entries(dates).join('&').replace(/,/g, '=');
+
+  return Object.entries(dates)
+    .map(([key, value]) => `${key}=${value}`)
+    .join('&');
 };
 
 export const upComingDates = discoverReleaseDates(true, 5, 'days', 26, 'days');
