@@ -15,9 +15,7 @@ const DetailsMain = ({ media }: IDetailsMainContainer) => {
   const title = media.title || media.name;
 
   const collectionId = media?.belongs_to_collection?.id || null;
-  const collectionQuery = useCollectionDetails({ collectionId });
-
-  const collectionList = collectionQuery.data;
+  const { data: collectionList } = useCollectionDetails({ collectionId });
 
   return (
     <div className={classes['details__main']}>

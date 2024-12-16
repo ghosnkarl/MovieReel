@@ -23,7 +23,7 @@ interface IHorizontalList {
   title: string;
   linkState: unknown;
   link: string | null;
-  data: QueryData;
+  data: QueryData[];
   type: DataType;
 }
 

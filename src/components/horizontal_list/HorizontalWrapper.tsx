@@ -6,12 +6,13 @@ import { IPeople } from '../../models/peopleModel';
 import { MediaType } from '../../helpers/constants';
 import ErrorComponent from '../ui/error_component/ErrorComponent';
 import { ISeason } from '../../models/seasonModel';
+import { IResultsProps } from '../../services/http';
 
-export type QueryData = IMedia[] | IPeople[] | ISeason[];
+export type QueryData = IMedia | IPeople | ISeason;
 export type DataType = MediaType | 'person' | 'season';
 
 interface IHorizontalWrapper {
-  query: UseQueryResult<QueryData, Error>;
+  query: UseQueryResult<IResultsProps<QueryData>, Error>;
   title: string;
   link: string | null;
   type: DataType;
@@ -34,7 +35,7 @@ const HorizontalWrapper = ({
       linkState={null}
       title={title}
       type={type}
-      data={data}
+      data={data.results}
     />
   );
 };

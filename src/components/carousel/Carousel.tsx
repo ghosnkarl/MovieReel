@@ -36,7 +36,7 @@ const Carousel = () => {
       navigation={true}
       className={classes.swiper}
     >
-      {data.map((item) => (
+      {data.results.map((item) => (
         <SwiperSlide key={item.id}>
           <CarouselItem genres={genres} item={item} media_type={MOVIE_TYPE} />
         </SwiperSlide>
