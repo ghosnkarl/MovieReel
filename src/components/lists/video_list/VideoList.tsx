@@ -19,7 +19,7 @@ const VideoItem = ({ video }: IVideoItem) => {
         <LazyLoadImage
           className={classes['video__img']}
           alt={video.name}
-          src={`https://i.ytimg.com/vi/${video.key}/hqdefault.jpg`}
+          src={`https://img.youtube.com/vi/${video.key}/hqdefault.jpg`}
         />
       </div>
       <p className={classes.title}>{video.name}</p>

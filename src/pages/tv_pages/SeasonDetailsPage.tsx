@@ -2,16 +2,16 @@ import { useLocation } from 'react-router-dom';
 import classes from './SeasonDetailsPage.module.css';
 import useSeasonDetails from '../../hooks/useSeasonDetails';
 import { IEpisode } from '../../models/seasonModel';
-import { getBackdropImage } from '../../helpers/imageSizes';
 import Rating from '../../components/rating/Rating';
-import { formatDate } from '../../helpers/commonHelpers';
 import { AiOutlineCalendar, AiOutlineClockCircle } from 'react-icons/ai';
+import { tmdbImage } from '../../helpers/imageSizes';
+import { format } from '../../helpers/format';
 
 const EpisodeItem = ({ episode }: { episode: IEpisode }) => {
   return (
     <div className={classes['item__container']}>
       <img
-        src={getBackdropImage(episode.still_path, 'w780')}
+        src={tmdbImage.backdrop(episode.still_path, 'w780')}
         alt={episode.name}
         className={classes.backdrop}
       />
@@ -24,7 +24,7 @@ const EpisodeItem = ({ episode }: { episode: IEpisode }) => {
           <Rating rating={episode.vote_average} />
           <p className={classes.runtime}>
             <AiOutlineClockCircle />
-            {formatDate(episode.air_date)}
+            {format.date(episode.air_date)}
           </p>
           <p className={classes.runtime}>
             <AiOutlineCalendar />

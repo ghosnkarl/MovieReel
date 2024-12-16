@@ -1,8 +1,8 @@
 import classes from './SearchList.module.css';
-import { getPosterImage, getProfileImage } from '../../../helpers/imageSizes';
-import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { tmdbImage } from '../../../helpers/imageSizes';
+import { format } from '../../../helpers/format';
 
 export interface ISearchItem {
   id: number;
@@ -29,9 +29,9 @@ const SearchItem = ({
 }: SearchItemProps) => {
   const poster =
     type === 'person'
-      ? getProfileImage(image, 'w185')
+      ? tmdbImage.profile(image, 'w185')
       : type === 'movie' || type === 'tv'
-      ? getPosterImage(image, 'w342')
+      ? tmdbImage.poster(image, 'w342')
       : null;
   return (
     <div
@@ -43,7 +43,7 @@ const SearchItem = ({
       {poster && <img className={classes.poster} src={poster} alt={title} />}
       <div className={classes['text__container']}>
         <h1 className={classes.title}>{title}</h1>
-        {date && <p className={classes.text}>{moment(date).format('YYYY')}</p>}
+        {date && <p className={classes.text}>{format.year(date)}</p>}
       </div>
     </div>
   );

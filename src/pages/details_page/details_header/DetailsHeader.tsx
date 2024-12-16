@@ -1,10 +1,10 @@
 import classes from './DetailsHeader.module.css';
-import { getBackdropImage, getPosterImage } from '../../../helpers/imageSizes';
-import { formatDate } from '../../../helpers/commonHelpers';
 import Rating from '../../../components/rating/Rating';
 import { IDetails } from '../../../models/detailsModel';
 import GenresList from '../../../components/lists/genres_list/GenresList';
 import DetailsMediaItem from '../../../components/details_media_item/DetailsMediaItem';
+import { tmdbImage } from '../../../helpers/imageSizes';
+import { format } from '../../../helpers/format';
 
 interface IDetailsHeader {
   media: IDetails;
@@ -36,14 +36,14 @@ const DetailsHeader = ({ media }: IDetailsHeader) => {
     <div className={classes.header}>
       <img
         className={classes['header__backdrop']}
-        src={getBackdropImage(backdrop_path, 'w1280')}
+        src={tmdbImage.backdrop(backdrop_path, 'w1280')}
         alt={title || name}
       />
 
       <div className={classes['header__content']}>
         <img
           className={classes['header__poster']}
-          src={getPosterImage(poster_path, 'w780')}
+          src={tmdbImage.poster(poster_path, 'w780')}
           alt={title || name}
         />
         <div className={classes['header__info']}>
@@ -60,18 +60,18 @@ const DetailsHeader = ({ media }: IDetailsHeader) => {
             <DetailsMediaItem title='Status' text={status} />
             <DetailsMediaItem
               title='Release Date'
-              text={release_date ? formatDate(release_date) : undefined}
+              text={release_date ? format.date(release_date) : undefined}
             />
             <DetailsMediaItem title='Runtime' text={formattedRuntime} />
 
             <DetailsMediaItem
               title='Last Air Date'
-              text={last_air_date ? formatDate(last_air_date) : undefined}
+              text={last_air_date ? format.date(last_air_date) : undefined}
             />
 
             <DetailsMediaItem
               title='First Air Date'
-              text={first_air_date ? formatDate(first_air_date) : undefined}
+              text={first_air_date ? format.date(first_air_date) : undefined}
             />
           </div>
         </div>

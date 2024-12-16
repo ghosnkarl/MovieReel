@@ -8,7 +8,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { MediaItem } from '../lists/media_list/MediaList';
-import { formatDate } from '../../helpers/commonHelpers';
 import PersonItem from '../list_items/person_item/PersonItem';
 import { motion } from 'framer-motion';
 import { DataType, QueryData } from './HorizontalWrapper';
@@ -17,7 +16,8 @@ import { NavigationOptions, Swiper as SwiperType } from 'swiper/types';
 import { IMedia } from '../../models/mediaModel';
 import { MOVIE_TYPE, PERSON_TYPE, TV_TYPE } from '../../helpers/constants';
 import { ISeason } from '../../models/seasonModel';
-import { getPosterImage } from '../../helpers/imageSizes';
+import { tmdbImage } from '../../helpers/imageSizes';
+import { format } from '../../helpers/format';
 
 interface IHorizontalList {
   title: string;
@@ -57,8 +57,8 @@ const HorizontalList = ({
             poster_path={media.poster_path}
             text={
               media.release_date
-                ? formatDate(media.release_date)
-                : formatDate(media.first_air_date)
+                ? format.date(media.release_date)
+                : format.date(media.first_air_date)
             }
             type={type}
           />
@@ -86,9 +86,9 @@ const HorizontalList = ({
         <SwiperSlide key={season.id}>
           <MediaItem
             id={season.season_number}
-            text={formatDate(season.air_date)}
+            text={format.date(season.air_date)}
             title={season.name}
-            poster_path={getPosterImage(season.poster_path, 'w342')}
+            poster_path={tmdbImage.poster(season.poster_path, 'w342')}
             type='season'
           />
         </SwiperSlide>

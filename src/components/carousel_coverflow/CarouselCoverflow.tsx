@@ -4,10 +4,11 @@ import classes from './CarouselCoverflow.module.css';
 import { IMedia } from '../../models/mediaModel';
 import useGenres from '../../hooks/useGenres';
 import { MediaType } from '../../helpers/constants';
-import { getPosterImage } from '../../helpers/imageSizes';
-import { formatDate, getGenres } from '../../helpers/commonHelpers';
+import { getGenres } from '../../helpers/commonHelpers';
 import { NavLink } from 'react-router-dom';
 import Rating from '../rating/Rating';
+import { tmdbImage } from '../../helpers/imageSizes';
+import { format } from '../../helpers/format';
 
 interface IMovieCarouselItem {
   item: IMedia;
@@ -22,7 +23,7 @@ const MovieCarouselItem = ({ item, genres, mediaType }: IMovieCarouselItem) => {
       className={classes['carousel-item']}
     >
       <img
-        src={getPosterImage(item.poster_path, 'w342')}
+        src={tmdbImage.poster(item.poster_path, 'w342')}
         alt={item.title || item.name}
         className={classes['carousel-item-poster']}
       />
@@ -34,7 +35,7 @@ const MovieCarouselItem = ({ item, genres, mediaType }: IMovieCarouselItem) => {
         <div className={classes['carousel-item-meta']}>
           <Rating rating={item.vote_average} />
           <span className={classes['carousel-item-release']}>
-            {formatDate(item.release_date || item.first_air_date)}
+            {format.date(item.release_date || item.first_air_date)}
           </span>
         </div>
 

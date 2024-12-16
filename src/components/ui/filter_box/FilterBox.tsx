@@ -1,11 +1,11 @@
 import { ChangeEvent, useState } from 'react';
 import classes from './FilterBox.module.css';
-import moment from 'moment';
 import Dropdown, { ItemProps } from '../../dropdown/Dropdown';
 import { SORT } from '../../../data/sortOptions';
 import { RatingSlider } from '../RatingSlider';
 import Searchbar from '../../searchbar/Searchbar';
 import GenresPicker from '../genres_picker/GenresPicker';
+import { format } from '../../../helpers/format';
 
 const FilterBox = () => {
   const [selectedSortItem, setSelectedSortItem] = useState<ItemProps>(SORT[0]);
@@ -26,12 +26,10 @@ const FilterBox = () => {
     filterObj.sort_by = selectedSortItem.value;
 
     if (startDate !== '')
-      filterObj['primary_release_date.gte'] =
-        moment(startDate).format('YYYY-MM-DD');
+      filterObj['primary_release_date.gte'] = format.date(startDate);
 
     if (endDate !== '')
-      filterObj['primary_release_date.lte'] =
-        moment(endDate).format('YYYY-MM-DD');
+      filterObj['primary_release_date.lte'] = format.date(endDate);
   };
 
   return (

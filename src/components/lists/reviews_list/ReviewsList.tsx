@@ -1,9 +1,9 @@
 import { IReview } from '../../../models/commonModel';
 import classes from './ReviewsList.module.css';
-import { formatDate } from '../../../helpers/commonHelpers';
 import EmptyResource from '../../ui/empty_resource/EmptyResource';
 import Rating from '../../rating/Rating';
-import { getAvatarImage } from '../../../helpers/imageSizes';
+import { tmdbImage } from '../../../helpers/imageSizes';
+import { format } from '../../../helpers/format';
 
 interface IReviewItem {
   review: IReview;
@@ -17,14 +17,14 @@ const ReviewItem = ({ review }: IReviewItem) => {
       <div className={classes.container}>
         <div className={classes.header}>
           <img
-            src={getAvatarImage(avatar_path)}
+            src={tmdbImage.avatar(avatar_path)}
             alt={`${review.author} avatar`}
             className={classes.avatar}
           />
 
           <div style={{ flex: 1 }}>
             <h2 className={classes.author}>{review.author}</h2>
-            <p className={classes.date}>{formatDate(review.updated_at)}</p>
+            <p className={classes.date}>{format.date(review.updated_at)}</p>
           </div>
           <Rating rating={rating} />
         </div>

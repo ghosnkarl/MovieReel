@@ -1,14 +1,11 @@
 import { useParams } from 'react-router-dom';
-import { getProfileImage } from '../../helpers/imageSizes';
 import classes from './PeopleDetailsPage.module.css';
 import { useMemo, useState } from 'react';
-import moment from 'moment';
 import { CREDITS_TABS } from '../../data/tabsData';
 import Tabs, { ITabObject } from '../../components/ui/tabs/Tabs';
 import { ICastMedia, ICrewMedia } from '../../models/peopleModel';
 import { IImage } from '../../models/commonModel';
 import { MediaItem } from '../../components/lists/media_list/MediaList';
-import { formatDate } from '../../helpers/commonHelpers';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import ErrorPage from '../error_page/ErrorPage';
 import { MOVIE_TYPE, TV_TYPE } from '../../helpers/constants';
@@ -16,6 +13,8 @@ import ImageList from '../../components/lists/image_list/ImageList';
 import TaggedList from './TaggedList';
 import EmptyResource from '../../components/ui/empty_resource/EmptyResource';
 import usePersonDetails from '../../hooks/usePersonDetails';
+import { tmdbImage } from '../../helpers/imageSizes';
+import { format } from '../../helpers/format';
 
 interface IMediaItemsProps {
   media: ICastMedia[] | ICrewMedia[];
@@ -78,8 +77,8 @@ const PeopleDetailsPage = () => {
   const profiles = useMemo(() => {
     if (!data?.images?.profiles) return [];
     return data.images.profiles.map((profile: IImage) => ({
-      galleryImage: getProfileImage(profile.file_path, 'h632'),
-      fullImage: getProfileImage(profile.file_path, 'original'),
+      galleryImage: tmdbImage.profile(profile.file_path, 'h632'),
+      fullImage: tmdbImage.profile(profile.file_path, 'original'),
     }));
   }, [data]);
 
@@ -95,10 +94,13 @@ const PeopleDetailsPage = () => {
 
   const { crew } = data.combined_credits;
   const birthdate = data.birthday
-    ? `${formatDate(data.birthday)}  ${
+    ? `${format.date(data.birthday)}  ${
         data.deathday
           ? ''
-          : `(${moment().diff(data.birthday, 'years')} years old)`
+          : `(${format.years(
+              new Date().toISOString().split('T')[0],
+              data.birthday
+            )} years old)`
       }`
     : 'Unknown';
 
@@ -108,7 +110,7 @@ const PeopleDetailsPage = () => {
         <img
           className={classes['profile-img']}
           alt={data.name}
-          src={getProfileImage(data.profile_path, 'h632')}
+          src={tmdbImage.profile(data.profile_path, 'h632')}
         />
         <div>
           <h1 className={classes.name}>{data.name}</h1>
@@ -120,12 +122,13 @@ const PeopleDetailsPage = () => {
 
             <DetailsItem title='Birthdate' text={birthdate} />
 
-            {data.deathday && (
+            {data.deathday && data.birthday && (
               <DetailsItem
                 title='Date of Death'
-                text={`${formatDate(data.deathday)} (${moment(
-                  data.deathday
-                ).diff(data.birthday, 'years')} years old)`}
+                text={`${format.date(data.deathday)} (${format.years(
+                  data.deathday,
+                  data.birthday
+                )} years old)`}
               />
             )}
 
