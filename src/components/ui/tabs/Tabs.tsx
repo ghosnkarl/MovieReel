@@ -4,11 +4,9 @@ import classes from './Tabs.module.css';
 export interface ITabObject {
   title: string;
   value: string;
-  path: string;
-  params: string | null;
+  path?: string;
+  params?: string | null;
 }
-
-type IDetailsTab = Omit<ITabObject, 'path' | 'params'>;
 
 interface ITab {
   isSelected: boolean;
@@ -30,14 +28,14 @@ function Tab({ isSelected, onSelect, children }: ITab) {
 }
 
 interface ITabs {
-  selectedType: ITabObject | IDetailsTab | null;
-  onSelectType: (type: ITabObject | IDetailsTab) => void;
-  tabs: ITabObject[] | IDetailsTab[];
+  selectedType: ITabObject | null;
+  onSelectType: (type: ITabObject) => void;
+  tabs: ITabObject[];
 }
 
 export default function Tabs({ selectedType, onSelectType, tabs }: ITabs) {
   const handleSelectTab = useCallback(
-    (tab: ITabObject | IDetailsTab) => {
+    (tab: ITabObject) => {
       onSelectType(tab);
     },
     [onSelectType]

@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4.8rem;
+}
+
+.container h2 {
+  font-size: 2.6rem;
+  margin-bottom: 1.6rem;
+  font-weight: 600;
+}
+
+.container p {
+  font-size: 16px;
+  color: #d1d1d1;
+  line-height: 1.8;
+}
+
+.container ul {
+  padding-left: 3.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.container ul li {
+  font-size: 1.6rem;
+  color: var(--color-gray-300);
+}
+
+.about__link:link,
+.about__link:visited {
+  color: #4fa3f7;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+
+  &:hover,
+  &:active {
+    color: #2980b9;
+    text-decoration: underline;
+  }
+}

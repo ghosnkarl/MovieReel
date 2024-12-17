@@ -5,6 +5,7 @@
   justify-content: center;
   max-width: var(--page-width--max);
   margin: 0 auto;
+  min-height: 100vh;
   padding: 12.8rem 3.2rem 3.2rem 3.2rem;
   gap: 3.2rem;
 }
@@ -18,4 +19,28 @@
   font-size: 2.4rem;
   font-weight: 400;
   color: var(--color-gray-200);
+}
+
+.back {
+  border: none;
+  width: fit-content;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  background: none;
+  font-weight: 600;
+  padding: 1.4rem 2.8rem;
+  border-radius: 7px;
+  cursor: pointer;
+  color: var(--color-background--card);
+  background-color: white;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+
+  &:hover,
+  &:active {
+    transform: scale(1.1);
+    box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.3);
+  }
 }

@@ -14,8 +14,8 @@ const useInfiniteMediaQuery = ({ type, selectedTab }: IUseInfiniteMediaQuery) =>
     queryKey: [type, selectedTab.value, 'list'],
     queryFn: ({ pageParam = 1 }) =>
       fetchResults<IMedia>({
-        path: selectedTab.path,
-        params: selectedTab.params,
+        path: selectedTab.path!,
+        params: selectedTab.params!,
         pageParam,
       }),
     initialPageParam: 1,
