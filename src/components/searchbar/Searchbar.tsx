@@ -67,7 +67,7 @@ const Searchbar = () => {
           }`}
         >
           {data &&
-            (data as IIdName[]).map((item) => (
+            (data.results as IIdName[]).map((item) => (
               <p
                 onClick={() => handleSearchClick(item)}
                 className={classes['search-item']}

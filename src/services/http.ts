@@ -9,13 +9,16 @@ const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
 // Helper function to handle building the URL with optional query parameters
 const buildURL = (
   path: string,
-  params: { [key: string]: string } | string | null
+  params: { [key: string]: string } | string | null,
+  pageParam?: number
 ): string => {
-  const queryParams = params
+  let queryParams = params
     ? typeof params === 'object'
       ? new URLSearchParams(params as { [key: string]: string }).toString()
       : params
     : '';
+
+  if (pageParam) queryParams += '&page=' + pageParam;
 
   // Only append `&` if queryParams exists (avoiding unnecessary `&` in URL)
   return `${BASE_URL}/${path}?api_key=${API_KEY}${
@@ -57,6 +60,7 @@ export const fetchGenres = async (type: string): Promise<IIdName[]> => {
 interface QueryInterface {
   path: string;
   params: { [key: string]: string } | string | null;
+  pageParam?: number;
 }
 
 // Function to fetch a single result (reusable for multiple endpoints)
@@ -68,14 +72,24 @@ export const fetchSingleResult = async <T>({
   return await fetchData<T>(url);
 };
 
-// Function to fetch multiple results (reusable for multiple endpoints)
+export interface IResultsProps<T> {
+  page: number;
+  results: T[];
+  total_pages: number;
+}
+
 export const fetchResults = async <T>({
   path,
   params,
-}: QueryInterface): Promise<T[]> => {
-  const url = buildURL(path, params);
+  pageParam,
+}: QueryInterface): Promise<IResultsProps<T>> => {
+  const url = buildURL(path, params, pageParam);
 
-  const data = await fetchData<{ results: T[] }>(url);
+  const data = await fetchData<IResultsProps<T>>(url);
 
-  return data.results;
+  return {
+    page: data.page,
+    results: data.results,
+    total_pages: data.total_pages,
+  };
 };

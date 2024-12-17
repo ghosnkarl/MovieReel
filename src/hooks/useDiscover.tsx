@@ -14,6 +14,7 @@ const useDiscover = ({ params, mediaType }: IDiscover) => {
       fetchResults<IMedia>({
         path: `discover/${mediaType}`,
         params: params,
+        pageParam: 1,
       }),
     retry: 1,
   });

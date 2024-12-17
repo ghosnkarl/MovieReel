@@ -38,7 +38,10 @@ export default function HomePage() {
       />
 
       {trendingQuery.data && (
-        <CarouselCoverflow data={trendingQuery.data} media_type={MOVIE_TYPE} />
+        <CarouselCoverflow
+          data={trendingQuery.data.results}
+          media_type={MOVIE_TYPE}
+        />
       )}
 
       <HorizontalWrapper
@@ -49,7 +52,10 @@ export default function HomePage() {
       />
 
       {tvTrendingQuery.data && (
-        <CarouselCoverflow data={tvTrendingQuery.data} media_type='tv' />
+        <CarouselCoverflow
+          data={tvTrendingQuery.data.results}
+          media_type='tv'
+        />
       )}
 
       <HorizontalWrapper

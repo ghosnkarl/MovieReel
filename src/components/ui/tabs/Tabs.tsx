@@ -1,12 +1,11 @@
 import { MouseEventHandler, useCallback } from 'react';
-import { IPeople } from '../../../models/peopleModel';
 import classes from './Tabs.module.css';
-import { IMedia } from '../../../models/mediaModel';
 
 export interface ITabObject {
   title: string;
   value: string;
-  query?: Promise<IMedia[] | IPeople[]>;
+  path?: string;
+  params?: string | null;
 }
 
 interface ITab {

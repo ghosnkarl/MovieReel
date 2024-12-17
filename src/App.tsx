@@ -12,6 +12,7 @@ import HomePage from './pages/homepage/HomePage';
 import MediaListPage from './pages/movies_page/MediaListPage';
 import { MOVIE_TYPE, TV_TYPE } from './helpers/constants';
 import SeasonDetailsPage from './pages/tv_pages/SeasonDetailsPage';
+import AboutPage from './pages/about_page/AboutPage';
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,7 @@ const router = createBrowserRouter([
         ],
       },
       { path: 'discover', element: <DiscoverPage /> },
+      { path: 'about', element: <AboutPage /> },
     ],
   },
 ]);

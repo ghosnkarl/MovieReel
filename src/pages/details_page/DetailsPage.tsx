@@ -5,7 +5,7 @@ import DetailsMain from './DetailsMain';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import ErrorPage from '../error_page/ErrorPage';
 import useDetails from '../../hooks/useDetails';
-import Tabs, { ITabObject } from '../../components/ui/tabs/Tabs';
+import Tabs from '../../components/ui/tabs/Tabs';
 import { DETAILS_TABS } from '../../data/tabsData';
 import { useMemo, useState } from 'react';
 import CreditsList from '../../components/lists/credits_list/CreditsList';
@@ -19,8 +19,8 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
   const params = useParams();
   const id = params.movieId || params.tvId;
 
-  const tabs: ITabObject[] = useMemo(() => DETAILS_TABS, []);
-  const [selectedTab, setSelectedTab] = useState<ITabObject>(tabs[0]);
+  const tabs = useMemo(() => DETAILS_TABS, []);
+  const [selectedTab, setSelectedTab] = useState(tabs[0]);
 
   const { data, isLoading, isError } = useDetails({ id, isMovie });
 

@@ -1,15 +1,9 @@
-import {
-  useRouteError,
-  isRouteErrorResponse,
-  useNavigate,
-} from 'react-router-dom';
+import { useRouteError, isRouteErrorResponse } from 'react-router-dom';
 import classes from './ErrorPage.module.css';
 import Navigation from '../../components/ui/navigation/Navigation';
-import { IoArrowBack } from 'react-icons/io5';
 
 const ErrorPage = () => {
   const error = useRouteError();
-  const navigate = useNavigate();
 
   let errorMessage: string;
 
@@ -33,9 +27,11 @@ const ErrorPage = () => {
       <div className={classes.error}>
         <h1 className={classes['error__title']}>Oops! An error Occured!</h1>
         <h2 className={classes['error__message']}>{errorMessage}</h2>
-        <button onClick={() => navigate(-1)} className='btn--gradient'>
-          <IoArrowBack />
-          Back
+        <button
+          onClick={() => window.location.reload()}
+          className={classes.back}
+        >
+          Refresh
         </button>
       </div>
     </>

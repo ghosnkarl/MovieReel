@@ -46,7 +46,7 @@ export const MediaItem = ({
 };
 
 interface IMediaList {
-  data: IMedia[] | ISeason[] | undefined;
+  data: (IMedia | ISeason)[];
   type: MediaType;
 }
 

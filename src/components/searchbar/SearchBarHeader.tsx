@@ -82,11 +82,11 @@ const SearchBarHeader = () => {
           open ? classes['content-open'] : ''
         }`}
       >
-        {searchQuery.data && searchQuery.data.length > 0 && (
+        {searchQuery.data && searchQuery.data.results.length > 0 && (
           <SearchList
             setOpen={setOpen}
             clearInput={clearInput}
-            data={searchQuery.data.map((item) => {
+            data={searchQuery.data.results.map((item) => {
               const image =
                 'poster_path' in item
                   ? item.poster_path
@@ -112,7 +112,7 @@ const SearchBarHeader = () => {
           />
         )}
 
-        {searchQuery.data && searchQuery.data.length === 0 && (
+        {searchQuery.data && searchQuery.data.results.length === 0 && (
           <EmptyResource
             title='No Results Found'
             description='No matches found. Please refine your search or check for errors.'
