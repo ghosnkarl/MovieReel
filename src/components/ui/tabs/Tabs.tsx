@@ -8,6 +8,8 @@ export interface ITabObject {
   params: string | null;
 }
 
+type IDetailsTab = Omit<ITabObject, 'path' | 'params'>;
+
 interface ITab {
   isSelected: boolean;
   onSelect: MouseEventHandler<HTMLButtonElement>;
@@ -28,14 +30,14 @@ function Tab({ isSelected, onSelect, children }: ITab) {
 }
 
 interface ITabs {
-  selectedType: ITabObject | null;
-  onSelectType: (type: ITabObject) => void;
-  tabs: ITabObject[];
+  selectedType: ITabObject | IDetailsTab | null;
+  onSelectType: (type: ITabObject | IDetailsTab) => void;
+  tabs: ITabObject[] | IDetailsTab[];
 }
 
 export default function Tabs({ selectedType, onSelectType, tabs }: ITabs) {
   const handleSelectTab = useCallback(
-    (tab: ITabObject) => {
+    (tab: ITabObject | IDetailsTab) => {
       onSelectType(tab);
     },
     [onSelectType]

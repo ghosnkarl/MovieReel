@@ -1,4 +1,3 @@
-import { useInfiniteQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import Tabs, { ITabObject } from '../../components/ui/tabs/Tabs';
 import { MOVIE_TABS, TV_TABS } from '../../data/tabsData';
@@ -6,11 +5,11 @@ import MediaList from '../../components/lists/media_list/MediaList';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import ErrorPage from '../error_page/ErrorPage';
 import { useLocation } from 'react-router-dom';
-import { useInView } from 'react-intersection-observer';
-import { fetchResults } from '../../services/http';
-import { IMedia } from '../../models/mediaModel';
+import InfiniteLoader from '../../components/infinite_loader/InfiniteLoader';
+import useInfiniteMediaQuery from '../../hooks/useInfiniteMediaQuery';
+import { MediaType } from '../../helpers/constants';
 
-export default function MoviesPage({ type }: { type: 'movie' | 'tv' }) {
+export default function MoviesPage({ type }: { type: MediaType }) {
   const location = useLocation();
   const initialTabIndex = location.state?.initialTab || 0;
   const tabs = type === 'movie' ? MOVIE_TABS : TV_TABS;
@@ -31,29 +30,7 @@ export default function MoviesPage({ type }: { type: 'movie' | 'tv' }) {
     hasNextPage,
     fetchNextPage,
     isFetchingNextPage,
-  } = useInfiniteQuery({
-    queryKey: [type, selectedTab.value],
-    queryFn: ({ pageParam = 1 }) =>
-      fetchResults<IMedia>({
-        path: selectedTab.path,
-        params: selectedTab.params,
-        pageParam,
-      }),
-    initialPageParam: 1,
-    getNextPageParam: (lastPage) => {
-      if (lastPage && lastPage.page < lastPage.total_pages) {
-        return lastPage.page + 1;
-      }
-      return undefined;
-    },
-  });
-
-  const { ref, inView } = useInView();
-  useEffect(() => {
-    if (inView && hasNextPage) {
-      fetchNextPage();
-    }
-  }, [inView, hasNextPage, fetchNextPage]);
+  } = useInfiniteMediaQuery({ type, selectedTab });
 
   if (isLoading) return <LoadingIndicator />;
   if (isError || !data) return <ErrorPage />;
@@ -72,24 +49,19 @@ export default function MoviesPage({ type }: { type: 'movie' | 'tv' }) {
         tabs={tabs}
       />
 
-      <ul className='grid--6-cols'>
-        {allMedia.map((media) => (
-          <li key={media.id}>
-            <MediaList type={type} data={[media]} />
-          </li>
-        ))}
-      </ul>
-
-      <div
-        style={{
-          alignSelf: 'center',
-          justifySelf: 'center',
-          marginTop: '1.2rem',
-        }}
-        ref={ref}
+      <InfiniteLoader
+        hasNextPage={hasNextPage}
+        fetchNextPage={fetchNextPage}
+        isFetchingNextPage={isFetchingNextPage}
       >
-        {isFetchingNextPage && <LoadingIndicator />}
-      </div>
+        <ul className='grid--6-cols'>
+          {allMedia.map((media) => (
+            <li key={media.id}>
+              <MediaList type={type} data={[media]} />
+            </li>
+          ))}
+        </ul>
+      </InfiniteLoader>
     </div>
   );
 }

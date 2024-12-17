@@ -122,7 +122,7 @@ const HorizontalList = ({
         ) : (
           <HeaderLink link={link} linkState={linkState} title={title} />
         )}
-        {data.length > 6 && (
+        {data && data.length > 6 && (
           <div className='arrows__container'>
             <motion.button
               whileHover={{
@@ -167,7 +167,7 @@ const HorizontalList = ({
           onSlideChange={handleSlideChange}
           className='customSwiper'
         >
-          {data.map(renderSlide)}
+          {data && data.map(renderSlide)}
         </Swiper>
       </div>
     </div>
