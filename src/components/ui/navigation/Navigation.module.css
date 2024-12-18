@@ -24,11 +24,6 @@
   align-items: center;
 }
 
-.logo {
-  width: 4rem;
-  margin-right: 3.2rem;
-}
-
 .list {
   margin-right: 4.8rem;
   display: flex;
@@ -56,4 +51,30 @@
   font-size: 1.8rem;
   display: flex;
   align-items: center;
+}
+
+.menu__icon {
+  font-size: 4.4rem;
+  margin-left: 1.2rem;
+  cursor: pointer;
+  display: none;
+  color: var(--color-gray-400);
+  border: 1px solid var(--color-gray-800);
+  border-radius: 5px;
+  padding: 0 1rem;
+  height: 4.2rem;
+
+  &:hover {
+    background-color: var(--color-gray-800);
+  }
+}
+
+@media (max-width: 1100px) {
+  .navigation {
+    display: none;
+  }
+
+  .menu__icon {
+    display: block;
+  }
 }

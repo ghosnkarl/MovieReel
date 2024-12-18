@@ -147,11 +147,11 @@ const HorizontalList = ({
       </div>
       <div>
         <Swiper
-          slidesPerView={type === PERSON_TYPE ? 7 : 6}
+          slidesPerView={2}
+          slidesPerGroup={2}
           spaceBetween={15}
-          slidesPerGroup={6}
           loop={false}
-          allowTouchMove={false}
+          allowTouchMove={true}
           modules={[Pagination, Navigation]}
           pagination={{
             clickable: true,
@@ -166,6 +166,33 @@ const HorizontalList = ({
           onSwiper={initSwiperNavigation}
           onSlideChange={handleSlideChange}
           className='customSwiper'
+          breakpoints={{
+            576: {
+              slidesPerView: type === PERSON_TYPE ? 3 : 2,
+              slidesPerGroup: 2,
+              spaceBetween: 10,
+            },
+            768: {
+              slidesPerView: type === PERSON_TYPE ? 4 : 3,
+              slidesPerGroup: 3,
+              spaceBetween: 12,
+            },
+            992: {
+              slidesPerView: type === PERSON_TYPE ? 5 : 4,
+              slidesPerGroup: 4,
+              spaceBetween: 14,
+            },
+            1200: {
+              slidesPerView: type === PERSON_TYPE ? 6 : 5,
+              slidesPerGroup: 5,
+              spaceBetween: 15,
+            },
+            1400: {
+              slidesPerView: type === PERSON_TYPE ? 7 : 6,
+              slidesPerGroup: 6,
+              spaceBetween: 15,
+            },
+          }}
         >
           {data && data.map(renderSlide)}
         </Swiper>

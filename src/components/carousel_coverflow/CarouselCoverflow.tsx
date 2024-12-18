@@ -58,7 +58,7 @@ const CarouselCoverflow = ({ data, media_type }: ICarouselCoverflow) => {
       <h1 className='section__title'>Trending {title}</h1>
       <Swiper
         effect={'coverflow'}
-        allowTouchMove={false}
+        allowTouchMove={true}
         className='customSwiper'
         centeredSlides={true}
         slidesPerView={'auto'}

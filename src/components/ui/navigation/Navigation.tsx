@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import classes from './Navigation.module.css';
 import { NAV_LINKS } from '../../../data/navLinks';
 import SearchBarHeader from '../../searchbar/SearchBarHeader';
+import { MdMenu } from 'react-icons/md';
 
 const NavigationItem = ({ item }: { item: (typeof NAV_LINKS)[0] }) => {
   return (
@@ -30,6 +31,7 @@ export default function Navigation() {
           </ul>
         </nav>
         <SearchBarHeader />
+        <MdMenu className={classes['menu__icon']} />
       </div>
     </header>
   );

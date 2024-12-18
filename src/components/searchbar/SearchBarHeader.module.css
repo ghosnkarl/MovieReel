@@ -5,7 +5,7 @@
   display: flex;
   border-radius: 7px;
   align-items: center;
-  border: 1px solid var(--color-gray-700);
+  border: 1px solid var(--color-gray-800);
 }
 
 .search {
@@ -65,5 +65,11 @@
 
   &:hover {
     transform: scale(1.2);
+  }
+}
+
+@media (max-width: 1100px) {
+  .search__container {
+    flex: 1;
   }
 }
