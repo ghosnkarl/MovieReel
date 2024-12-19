@@ -1,22 +1,23 @@
 import { NavLink } from 'react-router-dom';
 import styles from './AboutPage.module.css';
+import { links } from '../../helpers/links';
 
 const LINKS = [
   {
     title: 'GitHub Profile',
-    link: 'https://github.com/your-github-profile',
+    link: links.GITHUB_PROFILE,
   },
   {
     title: 'Source Code',
-    link: 'https://github.com/your-github-profile',
+    link: links.SOURCE_CODE,
   },
   {
     title: 'Submit a Bug',
-    link: 'https://github.com/your-github-profile',
+    link: links.SUBMIT_BUG,
   },
   {
     title: 'LinkedIn Profile',
-    link: 'https://github.com/your-github-profile',
+    link: links.LINKEDIN_PROFILE,
   },
 ];
 
@@ -38,7 +39,7 @@ const AboutPage = () => {
           <NavLink
             className={styles['about__link']}
             target='_blank'
-            to='https://www.themoviedb.org/'
+            to={links.TMDB}
           >
             The Movie Database (TMDB) API
           </NavLink>
@@ -80,9 +81,9 @@ const AboutPage = () => {
           Email:{' '}
           <NavLink
             className={styles['about__link']}
-            to='mailto:karl.ghosn.dev@gmail.com'
+            to={`mailto:${links.EMAIL}`}
           >
-            karl.ghosn.dev@gmail.com
+            {links.EMAIL}
           </NavLink>
         </p>
       </section>

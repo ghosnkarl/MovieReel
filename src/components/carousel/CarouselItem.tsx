@@ -4,7 +4,6 @@ import { IIdName } from '../../models/commonModel';
 import { getGenres } from '../../helpers/commonHelpers';
 import { NavLink } from 'react-router-dom';
 import { MediaType } from '../../helpers/constants';
-import { FiArrowRight } from 'react-icons/fi';
 import Rating from '../rating/Rating';
 import { tmdbImage } from '../../helpers/imageSizes';
 
@@ -15,7 +14,10 @@ interface ICarousel {
 }
 
 const CarouselItem = ({ item, genres, media_type }: ICarousel) => (
-  <div className={classes['item__container']}>
+  <NavLink
+    to={`/${media_type}/${item.id}`}
+    className={classes['item__container']}
+  >
     <img
       className={classes.backdrop}
       src={tmdbImage.backdrop(item.backdrop_path, 'w1280')}
@@ -37,12 +39,8 @@ const CarouselItem = ({ item, genres, media_type }: ICarousel) => (
         </p>
       </div>
       <p className={classes.overview}>{item.overview}</p>
-
-      <NavLink to={`/${media_type}/${item.id}`} className={classes.watch}>
-        Details <FiArrowRight />
-      </NavLink>
     </div>
-  </div>
+  </NavLink>
 );
 
 export default CarouselItem;

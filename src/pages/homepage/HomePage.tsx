@@ -6,7 +6,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import Carousel from '../../components/carousel/Carousel';
 import useTrending from '../../hooks/useTrending';
-import CarouselCoverflow from '../../components/carousel_coverflow/CarouselCoverflow';
 import { MOVIE_TYPE, PERSON_TYPE } from '../../helpers/constants';
 import useDiscover from '../../hooks/useDiscover';
 import usePopularPeople from '../../hooks/usePopularPeople';
@@ -37,12 +36,12 @@ export default function HomePage() {
         type={MOVIE_TYPE}
       />
 
-      {trendingQuery.data && (
-        <CarouselCoverflow
-          data={trendingQuery.data.results}
-          media_type={MOVIE_TYPE}
-        />
-      )}
+      <HorizontalWrapper
+        query={trendingQuery}
+        title='Trending Movies'
+        link={null}
+        type={MOVIE_TYPE}
+      />
 
       <HorizontalWrapper
         query={airingTodayTVQuery}
@@ -51,12 +50,12 @@ export default function HomePage() {
         type='tv'
       />
 
-      {tvTrendingQuery.data && (
-        <CarouselCoverflow
-          data={tvTrendingQuery.data.results}
-          media_type='tv'
-        />
-      )}
+      <HorizontalWrapper
+        query={tvTrendingQuery}
+        title='Trending TV Shows'
+        link={null}
+        type='tv'
+      />
 
       <HorizontalWrapper
         query={popularPeopleQuery}

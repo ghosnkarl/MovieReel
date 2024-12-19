@@ -253,3 +253,13 @@ body {
 .swiper-button-prev::after {
   background: url('./assets/arrow_prev.svg') no-repeat center;
 }
+
+@media (max-width: 1100px) {
+  .swiper-pagination-bullet,
+  .arrowLeft,
+  .arrowRight,
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none !important;
+  }
+}
