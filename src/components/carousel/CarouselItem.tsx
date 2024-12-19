@@ -23,22 +23,29 @@ const CarouselItem = ({ item, genres, media_type }: ICarousel) => (
       src={tmdbImage.backdrop(item.backdrop_path, 'w1280')}
       alt={item.title || item.name}
     />
-    <div className={classes['text__container']}>
-      {genres && (
-        <p className={classes.genres}>{getGenres(item.genre_ids, genres)}</p>
-      )}
-      <h1 className={classes.title}>{item.title || item.name}</h1>
-      <div className={classes['details__container']}>
-        <Rating rating={item.vote_average} />
+    <div className={classes['item__content']}>
+      <img
+        className={classes.poster}
+        src={tmdbImage.poster(item.poster_path, 'w500')}
+        alt={item.title || item.name}
+      />
+      <div className={classes['text__container']}>
+        {genres && (
+          <p className={classes.genres}>{getGenres(item.genre_ids, genres)}</p>
+        )}
+        <h1 className={classes.title}>{item.title || item.name}</h1>
+        <div className={classes['details__container']}>
+          <Rating rating={item.vote_average} />
 
-        <p className={classes.date}>
-          {item.release_date &&
-            `${new Date(item.release_date).toLocaleDateString('en-US', {
-              dateStyle: 'medium',
-            })}`}
-        </p>
+          <p className={classes.date}>
+            {item.release_date &&
+              `${new Date(item.release_date).toLocaleDateString('en-US', {
+                dateStyle: 'medium',
+              })}`}
+          </p>
+        </div>
+        <p className={classes.overview}>{item.overview}</p>
       </div>
-      <p className={classes.overview}>{item.overview}</p>
     </div>
   </NavLink>
 );

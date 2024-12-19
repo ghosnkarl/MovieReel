@@ -26,43 +26,45 @@ export default function HomePage() {
   const tvTrendingQuery = useTrending({ type: 'tv' });
 
   return (
-    <div className={classes['main-content']}>
+    <div className={classes.container}>
       <Carousel />
 
-      <HorizontalWrapper
-        query={upcomingMoviesQuery}
-        title='Upcoming Movies'
-        link='/movie'
-        type={MOVIE_TYPE}
-      />
+      <div className='page-container'>
+        <HorizontalWrapper
+          query={upcomingMoviesQuery}
+          title='Upcoming Movies'
+          link='/movie'
+          type={MOVIE_TYPE}
+        />
 
-      <HorizontalWrapper
-        query={trendingQuery}
-        title='Trending Movies'
-        link={null}
-        type={MOVIE_TYPE}
-      />
+        <HorizontalWrapper
+          query={trendingQuery}
+          title='Trending Movies'
+          link={null}
+          type={MOVIE_TYPE}
+        />
 
-      <HorizontalWrapper
-        query={airingTodayTVQuery}
-        title='Airing Today TV Shows'
-        link='/tv'
-        type='tv'
-      />
+        <HorizontalWrapper
+          query={airingTodayTVQuery}
+          title='Airing Today TV Shows'
+          link='/tv'
+          type='tv'
+        />
 
-      <HorizontalWrapper
-        query={tvTrendingQuery}
-        title='Trending TV Shows'
-        link={null}
-        type='tv'
-      />
+        <HorizontalWrapper
+          query={tvTrendingQuery}
+          title='Trending TV Shows'
+          link={null}
+          type='tv'
+        />
 
-      <HorizontalWrapper
-        query={popularPeopleQuery}
-        title='Most Popular Celebrities'
-        link='/person'
-        type={PERSON_TYPE}
-      />
+        <HorizontalWrapper
+          query={popularPeopleQuery}
+          title='Most Popular Celebrities'
+          link='/person'
+          type={PERSON_TYPE}
+        />
+      </div>
     </div>
   );
 }

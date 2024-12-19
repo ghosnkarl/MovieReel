@@ -98,7 +98,7 @@ body {
   min-height: 100vh;
   max-width: var(--page-width--max);
   margin: 0 auto;
-  padding: 9.6rem var(--page-padding--horizontal) 3.2rem
+  padding: 0 var(--page-padding--horizontal) 3.2rem
     var(--page-padding--horizontal);
 }
 
@@ -261,5 +261,30 @@ body {
   .swiper-button-prev,
   .swiper-button-next {
     display: none !important;
+  }
+}
+
+.link__filled:link,
+.link__filled:visited {
+  border: none;
+  width: fit-content;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  background: none;
+  font-weight: 600;
+  padding: 1.4rem 2.4rem;
+  border-radius: 7px;
+  cursor: pointer;
+  color: var(--color-background--card);
+  background-color: white;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+
+  &:hover,
+  &:active {
+    transform: scale(1.1);
+    box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.3);
   }
 }

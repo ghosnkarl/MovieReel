@@ -7,7 +7,7 @@ export default function RootLayout() {
   return (
     <div>
       <Navigation />
-      <main className='page-container'>
+      <main>
         <ScrollToTop>
           <Outlet />
         </ScrollToTop>
