@@ -4,7 +4,7 @@ import { IIdName } from '../models/commonModel';
 export const queryClient = new QueryClient();
 
 const API_KEY = import.meta.env.VITE_APP_API_KEY;
-const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
+const BASE_URL = 'https://api.themoviedb.org/3';
 
 // Helper function to handle building the URL with optional query parameters
 const buildURL = (
