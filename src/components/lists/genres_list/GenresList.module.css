@@ -9,6 +9,5 @@
   font-size: 1.4rem;
   padding: 0.6rem 1.2rem;
   border-radius: 1000px;
-  background-color: #444;
-  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3);
+  border: 2px solid var(--color-gray-200);
 }

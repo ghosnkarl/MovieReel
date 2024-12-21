@@ -3,6 +3,7 @@ import { FaBug, FaGithub } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
 import { footerData } from '../../../data/footerData';
 import classes from './Footer.module.css';
+import { links } from '../../../helpers/links';
 
 const Footer = () => {
   return (
@@ -35,14 +36,14 @@ const Footer = () => {
             {' '}
             <p className={classes['footer__text']}>
               Copyright &copy; {new Date().getFullYear()}{' '}
-              <NavLink to='https://github.com/ghosnkarl' target='_blank'>
+              <NavLink to={links.GITHUB_PROFILE} target='_blank'>
                 Karl Ghosn
               </NavLink>{' '}
               - All rights reserved.
             </p>
             <p className={classes['footer__text']}>
               Data provided by{' '}
-              <NavLink to='https://www.themoviedb.org/' target='_blank'>
+              <NavLink to={links.TMDB} target='_blank'>
                 TMDB
               </NavLink>
               .
@@ -51,7 +52,7 @@ const Footer = () => {
           <div className={classes['footer__actions']}>
             <NavLink
               className={classes['footer__action']}
-              to=''
+              to={links.SOURCE_CODE}
               target='_blank'
             >
               <FaGithub className={classes['footer__action--icon']} /> Source
@@ -59,7 +60,7 @@ const Footer = () => {
             </NavLink>
             <NavLink
               className={classes['footer__action']}
-              to=''
+              to={links.SUBMIT_BUG}
               target='_blank'
             >
               <FaBug className={classes['footer__action--icon']} />

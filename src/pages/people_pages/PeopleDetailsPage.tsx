@@ -112,7 +112,7 @@ const PeopleDetailsPage = () => {
           alt={data.name}
           src={tmdbImage.profile(data.profile_path, 'h632')}
         />
-        <div>
+        <div className={classes['text__container']}>
           <h1 className={classes.name}>{data.name}</h1>
           <div className={classes['details__container']}>
             <DetailsItem

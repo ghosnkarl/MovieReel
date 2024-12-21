@@ -1,31 +1,32 @@
 import { NavLink } from 'react-router-dom';
 import styles from './AboutPage.module.css';
+import { links } from '../../helpers/links';
 
 const LINKS = [
   {
     title: 'GitHub Profile',
-    link: 'https://github.com/your-github-profile',
+    link: links.GITHUB_PROFILE,
   },
   {
     title: 'Source Code',
-    link: 'https://github.com/your-github-profile',
+    link: links.SOURCE_CODE,
   },
   {
     title: 'Submit a Bug',
-    link: 'https://github.com/your-github-profile',
+    link: links.SUBMIT_BUG,
   },
   {
     title: 'LinkedIn Profile',
-    link: 'https://github.com/your-github-profile',
+    link: links.LINKEDIN_PROFILE,
   },
 ];
 
 const FEATURES = [
   'Browse popular movies and TV shows.',
-  'Search for movies, tv shows, people, etc.',
-  'View movie details including trailers, ratings, and reviews.',
-  'Responsive design for optimal mobile experience',
-  'User-friendly interface with intuitive navigation',
+  'Search for movies, TV shows, people, and more.',
+  'View detailed information including trailers, ratings, and reviews.',
+  'Responsive design for an optimal mobile experience.',
+  'User-friendly interface with intuitive navigation.',
 ];
 
 const AboutPage = () => {
@@ -38,12 +39,13 @@ const AboutPage = () => {
           <NavLink
             className={styles['about__link']}
             target='_blank'
-            to='https://www.themoviedb.org/'
+            to={links.TMDB}
           >
             The Movie Database (TMDB) API
           </NavLink>
           . It allows users to explore movies, TV shows, and related content
-          with ease, providing a rich and engaging experience for movie lovers.
+          with ease, providing a rich and engaging experience for movie
+          enthusiasts.
         </p>
       </section>
 
@@ -57,7 +59,7 @@ const AboutPage = () => {
       </section>
 
       <section>
-        <h2>Links</h2>
+        <h2>Useful Links</h2>
         <ul>
           {LINKS.map((link) => (
             <li key={link.title}>
@@ -75,14 +77,14 @@ const AboutPage = () => {
 
       <section>
         <h2>Contact Me</h2>
-        <p>If you have any questions, feel free to reach out!</p>
+        <p>If you have any questions or feedback, feel free to reach out!</p>
         <p>
           Email:{' '}
           <NavLink
             className={styles['about__link']}
-            to='mailto:karl.ghosn.dev@gmail.com'
+            to={`mailto:${links.EMAIL}`}
           >
-            karl.ghosn.dev@gmail.com
+            {links.EMAIL}
           </NavLink>
         </p>
       </section>
@@ -91,7 +93,7 @@ const AboutPage = () => {
         <h2>Additional Information</h2>
         <p>
           MovieReel was developed to help users discover and interact with their
-          favorite movies and TV shows. The project is open source and
+          favorite movies and TV shows. The project is open source, and
           contributions are welcome!
         </p>
       </section>

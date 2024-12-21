@@ -1,8 +1,3 @@
-.videos__container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.6rem;
-}
 .container:link,
 .container:visited {
   display: flex;

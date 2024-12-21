@@ -15,7 +15,7 @@ const ImageList = ({ images, mediaTitle }: IImageList) => {
   return (
     <>
       {images.length > 0 && (
-        <div className='grid--4-cols gallery-grid--gap'>
+        <div className={classes.grid}>
           {images.map((image) => (
             <NavLink
               className={classes.container}
