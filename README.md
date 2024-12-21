@@ -12,6 +12,8 @@ MovieReel allows users to explore movies, TV shows, and related content with eas
 
 ## Installation
 
+To get started with the MovieReel web app, follow these steps:
+
 1. Clone the repository:
 
 ```bash
@@ -35,3 +37,17 @@ VITE_APP_API_KEY=yourAPIKey
 ```bash
 npm run dev
 ```
+
+## Contributing
+
+Contributions are welcome! 🎉
+
+1. Fork the project.
+2. Create a feature branch (git checkout -b feature-name).
+3. Commit your changes (git commit -m 'Add some feature').
+4. Push to the branch (git push origin feature-name).
+5. Open a Pull Request.
+
+## License
+
+This project is licensed under the [MIT](https://github.com/ghosnkarl/MovieReel/blob/main/LICENSE) License. See the LICENSE file for more information.
