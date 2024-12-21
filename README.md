@@ -50,4 +50,4 @@ Contributions are welcome! 🎉
 
 ## License
 
-This project is licensed under the [MIT](https://github.com/ghosnkarl/MovieReel/blob/main/LICENSE) License. See the LICENSE file for more information.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/ghosnkarl/MovieReel/blob/main/LICENSE) file for more information.
