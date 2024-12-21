@@ -1,4 +1,4 @@
-import classes from './Homepage.module.css';
+import classes from './HomePage.module.css';
 import { airingTodayDates, upComingDates } from '../../helpers/discoverHelpers';
 import HorizontalWrapper from '../../components/horizontal_list/HorizontalWrapper';
 import 'swiper/css';
@@ -29,42 +29,40 @@ export default function HomePage() {
     <div className={classes.container}>
       <Carousel />
 
-      <div className='page-container'>
-        <HorizontalWrapper
-          query={upcomingMoviesQuery}
-          title='Upcoming Movies'
-          link='/movie'
-          type={MOVIE_TYPE}
-        />
+      <HorizontalWrapper
+        query={upcomingMoviesQuery}
+        title='Upcoming Movies'
+        link='/movie'
+        type={MOVIE_TYPE}
+      />
 
-        <HorizontalWrapper
-          query={trendingQuery}
-          title='Trending Movies'
-          link={null}
-          type={MOVIE_TYPE}
-        />
+      <HorizontalWrapper
+        query={trendingQuery}
+        title='Trending Movies'
+        link={null}
+        type={MOVIE_TYPE}
+      />
 
-        <HorizontalWrapper
-          query={airingTodayTVQuery}
-          title='Airing Today TV Shows'
-          link='/tv'
-          type='tv'
-        />
+      <HorizontalWrapper
+        query={airingTodayTVQuery}
+        title='Airing Today TV Shows'
+        link='/tv'
+        type='tv'
+      />
 
-        <HorizontalWrapper
-          query={tvTrendingQuery}
-          title='Trending TV Shows'
-          link={null}
-          type='tv'
-        />
+      <HorizontalWrapper
+        query={tvTrendingQuery}
+        title='Trending TV Shows'
+        link={null}
+        type='tv'
+      />
 
-        <HorizontalWrapper
-          query={popularPeopleQuery}
-          title='Most Popular Celebrities'
-          link='/person'
-          type={PERSON_TYPE}
-        />
-      </div>
+      <HorizontalWrapper
+        query={popularPeopleQuery}
+        title='Most Popular Celebrities'
+        link='/person'
+        type={PERSON_TYPE}
+      />
     </div>
   );
 }

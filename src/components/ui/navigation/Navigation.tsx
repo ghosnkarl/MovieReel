@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import classes from './Navigation.module.css';
 import { NAV_LINKS } from '../../../data/navLinks';
 import SearchBarHeader from '../../searchbar/SearchBarHeader';
-import { MdMenu } from 'react-icons/md';
+import { MdMenu, MdSearch } from 'react-icons/md';
 import MobileNavigation from '../mobile_navigation/MobileNavigation';
 import { useState } from 'react';
 
@@ -23,9 +23,11 @@ const NavigationItem = ({ item }: { item: (typeof NAV_LINKS)[0] }) => {
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prevState) => !prevState);
   };
+
   return (
     <header className={classes.header}>
       <div className={classes['header__content']}>
@@ -37,8 +39,12 @@ export default function Navigation() {
             ))}
           </ul>
         </nav>
-        <SearchBarHeader />
+        <div className={classes['search__container']}>
+          <SearchBarHeader />
+        </div>
+        <MdSearch className={classes.search__icon} onClick={toggleMobileMenu} />
       </div>
+
       <div
         className={`${classes.overlay} ${
           !mobileMenuOpen ? classes.hidden : ''

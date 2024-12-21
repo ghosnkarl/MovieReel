@@ -1,7 +1,10 @@
 .swiper {
   width: 100%;
-  height: 60rem;
+  aspect-ratio: 2.1;
   position: relative;
+  border-radius: 15px;
+  box-shadow: var(--card--box-shadow);
+  margin-bottom: 2.4rem;
 }
 
 .bullet {
@@ -26,7 +29,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+
   transition: transform 0.3s ease-in-out;
 
   &:hover {
@@ -57,11 +60,13 @@
 
 .item__content {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 2fr;
   position: absolute;
+  height: 100%;
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
+  align-items: center;
   left: 10%;
   right: 10%;
   gap: 4.4rem;
@@ -70,6 +75,7 @@
 .poster {
   width: 100%;
   border-radius: 15px;
+  filter: brightness(0.8);
 }
 
 .text__container {
@@ -91,7 +97,7 @@
   line-height: 1.1;
   margin-bottom: 0.8rem;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
-  font-size: 4.4rem;
+  font-size: 4rem;
   font-weight: 600;
 }
 
@@ -109,17 +115,16 @@
 }
 
 .overview {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: var(--color-gray-100);
   line-height: 1.6;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  margin-bottom: 3.6rem;
+  /* margin-bottom: 3.6rem; */
 }
 
-/* Responsive design */
 @media (max-width: 1000px) {
   .swiper {
-    height: 50rem;
+    aspect-ratio: 1.7;
   }
 
   .text__container {
@@ -137,18 +142,35 @@
   }
 
   .overview {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 870px) {
+  .item__content {
+    display: flex;
+  }
+  .poster {
+    display: none;
+  }
+
+  .overview {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 }
 
 @media (max-width: 700px) {
   .swiper {
-    height: 40rem;
+    aspect-ratio: 1.5;
   }
 
   .genres,
   .date {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   .title {
@@ -156,35 +178,29 @@
   }
 
   .overview {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
 }
 
 @media (max-width: 550px) {
   .swiper {
-    height: 30rem;
+    aspect-ratio: 1.5;
   }
 
   .text__container {
-    text-align: center;
     left: 2rem;
     right: 2rem;
   }
 
   .genres {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .title {
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
 
   .overview {
     font-size: 1.2rem;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    -webkit-box-orient: vertical;
   }
 }

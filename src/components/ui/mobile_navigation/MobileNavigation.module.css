@@ -4,7 +4,7 @@
   padding: 4.8rem 0;
   height: 100vh;
   gap: 1.2rem;
-  width: 30rem;
+  width: 80%;
   background-color: var(--color-gray-950);
   top: 0;
   position: fixed;
@@ -20,6 +20,21 @@
   transform: translateX(0);
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2.4rem;
+}
+.search__container {
+  position: relative;
+  height: var(--search-container-height);
+  display: flex;
+  margin: 0 2.4rem;
+  border-radius: 7px;
+  align-items: center;
+  border: 1px solid var(--color-gray-800);
+}
 .list {
   display: flex;
   flex-direction: column;
@@ -27,8 +42,10 @@
   padding: 0 1rem;
 }
 
-.list a:link,
-.list a:visited {
+.list button {
+  width: 100%;
+  background: none;
+  border: none;
   display: flex;
   align-items: center;
   gap: 0.8rem;
@@ -37,19 +54,21 @@
   padding: 1.2rem;
 }
 
-.list a:hover,
-.list a:active,
+.list button:hover,
 .active {
   background-color: var(--color-gray-800);
 }
 
 .close {
-  margin: 0 1.2rem;
   font-size: 2.4rem;
-  align-self: flex-end;
   cursor: pointer;
 
   &:hover {
     color: var(--color-gray-600);
   }
+}
+
+.icon {
+  display: flex;
+  font-size: 1.8rem;
 }

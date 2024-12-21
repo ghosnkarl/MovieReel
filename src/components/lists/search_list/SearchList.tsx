@@ -53,9 +53,15 @@ interface SearchListProps {
   data: ISearchItem[];
   setOpen: (dropdownOpen: boolean) => void;
   clearInput: () => void;
+  setMobileMenuOpen?: (value: boolean) => void;
 }
 
-const SearchList = ({ data, setOpen, clearInput }: SearchListProps) => {
+const SearchList = ({
+  data,
+  setOpen,
+  clearInput,
+  setMobileMenuOpen,
+}: SearchListProps) => {
   const [focusedIndex, setFocusedIndex] = useState<number>(0);
   const navigate = useNavigate();
   const listRef = useRef<HTMLUListElement>(null);
@@ -65,12 +71,12 @@ const SearchList = ({ data, setOpen, clearInput }: SearchListProps) => {
     (item: ISearchItem) => {
       navigate(`/${item.type}/${item.id}`);
       clearInput();
+      if (setMobileMenuOpen) setMobileMenuOpen(false);
       setOpen(false);
     },
     [navigate, clearInput, setOpen]
   );
 
-  // Combined navigation logic
   const navigateFocus = (direction: 'up' | 'down') => {
     setFocusedIndex((prev) =>
       direction === 'down'

@@ -5,8 +5,8 @@
 }
 
 .details {
-  display: grid;
-  grid-template-columns: repeat(4, auto);
+  display: flex;
+  flex-wrap: wrap;
   gap: 3.2rem;
 }
 

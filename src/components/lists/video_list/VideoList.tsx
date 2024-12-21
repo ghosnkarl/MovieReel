@@ -37,7 +37,7 @@ const VideoList = ({ videos, mediaTitle }: IVideoList) => {
   return (
     <>
       {videos.length > 0 && (
-        <div className={classes['videos__container']}>
+        <div className='grid--4-cols'>
           {videos.map((video) => (
             <VideoItem key={video.key} video={video} />
           ))}

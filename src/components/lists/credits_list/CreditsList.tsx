@@ -26,7 +26,7 @@ const getCreditDetails = (credit: ICast | ICrew) => {
 
 const CreditsList = ({ credits }: ICreditsList) => {
   return (
-    <div className='grid--6-cols'>
+    <div className='credits-list__container'>
       {credits?.map((credit) => {
         const { key, text } = getCreditDetails(credit);
 

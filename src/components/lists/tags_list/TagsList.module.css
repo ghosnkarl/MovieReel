@@ -12,25 +12,39 @@
   gap: 0.8rem;
   padding: 1rem 2rem;
   font-size: 1.4rem;
-  border-radius: 7px;
-  background-color: var(--color-gray-800);
-  color: var(--color-gray-500);
+  border-radius: 1000px;
+  /* background-color: var(--color-gray-800); */
+  border: 2px solid white;
+  color: var(--color-gray-200);
   box-shadow: var(--card--box-shadow);
   transition: background-color 0.2s ease, transform 0.2s ease;
 
   &:hover {
-    background-color: var(--color-gray-700);
-    color: white;
+    background-color: white;
+    color: black;
     transform: scale(1.05);
   }
 }
 
 .tag--selected {
-  background-color: var(--color-gray-700);
   padding: 0.6rem 2rem 0.6rem 1.2rem;
-  color: white;
+  background-color: white;
+  color: black;
 }
 
 .tag__check {
   font-size: 2rem;
+}
+
+@media (max-width: 1000px) {
+  .tags {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+  }
+
+  .tag {
+    flex-shrink: 0;
+  }
 }

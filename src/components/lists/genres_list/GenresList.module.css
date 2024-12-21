@@ -9,5 +9,5 @@
   font-size: 1.4rem;
   padding: 0.6rem 1.2rem;
   border-radius: 1000px;
-  background-color: var(--color-gray-800);
+  border: 2px solid var(--color-gray-200);
 }

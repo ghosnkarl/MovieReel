@@ -1,19 +1,9 @@
-import { NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { NAV_LINKS } from '../../../data/navLinks';
 import classes from './MobileNavigation.module.css';
 import { MdClose } from 'react-icons/md';
+import SearchBarHeader from '../../searchbar/SearchBarHeader';
 
-const NavigationItem = ({ item }: { item: (typeof NAV_LINKS)[0] }) => {
-  return (
-    <li key={item.link}>
-      <NavLink to={item.link}>
-        <span className={classes.icon}>{item.icon}</span>
-
-        {item.title}
-      </NavLink>
-    </li>
-  );
-};
 const MobileNavigation = ({
   open,
   setOpen,
@@ -21,12 +11,30 @@ const MobileNavigation = ({
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
+  const navigate = useNavigate();
+  const onMenuClicked = (item: (typeof NAV_LINKS)[0]) => {
+    navigate(item.link);
+    setOpen(false);
+  };
   return (
     <div className={`${classes.container} ${open ? classes.open : ''}`}>
-      <MdClose className={classes.close} onClick={() => setOpen(false)} />
+      <div className={classes.header}>
+        <h1>MovieReel</h1>
+        <MdClose className={classes.close} onClick={() => setOpen(false)} />
+      </div>
+
+      <div className={classes['search__container']}>
+        <SearchBarHeader setMobileMenuOpen={setOpen} />
+      </div>
       <ul className={classes.list}>
         {NAV_LINKS.map((item) => (
-          <NavigationItem key={item.title} item={item} />
+          <li key={item.link}>
+            <button onClick={() => onMenuClicked(item)}>
+              <span className={classes.icon}>{item.icon}</span>
+
+              {item.title}
+            </button>
+          </li>
         ))}
       </ul>
     </div>
