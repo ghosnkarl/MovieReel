@@ -1,4 +1,4 @@
-import classes from './HomePage.module.css';
+import classes from './Homepage.module.css';
 import { airingTodayDates, upComingDates } from '../../helpers/discoverHelpers';
 import HorizontalWrapper from '../../components/horizontal_list/HorizontalWrapper';
 import 'swiper/css';
