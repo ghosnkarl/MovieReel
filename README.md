@@ -48,7 +48,7 @@ Contributions are welcome! 🎉
 4. Push to the branch (git push origin feature-name).
 5. Open a Pull Request.
 
-For more information, please checkout the [Contributions](https://github.com/ghosnkarl/MovieReel/blob/main/Contributions.md#contribution-guidelines) document.
+For more information, please checkout the [Contributions](https://github.com/ghosnkarl/MovieReel/blob/main/Contributions.md) document.
 
 ## License
 
