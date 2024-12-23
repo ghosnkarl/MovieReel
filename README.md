@@ -48,6 +48,8 @@ Contributions are welcome! 🎉
 4. Push to the branch (git push origin feature-name).
 5. Open a Pull Request.
 
+For more information, please checkout the [Contributions](https://github.com/ghosnkarl/MovieReel/blob/main/Contributions.md#contribution-guidelines) document.
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](https://github.com/ghosnkarl/MovieReel/blob/main/LICENSE) file for more information.

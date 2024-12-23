@@ -2,16 +2,12 @@
 
 Thank you for considering contributing to **MovieReel**! This open-source project is designed to help users explore details about movies and TV shows using data fetched from the [TMDB API](https://www.themoviedb.org/). Contributions are what make the open-source community such an incredible place to learn, inspire, and create. Your contributions are highly valued, whether it's fixing a bug, adding a feature, or improving documentation.
 
----
-
 ## Table of Contents
 
 - [How to Contribute](#how-to-contribute)
 - [Contribution Guidelines](#contribution-guidelines)
 - [Areas for Contribution](#areas-for-contribution)
 - [Need Help?](#need-help)
-
----
 
 ## How to Contribute
 
@@ -79,8 +75,6 @@ git clone https://github.com/yourusername/MovieReel.git
 - Provide a detailed description of your changes and link any relevant issues.
 - Wait for the maintainers to review your PR. Feedback or changes might be requested before merging.
 
----
-
 ## Contribution Guidelines
 
 To ensure smooth collaboration, please follow these guidelines:
@@ -90,8 +84,6 @@ To ensure smooth collaboration, please follow these guidelines:
 - **Dependencies**: Avoid adding unnecessary dependencies. Discuss significant changes in an issue before implementation.
 - **Issues**: When addressing an issue, mention the issue number in your PR description (e.g., "Fixes #123").
 - **Respectful Communication**: Treat everyone in the community with respect and kindness.
-
----
 
 ## Areas for Contribution
 
@@ -120,15 +112,11 @@ Here are some ways you can contribute:
 6. **Testing**:
    - Write unit and integration tests to improve code coverage.
 
----
-
 ## Need Help?
 
 If you have any questions about contributing, feel free to:
 
 - Open an issue with your question.
 - Contact the maintainers via the repository’s Discussions tab.
-
----
 
 We’re excited to see your contributions to **MovieReel**! Thank you for helping make this project better for the entire community.
