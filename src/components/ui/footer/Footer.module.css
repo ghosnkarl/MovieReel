@@ -40,10 +40,6 @@
   }
 }
 
-.footer__logo {
-  font-size: 3.2rem;
-}
-
 .footer__bottom {
   display: flex;
   justify-content: space-between;
@@ -79,4 +75,21 @@
 
 .footer__action--icon {
   font-size: 1.8rem;
+}
+
+@media (max-width: 750px) {
+  .footer__grid {
+    display: none;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .footer__action:link,
+  .footer__link:visited {
+    width: 100%;
+    justify-content: center;
+  }
 }

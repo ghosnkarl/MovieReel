@@ -1,6 +1,10 @@
-.main-content {
+.container {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 4.8rem;
+
+  @media (max-width: 800px) {
+    gap: 1.2rem;
+  }
 }

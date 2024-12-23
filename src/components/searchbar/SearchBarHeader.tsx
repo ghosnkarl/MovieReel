@@ -8,7 +8,11 @@ import { MdOutlineClear } from 'react-icons/md';
 import EmptyResource from '../ui/empty_resource/EmptyResource';
 import useSearch from '../../hooks/useSearch';
 
-const SearchBarHeader = () => {
+const SearchBarHeader = ({
+  setMobileMenuOpen,
+}: {
+  setMobileMenuOpen?: (value: boolean) => void;
+}) => {
   const [open, setOpen] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const [searchType, setSearchType] = useState<ItemProps>(SEARCH_OPTIONS[0]);
@@ -57,7 +61,7 @@ const SearchBarHeader = () => {
     };
   }, []);
   return (
-    <div className={classes['search__container']}>
+    <>
       <Dropdown
         selectedSortItem={searchType}
         setSelectedSortItem={setSearchType}
@@ -84,6 +88,7 @@ const SearchBarHeader = () => {
       >
         {searchQuery.data && searchQuery.data.results.length > 0 && (
           <SearchList
+            setMobileMenuOpen={setMobileMenuOpen}
             setOpen={setOpen}
             clearInput={clearInput}
             data={searchQuery.data.results.map((item) => {
@@ -119,7 +124,7 @@ const SearchBarHeader = () => {
           />
         )}
       </div>
-    </div>
+    </>
   );
 };
 

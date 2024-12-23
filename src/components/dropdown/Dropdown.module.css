@@ -1,5 +1,6 @@
 .dropdown {
   position: relative;
+  width: max-content;
 }
 
 .dropdown-btn {
