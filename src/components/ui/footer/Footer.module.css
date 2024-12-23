@@ -40,10 +40,6 @@
   }
 }
 
-.footer__logo {
-  font-size: 3.2rem;
-}
-
 .footer__bottom {
   display: flex;
   justify-content: space-between;

@@ -8,6 +8,10 @@
   z-index: 2;
 }
 
+.logo__container {
+  display: flex;
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -123,7 +127,7 @@
   }
 }
 
-@media (max-width: 1150px) {
+@media (max-width: 1190px) {
   .navigation {
     display: none;
   }

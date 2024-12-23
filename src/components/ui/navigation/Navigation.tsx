@@ -5,6 +5,7 @@ import SearchBarHeader from '../../searchbar/SearchBarHeader';
 import { MdMenu, MdSearch } from 'react-icons/md';
 import MobileNavigation from '../mobile_navigation/MobileNavigation';
 import { useState } from 'react';
+import logo from '/logo.svg';
 
 const NavigationItem = ({ item }: { item: (typeof NAV_LINKS)[0] }) => {
   return (
@@ -31,7 +32,13 @@ export default function Navigation() {
   return (
     <header className={classes.header}>
       <div className={classes['header__content']}>
-        <MdMenu className={classes['menu__icon']} onClick={toggleMobileMenu} />
+        <div className={classes['logo__container']}>
+          <img src={logo} alt='MovieReel logo' />
+          <MdMenu
+            className={classes['menu__icon']}
+            onClick={toggleMobileMenu}
+          />
+        </div>
         <nav className={classes.navigation}>
           <ul className={classes.list}>
             {NAV_LINKS.map((item) => (
