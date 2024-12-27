@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
-import Navigation from './components/ui/navigation/Navigation';
-import ScrollToTop from './components/ui/ScrollToTop';
-import Footer from './components/ui/footer/Footer';
+import Navigation from './navigation/Navigation';
+import ScrollToTop from './ScrollToTop';
+import Footer from './footer/Footer';
 
 export default function RootLayout() {
   return (

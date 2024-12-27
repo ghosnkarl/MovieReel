@@ -1,7 +1,7 @@
 import classes from './DetailsPage.module.css';
 import RecommendedList from '../../components/lists/RecommendedList';
 import { IDetails } from '../../models/detailsModel';
-import HorizontalList from '../../components/horizontal_list/HorizontalList';
+import HorizontalList from '../../components/horizontalList/HorizontalList';
 import DetailsMedia from './DetailsMedia';
 import { MOVIE_TYPE, TV_TYPE } from '../../helpers/constants';
 import useCollectionDetails from '../../hooks/useCollectionDetails';

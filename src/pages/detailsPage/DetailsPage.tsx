@@ -3,16 +3,16 @@ import classes from './DetailsPage.module.css';
 import DetailsHeader from './details_header/DetailsHeader';
 import DetailsMain from './DetailsMain';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
-import ErrorPage from '../error_page/ErrorPage';
+import ErrorPage from '../errorPage/ErrorPage';
 import useDetails from '../../hooks/useDetails';
 import Tabs from '../../components/ui/tabs/Tabs';
 import { DETAILS_TABS } from '../../data/tabsData';
 import { useMemo, useState } from 'react';
-import CreditsList from '../../components/lists/credits_list/CreditsList';
-import ReviewsList from '../../components/lists/reviews_list/ReviewsList';
-import CrewList from '../../components/lists/crew_list/CrewList';
-import VideoList from '../../components/lists/video_list/VideoList';
-import ImageList from '../../components/lists/image_list/ImageList';
+import CreditsList from '../../components/lists/creditsList/CreditsList';
+import ReviewsList from '../../components/lists/reviewsList/ReviewsList';
+import CrewList from '../../components/lists/crewList/CrewList';
+import VideoList from '../../components/lists/videoList/VideoList';
+import ImageList from '../../components/lists/imageList/ImageList';
 import { getGalleryImages } from '../../helpers/galleryImages';
 
 const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {

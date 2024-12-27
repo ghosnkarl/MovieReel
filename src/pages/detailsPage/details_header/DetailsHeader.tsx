@@ -1,8 +1,8 @@
 import classes from './DetailsHeader.module.css';
 import Rating from '../../../components/rating/Rating';
 import { IDetails } from '../../../models/detailsModel';
-import GenresList from '../../../components/lists/genres_list/GenresList';
-import DetailsMediaItem from '../../../components/details_media_item/DetailsMediaItem';
+import GenresList from '../../../components/lists/genresList/GenresList';
+import DetailsMediaItem from '../../../components/detailsMediaItem/DetailsMediaItem';
 import { tmdbImage } from '../../../helpers/imageSizes';
 import { format } from '../../../helpers/format';
 

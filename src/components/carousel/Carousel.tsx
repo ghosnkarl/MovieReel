@@ -7,7 +7,7 @@ import LoadingIndicator from '../ui/LoadingIndicator';
 import useGenres from '../../hooks/useGenres';
 import { nowPlayingDates } from '../../helpers/discoverHelpers';
 import { MOVIE_TYPE } from '../../helpers/constants';
-import ErrorComponent from '../ui/error_component/ErrorComponent';
+import ErrorComponent from '../ui/errorComponent/ErrorComponent';
 
 const Carousel = () => {
   const { data: genres } = useGenres({ type: MOVIE_TYPE });

@@ -2,7 +2,7 @@ import classes from './VideoList.module.css';
 import { NavLink } from 'react-router-dom';
 import { IVideo } from '../../../models/commonModel';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import EmptyResource from '../../ui/empty_resource/EmptyResource';
+import EmptyResource from '../../ui/emptyResource/EmptyResource';
 
 interface IVideoItem {
   video: IVideo;

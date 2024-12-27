@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import classes from './PersonItem.module.css';
-import { PERSON_TYPE } from '../../../helpers/constants';
-import { tmdbImage } from '../../../helpers/imageSizes';
+import { PERSON_TYPE } from '../../helpers/constants';
+import { tmdbImage } from '../../helpers/imageSizes';
 
 interface IPersonItem {
   id: number;

@@ -3,9 +3,9 @@ import { SEARCH_OPTIONS } from '../../data/searchOptions';
 import Dropdown, { ItemProps } from '../dropdown/Dropdown';
 import classes from './SearchBarHeader.module.css';
 import { CircularProgress } from '@mui/material';
-import SearchList, { ISearchItem } from '../lists/search_list/SearchList';
+import SearchList, { ISearchItem } from '../lists/searchList/SearchList';
 import { MdOutlineClear } from 'react-icons/md';
-import EmptyResource from '../ui/empty_resource/EmptyResource';
+import EmptyResource from '../ui/emptyResource/EmptyResource';
 import useSearch from '../../hooks/useSearch';
 
 const SearchBarHeader = ({

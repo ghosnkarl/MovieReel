@@ -4,7 +4,7 @@ import Dropdown, { ItemProps } from '../../dropdown/Dropdown';
 import { SORT } from '../../../data/sortOptions';
 import { RatingSlider } from '../RatingSlider';
 import Searchbar from '../../searchbar/Searchbar';
-import GenresPicker from '../genres_picker/GenresPicker';
+import GenresPicker from '../genresPicker/GenresPicker';
 import { format } from '../../../helpers/format';
 
 const FilterBox = () => {

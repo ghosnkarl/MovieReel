@@ -1,4 +1,4 @@
-import HeaderLink from '../ui/header_link/HeaderLink';
+import HeaderLink from '../ui/headerLink/HeaderLink';
 import classes from './HorizontalList.module.css';
 import { IPeople } from '../../models/peopleModel';
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
@@ -7,8 +7,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { MediaItem } from '../lists/media_list/MediaList';
-import PersonItem from '../list_items/person_item/PersonItem';
+import { MediaItem } from '../lists/mediaList/MediaList';
+import PersonItem from '../personItem/PersonItem';
 import { motion } from 'framer-motion';
 import { DataType, QueryData } from './HorizontalWrapper';
 import { useRef, useState } from 'react';

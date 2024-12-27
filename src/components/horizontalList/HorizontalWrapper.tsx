@@ -4,7 +4,7 @@ import LoadingIndicator from '../ui/LoadingIndicator';
 import { IMedia } from '../../models/mediaModel';
 import { IPeople } from '../../models/peopleModel';
 import { MediaType } from '../../helpers/constants';
-import ErrorComponent from '../ui/error_component/ErrorComponent';
+import ErrorComponent from '../ui/errorComponent/ErrorComponent';
 import { ISeason } from '../../models/seasonModel';
 import { IResultsProps } from '../../services/http';
 

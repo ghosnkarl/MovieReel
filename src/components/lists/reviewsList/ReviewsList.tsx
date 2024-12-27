@@ -1,6 +1,6 @@
 import { IReview } from '../../../models/commonModel';
 import classes from './ReviewsList.module.css';
-import EmptyResource from '../../ui/empty_resource/EmptyResource';
+import EmptyResource from '../../ui/emptyResource/EmptyResource';
 import Rating from '../../rating/Rating';
 import { tmdbImage } from '../../../helpers/imageSizes';
 import { format } from '../../../helpers/format';

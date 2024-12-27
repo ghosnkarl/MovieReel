@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import classes from './DetailsMedia.module.css';
-import KeywordsList from '../../components/lists/keywords_list/KeywordsList';
-import DetailsMediaItem from '../../components/details_media_item/DetailsMediaItem';
+import KeywordsList from '../../components/lists/keywordList/KeywordsList';
+import DetailsMediaItem from '../../components/detailsMediaItem/DetailsMediaItem';
 import { IDetails } from '../../models/detailsModel';
-import LinksList from '../../components/lists/links_list/LinksList';
+import LinksList from '../../components/lists/linksList/LinksList';
 
 interface IMediaDetails {
   media: IDetails;

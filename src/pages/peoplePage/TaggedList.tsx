@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import TagsList from '../../components/lists/tags_list/TagsList';
+import TagsList from '../../components/lists/tagsList/TagsList';
 import { MediaItems } from './PeopleDetailsPage';
 import { ICrewMedia } from '../../models/peopleModel';
 

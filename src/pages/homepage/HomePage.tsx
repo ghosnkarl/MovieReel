@@ -1,6 +1,6 @@
 import classes from './Homepage.module.css';
 import { airingTodayDates, upComingDates } from '../../helpers/discoverHelpers';
-import HorizontalWrapper from '../../components/horizontal_list/HorizontalWrapper';
+import HorizontalWrapper from '../../components/horizontalList/HorizontalWrapper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';

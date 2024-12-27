@@ -3,7 +3,7 @@ import classes from './Navigation.module.css';
 import { NAV_LINKS } from '../../../data/navLinks';
 import SearchBarHeader from '../../searchbar/SearchBarHeader';
 import { MdMenu, MdSearch } from 'react-icons/md';
-import MobileNavigation from '../mobile_navigation/MobileNavigation';
+import MobileNavigation from '../mobileNavigation/MobileNavigation';
 import { useState } from 'react';
 import logo from '/logo.svg';
 

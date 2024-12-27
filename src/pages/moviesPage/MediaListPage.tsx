@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import Tabs, { ITabObject } from '../../components/ui/tabs/Tabs';
 import { MOVIE_TABS, TV_TABS } from '../../data/tabsData';
-import MediaList from '../../components/lists/media_list/MediaList';
+import MediaList from '../../components/lists/mediaList/MediaList';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
-import ErrorPage from '../error_page/ErrorPage';
+import ErrorPage from '../errorPage/ErrorPage';
 import { useLocation } from 'react-router-dom';
-import InfiniteLoader from '../../components/infinite_loader/InfiniteLoader';
+import InfiniteLoader from '../../components/infiniteLoader/InfiniteLoader';
 import useInfiniteMediaQuery from '../../hooks/useInfiniteMediaQuery';
 import { MediaType } from '../../helpers/constants';
 
