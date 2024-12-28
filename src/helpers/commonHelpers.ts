@@ -1,8 +1,8 @@
-import { IIdName } from '../models/commonModel';
+import { IBaseIdName } from '../models/commonModel';
 
 export const getGenres = (
   genreIds: number[],
-  genres: IIdName[] | undefined
+  genres: IBaseIdName[] | undefined
 ) => {
   if (!genres) return '';
 

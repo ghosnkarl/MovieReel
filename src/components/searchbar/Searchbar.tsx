@@ -1,7 +1,7 @@
 import { ChangeEvent, useRef, useState } from 'react';
 import classes from '@/components/searchbar/Searchbar.module.css';
 import SearchTag from '@/components/searchbar/SearchTag';
-import { IIdName } from '@/models/commonModel';
+import { IBaseIdName } from '@/models/commonModel';
 import useSearch from '@/hooks/useSearch';
 
 const Searchbar = () => {
@@ -26,7 +26,7 @@ const Searchbar = () => {
     }, 500);
   };
 
-  const handleSearchClick = (item: IIdName) => {
+  const handleSearchClick = (item: IBaseIdName) => {
     if (!searchList.find((keyword) => keyword.id === item.id))
       setSearchList([...searchList, item]);
 
@@ -67,7 +67,7 @@ const Searchbar = () => {
           }`}
         >
           {data &&
-            (data.results as IIdName[]).map((item) => (
+            (data.results as IBaseIdName[]).map((item) => (
               <p
                 onClick={() => handleSearchClick(item)}
                 className={classes.searchItem}

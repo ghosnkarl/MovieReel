@@ -1,4 +1,4 @@
-import { IIdName, IImage, IReview, IVideo } from './commonModel';
+import { IBaseIdName, IImage, IReview, IVideo } from './commonModel';
 import { ICast, ICrew } from './castCrewModel';
 import { IMedia } from './mediaModel';
 import { ISeason } from './seasonModel';
@@ -15,7 +15,7 @@ export interface IDetailsImages {
 export interface IDetails extends IMedia {
   // Common
   homepage: string;
-  genres: IIdName[];
+  genres: IBaseIdName[];
   status: string;
   tagline: string;
   videos: Results<IVideo>;
@@ -23,11 +23,11 @@ export interface IDetails extends IMedia {
   reviews: Results<IReview>;
   recommendations: Results<IMedia>;
   vote_count: number;
-  production_companies: IIdName[];
-  keywords: { [key: string]: IIdName[] };
+  production_companies: IBaseIdName[];
+  keywords: { [key: string]: IBaseIdName[] };
 
   // Movie
-  belongs_to_collection?: IIdName | null;
+  belongs_to_collection?: IBaseIdName | null;
   budget?: number;
   imdb_id?: string;
   revenue?: number;
@@ -35,10 +35,10 @@ export interface IDetails extends IMedia {
   credits?: Credits;
 
   // TV Show
-  networks?: IIdName[];
+  networks?: IBaseIdName[];
   last_air_date?: string;
   aggregate_credits?: Credits;
-  created_by?: IIdName[];
+  created_by?: IBaseIdName[];
   number_of_episodes?: number;
   number_of_seasons?: number;
   seasons?: ISeason[];

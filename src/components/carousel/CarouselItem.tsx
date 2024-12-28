@@ -1,6 +1,6 @@
 import { IMedia } from '@/models/mediaModel';
 import classes from '@/components/carousel/CarouselItem.module.css';
-import { IIdName } from '@/models/commonModel';
+import { IBaseIdName } from '@/models/commonModel';
 import { getGenres } from '@/helpers/commonHelpers';
 import { NavLink } from 'react-router-dom';
 import { MediaType } from '@/helpers/constants';
@@ -9,7 +9,7 @@ import { tmdbImage } from '@/helpers/imageSizes';
 
 interface CarouselItemProps {
   item: IMedia;
-  genres: IIdName[] | undefined;
+  genres: IBaseIdName[] | undefined;
   media_type: MediaType;
 }
 

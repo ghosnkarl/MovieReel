@@ -1,13 +1,13 @@
 import classes from '@/components/ui/genresPicker/GenresPicker.module.css';
 import { useState } from 'react';
-import { IIdName } from '@/models/commonModel';
+import { IBaseIdName } from '@/models/commonModel';
 import useGenres from '@/hooks/useGenres';
 
 const GenresPicker = () => {
   const [selectedGenres, setSelectedGenres] = useState<number[]>([]);
   const { data, isLoading, isError } = useGenres({ type: 'movie' });
 
-  const handleGenreClicked = (genre: IIdName) => {
+  const handleGenreClicked = (genre: IBaseIdName) => {
     if (!selectedGenres.find((id) => genre.id === id)) {
       setSelectedGenres([...selectedGenres, genre.id]);
     } else {

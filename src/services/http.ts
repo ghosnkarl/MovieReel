@@ -1,5 +1,5 @@
 import { QueryClient } from '@tanstack/react-query';
-import { IIdName } from '../models/commonModel';
+import { IBaseIdName } from '../models/commonModel';
 
 export const queryClient = new QueryClient();
 
@@ -48,10 +48,10 @@ const fetchData = async <T>(url: string): Promise<T> => {
 };
 
 // Function to fetch genres
-export const fetchGenres = async (type: string): Promise<IIdName[]> => {
+export const fetchGenres = async (type: string): Promise<IBaseIdName[]> => {
   const url = buildURL(`genre/${type}/list`, null);
   const { genres } = await fetchData<{
-    genres: IIdName[];
+    genres: IBaseIdName[];
   }>(url);
   return genres;
 };

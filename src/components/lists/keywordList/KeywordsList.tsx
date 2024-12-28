@@ -1,8 +1,8 @@
-import { IIdName } from '@/models/commonModel';
+import { IBaseIdName } from '@/models/commonModel';
 import classes from '@/components/lists/keywordList/KeywordsList.module.css';
 
 interface KeywordsListProps {
-  keywords: IIdName[] | null;
+  keywords: IBaseIdName[] | null;
 }
 
 const KeywordsList = ({ keywords }: KeywordsListProps) => {

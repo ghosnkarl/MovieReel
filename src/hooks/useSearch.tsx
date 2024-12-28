@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { fetchResults } from '../services/http';
 import { IMedia } from '../models/mediaModel';
-import { IIdName } from '../models/commonModel';
+import { IBaseIdName } from '../models/commonModel';
 import { IPerson } from '../models/peopleModel';
 
 interface ISearchType {
@@ -14,7 +14,7 @@ const useSearch = ({ value, query }: ISearchType) =>
     queryKey: [value, { search: query }],
 
     queryFn: () =>
-      fetchResults<IMedia | IIdName | IPerson>({
+      fetchResults<IMedia | IBaseIdName | IPerson>({
         path: `search/${value}`,
         params: { query },
       }),

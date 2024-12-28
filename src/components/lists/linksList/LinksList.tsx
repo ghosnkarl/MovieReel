@@ -1,8 +1,8 @@
-import { IIdName } from '@/models/commonModel';
+import { IBaseIdName } from '@/models/commonModel';
 import classes from '@/components/lists/linksList/LinksList.module.css';
 
 interface LinksListProps {
-  links: IIdName[] | undefined;
+  links: IBaseIdName[] | undefined;
   title: string;
 }
 

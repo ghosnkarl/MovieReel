@@ -1,11 +1,11 @@
 import { IMedia } from './mediaModel';
 
-export interface IIdName {
+export interface IBaseIdName {
   id: number;
   name: string;
 }
 
-export interface ICollectionDetails extends IIdName {
+export interface ICollectionDetails extends IBaseIdName {
   parts: IMedia[];
 }
 
@@ -26,7 +26,7 @@ export interface IReview {
   url: string;
 }
 
-export interface IVideo extends IIdName {
+export interface IVideo extends IBaseIdName {
   key: string;
   type: string;
 }
