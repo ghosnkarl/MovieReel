@@ -1,42 +1,40 @@
-.filter-container {
+.filterContainer {
   display: flex;
   flex-direction: column;
   width: 25%;
   border-radius: 10px;
-
   height: fit-content;
-  padding: 2.4rem 1.4rem 2.4rem 1.4rem;
+  padding: 2.4rem 1.4rem;
   gap: 2.4rem;
 }
 
-.filter-container h1 {
+.filterContainer h1 {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1.2rem;
 }
 
-.dates-container {
+.datesContainer {
   gap: 1.2rem;
   display: flex;
   flex-direction: column;
 }
 
-.dates-container div {
+.datesContainer div {
   display: flex;
   align-items: center;
 }
 
-.dates-container div p {
+.datesContainer div p {
   flex: 1;
   font-size: 1.4rem;
 }
 
-.dates-container div input {
+.datesContainer div input {
   flex: 2;
   background: none;
   border: none;
   outline: none;
-
   padding: 1rem 1.2rem;
   font-family: inherit;
   font-size: 1.4rem;

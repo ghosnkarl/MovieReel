@@ -22,30 +22,28 @@ interface IMediaItemsProps {
 }
 
 export const MediaItems = ({ media, mediaType }: IMediaItemsProps) => {
-  return (
-    <>
-      {media.length > 0 && (
-        <div className={'grid--6-cols'}>
-          {media.map((item) => (
-            <MediaItem
-              key={item.credit_id}
-              id={item.id}
-              title={item.title || item.name}
-              type={item.media_type}
-              poster_path={item.poster_path}
-              text={'character' in item ? item.character : item.job}
-            />
-          ))}
-        </div>
-      )}
+  if (media.length === 0) {
+    return (
+      <EmptyResource
+        title='No Media'
+        description={`There are no ${mediaType} for this person.`}
+      />
+    );
+  }
 
-      {media.length === 0 && (
-        <EmptyResource
-          title='No Media'
-          description={`There are no ${mediaType} for this person.`}
+  return (
+    <div className={'grid--6-cols'}>
+      {media.map((item) => (
+        <MediaItem
+          key={item.credit_id}
+          id={item.id}
+          title={item.title || item.name}
+          type={item.media_type}
+          poster_path={item.poster_path}
+          text={'character' in item ? item.character : item.job}
         />
-      )}
-    </>
+      ))}
+    </div>
   );
 };
 
@@ -54,18 +52,15 @@ interface IDetailsItemProps {
   text: string | null | number;
 }
 
-const DetailsItem = ({ title, text }: IDetailsItemProps) => {
-  return (
-    <div>
-      <p className={classes['details__title']}>{title}</p>
-      <p className={classes['details__text']}>{text}</p>
-    </div>
-  );
-};
+const DetailsItem = ({ title, text }: IDetailsItemProps) => (
+  <div>
+    <p className={classes.detailsTitle}>{title}</p>
+    <p className={classes.detailsText}>{text}</p>
+  </div>
+);
 
 const PeopleDetailsPage = () => {
-  const params = useParams();
-  const personId = params.personId;
+  const { personId } = useParams();
   const [selectedTab, setSelectedTab] = useState(CREDITS_TABS[0]);
 
   const { data, isLoading, isError } = usePersonDetails({ personId });
@@ -74,6 +69,7 @@ const PeopleDetailsPage = () => {
     setSelectedTab(tab);
   };
 
+  // Memoizing profile images
   const profiles = useMemo(() => {
     if (!data?.images?.profiles) return [];
     return data.images.profiles.map((profile: IImage) => ({
@@ -85,14 +81,12 @@ const PeopleDetailsPage = () => {
   if (isLoading) return <LoadingIndicator />;
   if (isError || !data) return <ErrorPage />;
 
-  const movies = data.combined_credits.cast.filter(
-    (item) => item.media_type === MOVIE_TYPE
-  );
-  const tvShows = data.combined_credits.cast.filter(
-    (item) => item.media_type === TV_TYPE
-  );
+  // Destructuring combined_credits
+  const { cast, crew } = data.combined_credits || {};
 
-  const { crew } = data.combined_credits;
+  const movies = cast?.filter((item) => item.media_type === MOVIE_TYPE) || [];
+  const tvShows = cast?.filter((item) => item.media_type === TV_TYPE) || [];
+
   const birthdate = data.birthday
     ? `${format.date(data.birthday)}  ${
         data.deathday
@@ -108,18 +102,17 @@ const PeopleDetailsPage = () => {
     <div>
       <div className={classes.header}>
         <img
-          className={classes['profile-img']}
+          className={classes.profileImg}
           alt={data.name}
           src={tmdbImage.profile(data.profile_path, 'h632')}
         />
-        <div className={classes['text__container']}>
+        <div className={classes.textContainer}>
           <h1 className={classes.name}>{data.name}</h1>
-          <div className={classes['details__container']}>
+          <div className={classes.detailsContainer}>
             <DetailsItem
               title='Known for'
               text={data.known_for_department || 'Unknown'}
             />
-
             <DetailsItem title='Birthdate' text={birthdate} />
 
             {data.deathday && data.birthday && (
@@ -136,7 +129,6 @@ const PeopleDetailsPage = () => {
               title='Hometown'
               text={data.place_of_birth || 'Unknown'}
             />
-
             <DetailsItem title='Acting credits' text={movies.length} />
             <DetailsItem title='TV acting credits' text={tvShows.length} />
             <DetailsItem
@@ -152,8 +144,8 @@ const PeopleDetailsPage = () => {
           </div>
         </div>
       </div>
-      <div className={classes['main-content']}>
-        <div className={classes['combined-credits']}>
+      <div className={classes.mainContent}>
+        <div className={classes.combinedCredits}>
           <Tabs
             onSelectType={handleSelectTab}
             selectedType={selectedTab}
@@ -172,10 +164,7 @@ const PeopleDetailsPage = () => {
           {selectedTab.value === TV_TYPE && (
             <MediaItems media={tvShows} mediaType='tv acting credits' />
           )}
-          {selectedTab.value === 'crew' && data.combined_credits.crew && (
-            <TaggedList crew={crew} />
-          )}
-
+          {selectedTab.value === 'crew' && crew && <TaggedList crew={crew} />}
           {selectedTab.value === 'images' && (
             <ImageList images={profiles} mediaTitle={data.name} />
           )}

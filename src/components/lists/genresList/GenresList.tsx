@@ -3,9 +3,9 @@ import classes from './GenresList.module.css';
 
 const GenresList = ({ genres }: { genres: IIdName[] }) => {
   return (
-    <ul className={classes.genres__list}>
+    <ul className={classes.list}>
       {genres.map((genre) => (
-        <li key={genre.id} className={classes.genres__item}>
+        <li key={genre.id} className={classes.item}>
           {genre.name}
         </li>
       ))}

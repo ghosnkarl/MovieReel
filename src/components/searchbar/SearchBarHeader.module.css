@@ -9,12 +9,12 @@
   padding: 1rem 1.4rem;
 }
 
-.search__icon {
+.searchIcon {
   font-size: 2.6rem;
   margin-right: 1.6rem;
 }
 
-.dropdown-content {
+.dropdownContent {
   position: absolute;
   min-width: 100%;
   top: 100%;
@@ -33,7 +33,7 @@
   box-shadow: var(--card--box-shadow);
 }
 
-.content-open {
+.contentOpen {
   opacity: 1;
   transform: translateY(0);
   pointer-events: all;
@@ -59,7 +59,7 @@
 }
 
 @media (max-width: 1150px) {
-  .search__container {
+  .search {
     flex: 1;
   }
 }

@@ -9,20 +9,3 @@
   font-weight: 700;
   margin-left: var(--horizontal-list--padding);
 }
-
-.list__container {
-  display: flex;
-  gap: 1.6rem;
-  padding: 1.6rem var(--horizontal-list--padding) 1.2rem
-    var(--horizontal-list--padding);
-  scroll-behavior: smooth;
-  list-style: none;
-  overflow: hidden;
-}
-
-.arrows__container {
-  display: flex;
-  align-items: center;
-  height: 3.4rem;
-  gap: 1.6rem;
-}

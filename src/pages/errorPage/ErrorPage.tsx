@@ -25,8 +25,8 @@ const ErrorPage = () => {
     <>
       <Navigation />
       <div className={classes.error}>
-        <h1 className={classes['error__title']}>Oops! An error Occured!</h1>
-        <h2 className={classes['error__message']}>{errorMessage}</h2>
+        <h1 className={classes.title}>Oops! An error Occured!</h1>
+        <h2 className={classes.message}>{errorMessage}</h2>
         <button
           onClick={() => window.location.reload()}
           className={classes.back}

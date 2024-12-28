@@ -10,7 +10,7 @@ const SearchTag = ({ title, onRemoveTag }: SearchTagProps) => {
   return (
     <div className={classes.container}>
       {title}
-      <IoClose onClick={onRemoveTag} className={classes['close-icon']} />
+      <IoClose onClick={onRemoveTag} className={classes.icon} />
     </div>
   );
 };

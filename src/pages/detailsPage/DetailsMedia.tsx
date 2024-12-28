@@ -38,7 +38,7 @@ const DetailsMedia = ({ media }: IMediaDetails) => {
 
   return (
     <div className={classes.container}>
-      <h1 className='section__title'>Details</h1>
+      <h1 className='sectionTitle'>Details</h1>
       <div className={classes.details}>
         <DetailsMediaItem title='Created By' text={formattedCreatedBy} />
 
@@ -62,14 +62,14 @@ const DetailsMedia = ({ media }: IMediaDetails) => {
         />
 
         <div>
-          <p className={classes['details__title']}>External Links</p>
-          <div className={classes['links__container']}>
+          <p className={classes.detailsTitle}>External Links</p>
+          <div className={classes.linksContainer}>
             {!homepage && !imdb_id && (
-              <p className={classes['details__text']}>Not specified</p>
+              <p className={classes.detailsText}>Not specified</p>
             )}
             {homepage && (
               <NavLink
-                className={classes['external__link']}
+                className={classes.externalLink}
                 target='_blank'
                 to={homepage}
               >
@@ -79,7 +79,7 @@ const DetailsMedia = ({ media }: IMediaDetails) => {
 
             {imdb_id && (
               <NavLink
-                className={classes['external__link']}
+                className={classes.externalLink}
                 target='_blank'
                 to={`https://www.imdb.com/title/${imdb_id}`}
               >

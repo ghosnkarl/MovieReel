@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-.img-container {
+.imgContainer {
   overflow: hidden;
   width: 100%;
   aspect-ratio: 1;
@@ -19,8 +19,8 @@
   box-shadow: 0px 4px 4px 2px rgba(0, 0, 0, 0.3);
 }
 
-.container:hover .img-container,
-.container:active .img-container {
+.container:hover .imgContainer,
+.container:active .imgContainer {
   box-shadow: var(--hover-border);
 }
 

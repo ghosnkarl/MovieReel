@@ -7,9 +7,9 @@ interface MediaDetailsItem {
 const DetailsMediaItem = ({ title, text }: MediaDetailsItem) => {
   if (!text) return null;
   return (
-    <div className={classes['details__container']}>
-      <p className={classes['details__title']}>{title}</p>
-      <p className={classes['details__text']}>{text}</p>
+    <div className={classes.container}>
+      <p className={classes.title}>{title}</p>
+      <p className={classes.text}>{text}</p>
     </div>
   );
 };

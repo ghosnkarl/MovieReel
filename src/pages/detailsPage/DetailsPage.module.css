@@ -1,16 +1,16 @@
-.main-container {
+.mainContainer {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
 }
 
-.details__container {
+.detailsContainer {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 4.8rem;
 }
 
-.details__main {
+.detailsMain {
   display: flex;
   flex-direction: column;
   gap: 4.8rem;

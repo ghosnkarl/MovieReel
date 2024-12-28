@@ -21,7 +21,7 @@ const FilterBox = () => {
   };
 
   const handleSearch = () => {
-    const filterObj: { [ket: string]: string } = {};
+    const filterObj: { [key: string]: string } = {};
 
     filterObj.sort_by = selectedSortItem.value;
 
@@ -33,7 +33,7 @@ const FilterBox = () => {
   };
 
   return (
-    <div className={classes['filter-container']}>
+    <div className={classes.filterContainer}>
       <div>
         <h1>Filter</h1>
         <Dropdown
@@ -46,7 +46,7 @@ const FilterBox = () => {
         <h1>Genres</h1>
         <GenresPicker />
       </div>
-      <div className={classes['dates-container']}>
+      <div className={classes.datesContainer}>
         <h1>Release Dates</h1>
         <div>
           <p>From</p>
@@ -86,4 +86,5 @@ const FilterBox = () => {
     </div>
   );
 };
+
 export default FilterBox;

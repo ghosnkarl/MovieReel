@@ -23,7 +23,7 @@ const MobileNavigation = ({
         <MdClose className={classes.close} onClick={() => setOpen(false)} />
       </div>
 
-      <div className={classes['search__container']}>
+      <div className={classes.searchContainer}>
         <SearchBarHeader setMobileMenuOpen={setOpen} />
       </div>
       <ul className={classes.list}>

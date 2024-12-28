@@ -13,7 +13,7 @@ interface IPersonItem {
 const PersonItem = ({ id, profile_path, title, text }: IPersonItem) => {
   return (
     <NavLink to={`/${PERSON_TYPE}/${id}`} className={classes.container}>
-      <div className={classes['img-container']}>
+      <div className={classes.imgContainer}>
         <img
           className={classes.img}
           src={tmdbImage.profile(profile_path, 'w185')}

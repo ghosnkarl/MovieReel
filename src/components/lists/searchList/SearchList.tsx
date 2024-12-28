@@ -41,7 +41,7 @@ const SearchItem = ({
       tabIndex={-1}
     >
       {poster && <img className={classes.poster} src={poster} alt={title} />}
-      <div className={classes['text__container']}>
+      <div className={classes.textContainer}>
         <h1 className={classes.title}>{title}</h1>
         {date && <p className={classes.text}>{format.year(date)}</p>}
       </div>

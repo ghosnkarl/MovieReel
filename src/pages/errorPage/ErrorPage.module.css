@@ -10,12 +10,12 @@
   gap: 3.2rem;
 }
 
-.error__title {
+.title {
   font-size: 5.2rem;
   font-weight: 500;
 }
 
-.error__message {
+.message {
   font-size: 2.4rem;
   font-weight: 400;
   color: var(--color-gray-200);

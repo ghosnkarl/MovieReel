@@ -1,13 +1,12 @@
-.links__container {
+.title {
+  font-size: 1.8rem;
+  color: var(--color-gray-300);
+  margin-bottom: 1.8rem;
+}
+.list {
   display: flex;
   flex-wrap: wrap;
   gap: 1.6rem;
   font-size: 1.6em;
   list-style: none;
-}
-
-.details__title {
-  font-size: 1.8rem;
-  color: var(--color-gray-300);
-  margin-bottom: 1.8rem;
 }

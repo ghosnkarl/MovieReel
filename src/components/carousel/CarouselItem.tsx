@@ -14,27 +14,24 @@ interface ICarousel {
 }
 
 const CarouselItem = ({ item, genres, media_type }: ICarousel) => (
-  <NavLink
-    to={`/${media_type}/${item.id}`}
-    className={classes['item__container']}
-  >
+  <NavLink to={`/${media_type}/${item.id}`} className={classes.itemContainer}>
     <img
       className={classes.backdrop}
       src={tmdbImage.backdrop(item.backdrop_path, 'w1280')}
       alt={item.title || item.name}
     />
-    <div className={classes['item__content']}>
+    <div className={classes.itemContent}>
       <img
         className={classes.poster}
         src={tmdbImage.poster(item.poster_path, 'w500')}
         alt={item.title || item.name}
       />
-      <div className={classes['text__container']}>
+      <div className={classes.textContainer}>
         {genres && (
           <p className={classes.genres}>{getGenres(item.genre_ids, genres)}</p>
         )}
         <h1 className={classes.title}>{item.title || item.name}</h1>
-        <div className={classes['details__container']}>
+        <div className={classes.detailsContainer}>
           <Rating rating={item.vote_average} />
 
           <p className={classes.date}>

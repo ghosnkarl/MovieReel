@@ -43,7 +43,7 @@ const ReviewsList = ({ reviews, mediaTitle }: IReviewsList) => {
   return (
     <>
       {reviews.length > 0 && (
-        <ul className={classes['reviews-list']}>
+        <ul className={classes.reviewsList}>
           {reviews.map((review) => (
             <ReviewItem key={review.id} review={review} />
           ))}

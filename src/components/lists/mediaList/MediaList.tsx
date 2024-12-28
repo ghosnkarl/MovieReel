@@ -27,11 +27,11 @@ export const MediaItem = ({
   return (
     <NavLink
       to={link}
-      className={classes['link__wrapper']}
+      className={classes.linkWrapper}
       state={{ title, image: tmdbImage.poster(poster_path, 'w342') }}
     >
       <div className={classes.container}>
-        <div className={classes['img__container']}>
+        <div className={classes.imgContainer}>
           <img
             className={classes.poster}
             src={tmdbImage.poster(poster_path, 'w342')}

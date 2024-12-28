@@ -10,9 +10,9 @@ interface ITagProps {
 const Tag: React.FC<ITagProps> = ({ children, selected, onClick }) => (
   <span
     onClick={onClick}
-    className={`${classes.tag} ${selected ? classes['tag--selected'] : ''}`}
+    className={`${classes.tag} ${selected ? classes.tagSelected : ''}`}
   >
-    {selected && <MdCheck className={classes['tag__check']} />}
+    {selected && <MdCheck className={classes.tagCheck} />}
     {children}
   </span>
 );

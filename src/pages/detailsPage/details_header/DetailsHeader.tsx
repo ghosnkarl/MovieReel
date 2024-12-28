@@ -34,21 +34,21 @@ const DetailsHeader = ({ media }: IDetailsHeader) => {
   return (
     <div className={classes.header}>
       <img
-        className={classes['header__poster']}
+        className={classes.headerPoster}
         src={tmdbImage.poster(poster_path, 'w780')}
         alt={title || name}
       />
-      <div className={classes['header__info']}>
-        <div className={classes['header__rating-genres']}>
+      <div className={classes.headerInfo}>
+        <div className={classes.headerRatingGenres}>
           <Rating rating={vote_average} />
           <GenresList genres={genres} />
         </div>
-        <h1 className={classes['header__title']}>{title || name}</h1>
+        <h1 className={classes.headerTitle}>{title || name}</h1>
 
-        <p className={classes['header__tagline']}>{tagline}</p>
-        <p className={classes['header__overview']}>{overview}</p>
+        <p className={classes.headerTagline}>{tagline}</p>
+        <p className={classes.headerOverview}>{overview}</p>
 
-        <div className={classes['header__details']}>
+        <div className={classes.headerDetails}>
           <DetailsMediaItem title='Status' text={status} />
           <DetailsMediaItem
             title='Release Date'

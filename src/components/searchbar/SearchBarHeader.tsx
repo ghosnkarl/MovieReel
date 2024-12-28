@@ -82,8 +82,8 @@ const SearchBarHeader = ({
       )}
       <div
         ref={dropdownRef}
-        className={`${classes['dropdown-content']} ${
-          open ? classes['content-open'] : ''
+        className={`${classes.dropdownContent} ${
+          open ? classes.contentOpen : ''
         }`}
       >
         {searchQuery.data && searchQuery.data.results.length > 0 && (

@@ -19,7 +19,7 @@ const GenresPicker = () => {
   if (isLoading || isError || !data) return;
 
   return (
-    <div className={classes['genres-container']}>
+    <div className={classes.genresContainer}>
       {data.map((genre) => (
         <span
           className={`${

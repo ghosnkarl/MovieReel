@@ -11,9 +11,9 @@ const LinksList = ({ links, title }: ILinksListProps) => {
 
   return (
     <div>
-      <p className={classes['details__title']}>{title}</p>
+      <p className={classes.title}>{title}</p>
 
-      <ul className={classes['links__container']}>
+      <ul className={classes.list}>
         {links.map((link) => (
           <li key={link.id}>{link.name}</li>
         ))}

@@ -15,9 +15,9 @@ const VideoItem = ({ video }: IVideoItem) => {
       target='_blank'
       className={classes.container}
     >
-      <div className={classes['img__container']}>
+      <div className={classes.imgContainer}>
         <LazyLoadImage
-          className={classes['video__img']}
+          className={classes.videoImg}
           alt={video.name}
           src={`https://img.youtube.com/vi/${video.key}/hqdefault.jpg`}
         />

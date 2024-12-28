@@ -1,20 +1,19 @@
 .container:link,
 .container:visited {
   display: flex;
-
   flex-direction: column;
   cursor: pointer;
 }
 
-.container:hover .img__container {
+.container:hover .imgContainer {
   box-shadow: 0 0 0 2px white;
 }
 
-.container:hover .video__img {
+.container:hover .videoImg {
   transform: scale(1.1);
 }
 
-.img__container {
+.imgContainer {
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.2);
@@ -22,7 +21,7 @@
   margin-bottom: 1.2rem;
 }
 
-.video__img {
+.videoImg {
   object-fit: cover;
   width: 100%;
   height: 100%;

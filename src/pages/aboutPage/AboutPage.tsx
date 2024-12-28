@@ -36,11 +36,7 @@ const AboutPage = () => {
         <h2>About This Project</h2>
         <p>
           MovieReel is a movie discovery platform that fetches data from{' '}
-          <NavLink
-            className={styles['about__link']}
-            target='_blank'
-            to={links.TMDB}
-          >
+          <NavLink className={styles.aboutLink} target='_blank' to={links.TMDB}>
             The Movie Database (TMDB) API
           </NavLink>
           . It allows users to explore movies, TV shows, and related content
@@ -63,11 +59,7 @@ const AboutPage = () => {
         <ul>
           {LINKS.map((link) => (
             <li key={link.title}>
-              <a
-                href={link.link}
-                target='_blank'
-                className={styles['about__link']}
-              >
+              <a href={link.link} target='_blank' className={styles.aboutLink}>
                 {link.title}
               </a>
             </li>
@@ -80,10 +72,7 @@ const AboutPage = () => {
         <p>If you have any questions or feedback, feel free to reach out!</p>
         <p>
           Email:{' '}
-          <NavLink
-            className={styles['about__link']}
-            to={`mailto:${links.EMAIL}`}
-          >
+          <NavLink className={styles.aboutLink} to={`mailto:${links.EMAIL}`}>
             {links.EMAIL}
           </NavLink>
         </p>

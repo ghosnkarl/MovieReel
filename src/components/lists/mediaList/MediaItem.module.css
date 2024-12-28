@@ -1,5 +1,5 @@
-.link__wrapper:link,
-.link__wrapper:visited {
+.linkWrapper:link,
+.linkWrapper:visited {
   color: white;
   text-decoration: none;
 }
@@ -10,7 +10,7 @@
   /* width: 22rem; */
 }
 
-.container:hover .img__container {
+.container:hover .imgContainer {
   box-shadow: var(--hover-border);
 }
 
@@ -18,7 +18,7 @@
   transform: scale(1.1);
 }
 
-.img__container {
+.imgContainer {
   overflow: hidden;
   aspect-ratio: 0.7;
   width: 100%;

@@ -15,7 +15,6 @@ const NavigationItem = ({ item }: { item: (typeof NAV_LINKS)[0] }) => {
         className={({ isActive }) => (isActive ? classes.active : undefined)}
       >
         <span className={classes.icon}>{item.icon}</span>
-
         {item.title}
       </NavLink>
     </li>
@@ -31,13 +30,10 @@ export default function Navigation() {
 
   return (
     <header className={classes.header}>
-      <div className={classes['header__content']}>
-        <div className={classes['logo__container']}>
-          <img src={logo} alt='MovieReel logo' />
-          <MdMenu
-            className={classes['menu__icon']}
-            onClick={toggleMobileMenu}
-          />
+      <div className={classes.headerContent}>
+        <div className={classes.logoContainer}>
+          <img src={logo} alt='MovieReel logo' className={classes.logo} />
+          <MdMenu className={classes.menuIcon} onClick={toggleMobileMenu} />
         </div>
         <nav className={classes.navigation}>
           <ul className={classes.list}>
@@ -46,10 +42,10 @@ export default function Navigation() {
             ))}
           </ul>
         </nav>
-        <div className={classes['search__container']}>
+        <div className={classes.searchContainer}>
           <SearchBarHeader />
         </div>
-        <MdSearch className={classes.search__icon} onClick={toggleMobileMenu} />
+        <MdSearch className={classes.searchIcon} onClick={toggleMobileMenu} />
       </div>
 
       <div

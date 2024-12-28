@@ -13,7 +13,6 @@
   padding: 1rem 2rem;
   font-size: 1.4rem;
   border-radius: 1000px;
-  /* background-color: var(--color-gray-800); */
   border: 2px solid white;
   color: var(--color-gray-200);
   box-shadow: var(--card--box-shadow);
@@ -26,13 +25,13 @@
   }
 }
 
-.tag--selected {
+.tagSelected {
   padding: 0.6rem 2rem 0.6rem 1.2rem;
   background-color: white;
   color: black;
 }
 
-.tag__check {
+.tagCheck {
   font-size: 2rem;
 }
 

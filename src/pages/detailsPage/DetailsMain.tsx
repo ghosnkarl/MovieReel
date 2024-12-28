@@ -18,7 +18,7 @@ const DetailsMain = ({ media }: IDetailsMainContainer) => {
   const { data: collectionList } = useCollectionDetails({ collectionId });
 
   return (
-    <div className={classes['details__main']}>
+    <div className={classes.detailsMain}>
       <DetailsMedia media={media} />
 
       {media.seasons && (

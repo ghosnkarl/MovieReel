@@ -26,7 +26,8 @@
   align-items: center;
   padding: 1.2rem 2.4rem;
 }
-.search__container {
+
+.searchContainer {
   position: relative;
   height: var(--search-container-height);
   display: flex;

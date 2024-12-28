@@ -28,8 +28,8 @@
   color: var(--color-gray-300);
 }
 
-.about__link:link,
-.about__link:visited {
+.aboutLink:link,
+.aboutLink:visited {
   color: #4fa3f7;
   text-decoration: none;
   font-weight: bold;

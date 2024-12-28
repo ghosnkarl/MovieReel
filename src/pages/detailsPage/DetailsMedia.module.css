@@ -10,8 +10,8 @@
   gap: 3.2rem;
 }
 
-.external__link:link,
-.external__link:visited {
+.externalLink:link,
+.externalLink:visited {
   text-decoration: underline;
   text-underline-offset: 0.3rem;
   text-decoration-thickness: 0.2rem;
@@ -21,18 +21,18 @@
   color: var(--color-gray-400);
 }
 
-.external__link:hover,
-.external__link:active {
+.externalLink:hover,
+.externalLink:active {
   color: white;
 }
 
-.links__container {
+.linksContainer {
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
 }
 
-.details__title {
+.detailsTitle {
   font-size: 1.8rem;
   color: var(--color-gray-300);
   margin-bottom: 1.8rem;

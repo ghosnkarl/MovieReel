@@ -9,14 +9,9 @@ interface DropdownButtonProps {
 
 const DropdownButton = ({ children, open, toggle }: DropdownButtonProps) => {
   return (
-    <div
-      onClick={toggle}
-      className={`${classes['dropdown-btn']} ${
-        open ? classes['button-open'] : ''
-      }`}
-    >
+    <div onClick={toggle} className={classes.dropdownBtn}>
       {children}
-      <span className={classes['toggle-icon']}>
+      <span className={classes.toggleIcon}>
         {open ? <FaChevronUp /> : <FaChevronDown />}
       </span>
     </div>

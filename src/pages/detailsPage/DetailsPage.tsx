@@ -75,7 +75,7 @@ const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
 
   return (
     <div>
-      <div className={classes['main-container']}>
+      <div className={classes.mainContainer}>
         <DetailsHeader media={data} />
         <Tabs
           onSelectType={setSelectedTab}
