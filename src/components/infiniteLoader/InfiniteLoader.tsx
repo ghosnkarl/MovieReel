@@ -1,6 +1,6 @@
 import { useInView } from 'react-intersection-observer';
-import LoadingIndicator from '../ui/LoadingIndicator';
 import { ReactNode, useEffect } from 'react';
+import LoadingIndicator from '../ui/loadingSpinner/LoadingIndicator';
 
 interface InfiniteLoaderProps {
   hasNextPage: boolean;

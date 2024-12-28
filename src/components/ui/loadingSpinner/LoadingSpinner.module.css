@@ -3,6 +3,8 @@
   border-top-color: #ffffff;
   border-radius: 50%;
   animation: spin 1s linear infinite;
+  width: 40px;
+  height: 40px;
 }
 
 .small {
@@ -10,22 +12,9 @@
   height: 20px;
 }
 
-.medium {
-  width: 40px;
-  height: 40px;
-}
-
 .large {
   width: 60px;
   height: 60px;
-}
-
-.dark {
-  border-top-color: #000000;
-}
-
-.light {
-  border-top-color: #ffffff;
 }
 
 .progress {

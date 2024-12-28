@@ -1,8 +1,9 @@
 import PersonItem from '../../components/personItem/PersonItem';
-import LoadingIndicator from '../../components/ui/LoadingIndicator';
+
 import ErrorPage from '../errorPage/ErrorPage';
 import InfiniteLoader from '../../components/infiniteLoader/InfiniteLoader';
 import useInfinitePeopleQuery from '../../hooks/useInfinitePeopleQuery';
+import LoadingIndicator from '../../components/ui/loadingSpinner/LoadingIndicator';
 
 export default function PeoplePage() {
   const {

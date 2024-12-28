@@ -1,12 +1,12 @@
 import { UseQueryResult } from '@tanstack/react-query';
 import HorizontalList from './HorizontalList';
-import LoadingIndicator from '../ui/LoadingIndicator';
 import { IMedia } from '../../models/mediaModel';
 import { IPeople } from '../../models/peopleModel';
 import { MediaType } from '../../helpers/constants';
 import ErrorComponent from '../ui/errorComponent/ErrorComponent';
 import { ISeason } from '../../models/seasonModel';
 import { IResultsProps } from '../../services/http';
+import LoadingIndicator from '../ui/loadingSpinner/LoadingIndicator';
 
 export type QueryData = IMedia | IPeople | ISeason;
 export type DataType = MediaType | 'season';

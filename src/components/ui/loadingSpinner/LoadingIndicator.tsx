@@ -1,4 +1,4 @@
-import LoadingSpinner from './loadingSpinner/LoadingSpinner';
+import LoadingSpinner from './LoadingSpinner';
 
 export default function LoadingIndicator() {
   return (

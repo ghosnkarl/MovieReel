@@ -6,7 +6,6 @@ import Tabs, { TabObjectProps } from '../../components/ui/tabs/Tabs';
 import { ICastMedia, ICrewMedia } from '../../models/peopleModel';
 import { IImage } from '../../models/commonModel';
 import { MediaItem } from '../../components/lists/mediaList/MediaList';
-import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import ErrorPage from '../errorPage/ErrorPage';
 import ImageList from '../../components/lists/imageList/ImageList';
 import TaggedList from './TaggedList';
@@ -15,6 +14,7 @@ import usePersonDetails from '../../hooks/usePersonDetails';
 import { tmdbImage } from '../../helpers/imageSizes';
 import { format } from '../../helpers/format';
 import { MediaType } from '../../helpers/constants';
+import LoadingIndicator from '../../components/ui/loadingSpinner/LoadingIndicator';
 
 interface MediaItemsProps {
   media: ICastMedia[] | ICrewMedia[];

@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom';
 import classes from './DetailsPage.module.css';
 import DetailsHeader from './details_header/DetailsHeader';
 import DetailsMain from './DetailsMain';
-import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import ErrorPage from '../errorPage/ErrorPage';
 import useDetails from '../../hooks/useDetails';
 import Tabs from '../../components/ui/tabs/Tabs';
@@ -14,6 +13,7 @@ import CrewList from '../../components/lists/crewList/CrewList';
 import VideoList from '../../components/lists/videoList/VideoList';
 import ImageList from '../../components/lists/imageList/ImageList';
 import { getGalleryImages } from '../../helpers/galleryImages';
+import LoadingIndicator from '../../components/ui/loadingSpinner/LoadingIndicator';
 
 const DetailsPage = ({ isMovie }: { isMovie: boolean }) => {
   const params = useParams();
