@@ -1,23 +1,26 @@
-import HeaderLink from '../ui/headerLink/HeaderLink';
-import classes from './HorizontalList.module.css';
-import { IPeople } from '../../models/peopleModel';
+import HeaderLink from '@/components/ui/headerLink/HeaderLink';
+import classes from '@/components/horizontalList/HorizontalList.module.css';
+import { IPeople } from '@/models/peopleModel';
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { MediaItem } from '../lists/mediaList/MediaList';
-import PersonItem from '../personItem/PersonItem';
+import { MediaItem } from '@/components/lists/mediaList/MediaList';
+import PersonItem from '@/components/personItem/PersonItem';
 import { motion } from 'framer-motion';
-import { DataType, QueryData } from './HorizontalWrapper';
+import {
+  DataType,
+  QueryData,
+} from '@/components/horizontalList/HorizontalWrapper';
 import { useRef, useState } from 'react';
 import { NavigationOptions, Swiper as SwiperType } from 'swiper/types';
-import { IMedia } from '../../models/mediaModel';
-import { ISeason } from '../../models/seasonModel';
-import { tmdbImage } from '../../helpers/imageSizes';
-import { format } from '../../helpers/format';
-import { MediaType } from '../../helpers/constants';
+import { IMedia } from '@/models/mediaModel';
+import { ISeason } from '@/models/seasonModel';
+import { tmdbImage } from '@/helpers/imageSizes';
+import { format } from '@/helpers/format';
+import { MediaType } from '@/helpers/constants';
 
 interface HorizontalListProps {
   title: string;

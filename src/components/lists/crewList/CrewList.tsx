@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { ICrew } from '../../../models/castCrewModel';
-import TagsList from '../tagsList/TagsList';
-import CreditsList from '../creditsList/CreditsList';
+import { ICrew } from '@/models/castCrewModel';
+import TagsList from '@/components/lists/tagsList/TagsList';
+import CreditsList from '@/components/lists/creditsList/CreditsList';
 
 const CrewList = ({ crew }: { crew: ICrew[] | undefined }) => {
   let filteredCrewList: ICrew[] = [];

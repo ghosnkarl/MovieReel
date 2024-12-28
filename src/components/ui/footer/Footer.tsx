@@ -1,8 +1,8 @@
 import { FaBug, FaGithub } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
-import { footerData } from '../../../data/footerData';
-import classes from './Footer.module.css';
-import { links } from '../../../helpers/links';
+import { footerData } from '@/data/footerData';
+import classes from '@/components/ui/footer/Footer.module.css';
+import { links } from '@/helpers/links';
 import logo from '/logo.svg';
 
 const Footer = () => {

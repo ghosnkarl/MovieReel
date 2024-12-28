@@ -1,14 +1,14 @@
-import classes from './Homepage.module.css';
-import { airingTodayDates, upComingDates } from '../../helpers/discoverHelpers';
-import HorizontalWrapper from '../../components/horizontalList/HorizontalWrapper';
+import classes from '@/pages/homepage/Homepage.module.css';
+import { airingTodayDates, upComingDates } from '@/helpers/discoverHelpers';
+import HorizontalWrapper from '@/components/horizontalList/HorizontalWrapper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import Carousel from '../../components/carousel/Carousel';
-import useTrending from '../../hooks/useTrending';
-import useDiscover from '../../hooks/useDiscover';
-import usePopularPeople from '../../hooks/usePopularPeople';
-import { MediaType } from '../../helpers/constants';
+import Carousel from '@/components/carousel/Carousel';
+import useTrending from '@/hooks/useTrending';
+import useDiscover from '@/hooks/useDiscover';
+import usePopularPeople from '@/hooks/usePopularPeople';
+import { MediaType } from '@/helpers/constants';
 
 export default function HomePage() {
   const upcomingMoviesQuery = useDiscover({

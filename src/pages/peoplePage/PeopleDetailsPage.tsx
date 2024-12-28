@@ -1,20 +1,20 @@
 import { useParams } from 'react-router-dom';
 import classes from './PeopleDetailsPage.module.css';
 import { useMemo, useState } from 'react';
-import { CREDITS_TABS } from '../../data/tabsData';
-import Tabs, { TabObjectProps } from '../../components/ui/tabs/Tabs';
-import { ICastMedia, ICrewMedia } from '../../models/peopleModel';
-import { IImage } from '../../models/commonModel';
-import { MediaItem } from '../../components/lists/mediaList/MediaList';
-import ErrorPage from '../errorPage/ErrorPage';
-import ImageList from '../../components/lists/imageList/ImageList';
+import { CREDITS_TABS } from '@/data/tabsData';
+import Tabs, { TabObjectProps } from '@/components/ui/tabs/Tabs';
+import { ICastMedia, ICrewMedia } from '@/models/peopleModel';
+import { IImage } from '@/models/commonModel';
+import { MediaItem } from '@/components/lists/mediaList/MediaList';
+import ErrorPage from '@/pages/errorPage/ErrorPage';
+import ImageList from '@/components/lists/imageList/ImageList';
 import TaggedList from './TaggedList';
-import EmptyResource from '../../components/ui/emptyResource/EmptyResource';
-import usePersonDetails from '../../hooks/usePersonDetails';
-import { tmdbImage } from '../../helpers/imageSizes';
-import { format } from '../../helpers/format';
-import { MediaType } from '../../helpers/constants';
-import LoadingIndicator from '../../components/ui/loadingSpinner/LoadingIndicator';
+import EmptyResource from '@/components/ui/emptyResource/EmptyResource';
+import usePersonDetails from '@/hooks/usePersonDetails';
+import { tmdbImage } from '@/helpers/imageSizes';
+import { format } from '@/helpers/format';
+import { MediaType } from '@/helpers/constants';
+import LoadingIndicator from '@/components/ui/loadingSpinner/LoadingIndicator';
 
 interface MediaItemsProps {
   media: ICastMedia[] | ICrewMedia[];

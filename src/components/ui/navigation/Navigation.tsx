@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import classes from './Navigation.module.css';
-import { NAV_LINKS } from '../../../data/navLinks';
-import SearchBarHeader from '../../searchbar/SearchBarHeader';
+import { NAV_LINKS } from '@/data/navLinks';
+import SearchBarHeader from '@/components/searchbar/SearchBarHeader';
 import { MdMenu, MdSearch } from 'react-icons/md';
-import MobileNavigation from '../mobileNavigation/MobileNavigation';
 import { useState } from 'react';
 import logo from '/logo.svg';
+import MobileNavigation from '../mobileNavigation/MobileNavigation';
 
 const NavigationItem = ({ item }: { item: (typeof NAV_LINKS)[0] }) => {
   return (

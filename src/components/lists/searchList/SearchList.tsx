@@ -1,9 +1,9 @@
-import classes from './SearchList.module.css';
+import classes from '@/components/lists/searchList/SearchList.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { tmdbImage } from '../../../helpers/imageSizes';
-import { format } from '../../../helpers/format';
-import { MediaType } from '../../../helpers/constants';
+import { tmdbImage } from '@/helpers/imageSizes';
+import { format } from '@/helpers/format';
+import { MediaType } from '@/helpers/constants';
 
 export interface ISearchItem {
   id: number;

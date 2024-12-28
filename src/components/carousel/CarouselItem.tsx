@@ -1,11 +1,11 @@
-import { IMedia } from '../../models/mediaModel';
-import classes from './CarouselItem.module.css';
-import { IIdName } from '../../models/commonModel';
-import { getGenres } from '../../helpers/commonHelpers';
+import { IMedia } from '@/models/mediaModel';
+import classes from '@/components/carousel/CarouselItem.module.css';
+import { IIdName } from '@/models/commonModel';
+import { getGenres } from '@/helpers/commonHelpers';
 import { NavLink } from 'react-router-dom';
-import { MediaType } from '../../helpers/constants';
-import Rating from '../rating/Rating';
-import { tmdbImage } from '../../helpers/imageSizes';
+import { MediaType } from '@/helpers/constants';
+import Rating from '@/components/rating/Rating';
+import { tmdbImage } from '@/helpers/imageSizes';
 
 interface CarouselItemProps {
   item: IMedia;

@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styles from './AboutPage.module.css';
-import { links } from '../../helpers/links';
+import { links } from '@/helpers/links';
 
 const LINKS = [
   {

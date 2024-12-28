@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import TagsList from '../../components/lists/tagsList/TagsList';
+import TagsList from '@/components/lists/tagsList/TagsList';
 import { MediaItems } from './PeopleDetailsPage';
-import { ICrewMedia } from '../../models/peopleModel';
+import { ICrewMedia } from '@/models/peopleModel';
 
 const TaggedList = ({ crew }: { crew: ICrewMedia[] }) => {
   const [selectedJob, setSelectedJob] = useState<string>('');

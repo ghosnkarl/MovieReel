@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
-import classes from './CreditItem.module.css';
-import { tmdbImage } from '../../../helpers/imageSizes';
-import { MediaType } from '../../../helpers/constants';
+import classes from '@/components/lists/creditsList/CreditItem.module.css';
+import { tmdbImage } from '@/helpers/imageSizes';
+import { MediaType } from '@/helpers/constants';
 
 interface CreditItemProps {
   id: number | string;

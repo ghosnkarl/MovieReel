@@ -1,5 +1,5 @@
-import { IIdName } from '../../../models/commonModel';
-import classes from './GenresList.module.css';
+import { IIdName } from '@/models/commonModel';
+import classes from '@/components/lists/genresList/GenresList.module.css';
 
 const GenresList = ({ genres }: { genres: IIdName[] }) => {
   return (

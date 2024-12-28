@@ -1,7 +1,7 @@
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import classes from './ImageList.module.css';
 import { NavLink } from 'react-router-dom';
-import EmptyResource from '../../ui/emptyResource/EmptyResource';
+import EmptyResource from '@/components/ui/emptyResource/EmptyResource';
 
 interface ImageListProps {
   images: {

@@ -1,10 +1,10 @@
-import classes from './DetailsHeader.module.css';
-import Rating from '../../../components/rating/Rating';
-import { IDetails } from '../../../models/detailsModel';
-import GenresList from '../../../components/lists/genresList/GenresList';
-import DetailsMediaItem from '../../../components/detailsMediaItem/DetailsMediaItem';
-import { tmdbImage } from '../../../helpers/imageSizes';
-import { format } from '../../../helpers/format';
+import classes from '@/pages/detailsPage/details_header/DetailsHeader.module.css';
+import Rating from '@/components/rating/Rating';
+import { IDetails } from '@/models/detailsModel';
+import GenresList from '@/components/lists/genresList/GenresList';
+import DetailsMediaItem from '@/components/detailsMediaItem/DetailsMediaItem';
+import { tmdbImage } from '@/helpers/imageSizes';
+import { format } from '@/helpers/format';
 
 const DetailsHeader = ({ media }: { media: IDetails }) => {
   const {

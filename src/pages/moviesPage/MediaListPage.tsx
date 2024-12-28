@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import Tabs, { TabObjectProps } from '../../components/ui/tabs/Tabs';
-import { MOVIE_TABS, TV_TABS } from '../../data/tabsData';
-import MediaList from '../../components/lists/mediaList/MediaList';
-import ErrorPage from '../errorPage/ErrorPage';
+import Tabs, { TabObjectProps } from '@/components/ui/tabs/Tabs';
+import { MOVIE_TABS, TV_TABS } from '@/data/tabsData';
+import MediaList from '@/components/lists/mediaList/MediaList';
+import ErrorPage from '@/pages/errorPage/ErrorPage';
 import { useLocation } from 'react-router-dom';
-import InfiniteLoader from '../../components/infiniteLoader/InfiniteLoader';
-import useInfiniteMediaQuery from '../../hooks/useInfiniteMediaQuery';
-import { MediaType } from '../../helpers/constants';
-import LoadingIndicator from '../../components/ui/loadingSpinner/LoadingIndicator';
+import InfiniteLoader from '@/components/infiniteLoader/InfiniteLoader';
+import useInfiniteMediaQuery from '@/hooks/useInfiniteMediaQuery';
+import { MediaType } from '@/helpers/constants';
+import LoadingIndicator from '@/components/ui/loadingSpinner/LoadingIndicator';
 
 export default function MoviesPage({ type }: { type: MediaType }) {
   const location = useLocation();

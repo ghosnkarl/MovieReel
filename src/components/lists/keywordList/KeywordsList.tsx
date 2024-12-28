@@ -1,5 +1,5 @@
-import { IIdName } from '../../../models/commonModel';
-import classes from './KeywordsList.module.css';
+import { IIdName } from '@/models/commonModel';
+import classes from '@/components/lists/keywordList/KeywordsList.module.css';
 
 interface KeywordsListProps {
   keywords: IIdName[] | null;

@@ -1,6 +1,6 @@
-import { MediaType } from '../../helpers/constants';
-import { IMedia } from '../../models/mediaModel';
-import HorizontalList from '../horizontalList/HorizontalList';
+import { MediaType } from '@/helpers/constants';
+import { IMedia } from '@/models/mediaModel';
+import HorizontalList from '@/components/horizontalList/HorizontalList';
 
 interface RecommendedListProps {
   items: IMedia[];

@@ -1,5 +1,5 @@
-import { ICast, ICrew } from '../../../models/castCrewModel';
-import CreditItem from './CreditItem';
+import { ICast, ICrew } from '@/models/castCrewModel';
+import CreditItem from '@/components/lists/creditsList/CreditItem';
 
 const getCreditDetails = (credit: ICast | ICrew) => {
   const isCast = 'character' in credit || 'roles' in credit;

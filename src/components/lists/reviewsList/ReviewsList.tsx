@@ -1,9 +1,9 @@
-import { IReview } from '../../../models/commonModel';
-import classes from './ReviewsList.module.css';
-import EmptyResource from '../../ui/emptyResource/EmptyResource';
-import Rating from '../../rating/Rating';
-import { tmdbImage } from '../../../helpers/imageSizes';
-import { format } from '../../../helpers/format';
+import { IReview } from '@/models/commonModel';
+import classes from '@/components/lists/reviewsList/ReviewsList.module.css';
+import EmptyResource from '@/components/ui/emptyResource/EmptyResource';
+import Rating from '@/components/rating/Rating';
+import { tmdbImage } from '@/helpers/imageSizes';
+import { format } from '@/helpers/format';
 
 const ReviewItem = ({ review }: { review: IReview }) => {
   const { rating, avatar_path } = review.author_details;

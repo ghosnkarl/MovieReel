@@ -1,11 +1,10 @@
 import { ChangeEvent, useState } from 'react';
-import classes from './FilterBox.module.css';
-import Dropdown, { ItemProps } from '../../dropdown/Dropdown';
-import { SORT } from '../../../data/sortOptions';
-
-import Searchbar from '../../searchbar/Searchbar';
-import GenresPicker from '../genresPicker/GenresPicker';
-import { format } from '../../../helpers/format';
+import classes from '@/components/ui/filterBox/FilterBox.module.css';
+import Dropdown, { ItemProps } from '@/components/dropdown/Dropdown';
+import { SORT } from '@/data/sortOptions';
+import Searchbar from '@/components/searchbar/Searchbar';
+import GenresPicker from '@/components/ui/genresPicker/GenresPicker';
+import { format } from '@/helpers/format';
 
 const FilterBox = () => {
   const [selectedSortItem, setSelectedSortItem] = useState<ItemProps>(SORT[0]);

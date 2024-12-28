@@ -1,7 +1,7 @@
-import classes from './GenresPicker.module.css';
+import classes from '@/components/ui/genresPicker/GenresPicker.module.css';
 import { useState } from 'react';
-import { IIdName } from '../../../models/commonModel';
-import useGenres from '../../../hooks/useGenres';
+import { IIdName } from '@/models/commonModel';
+import useGenres from '@/hooks/useGenres';
 
 const GenresPicker = () => {
   const [selectedGenres, setSelectedGenres] = useState<number[]>([]);

@@ -1,8 +1,8 @@
-import classes from './VideoList.module.css';
+import classes from '@/components/lists/videoList/VideoList.module.css';
 import { NavLink } from 'react-router-dom';
-import { IVideo } from '../../../models/commonModel';
+import { IVideo } from '@/models/commonModel';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import EmptyResource from '../../ui/emptyResource/EmptyResource';
+import EmptyResource from '@/components/ui/emptyResource/EmptyResource';
 
 const VideoItem = ({ video }: { video: IVideo }) => {
   return (

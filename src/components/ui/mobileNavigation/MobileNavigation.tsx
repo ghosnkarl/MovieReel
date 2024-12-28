@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import { NAV_LINKS } from '../../../data/navLinks';
+import { NAV_LINKS } from '@/data/navLinks';
 import classes from './MobileNavigation.module.css';
 import { MdClose } from 'react-icons/md';
-import SearchBarHeader from '../../searchbar/SearchBarHeader';
+import SearchBarHeader from '@/components/searchbar/SearchBarHeader';
 
 const MobileNavigation = ({
   open,

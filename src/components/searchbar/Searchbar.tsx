@@ -1,8 +1,8 @@
 import { ChangeEvent, useRef, useState } from 'react';
-import classes from './Searchbar.module.css';
-import SearchTag from './SearchTag';
-import { IIdName } from '../../models/commonModel';
-import useSearch from '../../hooks/useSearch';
+import classes from '@/components/searchbar/Searchbar.module.css';
+import SearchTag from '@/components/searchbar/SearchTag';
+import { IIdName } from '@/models/commonModel';
+import useSearch from '@/hooks/useSearch';
 
 const Searchbar = () => {
   const [open, setOpen] = useState(false);

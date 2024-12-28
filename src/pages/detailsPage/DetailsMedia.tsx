@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
-import classes from './DetailsMedia.module.css';
-import KeywordsList from '../../components/lists/keywordList/KeywordsList';
-import DetailsMediaItem from '../../components/detailsMediaItem/DetailsMediaItem';
-import { IDetails } from '../../models/detailsModel';
-import LinksList from '../../components/lists/linksList/LinksList';
+import classes from '@/pages/detailsPage/DetailsMedia.module.css';
+import KeywordsList from '@/components/lists/keywordList/KeywordsList';
+import DetailsMediaItem from '@/components/detailsMediaItem/DetailsMediaItem';
+import { IDetails } from '@/models/detailsModel';
+import LinksList from '@/components/lists/linksList/LinksList';
 
 const formatCurrency = (amount: number) =>
   amount > 0 ? `$ ${amount.toLocaleString('en-US')}` : '-';

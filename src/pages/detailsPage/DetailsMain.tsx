@@ -1,10 +1,10 @@
-import classes from './DetailsPage.module.css';
-import RecommendedList from '../../components/lists/RecommendedList';
-import { IDetails } from '../../models/detailsModel';
-import HorizontalList from '../../components/horizontalList/HorizontalList';
-import DetailsMedia from './DetailsMedia';
-import useCollectionDetails from '../../hooks/useCollectionDetails';
-import { MediaType } from '../../helpers/constants';
+import classes from '@/pages/detailsPage/DetailsPage.module.css';
+import RecommendedList from '@/components/lists/RecommendedList';
+import { IDetails } from '@/models/detailsModel';
+import HorizontalList from '@/components/horizontalList/HorizontalList';
+import DetailsMedia from '@/pages/detailsPage/DetailsMedia';
+import useCollectionDetails from '@/hooks/useCollectionDetails';
+import { MediaType } from '@/helpers/constants';
 
 const DetailsMain = ({ media }: { media: IDetails }) => {
   const isMovie = 'title' in media;

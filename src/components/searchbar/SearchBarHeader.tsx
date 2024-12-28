@@ -1,13 +1,14 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { SEARCH_OPTIONS } from '../../data/searchOptions';
-import Dropdown, { ItemProps } from '../dropdown/Dropdown';
-import classes from './SearchBarHeader.module.css';
-
-import SearchList, { ISearchItem } from '../lists/searchList/SearchList';
+import { SEARCH_OPTIONS } from '@/data/searchOptions';
+import Dropdown, { ItemProps } from '@/components/dropdown/Dropdown';
+import classes from '@/components/searchbar/SearchBarHeader.module.css';
+import SearchList, {
+  ISearchItem,
+} from '@/components/lists/searchList/SearchList';
 import { MdOutlineClear } from 'react-icons/md';
-import EmptyResource from '../ui/emptyResource/EmptyResource';
-import useSearch from '../../hooks/useSearch';
-import LoadingSpinner from '../ui/loadingSpinner/LoadingSpinner';
+import EmptyResource from '@/components/ui/emptyResource/EmptyResource';
+import useSearch from '@/hooks/useSearch';
+import LoadingSpinner from '@/components/ui/loadingSpinner/LoadingSpinner';
 
 const SearchBarHeader = ({
   setMobileMenuOpen,

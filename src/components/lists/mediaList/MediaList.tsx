@@ -1,10 +1,10 @@
-import { ISeason } from '../../../models/seasonModel';
+import { ISeason } from '@/models/seasonModel';
 import { NavLink } from 'react-router-dom';
 import classes from './MediaItem.module.css';
-import { IMedia } from '../../../models/mediaModel';
-import { MediaType } from '../../../helpers/constants';
-import { tmdbImage } from '../../../helpers/imageSizes';
-import { format } from '../../../helpers/format';
+import { IMedia } from '@/models/mediaModel';
+import { MediaType } from '@/helpers/constants';
+import { tmdbImage } from '@/helpers/imageSizes';
+import { format } from '@/helpers/format';
 
 interface MediaItemProps {
   text: string;

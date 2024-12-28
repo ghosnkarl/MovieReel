@@ -1,11 +1,11 @@
 import { useLocation } from 'react-router-dom';
 import classes from './SeasonDetailsPage.module.css';
-import useSeasonDetails from '../../hooks/useSeasonDetails';
-import { IEpisode } from '../../models/seasonModel';
-import Rating from '../../components/rating/Rating';
+import useSeasonDetails from '@/hooks/useSeasonDetails';
+import Rating from '@/components/rating/Rating';
 import { AiOutlineCalendar, AiOutlineClockCircle } from 'react-icons/ai';
-import { tmdbImage } from '../../helpers/imageSizes';
-import { format } from '../../helpers/format';
+import { tmdbImage } from '@/helpers/imageSizes';
+import { format } from '@/helpers/format';
+import { IEpisode } from '@/models/seasonModel';
 
 const EpisodeItem = ({ episode }: { episode: IEpisode }) => {
   return (
