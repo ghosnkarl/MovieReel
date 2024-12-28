@@ -14,12 +14,12 @@ import { DataType, QueryData } from './HorizontalWrapper';
 import { useRef, useState } from 'react';
 import { NavigationOptions, Swiper as SwiperType } from 'swiper/types';
 import { IMedia } from '../../models/mediaModel';
-import { MOVIE_TYPE, PERSON_TYPE, TV_TYPE } from '../../helpers/constants';
 import { ISeason } from '../../models/seasonModel';
 import { tmdbImage } from '../../helpers/imageSizes';
 import { format } from '../../helpers/format';
+import { MediaType } from '../../helpers/constants';
 
-interface IHorizontalList {
+interface HorizontalListProps {
   title: string;
   linkState: unknown;
   link: string | null;
@@ -33,7 +33,7 @@ const HorizontalList = ({
   link,
   data,
   type,
-}: IHorizontalList) => {
+}: HorizontalListProps) => {
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
   const [isBeginning, setIsBeginning] = useState(true);
@@ -47,7 +47,7 @@ const HorizontalList = ({
 
   // Create a generic slide component
   const renderSlide = (item: IMedia | IPeople | ISeason) => {
-    if (type === MOVIE_TYPE || type === TV_TYPE) {
+    if (type === MediaType.MOVIE || type === MediaType.TV) {
       const media = item as IMedia;
       return (
         <SwiperSlide key={media.id}>
@@ -66,7 +66,7 @@ const HorizontalList = ({
       );
     }
 
-    if (type === PERSON_TYPE) {
+    if (type === MediaType.PERSON) {
       const person = item as IPeople;
       return (
         <SwiperSlide key={person.id}>
@@ -168,23 +168,23 @@ const HorizontalList = ({
           className='customSwiper'
           breakpoints={{
             600: {
-              slidesPerView: type === PERSON_TYPE ? 4 : 3,
+              slidesPerView: type === MediaType.PERSON ? 4 : 3,
               slidesPerGroup: 3,
             },
             768: {
-              slidesPerView: type === PERSON_TYPE ? 5 : 4,
+              slidesPerView: type === MediaType.PERSON ? 5 : 4,
               slidesPerGroup: 4,
             },
             992: {
-              slidesPerView: type === PERSON_TYPE ? 6 : 5,
+              slidesPerView: type === MediaType.PERSON ? 6 : 5,
               slidesPerGroup: 5,
             },
             1200: {
-              slidesPerView: type === PERSON_TYPE ? 7 : 6,
+              slidesPerView: type === MediaType.PERSON ? 7 : 6,
               slidesPerGroup: 6,
             },
             1400: {
-              slidesPerView: type === PERSON_TYPE ? 7 : 6,
+              slidesPerView: type === MediaType.PERSON ? 7 : 6,
               slidesPerGroup: 7,
             },
           }}

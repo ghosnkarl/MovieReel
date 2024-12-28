@@ -39,13 +39,6 @@
   pointer-events: all;
 }
 
-.progress {
-  height: calc(var(--search-container-height) - 2rem) !important;
-  width: calc(var(--search-container-height) - 2rem) !important;
-  color: white !important;
-  margin-right: 1.6rem;
-}
-
 .clear {
   height: calc(var(--search-container-height) - 2.2rem);
   width: calc(var(--search-container-height) - 2.2rem);

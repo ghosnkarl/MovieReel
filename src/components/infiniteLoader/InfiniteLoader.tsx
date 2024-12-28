@@ -2,7 +2,7 @@ import { useInView } from 'react-intersection-observer';
 import LoadingIndicator from '../ui/LoadingIndicator';
 import { ReactNode, useEffect } from 'react';
 
-interface IInfiniteLoader {
+interface InfiniteLoaderProps {
   hasNextPage: boolean;
   fetchNextPage: () => void;
   isFetchingNextPage: boolean;
@@ -14,7 +14,7 @@ const InfiniteLoader = ({
   fetchNextPage,
   isFetchingNextPage,
   children,
-}: IInfiniteLoader) => {
+}: InfiniteLoaderProps) => {
   const { ref, inView } = useInView();
   useEffect(() => {
     if (inView && hasNextPage) {

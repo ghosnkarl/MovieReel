@@ -6,11 +6,7 @@ import DetailsMediaItem from '../../../components/detailsMediaItem/DetailsMediaI
 import { tmdbImage } from '../../../helpers/imageSizes';
 import { format } from '../../../helpers/format';
 
-interface IDetailsHeader {
-  media: IDetails;
-}
-
-const DetailsHeader = ({ media }: IDetailsHeader) => {
+const DetailsHeader = ({ media }: { media: IDetails }) => {
   const {
     genres,
     runtime,

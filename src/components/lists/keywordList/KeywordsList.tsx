@@ -1,11 +1,11 @@
 import { IIdName } from '../../../models/commonModel';
 import classes from './KeywordsList.module.css';
 
-interface IKeywords {
+interface KeywordsListProps {
   keywords: IIdName[] | null;
 }
 
-const KeywordsList = ({ keywords }: IKeywords) => {
+const KeywordsList = ({ keywords }: KeywordsListProps) => {
   if (!keywords) return null;
   return (
     <div>

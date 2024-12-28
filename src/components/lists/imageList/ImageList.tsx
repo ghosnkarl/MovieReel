@@ -3,7 +3,7 @@ import classes from './ImageList.module.css';
 import { NavLink } from 'react-router-dom';
 import EmptyResource from '../../ui/emptyResource/EmptyResource';
 
-interface IImageList {
+interface ImageListProps {
   images: {
     galleryImage: string;
     fullImage: string;
@@ -11,7 +11,7 @@ interface IImageList {
   mediaTitle: string | undefined;
 }
 
-const ImageList = ({ images, mediaTitle }: IImageList) => {
+const ImageList = ({ images, mediaTitle }: ImageListProps) => {
   return (
     <>
       {images.length > 0 && (

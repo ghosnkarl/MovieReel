@@ -6,14 +6,12 @@ import { MediaType } from '../../../helpers/constants';
 import { tmdbImage } from '../../../helpers/imageSizes';
 import { format } from '../../../helpers/format';
 
-type MediaTypeSeason = MediaType | 'season';
-
-interface IMediaItem {
+interface MediaItemProps {
   text: string;
   id: number;
   poster_path: string | null;
   title: string | undefined;
-  type: MediaTypeSeason;
+  type: MediaType | 'season';
 }
 
 export const MediaItem = ({
@@ -22,7 +20,7 @@ export const MediaItem = ({
   poster_path,
   title,
   type,
-}: IMediaItem) => {
+}: MediaItemProps) => {
   const link = type === 'season' ? `seasons/${id}` : `/${type}/${id}`;
   return (
     <NavLink

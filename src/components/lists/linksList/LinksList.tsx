@@ -1,12 +1,12 @@
 import { IIdName } from '../../../models/commonModel';
 import classes from './LinksList.module.css';
 
-interface ILinksListProps {
+interface LinksListProps {
   links: IIdName[] | undefined;
   title: string;
 }
 
-const LinksList = ({ links, title }: ILinksListProps) => {
+const LinksList = ({ links, title }: LinksListProps) => {
   if (!links) return null;
 
   return (

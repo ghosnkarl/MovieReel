@@ -4,11 +4,7 @@ import { IVideo } from '../../../models/commonModel';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import EmptyResource from '../../ui/emptyResource/EmptyResource';
 
-interface IVideoItem {
-  video: IVideo;
-}
-
-const VideoItem = ({ video }: IVideoItem) => {
+const VideoItem = ({ video }: { video: IVideo }) => {
   return (
     <NavLink
       to={`https://www.youtube.com/watch?v=${video.key}`}
@@ -28,12 +24,12 @@ const VideoItem = ({ video }: IVideoItem) => {
   );
 };
 
-interface IVideoList {
+interface VideoListProps {
   videos: IVideo[];
   mediaTitle: string | undefined;
 }
 
-const VideoList = ({ videos, mediaTitle }: IVideoList) => {
+const VideoList = ({ videos, mediaTitle }: VideoListProps) => {
   return (
     <>
       {videos.length > 0 && (

@@ -1,10 +1,15 @@
-import { CircularProgress } from '@mui/material';
+import LoadingSpinner from './loadingSpinner/LoadingSpinner';
 
 export default function LoadingIndicator() {
   return (
-    <CircularProgress
-      sx={{ color: '#ffffff', justifySelf: 'center', alignSelf: 'center' }}
-      size={60}
-    />
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <LoadingSpinner />
+    </div>
   );
 }

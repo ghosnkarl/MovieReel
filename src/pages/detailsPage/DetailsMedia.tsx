@@ -5,14 +5,10 @@ import DetailsMediaItem from '../../components/detailsMediaItem/DetailsMediaItem
 import { IDetails } from '../../models/detailsModel';
 import LinksList from '../../components/lists/linksList/LinksList';
 
-interface IMediaDetails {
-  media: IDetails;
-}
-
 const formatCurrency = (amount: number) =>
   amount > 0 ? `$ ${amount.toLocaleString('en-US')}` : '-';
 
-const DetailsMedia = ({ media }: IMediaDetails) => {
+const DetailsMedia = ({ media }: { media: IDetails }) => {
   const {
     created_by,
     homepage,

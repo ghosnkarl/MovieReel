@@ -2,26 +2,26 @@ import { useParams } from 'react-router-dom';
 import classes from './PeopleDetailsPage.module.css';
 import { useMemo, useState } from 'react';
 import { CREDITS_TABS } from '../../data/tabsData';
-import Tabs, { ITabObject } from '../../components/ui/tabs/Tabs';
+import Tabs, { TabObjectProps } from '../../components/ui/tabs/Tabs';
 import { ICastMedia, ICrewMedia } from '../../models/peopleModel';
 import { IImage } from '../../models/commonModel';
 import { MediaItem } from '../../components/lists/mediaList/MediaList';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
 import ErrorPage from '../errorPage/ErrorPage';
-import { MOVIE_TYPE, TV_TYPE } from '../../helpers/constants';
 import ImageList from '../../components/lists/imageList/ImageList';
 import TaggedList from './TaggedList';
 import EmptyResource from '../../components/ui/emptyResource/EmptyResource';
 import usePersonDetails from '../../hooks/usePersonDetails';
 import { tmdbImage } from '../../helpers/imageSizes';
 import { format } from '../../helpers/format';
+import { MediaType } from '../../helpers/constants';
 
-interface IMediaItemsProps {
+interface MediaItemsProps {
   media: ICastMedia[] | ICrewMedia[];
   mediaType: 'acting credits' | 'tv acting credits' | 'credits';
 }
 
-export const MediaItems = ({ media, mediaType }: IMediaItemsProps) => {
+export const MediaItems = ({ media, mediaType }: MediaItemsProps) => {
   if (media.length === 0) {
     return (
       <EmptyResource
@@ -65,7 +65,7 @@ const PeopleDetailsPage = () => {
 
   const { data, isLoading, isError } = usePersonDetails({ personId });
 
-  const handleSelectTab = (tab: ITabObject) => {
+  const handleSelectTab = (tab: TabObjectProps) => {
     setSelectedTab(tab);
   };
 
@@ -84,8 +84,10 @@ const PeopleDetailsPage = () => {
   // Destructuring combined_credits
   const { cast, crew } = data.combined_credits || {};
 
-  const movies = cast?.filter((item) => item.media_type === MOVIE_TYPE) || [];
-  const tvShows = cast?.filter((item) => item.media_type === TV_TYPE) || [];
+  const movies =
+    cast?.filter((item) => item.media_type === MediaType.MOVIE) || [];
+  const tvShows =
+    cast?.filter((item) => item.media_type === MediaType.TV) || [];
 
   const birthdate = data.birthday
     ? `${format.date(data.birthday)}  ${
@@ -134,12 +136,15 @@ const PeopleDetailsPage = () => {
             <DetailsItem
               title='Movie credits'
               text={
-                crew.filter((item) => item.media_type === MOVIE_TYPE).length
+                crew.filter((item) => item.media_type === MediaType.MOVIE)
+                  .length
               }
             />
             <DetailsItem
               title='TV credits'
-              text={crew.filter((item) => item.media_type === TV_TYPE).length}
+              text={
+                crew.filter((item) => item.media_type === MediaType.TV).length
+              }
             />
           </div>
         </div>
@@ -158,10 +163,10 @@ const PeopleDetailsPage = () => {
             </p>
           )}
 
-          {selectedTab.value === MOVIE_TYPE && (
+          {selectedTab.value === MediaType.MOVIE && (
             <MediaItems media={movies} mediaType='acting credits' />
           )}
-          {selectedTab.value === TV_TYPE && (
+          {selectedTab.value === MediaType.TV && (
             <MediaItems media={tvShows} mediaType='tv acting credits' />
           )}
           {selectedTab.value === 'crew' && crew && <TaggedList crew={crew} />}

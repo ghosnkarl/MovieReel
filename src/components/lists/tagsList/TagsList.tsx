@@ -1,13 +1,13 @@
 import { MdCheck } from 'react-icons/md';
 import classes from './TagsList.module.css';
 
-interface ITagProps {
+interface TagProps {
   children: string;
   selected?: boolean;
   onClick: () => void;
 }
 
-const Tag: React.FC<ITagProps> = ({ children, selected, onClick }) => (
+const Tag: React.FC<TagProps> = ({ children, selected, onClick }) => (
   <span
     onClick={onClick}
     className={`${classes.tag} ${selected ? classes.tagSelected : ''}`}

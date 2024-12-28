@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import classes from './FilterBox.module.css';
 import Dropdown, { ItemProps } from '../../dropdown/Dropdown';
 import { SORT } from '../../../data/sortOptions';
-import { RatingSlider } from '../RatingSlider';
+
 import Searchbar from '../../searchbar/Searchbar';
 import GenresPicker from '../genresPicker/GenresPicker';
 import { format } from '../../../helpers/format';
@@ -66,18 +66,7 @@ const FilterBox = () => {
           />
         </div>
       </div>
-      <div>
-        <h1>Rating</h1>
-        <RatingSlider
-          defaultValue={[0, 10]}
-          step={1}
-          marks
-          min={0}
-          max={10}
-          valueLabelDisplay='auto'
-          disableSwap
-        />
-      </div>
+
       <div>
         <h1>Keywords</h1>
         <Searchbar />

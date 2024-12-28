@@ -1,20 +1,20 @@
 import { NavLink } from 'react-router-dom';
 import classes from './CreditItem.module.css';
-import { PERSON_TYPE } from '../../../helpers/constants';
 import { tmdbImage } from '../../../helpers/imageSizes';
+import { MediaType } from '../../../helpers/constants';
 
-interface ICreditItem {
+interface CreditItemProps {
   id: number | string;
   profile_path: string;
   title: string;
   text: string | null;
 }
 
-const CreditItem = ({ id, profile_path, title, text }: ICreditItem) => {
+const CreditItem = ({ id, profile_path, title, text }: CreditItemProps) => {
   return (
     <NavLink
       key={id}
-      to={`/${PERSON_TYPE}/${id}`}
+      to={`/${MediaType.PERSON}/${id}`}
       className={classes.container}
     >
       <div className={classes.imgContainer}>

@@ -1,10 +1,6 @@
 import { ICast, ICrew } from '../../../models/castCrewModel';
 import CreditItem from './CreditItem';
 
-interface ICreditsList {
-  credits: ICast[] | ICrew[] | undefined;
-}
-
 const getCreditDetails = (credit: ICast | ICrew) => {
   const isCast = 'character' in credit || 'roles' in credit;
   const key = isCast
@@ -24,7 +20,11 @@ const getCreditDetails = (credit: ICast | ICrew) => {
   return { key, text };
 };
 
-const CreditsList = ({ credits }: ICreditsList) => {
+interface CreditsListProps {
+  credits: ICast[] | ICrew[] | undefined;
+}
+
+const CreditsList = ({ credits }: CreditsListProps) => {
   return (
     <div className='credits-list__container'>
       {credits?.map((credit) => {

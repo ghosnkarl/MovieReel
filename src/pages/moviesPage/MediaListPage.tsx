@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Tabs, { ITabObject } from '../../components/ui/tabs/Tabs';
+import Tabs, { TabObjectProps } from '../../components/ui/tabs/Tabs';
 import { MOVIE_TABS, TV_TABS } from '../../data/tabsData';
 import MediaList from '../../components/lists/mediaList/MediaList';
 import LoadingIndicator from '../../components/ui/LoadingIndicator';
@@ -19,7 +19,7 @@ export default function MoviesPage({ type }: { type: MediaType }) {
     setSelectedTab(tabs[initialTabIndex]);
   }, [type]);
 
-  const handleSelectTab = (tab: ITabObject) => {
+  const handleSelectTab = (tab: TabObjectProps) => {
     setSelectedTab(tab);
   };
 

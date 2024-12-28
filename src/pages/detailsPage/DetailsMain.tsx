@@ -3,14 +3,10 @@ import RecommendedList from '../../components/lists/RecommendedList';
 import { IDetails } from '../../models/detailsModel';
 import HorizontalList from '../../components/horizontalList/HorizontalList';
 import DetailsMedia from './DetailsMedia';
-import { MOVIE_TYPE, TV_TYPE } from '../../helpers/constants';
 import useCollectionDetails from '../../hooks/useCollectionDetails';
+import { MediaType } from '../../helpers/constants';
 
-interface IDetailsMainContainer {
-  media: IDetails;
-}
-
-const DetailsMain = ({ media }: IDetailsMainContainer) => {
+const DetailsMain = ({ media }: { media: IDetails }) => {
   const isMovie = 'title' in media;
   const title = media.title || media.name;
 
@@ -37,14 +33,14 @@ const DetailsMain = ({ media }: IDetailsMainContainer) => {
           link={null}
           linkState={null}
           data={collectionList.parts}
-          type={MOVIE_TYPE}
+          type={MediaType.MOVIE}
         />
       )}
 
       <RecommendedList
         title={title}
         items={media.recommendations.results}
-        type={isMovie ? MOVIE_TYPE : TV_TYPE}
+        type={isMovie ? MediaType.MOVIE : MediaType.TV}
       />
     </div>
   );

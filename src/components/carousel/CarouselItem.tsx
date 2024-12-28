@@ -7,13 +7,13 @@ import { MediaType } from '../../helpers/constants';
 import Rating from '../rating/Rating';
 import { tmdbImage } from '../../helpers/imageSizes';
 
-interface ICarousel {
+interface CarouselItemProps {
   item: IMedia;
   genres: IIdName[] | undefined;
   media_type: MediaType;
 }
 
-const CarouselItem = ({ item, genres, media_type }: ICarousel) => (
+const CarouselItem = ({ item, genres, media_type }: CarouselItemProps) => (
   <NavLink to={`/${media_type}/${item.id}`} className={classes.itemContainer}>
     <img
       className={classes.backdrop}

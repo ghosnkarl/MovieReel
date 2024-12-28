@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { tmdbImage } from '../../../helpers/imageSizes';
 import { format } from '../../../helpers/format';
+import { MediaType } from '../../../helpers/constants';
 
 export interface ISearchItem {
   id: number;
   image: string | null;
-  type: 'movie' | 'tv' | 'person' | 'keyword' | 'company';
+  type: MediaType | 'keyword' | 'company';
   title: string;
   date: string | null;
 }

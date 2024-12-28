@@ -2,11 +2,12 @@ import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { SEARCH_OPTIONS } from '../../data/searchOptions';
 import Dropdown, { ItemProps } from '../dropdown/Dropdown';
 import classes from './SearchBarHeader.module.css';
-import { CircularProgress } from '@mui/material';
+
 import SearchList, { ISearchItem } from '../lists/searchList/SearchList';
 import { MdOutlineClear } from 'react-icons/md';
 import EmptyResource from '../ui/emptyResource/EmptyResource';
 import useSearch from '../../hooks/useSearch';
+import LoadingSpinner from '../ui/loadingSpinner/LoadingSpinner';
 
 const SearchBarHeader = ({
   setMobileMenuOpen,
@@ -75,7 +76,7 @@ const SearchBarHeader = ({
         onChange={handleChange}
       />
       {(isLoading || !searchQuery.data) && (
-        <CircularProgress className={classes.progress} />
+        <LoadingSpinner variant='progress' />
       )}
       {!isLoading && searchQuery.data && searchTerm.length > 0 && (
         <MdOutlineClear onClick={clearInput} className={classes.clear} />

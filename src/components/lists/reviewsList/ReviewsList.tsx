@@ -5,11 +5,7 @@ import Rating from '../../rating/Rating';
 import { tmdbImage } from '../../../helpers/imageSizes';
 import { format } from '../../../helpers/format';
 
-interface IReviewItem {
-  review: IReview;
-}
-
-const ReviewItem = ({ review }: IReviewItem) => {
+const ReviewItem = ({ review }: { review: IReview }) => {
   const { rating, avatar_path } = review.author_details;
 
   return (

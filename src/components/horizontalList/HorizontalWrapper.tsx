@@ -9,9 +9,9 @@ import { ISeason } from '../../models/seasonModel';
 import { IResultsProps } from '../../services/http';
 
 export type QueryData = IMedia | IPeople | ISeason;
-export type DataType = MediaType | 'person' | 'season';
+export type DataType = MediaType | 'season';
 
-interface IHorizontalWrapper {
+interface HorizontalWrapperProps {
   query: UseQueryResult<IResultsProps<QueryData>, Error>;
   title: string;
   link: string | null;
@@ -23,7 +23,7 @@ const HorizontalWrapper = ({
   title,
   link,
   type,
-}: IHorizontalWrapper) => {
+}: HorizontalWrapperProps) => {
   const { data, isError, isLoading, refetch } = query;
   if (isLoading) return <LoadingIndicator />;
 
