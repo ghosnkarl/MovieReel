@@ -68,3 +68,5 @@ git push
 # create tag and push to remote repository
 git tag -a "$TAG_NAME" -m "Release $TAG_NAME"
 git push origin "$TAG_NAME"
+
+gh release create "$TAG_NAME" --title "Release $TAG_NAME" --notes "$COMMIT_MESSAGE"
