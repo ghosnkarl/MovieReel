@@ -171,24 +171,24 @@ const HorizontalList = ({
           className='customSwiper'
           breakpoints={{
             600: {
-              slidesPerView: type === MediaType.PERSON ? 4 : 3,
+              slidesPerView: 3,
               slidesPerGroup: 3,
             },
             768: {
-              slidesPerView: type === MediaType.PERSON ? 5 : 4,
+              slidesPerView: 4,
               slidesPerGroup: 4,
             },
             992: {
-              slidesPerView: type === MediaType.PERSON ? 6 : 5,
+              slidesPerView: 5,
               slidesPerGroup: 5,
             },
             1200: {
-              slidesPerView: type === MediaType.PERSON ? 7 : 6,
+              slidesPerView: 6,
               slidesPerGroup: 6,
             },
             1400: {
-              slidesPerView: type === MediaType.PERSON ? 7 : 6,
-              slidesPerGroup: 7,
+              slidesPerView: 6,
+              slidesPerGroup: 6,
             },
           }}
         >

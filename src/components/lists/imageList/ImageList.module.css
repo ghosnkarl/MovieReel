@@ -1,7 +1,7 @@
 .grid {
   --cols: 4;
   display: grid;
-  gap: 0.4rem;
+  gap: 1rem;
   list-style: none;
   grid-template-columns: repeat(var(--cols), 1fr);
 
@@ -18,9 +18,6 @@
   overflow: hidden;
   border-radius: 7px;
   aspect-ratio: 1.3;
-
-  @media screen {
-  }
 }
 
 .image {

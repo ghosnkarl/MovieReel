@@ -1,4 +1,4 @@
-import { ITabObject } from '../components/ui/tabs/Tabs';
+import { TabObjectProps } from '../components/ui/tabs/Tabs';
 import { MediaType } from '../helpers/constants';
 import {
   airingTodayDates,
@@ -7,7 +7,7 @@ import {
   upComingDates,
 } from '../helpers/discoverHelpers';
 
-export const MOVIE_TABS: ITabObject[] = [
+export const MOVIE_TABS: TabObjectProps[] = [
   {
     title: 'Upcoming',
     value: upComingDates,
@@ -51,7 +51,7 @@ export const DETAILS_TABS = [
   { title: 'Images', value: 'images' },
 ];
 
-export const TV_TABS: ITabObject[] = [
+export const TV_TABS: TabObjectProps[] = [
   {
     title: 'Airing Today',
     value: airingTodayDates,

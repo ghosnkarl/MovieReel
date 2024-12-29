@@ -1,12 +1,12 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { fetchResults } from '../services/http';
 import { IMedia } from '../models/mediaModel';
-import { ITabObject } from '../components/ui/tabs/Tabs';
+import { TabObjectProps } from '../components/ui/tabs/Tabs';
 import { MediaType } from '../helpers/constants';
 
 interface IUseInfiniteMediaQuery {
   type: MediaType;
-  selectedTab: ITabObject;
+  selectedTab: TabObjectProps;
 }
 
 const useInfiniteMediaQuery = ({ type, selectedTab }: IUseInfiniteMediaQuery) =>

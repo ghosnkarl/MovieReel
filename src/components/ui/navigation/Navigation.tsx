@@ -32,7 +32,9 @@ export default function Navigation() {
     <header className={classes.header}>
       <div className={classes.headerContent}>
         <div className={classes.logoContainer}>
-          <img src={logo} alt='MovieReel logo' className={classes.logo} />
+          <NavLink to='/'>
+            <img src={logo} alt='MovieReel logo' className={classes.logo} />
+          </NavLink>
           <MdMenu className={classes.menuIcon} onClick={toggleMobileMenu} />
         </div>
         <nav className={classes.navigation}>

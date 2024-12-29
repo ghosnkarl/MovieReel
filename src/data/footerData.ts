@@ -1,4 +1,4 @@
-export const footerData = [
+export const FOOTER_DATA = [
   {
     title: 'Movies',
     link: '/movie',

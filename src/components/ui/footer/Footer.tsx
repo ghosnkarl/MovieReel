@@ -1,6 +1,6 @@
 import { FaBug, FaGithub } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
-import { footerData } from '@/data/footerData';
+import { FOOTER_DATA } from '@/data/footerData';
 import classes from '@/components/ui/footer/Footer.module.css';
 import { links } from '@/helpers/links';
 import logo from '/logo.svg';
@@ -12,7 +12,7 @@ const Footer = () => {
         <div className={classes.footerGrid}>
           <img src={logo} alt='MovieReel logo' />
 
-          {footerData.map((footerItem) => (
+          {FOOTER_DATA.map((footerItem) => (
             <div className={classes.footerItemContainer} key={footerItem.title}>
               <h2 className={classes.footerTitle}>{footerItem.title}</h2>
               {footerItem.items.map((item, index) => (
