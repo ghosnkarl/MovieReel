@@ -54,8 +54,8 @@ const Dropdown = ({
         {selectedSortItem.output}
       </DropdownButton>
       <div
-        className={`${classes['dropdown-content']} ${
-          open ? classes['content-open'] : ''
+        className={`${classes.dropdownContent} ${
+          open ? classes.contentOpen : ''
         }`}
       >
         {items.map((item) => (

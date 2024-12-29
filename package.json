@@ -1,7 +1,7 @@
 {
   "name": "movie-reel",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,9 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
-    "@mui/material": "^6.1.1",
     "@tanstack/react-query": "^5.56.2",
     "@types/react-lazy-load-image-component": "^1.6.4",
     "framer-motion": "^11.5.4",
@@ -36,6 +33,6 @@
     "globals": "^15.9.0",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
-    "vite": "^5.4.1"
+    "vite": "^6.0.6"
   }
 }

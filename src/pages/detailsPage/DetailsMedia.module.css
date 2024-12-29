@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3.2rem;
+}
+
+.externalLink:link,
+.externalLink:visited {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+  text-decoration-thickness: 0.2rem;
+  display: flex;
+  gap: 0.8rem;
+  font-size: 1.6em;
+  color: var(--color-gray-400);
+}
+
+.externalLink:hover,
+.externalLink:active {
+  color: white;
+}
+
+.linksContainer {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.detailsTitle {
+  font-size: 1.8rem;
+  color: var(--color-gray-300);
+  margin-bottom: 1.8rem;
+}

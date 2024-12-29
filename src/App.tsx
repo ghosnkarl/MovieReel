@@ -1,18 +1,18 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import RootLayout from './RootLayout';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './services/http';
-import PeoplePage from './pages/people_pages/PeoplePage';
-import DiscoverPage from './pages/discover_page/DiscoverPage';
-import PeopleDetailsPage from './pages/people_pages/PeopleDetailsPage';
-import ErrorPage from './pages/error_page/ErrorPage';
-import DetailsPage from './pages/details_page/DetailsPage';
+import PeoplePage from './pages/peoplePage/PeoplePage';
+import DiscoverPage from './pages/discoverPage/DiscoverPage';
+import PeopleDetailsPage from './pages/peoplePage/PeopleDetailsPage';
+import ErrorPage from './pages/errorPage/ErrorPage';
+import DetailsPage from './pages/detailsPage/DetailsPage';
 import OutletRootLayout from './components/ui/OutletRootLayout';
 import HomePage from './pages/homepage/HomePage';
-import MediaListPage from './pages/movies_page/MediaListPage';
-import { MOVIE_TYPE, TV_TYPE } from './helpers/constants';
-import SeasonDetailsPage from './pages/tv_pages/SeasonDetailsPage';
-import AboutPage from './pages/about_page/AboutPage';
+import MediaListPage from './pages/moviesPage/MediaListPage';
+import SeasonDetailsPage from './pages/tvPage/SeasonDetailsPage';
+import AboutPage from './pages/aboutPage/AboutPage';
+import RootLayout from './components/ui/RootLayout';
+import { MediaType } from './helpers/constants';
 
 const router = createBrowserRouter([
   {
@@ -22,12 +22,12 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       {
-        path: MOVIE_TYPE,
+        path: MediaType.MOVIE,
         element: <OutletRootLayout />,
         children: [
           {
             index: true,
-            element: <MediaListPage type='movie' />,
+            element: <MediaListPage type={MediaType.MOVIE} />,
           },
           {
             path: ':movieId',
@@ -36,12 +36,12 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: TV_TYPE,
+        path: MediaType.TV,
         element: <OutletRootLayout />,
         children: [
           {
             index: true,
-            element: <MediaListPage type='tv' />,
+            element: <MediaListPage type={MediaType.TV} />,
           },
           {
             path: ':tvId',

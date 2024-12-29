@@ -9,8 +9,8 @@ interface DropdownItemProps {
 const DropdownItem = ({ isSelected, children, onClick }: DropdownItemProps) => {
   return (
     <div
-      className={`${classes['dropdown-item']} ${
-        isSelected ? classes['dropdown-item--selected'] : ''
+      className={`${classes.dropdownItem} ${
+        isSelected ? classes.dropdownItemSelected : ''
       }`}
       onClick={onClick}
     >
