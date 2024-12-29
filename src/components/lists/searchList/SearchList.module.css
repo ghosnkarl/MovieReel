@@ -1,0 +1,54 @@
+.list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  overflow: auto;
+  max-height: 80%;
+  gap: 0.6rem;
+  scroll-behavior: smooth;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.item {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  padding: 0.6rem 1.2rem 0.6rem 1.2rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-gray-800);
+  }
+}
+
+.focused {
+  background-color: var(--color-gray-800);
+}
+
+.poster {
+  width: 5rem;
+  aspect-ratio: 0.7;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.text {
+  font-size: 1.3rem;
+  color: var(--color-gray-300);
+}

@@ -1,0 +1,13 @@
+.list {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.item {
+  font-size: 1.4rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 1000px;
+  border: 2px solid var(--color-gray-200);
+}

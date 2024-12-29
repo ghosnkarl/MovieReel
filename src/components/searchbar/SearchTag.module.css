@@ -9,11 +9,11 @@
   gap: 0.6rem;
 }
 
-.close-icon {
+.icon {
   font-size: 1.8rem;
   cursor: pointer;
-}
 
-.close-icon:hover {
-  color: var(--color-gray-600);
+  &:hover {
+    color: var(--color-gray-600);
+  }
 }

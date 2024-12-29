@@ -1,12 +1,14 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { SEARCH_OPTIONS } from '../../data/searchOptions';
-import Dropdown, { ItemProps } from '../dropdown/Dropdown';
-import classes from './SearchBarHeader.module.css';
-import { CircularProgress } from '@mui/material';
-import SearchList, { ISearchItem } from '../lists/search_list/SearchList';
+import { SEARCH_OPTIONS } from '@/data/searchOptions';
+import Dropdown, { ItemProps } from '@/components/dropdown/Dropdown';
+import classes from '@/components/searchbar/SearchBarHeader.module.css';
+import SearchList, {
+  ISearchItem,
+} from '@/components/lists/searchList/SearchList';
 import { MdOutlineClear } from 'react-icons/md';
-import EmptyResource from '../ui/empty_resource/EmptyResource';
-import useSearch from '../../hooks/useSearch';
+import EmptyResource from '@/components/ui/emptyResource/EmptyResource';
+import useSearch from '@/hooks/useSearch';
+import LoadingSpinner from '@/components/ui/loadingSpinner/LoadingSpinner';
 
 const SearchBarHeader = ({
   setMobileMenuOpen,
@@ -75,15 +77,15 @@ const SearchBarHeader = ({
         onChange={handleChange}
       />
       {(isLoading || !searchQuery.data) && (
-        <CircularProgress className={classes.progress} />
+        <LoadingSpinner variant='progress' />
       )}
       {!isLoading && searchQuery.data && searchTerm.length > 0 && (
         <MdOutlineClear onClick={clearInput} className={classes.clear} />
       )}
       <div
         ref={dropdownRef}
-        className={`${classes['dropdown-content']} ${
-          open ? classes['content-open'] : ''
+        className={`${classes.dropdownContent} ${
+          open ? classes.contentOpen : ''
         }`}
       >
         {searchQuery.data && searchQuery.data.results.length > 0 && (

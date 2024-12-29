@@ -1,4 +1,4 @@
-.search-container {
+.searchContainer {
   position: relative;
 }
 .container {
@@ -9,7 +9,7 @@
   gap: 1.2rem;
 }
 
-.tags-container {
+.tagsContainer {
   display: flex;
   gap: 1.2rem;
   flex-wrap: wrap;
@@ -26,7 +26,7 @@
   font-size: 1.5rem;
 }
 
-.dropdown-content {
+.dropdownContent {
   position: absolute;
   min-width: 100%;
   top: 100%;
@@ -44,20 +44,20 @@
   pointer-events: none;
 }
 
-.content-open {
+.contentOpen {
   opacity: 1;
   transform: translateY(0);
   pointer-events: all;
 }
 
-.search-item {
+.searchItem {
   padding: 1.2rem;
   font-size: 1.5rem;
   width: 100%;
   cursor: pointer;
 }
 
-.search-item:hover,
-.search-item--selected {
+.searchItem:hover,
+.searchItemSelected {
   background-color: var(--color-gray-500);
 }

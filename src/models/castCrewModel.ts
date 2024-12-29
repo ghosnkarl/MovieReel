@@ -1,6 +1,6 @@
-import { IIdName } from './commonModel';
+import { IBaseIdName } from './commonModel';
 
-interface ICastCrew extends IIdName {
+interface ICastCrew extends IBaseIdName {
   known_for_department: string;
   profile_path: string;
 }

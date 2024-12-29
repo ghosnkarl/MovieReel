@@ -1,20 +1,20 @@
 import { MouseEventHandler, useCallback } from 'react';
 import classes from './Tabs.module.css';
 
-export interface ITabObject {
+export interface TabObjectProps {
   title: string;
   value: string;
   path?: string;
   params?: string | null;
 }
 
-interface ITab {
+interface TabProps {
   isSelected: boolean;
   onSelect: MouseEventHandler<HTMLButtonElement>;
   children: string;
 }
 
-function Tab({ isSelected, onSelect, children }: ITab) {
+function Tab({ isSelected, onSelect, children }: TabProps) {
   return (
     <li>
       <button
@@ -28,14 +28,14 @@ function Tab({ isSelected, onSelect, children }: ITab) {
 }
 
 interface ITabs {
-  selectedType: ITabObject | null;
-  onSelectType: (type: ITabObject) => void;
-  tabs: ITabObject[];
+  selectedType: TabObjectProps | null;
+  onSelectType: (type: TabObjectProps) => void;
+  tabs: TabObjectProps[];
 }
 
 export default function Tabs({ selectedType, onSelectType, tabs }: ITabs) {
   const handleSelectTab = useCallback(
-    (tab: ITabObject) => {
+    (tab: TabObjectProps) => {
       onSelectType(tab);
     },
     [onSelectType]

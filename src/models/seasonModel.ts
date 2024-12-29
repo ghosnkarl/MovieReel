@@ -1,6 +1,6 @@
-import { IIdName } from './commonModel';
+import { IBaseIdName } from './commonModel';
 
-export interface ISeasonBase extends IIdName {
+export interface ISeasonBase extends IBaseIdName {
   air_date: string;
   overview: string;
   vote_average: number;

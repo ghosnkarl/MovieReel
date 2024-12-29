@@ -1,18 +1,18 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import useDiscover from '../../hooks/useDiscover';
+import useDiscover from '@/hooks/useDiscover';
 import CarouselItem from './CarouselItem';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import classes from './CarouselItem.module.css';
-import LoadingIndicator from '../ui/LoadingIndicator';
-import useGenres from '../../hooks/useGenres';
-import { nowPlayingDates } from '../../helpers/discoverHelpers';
-import { MOVIE_TYPE } from '../../helpers/constants';
-import ErrorComponent from '../ui/error_component/ErrorComponent';
+import useGenres from '@/hooks/useGenres';
+import { nowPlayingDates } from '@/helpers/discoverHelpers';
+import ErrorComponent from '@/components/ui/errorComponent/ErrorComponent';
+import { MediaType } from '@/helpers/constants';
+import LoadingIndicator from '@/components/ui/loadingSpinner/LoadingIndicator';
 
 const Carousel = () => {
-  const { data: genres } = useGenres({ type: MOVIE_TYPE });
+  const { data: genres } = useGenres({ type: MediaType.MOVIE });
   const { data, isError, isLoading, refetch } = useDiscover({
-    mediaType: MOVIE_TYPE,
+    mediaType: MediaType.MOVIE,
     params: nowPlayingDates,
   });
 
@@ -38,7 +38,11 @@ const Carousel = () => {
     >
       {data.results.map((item) => (
         <SwiperSlide key={item.id}>
-          <CarouselItem genres={genres} item={item} media_type={MOVIE_TYPE} />
+          <CarouselItem
+            genres={genres}
+            item={item}
+            media_type={MediaType.MOVIE}
+          />
         </SwiperSlide>
       ))}
     </Swiper>

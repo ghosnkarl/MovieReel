@@ -1,14 +1,14 @@
-import { MediaType } from '../../helpers/constants';
-import { IMedia } from '../../models/mediaModel';
-import HorizontalList from '../horizontal_list/HorizontalList';
+import { MediaType } from '@/helpers/constants';
+import { IMedia } from '@/models/mediaModel';
+import HorizontalList from '@/components/horizontalList/HorizontalList';
 
-interface IRecommendedList {
+interface RecommendedListProps {
   items: IMedia[];
   title: string | undefined;
   type: MediaType;
 }
 
-const RecommendedList = ({ items, title, type }: IRecommendedList) => {
+const RecommendedList = ({ items, title, type }: RecommendedListProps) => {
   if (items && items.length === 0) return null;
   return (
     <HorizontalList

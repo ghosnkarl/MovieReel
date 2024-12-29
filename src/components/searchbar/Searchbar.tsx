@@ -1,8 +1,8 @@
 import { ChangeEvent, useRef, useState } from 'react';
-import classes from './SearchBar.module.css';
-import SearchTag from './SearchTag';
-import { IIdName } from '../../models/commonModel';
-import useSearch from '../../hooks/useSearch';
+import classes from '@/components/searchbar/Searchbar.module.css';
+import SearchTag from '@/components/searchbar/SearchTag';
+import { IBaseIdName } from '@/models/commonModel';
+import useSearch from '@/hooks/useSearch';
 
 const Searchbar = () => {
   const [open, setOpen] = useState(false);
@@ -26,7 +26,7 @@ const Searchbar = () => {
     }, 500);
   };
 
-  const handleSearchClick = (item: IIdName) => {
+  const handleSearchClick = (item: IBaseIdName) => {
     if (!searchList.find((keyword) => keyword.id === item.id))
       setSearchList([...searchList, item]);
 
@@ -43,9 +43,9 @@ const Searchbar = () => {
   };
 
   return (
-    <div className={classes['search-container']}>
+    <div className={classes.searchContainer}>
       <div className={classes.container}>
-        <div className={classes['tags-container']}>
+        <div className={classes.tagsContainer}>
           {searchList &&
             searchList.map((keyword) => (
               <SearchTag
@@ -62,15 +62,15 @@ const Searchbar = () => {
           onChange={handleChange}
         />
         <div
-          className={`${classes['dropdown-content']} ${
-            open ? classes['content-open'] : ''
+          className={`${classes.dropdownContent} ${
+            open ? classes.contentOpen : ''
           }`}
         >
           {data &&
-            (data.results as IIdName[]).map((item) => (
+            (data.results as IBaseIdName[]).map((item) => (
               <p
                 onClick={() => handleSearchClick(item)}
-                className={classes['search-item']}
+                className={classes.searchItem}
                 key={item.id}
               >
                 {item.name}

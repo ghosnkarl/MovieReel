@@ -10,9 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
-    "@mui/material": "^6.1.1",
     "@tanstack/react-query": "^5.56.2",
     "@types/react-lazy-load-image-component": "^1.6.4",
     "framer-motion": "^11.5.4",
